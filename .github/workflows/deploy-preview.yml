@@ -1,0 +1,29 @@
+name: Deploy Preview
+on:
+  pull_request:
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/665768891795/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+          service_account: gh-hosting@theadarecollection-site.iam.gserviceaccount.com
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm ci
+      - run: npm run build
+      - run: npm i -g firebase-tools
+      - run: |
+          firebase hosting:channel:deploy pr-${{ github.event.number }} \
+            --project theadarecollection-site \
+            --expires 30d \
+            --non-interactive
