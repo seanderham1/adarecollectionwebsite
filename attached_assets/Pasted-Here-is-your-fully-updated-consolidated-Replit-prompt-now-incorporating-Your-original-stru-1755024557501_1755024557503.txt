@@ -1,0 +1,256 @@
+Here is your **fully updated, consolidated Replit prompt**, now incorporating:
+
+* Your original structural, technical, and branding requirements
+* Homepage copy and tone from your prior AI conversation
+* Refined hero section with **video/map split layout**
+* Best practices for luxury, high-conversion real estate websites
+
+This prompt is ready to be **handed to Replit**, a developer, or used yourself to start building the site confidently.
+
+---
+
+# 🧱 FULL REPLIT DEVELOPMENT PROMPT
+
+**Website Project: \[theadarecollection.com]**
+
+---
+
+## 🌍 Project Overview
+
+Create a visually elegant, responsive website using **HTML, CSS, and JavaScript**, hosted on **Replit**, for *The Adare Collection* — a curated portfolio of **exclusive private residences** available for **Ryder Cup 2027** rental on the grounds of **Adare Manor, Ireland**.
+
+The website will:
+
+* **Showcase** ultra-luxury and deluxe properties (2-bed villas to 8-bed mansions)
+* **Generate leads**, not sales (no ecommerce)
+* Emphasize **location** as the key value (walking distance to the Ryder Cup)
+* Offer a **password-protected section** or **sister domain** for VIP-only properties
+
+---
+
+## 🎯 Target Audience
+
+* High-net-worth individuals (HNWIs)
+* Corporate sponsors & golf clients
+* VIPs & celebrities
+* Media teams requiring private & secure accommodation
+
+---
+
+## 🎨 Design & Tone
+
+* Inspired by: [https://www.quintadolago.com/en/](https://www.quintadolago.com/en/)
+* Look: Modern, high-end, spacious, visual, with subtle animation
+* Feel: Discreet, trusted, service-led, premium
+* Color palette: (To be provided — muted, luxury tones)
+* Logo: (To be uploaded by user)
+* Fonts: Use luxury-styled Google Fonts (e.g., Playfair Display, Lato)
+
+---
+
+## 🧱 SITE STRUCTURE
+
+### 1. **Homepage**
+
+#### 🔥 Hero Section (Video + Map Split)
+
+Split hero layout that immediately showcases location advantage.
+
+**Layout:**
+
+* Left (66.66%): Background video (autoplay, muted, loop)
+* Right (33.33%): Interactive map (Google Maps or Mapbox)
+
+  * Golf course & Adare Manor highlighted
+  * Clickable property markers
+* Entire hero section: Height = 90–100vh
+* Responsive: Stack video above map on mobile
+* Padding between elements, smooth animation
+* Use `object-fit: cover` for video scaling
+
+**Code Implementation Guidance:**
+Use Flexbox or CSS Grid with responsiveness in mind. Load map lazily to improve performance. Add accessibility attributes (`aria-label`, fallback `poster`).
+
+#### 💬 Introductory Copy (Under Hero)
+
+> **Welcome to The Adare Collection**
+> *Exclusive Private Residences for Ryder Cup 2027*
+> As the world turns its attention to Adare Manor, The Adare Collection presents a limited portfolio of refined estate homes — selected for elegance, privacy, and access.
+> Each residence is handpicked by **Joe Mulcahy**, a hospitality expert with a 20+ year track record managing VIP stays, events, and premium hosting experiences.
+
+#### 🏘️ Property Grid
+
+* 3x1 responsive grid layout
+* Each card:
+
+  * Carousel image
+  * Name + property highlights
+  * CTA: “Discover More”
+* Uses Swiper.js or Flickity
+
+---
+
+### 2. **Property Detail Pages**
+
+(Each property gets its own page in `/pages/`)
+
+**Structure:**
+
+* Name + Address
+* Full description (copy provided below)
+* Features: bedrooms, layout, key amenities
+* Gallery (carousel)
+* Map section showing walking distance to golf course
+* Add-on Services (chauffeur, chef, helicopter)
+* CTA: “Request Availability” (mailto: `info@theadarecollection.com`)
+
+**Example Property Copy (Putters Way):**
+
+> **🏌️ Putters Way**
+> *At the Heart of the Ryder Cup 2027*
+> Located steps from the Carriage House, this two-bedroom executive home sits within the private Golf Village of Adare Manor. Designed for discretion and elegance, it offers unmatched proximity to the first tee, alongside private terraces, open-plan living, and optional concierge services.
+
+(Include extended copy for: Putters Way, Cragleigh House, The Demesne Residence — already written in previous chat)
+
+---
+
+### 3. **Exclusive Access Portal**
+
+**URL:** \[theadarecollection.ie]
+**Purpose:** Password-gated access to premium, off-market listings.
+
+**Structure:**
+
+* Access form (password field with basic JS)
+* CTA: "Request Access" → sends enquiry to `info@theadarecollection.com`
+* If authenticated: redirect to `/exclusive-properties.html`
+
+---
+
+### 4. **Contact Page**
+
+Styled to match image 1 from earlier.
+
+**Fields:**
+
+* Name
+* Country (dropdown)
+* Indicative + Phone
+* Email
+* Message box
+
+**Functionality:**
+
+* On Submit: sends to `info@theadarecollection.com` (use `mailto:` or integrate EmailJS/Formspree)
+
+---
+
+### 5. **Landing Page (Optional Route)**
+
+Could be a secondary route `/ryder-cup-rentals` for campaigns.
+
+**Includes:**
+
+* Promotional Copy from AI conversation:
+
+  > *“A curated collection of ultra-private estate homes, offered exclusively during Ryder Cup 2027. Some inside the Adare Manor estate. Others, just minutes away — each delivering unmatched comfort, security, and access.”*
+* Showcase:
+
+  * Property categories
+  * Concierge services
+  * Booking terms (8-night minimum, POA)
+  * “Why Choose Us” credibility block featuring Joe Mulcahy’s profile
+* CTA:
+
+  * “Download Brochure”
+  * “Request Availability”
+
+---
+
+## 🧭 Navigation (Global)
+
+Sticky nav with burger menu for mobile.
+
+**Menu Items:**
+
+* Home
+* View Properties
+* Exclusive Access
+* Contact
+* Request Brochure
+
+---
+
+## 📞 Footer
+
+Simple, elegant layout:
+
+* The Adare Collection
+* [info@theadarecollection.com](mailto:info@theadarecollection.com)
+* \[Phone Number]
+* Social icons (if provided)
+* Location: Adare, Co. Limerick, Ireland
+
+---
+
+## 🧰 Functional Features
+
+* Carousel (property cards + image galleries)
+* Smooth scroll
+* Sticky header
+* Scroll animations (AOS or native CSS)
+* Lazy-load map
+* Password protection via basic JS logic
+* Responsive layout
+* Basic SEO meta tags (title, OG image, description)
+
+---
+
+## 🗂️ File Structure Example
+
+```plaintext
+/index.html
+/style.css
+/script.js
+/assets/
+  /images/
+  /video/
+  /logo/
+  /icons/
+  /fonts/
+  /properties/
+    putters-way.html
+    cragleigh-house.html
+    demesne.html
+/pages/
+  contact.html
+  exclusive-access.html
+  error.html
+```
+
+---
+
+## 📧 Optional (Email Marketing Copy)
+
+Also include email pitch content (from AI chat), either as:
+
+* Hidden `/email-pitch.html` for reuse
+* CMS module (for future)
+
+---
+
+## ✅ Final Notes for Replit Setup
+
+* Hosting: Start on Replit, migrate to custom domain later via Netlify/Vercel
+* Use placeholder video/map assets until final ones are available
+* Allow future CMS integration (e.g. headless WordPress, Sanity)
+
+---
+
+Would you like me to now:
+
+* Generate the **starter HTML/CSS/JS files** for this layout?
+* Create the **hero section code** specifically (video + map)?
+* Package this prompt as a downloadable README or Replit project description?
+
+Let me know how you'd like to proceed!

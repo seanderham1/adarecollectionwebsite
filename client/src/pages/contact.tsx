@@ -1,0 +1,178 @@
+import { useState } from "react";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardContent } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, MapPin } from "lucide-react";
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    country: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+  
+  const { toast } = useToast();
+
+  const countries = [
+    { value: "IE", label: "Ireland" },
+    { value: "GB", label: "United Kingdom" },
+    { value: "US", label: "United States" },
+    { value: "DE", label: "Germany" },
+    { value: "FR", label: "France" },
+    { value: "ES", label: "Spain" },
+    { value: "other", label: "Other" }
+  ];
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Create mailto link
+    const subject = encodeURIComponent("Contact Inquiry - The Adare Collection");
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Country: ${formData.country}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    
+    window.location.href = `mailto:info@theadarecollection.com?subject=${subject}&body=${body}`;
+    
+    toast({
+      title: "Inquiry Sent",
+      description: "Thank you for your inquiry. We will contact you within 24 hours.",
+    });
+    
+    // Reset form
+    setFormData({
+      name: "",
+      country: "",
+      phone: "",
+      email: "",
+      message: ""
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Navigation />
+      
+      <div className="pt-24 pb-20">
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="text-left mb-12">
+            <h1 className="font-serif text-4xl font-normal text-primary mb-12" data-testid="contact-title">
+              Contact request
+            </h1>
+          </div>
+
+          {/* Contact Form */}
+          <form onSubmit={handleSubmit} className="space-y-8" data-testid="contact-form">
+            <div>
+              <Input
+                type="text"
+                id="name"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                placeholder="NAME"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                required
+                data-testid="input-name"
+              />
+            </div>
+
+            <div>
+              <Select value={formData.country} onValueChange={(value) => handleInputChange("country", value)}>
+                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-primary focus:ring-0" data-testid="select-country">
+                  <SelectValue placeholder="COUNTRY" />
+                </SelectTrigger>
+                <SelectContent>
+                  {countries.map((country) => (
+                    <SelectItem key={country.value} value={country.value}>
+                      {country.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Select value="" onValueChange={() => {}}>
+                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-primary focus:ring-0">
+                  <SelectValue placeholder="INDICATIVE" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="+353">Ireland (+353)</SelectItem>
+                  <SelectItem value="+44">United Kingdom (+44)</SelectItem>
+                  <SelectItem value="+1">United States (+1)</SelectItem>
+                  <SelectItem value="+49">Germany (+49)</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Input
+                type="tel"
+                id="phone"
+                value={formData.phone}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+                placeholder="TELEPHONE"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                data-testid="input-phone"
+              />
+            </div>
+
+            <div>
+              <Input
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                placeholder="E-MAIL"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                required
+                data-testid="input-email"
+              />
+            </div>
+
+            <div>
+              <Textarea
+                id="message"
+                rows={6}
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
+                placeholder="Message"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base resize-none placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                required
+                data-testid="textarea-message"
+              />
+            </div>
+
+            <div className="pt-8">
+              <Button 
+                type="submit" 
+                className="w-full bg-primary hover:bg-gray-800 text-white py-4 px-8 text-sm font-medium tracking-wide uppercase transition-colors"
+                data-testid="button-send-inquiry"
+              >
+                SUBMIT →
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}
