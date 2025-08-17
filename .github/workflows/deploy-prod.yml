@@ -23,4 +23,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm i -g firebase-tools
-      - run: firebase deploy --only hosting --project theadarecollection-site --non-interactive
+      - run: firebase deploy --only hosting,functions --project theadarecollection-site --non-interactive

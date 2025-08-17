@@ -23,7 +23,7 @@ jobs:
       - run: npm run build
       - run: npm i -g firebase-tools
       - run: |
-          firebase hosting:channel:deploy pr-${{ github.event.number }} \
+          firebase deploy --only hosting,functions \
             --project theadarecollection-site \
-            --expires 30d \
-            --non-interactive
+            --non-interactive \
+            --expires 30d
