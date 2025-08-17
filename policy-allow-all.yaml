@@ -1,0 +1,4 @@
+name: projects/theadarecollection-site/policies/iam.allowedPolicyMemberDomains
+spec:
+  rules:
+  - allowAll: true

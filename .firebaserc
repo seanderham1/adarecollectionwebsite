@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "theadarecollection-site"
-  }
+    "default": "theadarecollection-site",
+    "staging": "theadarecollection-site"
+  },
+  "targets": {},
+  "etags": {}
 }
