@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import * as functionsV1 from "firebase-functions/v1"; // Gen 1
 import nodemailer from "nodemailer";
-import * as functions from "firebase-functions";
+
 
 const app = express();
 app.use(cors({ origin: true }));
@@ -16,22 +16,36 @@ app.use((req, res, next) => {
   next();
 });
 
-// Email transporter configuration
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: functions.config().email?.user || 'info@theadarecollection.ie',
-    pass: functions.config().email?.pass || 'your-app-password'
-  }
-});
+// Email transporter will be created inside the function
 
 // Contact form submission endpoint
 app.post("/api/contact", async (req, res) => {
   try {
     const { name, country, phone, email, message } = req.body;
     
+    // Get email configuration (temporarily hardcoded for testing)
+    const emailUser = 'info@theadarecollection.ie';
+    const emailPass = 'owotdbgnxfyxadho';
+    
     // Debug: Log the email configuration
-    logger.info(`Email config - user: ${functions.config().email?.user}, pass: ${functions.config().email?.pass ? '***' : 'NOT SET'}`);
+    logger.info(`Email config - user: ${emailUser}, pass: ${emailPass ? '***' : 'NOT SET'}`);
+    
+    if (!emailPass) {
+      logger.error('Email password not configured');
+      return res.status(500).json({ 
+        success: false, 
+        message: "Email configuration error. Please contact support." 
+      });
+    }
+    
+    // Create transporter inside function where config is available
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: emailUser,
+        pass: emailPass
+      }
+    });
     
     // Validate required fields
     if (!name || !email || !message) {
@@ -43,7 +57,7 @@ app.post("/api/contact", async (req, res) => {
 
     // Create email content
     const mailOptions = {
-      from: functions.config().email?.user || 'info@theadarecollection.ie',
+      from: emailUser,
       to: 'info@theadarecollection.ie',
       subject: 'New Contact Inquiry - The Adare Collection',
       html: `
@@ -100,9 +114,14 @@ app.get("*", (req, res) => {
   });
 });
 
-// Gen-2 (kept for later, currently blocked by IAM)
+// Gen-2 with runtime environment variables
 export const api = onRequest(
-  { region: "us-central1", memory: "256MiB", timeoutSeconds: 60, cors: true },
+  { 
+    region: "us-central1", 
+    memory: "256MiB", 
+    timeoutSeconds: 60, 
+    cors: true
+  },
   app
 );
 
