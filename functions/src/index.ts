@@ -3,14 +3,75 @@ import * as logger from "firebase-functions/logger";
 import express from "express";
 import cors from "cors";
 import * as functionsV1 from "firebase-functions/v1"; // Gen 1
+import nodemailer from "nodemailer";
 
 const app = express();
 app.use(cors({ origin: true }));
+app.use(express.json());
 
 // Add this middleware to log all requests
 app.use((req, res, next) => {
   logger.info(`Request path: ${req.path}, URL: ${req.url}, method: ${req.method}`);
   next();
+});
+
+// Email transporter configuration
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER || 'your-email@gmail.com',
+    pass: process.env.EMAIL_PASS || 'your-app-password'
+  }
+});
+
+// Contact form submission endpoint
+app.post("/api/contact", async (req, res) => {
+  try {
+    const { name, country, phone, email, message } = req.body;
+    
+    // Validate required fields
+    if (!name || !email || !message) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Name, email, and message are required" 
+      });
+    }
+
+    // Create email content
+    const mailOptions = {
+      from: process.env.EMAIL_USER || 'your-email@gmail.com',
+      to: 'info@theadarecollection.ie',
+      subject: 'New Contact Inquiry - The Adare Collection',
+      html: `
+        <h2>New Contact Inquiry</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Country:</strong> ${country || 'Not specified'}</p>
+        <p><strong>Phone:</strong> ${phone || 'Not specified'}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
+        <hr>
+        <p><em>This inquiry was submitted from the Adare Collection website.</em></p>
+      `
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+    
+    logger.info(`Contact form submitted by ${email}`);
+    
+    return res.json({ 
+      success: true, 
+      message: "Thank you for your inquiry. We will contact you within 24 hours." 
+    });
+    
+  } catch (error) {
+    logger.error('Error sending contact email:', error);
+    return res.status(500).json({ 
+      success: false, 
+      message: "Failed to send inquiry. Please try again or contact us directly." 
+    });
+  }
 });
 
 app.get("/hello", (_req, res) => {
@@ -31,7 +92,7 @@ app.get("*", (req, res) => {
     path: req.path, 
     url: req.url, 
     message: "Debug info - this path was not matched",
-    availableRoutes: ["/hello", "/api/hello"]
+    availableRoutes: ["/hello", "/api/hello", "/api/contact"]
   });
 });
 

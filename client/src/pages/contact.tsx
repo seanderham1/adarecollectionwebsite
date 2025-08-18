@@ -19,6 +19,7 @@ export default function Contact() {
     message: ""
   });
   
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const countries = [
@@ -35,34 +36,52 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Create mailto link
-    const subject = encodeURIComponent("Contact Inquiry - The Adare Collection");
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Country: ${formData.country}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}`
-    );
-    
-    window.location.href = `mailto:info@theadarecollection.com?subject=${subject}&body=${body}`;
-    
-    toast({
-      title: "Inquiry Sent",
-      description: "Thank you for your inquiry. We will contact you within 24 hours.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      country: "",
-      phone: "",
-      email: "",
-      message: ""
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Inquiry Sent",
+          description: result.message,
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          country: "",
+          phone: "",
+          email: "",
+          message: ""
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: result.message || "Failed to send inquiry. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send inquiry. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,12 +107,13 @@ export default function Contact() {
                 placeholder="NAME"
                 className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
                 required
+                disabled={isSubmitting}
                 data-testid="input-name"
               />
             </div>
 
             <div>
-              <Select value={formData.country} onValueChange={(value) => handleInputChange("country", value)}>
+              <Select value={formData.country} onValueChange={(value) => handleInputChange("country", value)} disabled={isSubmitting}>
                 <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-primary focus:ring-0" data-testid="select-country">
                   <SelectValue placeholder="COUNTRY" />
                 </SelectTrigger>
@@ -108,7 +128,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <Select value="" onValueChange={() => {}}>
+              <Select value="" onValueChange={() => {}} disabled={isSubmitting}>
                 <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-primary focus:ring-0">
                   <SelectValue placeholder="INDICATIVE" />
                 </SelectTrigger>
@@ -129,6 +149,7 @@ export default function Contact() {
                 onChange={(e) => handleInputChange("phone", e.target.value)}
                 placeholder="TELEPHONE"
                 className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                disabled={isSubmitting}
                 data-testid="input-phone"
               />
             </div>
@@ -142,6 +163,7 @@ export default function Contact() {
                 placeholder="E-MAIL"
                 className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
                 required
+                disabled={isSubmitting}
                 data-testid="input-email"
               />
             </div>
@@ -155,6 +177,7 @@ export default function Contact() {
                 placeholder="Message"
                 className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base resize-none placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
                 required
+                disabled={isSubmitting}
                 data-testid="textarea-message"
               />
             </div>
@@ -163,9 +186,10 @@ export default function Contact() {
               <Button 
                 type="submit" 
                 className="w-full bg-primary hover:bg-gray-800 text-white py-4 px-8 text-sm font-medium tracking-wide uppercase transition-colors"
+                disabled={isSubmitting}
                 data-testid="button-send-inquiry"
               >
-                SUBMIT →
+                {isSubmitting ? "SENDING..." : "SUBMIT →"}
               </Button>
             </div>
           </form>
