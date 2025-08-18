@@ -41,7 +41,7 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('https://us-central1-theadarecollection-site.cloudfunctions.net/api/contact', {
+      const response = await fetch('https://us-central1-theadarecollection-site.cloudfunctions.net/api/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
