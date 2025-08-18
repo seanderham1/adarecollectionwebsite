@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import * as functionsV1 from "firebase-functions/v1"; // Gen 1
 import nodemailer from "nodemailer";
+import * as functions from "firebase-functions";
 
 const app = express();
 app.use(cors({ origin: true }));
@@ -19,8 +20,8 @@ app.use((req, res, next) => {
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER || 'your-email@gmail.com',
-    pass: process.env.EMAIL_PASS || 'your-app-password'
+    user: functions.config().email?.user || 'info@theadarecollection.ie',
+    pass: functions.config().email?.pass || 'your-app-password'
   }
 });
 
@@ -28,6 +29,9 @@ const transporter = nodemailer.createTransport({
 app.post("/api/contact", async (req, res) => {
   try {
     const { name, country, phone, email, message } = req.body;
+    
+    // Debug: Log the email configuration
+    logger.info(`Email config - user: ${functions.config().email?.user}, pass: ${functions.config().email?.pass ? '***' : 'NOT SET'}`);
     
     // Validate required fields
     if (!name || !email || !message) {
@@ -39,7 +43,7 @@ app.post("/api/contact", async (req, res) => {
 
     // Create email content
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'your-email@gmail.com',
+      from: functions.config().email?.user || 'info@theadarecollection.ie',
       to: 'info@theadarecollection.ie',
       subject: 'New Contact Inquiry - The Adare Collection',
       html: `
