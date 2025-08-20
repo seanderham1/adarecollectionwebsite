@@ -25,7 +25,12 @@ jobs:
       - name: Build Functions
         run: cd functions && npm ci && npm run build
       
+      - name: Setup Google Cloud credentials
+        run: |
+          echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/service-account-key.json
+          export GOOGLE_APPLICATION_CREDENTIALS=/tmp/service-account-key.json
+      
       - name: Deploy to Firebase
         run: firebase deploy --only hosting,functions --project theadarecollection-site --non-interactive
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/service-account-key.json
