@@ -18,6 +18,7 @@ export default function Navigation() {
 
   const navigationItems = [
     { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
     { href: "/properties", label: "View Properties" },
     { href: "/exclusive", label: "Exclusive Access" },
     { href: "/contact", label: "Contact" },
