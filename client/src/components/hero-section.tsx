@@ -161,22 +161,7 @@ export default function HeroSection() {
                 />
               ))}
 
-              {/* Navigation Arrows */}
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 flex items-center justify-center transition-all hover:scale-110"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="h-6 w-6 text-white drop-shadow-lg" />
-              </button>
 
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 flex items-center justify-center transition-all hover:scale-110"
-                aria-label="Next image"
-              >
-                <ChevronRight className="h-6 w-6 text-white drop-shadow-lg" />
-              </button>
 
               {/* Overlay Content */}
               <div className="absolute inset-0 bg-black bg-opacity-20 flex items-end">

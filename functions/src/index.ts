@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 // Contact form submission endpoint
 app.post("/api/contact", async (req, res) => {
   try {
-    const { name, country, phone, email, message } = req.body;
+    const { name, country, extension, phone, email, message } = req.body;
     
     // Get email configuration (temporarily hardcoded for testing)
     const emailUser = 'info@theadarecollection.ie';
@@ -64,6 +64,7 @@ app.post("/api/contact", async (req, res) => {
         <h2>New Contact Inquiry</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Country:</strong> ${country || 'Not specified'}</p>
+        <p><strong>Extension:</strong> ${extension || 'Not specified'}</p>
         <p><strong>Phone:</strong> ${phone || 'Not specified'}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>

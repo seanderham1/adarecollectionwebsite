@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Car, Users, Utensils, Plane } from "lucide-react";
+import { MapPin, Car, Users, Utensils, Plane, Bed } from "lucide-react";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -47,9 +47,15 @@ export default function PropertyDetail() {
             <p className="text-2xl text-dark-gray mb-6" data-testid="property-subtitle">
               {property.subtitle}
             </p>
-            <div className="flex justify-center items-center space-x-4 text-warm-gold">
-              <MapPin className="h-5 w-5" />
-              <span className="font-medium" data-testid="property-walking-distance">{property.walkingDistance}</span>
+            <div className="flex justify-center items-center space-x-6 text-warm-gold">
+              <div className="flex items-center space-x-2">
+                <MapPin className="h-5 w-5" />
+                <span className="font-medium" data-testid="property-walking-distance">{property.walkingDistance}</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Bed className="h-5 w-5" />
+                <span className="font-medium" data-testid="property-bedrooms">{property.bedrooms} Bedrooms</span>
+              </div>
             </div>
           </div>
 

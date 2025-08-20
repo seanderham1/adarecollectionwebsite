@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import { properties } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { Bed } from "lucide-react";
 
 export default function PropertiesPage() {
   // create 3 additional inspired properties (lightweight client-side array)
@@ -75,7 +76,10 @@ export default function PropertiesPage() {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <div className="text-xs text-muted uppercase tracking-wide font-medium">{p.subtitle}</div>
-                  <div className="text-xs text-muted">{p.bedrooms} BR</div>
+                  <div className="flex items-center text-xs text-muted">
+                    <Bed className="h-3 w-3 mr-1" />
+                    <span>{p.bedrooms}</span>
+                  </div>
                 </div>
                 <h3 className="font-serif text-xl font-normal mb-2 text-primary">{p.name}</h3>
                 <p className="text-secondary text-sm leading-relaxed mb-6">{p.description}</p>
