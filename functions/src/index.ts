@@ -2,7 +2,7 @@ import { onRequest } from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
 import express from "express";
 import cors from "cors";
-import * as functionsV1 from "firebase-functions/v1"; // Gen 1
+
 import nodemailer from "nodemailer";
 
 
@@ -126,9 +126,3 @@ export const api = onRequest(
   app
 );
 
-// Gen-1 fallback that avoids Cloud Run IAM
-export const apiV1 = functionsV1
-  .region("us-central1")
-  .https.onRequest((_req, res) => {
-    res.json({ ok: true, message: "Hello from Firebase Functions (Gen 1)!" });
-  });
