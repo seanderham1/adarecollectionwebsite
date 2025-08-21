@@ -26,6 +26,6 @@ jobs:
         run: cd functions && npm ci && npm run build
       
       - name: Deploy to Firebase
-        run: firebase deploy --only hosting,functions --project theadarecollection-site --non-interactive
+        run: firebase deploy --only hosting,functions --project theadarecollection-site --non-interactive --force
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

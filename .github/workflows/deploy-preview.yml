@@ -29,6 +29,7 @@ jobs:
           firebase deploy --only hosting,functions \
             --project theadarecollection-site \
             --non-interactive \
+            --force \
             --expires 30d
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
