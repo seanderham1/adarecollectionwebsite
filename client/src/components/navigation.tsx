@@ -36,7 +36,7 @@ export default function Navigation() {
       className="fixed top-0 left-0 right-0 z-50 nav-blur"
       data-testid="navigation"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">

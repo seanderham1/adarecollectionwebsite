@@ -50,7 +50,7 @@ export default function PropertiesPage() {
       <Navigation />
 
       <main className="pt-24 pb-16 px-6">
-        <div className="max-w-[1400px] mx-auto text-center mb-12">
+        <div className="max-w-[1600px] mx-auto text-center mb-12">
           <h1 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-4">
             Explore our properties
           </h1>
@@ -61,7 +61,7 @@ export default function PropertiesPage() {
           </p>
         </div>
 
-        <div className="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8">
+        <div className="max-w-[1600px] mx-auto grid md:grid-cols-3 gap-8">
           {all.map((p) => (
             <div key={p.id} className="property-card bg-white overflow-hidden">
               <div className="relative group">

@@ -67,7 +67,7 @@ function PropertyCard({ property }: PropertyCardProps) {
 export default function PropertyGrid() {
   return (
     <section id="properties" className="py-12 px-4 bg-white" data-testid="property-grid-section">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1600px] mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-serif text-3xl md:text-4xl font-normal mb-6 text-primary tracking-tight" data-testid="properties-title">
             Our Collection
