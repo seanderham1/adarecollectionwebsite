@@ -134,7 +134,7 @@ export default function HeroSection() {
       script.async = true;
       script.defer = true;
       script.src =
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCNQfvlQLy7tm9sB57m2mMsUt9CWln41_s&callback=initMap";
+        `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&callback=initMap`;
       document.body.appendChild(script);
     } else {
       // script tag exists but google isn’t on window yet
