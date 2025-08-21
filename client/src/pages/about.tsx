@@ -43,7 +43,7 @@ export default function About() {
       
       {/* Hero Section */}
       <section className="py-24 px-6 bg-neutral-100">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Profile Image */}
             <div className="order-2 lg:order-1">
@@ -123,7 +123,7 @@ export default function About() {
 
       {/* Expertise Grid */}
       <section className="py-20 px-6 bg-neutral-50">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[1400px] mx-auto">
           <h2 className="font-serif text-3xl md:text-4xl font-normal mb-12 text-primary text-center">
             Professional Excellence
           </h2>

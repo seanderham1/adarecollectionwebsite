@@ -39,7 +39,7 @@ export default function PropertyDetail() {
       
       <div className="pt-24 pb-20">
         {/* Property Header */}
-        <div className="max-w-7xl mx-auto px-4 mb-12">
+        <div className="max-w-[1400px] mx-auto px-4 mb-12">
           <div className="text-center mb-8">
             <h1 className="font-playfair text-5xl font-bold text-charcoal mb-4" data-testid="property-title">
               {property.name}
@@ -83,7 +83,7 @@ export default function PropertyDetail() {
         </div>
 
         {/* Property Details */}
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-[1400px] mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">

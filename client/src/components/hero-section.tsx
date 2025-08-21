@@ -145,7 +145,7 @@ export default function HeroSection() {
   return (
     <div className="bg-white py-16">
       <section className="relative lg:h-[85vh] h-auto flex overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex flex-col lg:flex-row items-stretch">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 w-full flex flex-col lg:flex-row items-stretch">
           {/* Image Gallery Section */}
           <div className="lg:w-3/5 w-full lg:h-full relative bg-white flex flex-col lg:mr-4">
             {/* Main Image with fade transition */}

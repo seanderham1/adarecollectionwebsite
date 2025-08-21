@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 py-16 px-6" data-testid="footer">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         <div className="text-center">
           <h3 className="font-serif text-lg font-normal mb-4 text-primary" data-testid="footer-company-name">
             The Adare Collection
