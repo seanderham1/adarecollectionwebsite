@@ -68,12 +68,12 @@ export default {
         "dark-gray": "var(--dark-gray)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        serif: ["var(--font-serif)"],
-        mono: ["var(--font-mono)"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["Playfair Display", "Libre Baskerville", "serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "monospace"],
         playfair: ["Playfair Display", "serif"],
-        lato: ["Lato", "sans-serif"],
         inter: ["Inter", "sans-serif"],
+        baskerville: ["Libre Baskerville", "serif"],
       },
       keyframes: {
         "accordion-down": {
