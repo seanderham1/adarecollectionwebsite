@@ -129,7 +129,7 @@ export default function HeroSection() {
          map,
          center: MAP_CENTER,
          radius: WALK_RADIUS_METERS,
-         zIndex: 1,
+         zIndex: 20,
          clickable: false,
        });
 
