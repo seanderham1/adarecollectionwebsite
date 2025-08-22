@@ -11,8 +11,14 @@ const propertyImages = [
   "/images/hero/adaremanor-img3.webp",
 ];
 
-// Served by the dev server from client/public
+// Base overlay (golf course + buildings)
 const GEOJSON_URL = "/data/adare_demesne.geojson";
+// Properties (points layer)
+const PROPERTIES_URL = "/data/properties.geojson";
+
+// Constants for walk radius
+const WALK_RADIUS_METERS = 800; // Approximately 10 minutes walk at average speed
+const MAP_CENTER = { lat: 52.562213, lng: -8.781279 };
 
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -34,76 +40,255 @@ export default function HeroSection() {
 
   // --- GOOGLE MAPS LOADER & INIT ---
   useEffect(() => {
+    // Create a single info window that will be reused
+    let currentInfoWindow: google.maps.InfoWindow | null = null;
+
+    const addPropertyMarker = (
+      map: google.maps.Map,
+      pos: google.maps.LatLngLiteral,
+      props: {
+        id?: string;
+        title?: string;
+        url?: string;
+        beds?: number;
+        baths?: number;
+        price?: string;
+        thumb?: string;
+        desc?: string;
+      }
+    ) => {
+      const marker = new google.maps.Marker({
+        map,
+        position: pos,
+        title: props.title || "Property",
+        icon: {
+          url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+              <defs>
+                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="rgba(0,0,0,0.3)"/>
+                </filter>
+              </defs>
+              <!-- Main pin shape with border -->
+              <path fill="#142a4d" stroke="white" stroke-width="0.5" filter="url(#shadow)" d="M14 2.25A9.75 9.75 0 0 1 23.75 12c0 4.12-2.895 8.61-8.61 13.518a1.75 1.75 0 0 1-2.283-.002l-.378-.328C7.017 20.408 4.25 16.028 4.25 12A9.75 9.75 0 0 1 14 2.25Zm0 6a3.75 3.75 0 1 0 0 7.5a3.75 3.75 0 0 0 0-7.5Z"/>
+              <!-- Inner circle in white -->
+              <circle cx="14" cy="12" r="3.75" fill="white"/>
+            </svg>
+          `),
+          scaledSize: new google.maps.Size(28, 28),
+          anchor: new google.maps.Point(14, 28)
+        }
+      });
+
+      const html = `
+        <div style="max-width:260px;font-family:inherit;line-height:1.35">
+          ${
+            props.thumb
+              ? `<img src="${props.thumb}" alt="${props.title ?? "Property"}" style="width:100%;height:auto;border-radius:10px;margin:0 0 8px 0;display:block;"/>`
+              : ""
+          }
+          <div style="font-weight:600;margin:0 0 4px 0">${props.title || "Property"}</div>
+          <div style="color:#666;font-size:12px;margin:0 0 6px 0">
+            ${props.beds ?? "–"} bed · ${props.baths ?? "–"} bath ${
+        props.price ? `· ${props.price}` : ""
+      }
+          </div>
+          ${
+            props.desc
+              ? `<div style="color:#444;font-size:12px;margin:0 0 8px 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${props.desc}</div>`
+              : ""
+          }
+          ${
+            props.url
+              ? `<a href="${props.url}" style="display:inline-block;padding:8px 10px;border-radius:8px;background:#111;color:#fff;text-decoration:none;font-size:12px;">View details</a>`
+              : ""
+          }
+        </div>
+      `;
+      
+      marker.addListener("click", () => {
+        // Close any existing info window
+        if (currentInfoWindow) {
+          currentInfoWindow.close();
+        }
+        
+        // Create new info window and open it
+        currentInfoWindow = new google.maps.InfoWindow({ content: html });
+        currentInfoWindow.open({ map, anchor: marker });
+      });
+    };
+
+    const addWalkRadiusCircle = (map: google.maps.Map) => {
+             // Create the circle
+       const walkCircle = new google.maps.Circle({
+         strokeColor: '#142a4d',
+         strokeOpacity: 0.8,
+         strokeWeight: 2,
+         fillColor: 'transparent',
+         fillOpacity: 0,
+         map,
+         center: MAP_CENTER,
+         radius: WALK_RADIUS_METERS,
+         zIndex: 1,
+         clickable: false,
+       });
+
+      // Create a custom overlay for the walking icon and text
+      class WalkRadiusLabel extends google.maps.OverlayView {
+        private div_: HTMLElement | null = null;
+        private position_: google.maps.LatLng;
+
+        constructor(position: google.maps.LatLng) {
+          super();
+          this.position_ = position;
+        }
+
+        onAdd() {
+          const div = document.createElement('div');
+                     div.style.cssText = `
+             position: absolute;
+             background-color: #142a4d;
+             color: white;
+             padding: 6px 10px;
+             border-radius: 16px;
+             font-size: 12px;
+             font-weight: 500;
+             white-space: nowrap;
+             display: flex;
+             align-items: center;
+             gap: 4px;
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+             pointer-events: none;
+             z-index: 1000;
+           `;
+
+                     // Create walking icon using custom SVG
+           const iconSvg = document.createElement('img');
+           iconSvg.src = '/icons/walking.svg';
+           iconSvg.style.cssText = `
+             width: 14px;
+             height: 14px;
+             filter: brightness(0) invert(1);
+           `;
+
+          const textSpan = document.createElement('span');
+          textSpan.textContent = '10 minute walk';
+
+          div.appendChild(iconSvg);
+          div.appendChild(textSpan);
+
+          this.div_ = div;
+          const panes = this.getPanes();
+          if (panes) {
+            panes.overlayLayer.appendChild(div);
+          }
+        }
+
+        draw() {
+          if (this.div_) {
+            const overlayProjection = this.getProjection();
+            if (overlayProjection) {
+              const position = overlayProjection.fromLatLngToDivPixel(this.position_);
+              if (position) {
+                // Position the label at the top of the circle
+                this.div_.style.left = (position.x - this.div_.offsetWidth / 2) + 'px';
+                this.div_.style.top = (position.y - 10) + 'px';
+              }
+            }
+          }
+        }
+
+        onRemove() {
+          if (this.div_ && this.div_.parentNode) {
+            this.div_.parentNode.removeChild(this.div_);
+            this.div_ = null;
+          }
+        }
+      }
+
+      // Calculate position at the top of the circle for the label
+      const earthRadius = 6371000; // Earth's radius in meters
+      const dLat = WALK_RADIUS_METERS / earthRadius;
+      const labelLat = MAP_CENTER.lat + (dLat * 180 / Math.PI);
+      const labelPosition = new google.maps.LatLng(labelLat, MAP_CENTER.lng);
+
+      // Add the custom label
+      const walkLabel = new WalkRadiusLabel(labelPosition);
+      walkLabel.setMap(map);
+
+      return { circle: walkCircle, label: walkLabel };
+    };
+
     const initMapFn = () => {
       const map = new google.maps.Map(
         document.getElementById("hero-map") as HTMLElement,
         {
-          center: { lat: 52.562213, lng: -8.781279 },
+          center: MAP_CENTER,
           zoom: 15,
           mapId: "c3acdccb9694c869d85b690f", // your Map ID
           disableDefaultUI: true,
         }
       );
 
-      // ---- LOAD GEOJSON OVERLAY ----
-      map.data.loadGeoJson(GEOJSON_URL, null, () => {
-        // Apply initial style after data loads
-        applyStyle();
-      });
+      // Add walk radius circle and label
+      addWalkRadiusCircle(map);
 
-      // ---- THEME / STYLES ----
+      // ---- LOAD GEOJSON OVERLAY ----
+      map.data.loadGeoJson(GEOJSON_URL, null, () => applyStyle());
+
+      // ---- STYLES FOR OVERLAY ----
       const styleFor = (feature: google.maps.Data.Feature, zoom: number) => {
         const leisure = feature.getProperty("leisure");
         const golf = feature.getProperty("golf");
         const hasBuilding = !!feature.getProperty("building");
 
-        // Outer golf course polygon
         if (leisure === "golf_course") {
           return {
-            fillColor: "#2e7d32", // deep green
+            fillColor: "#d0e2c4",
             fillOpacity: 0.18,
-            strokeColor: "#1b5e20",
+            strokeColor: "#c1d3b5",
             strokeWeight: 2,
+            zIndex: 1,
           };
         }
 
-        // Golf sub-features (hide holes if present; keep fairway/green/tee)
-        if (golf === "hole") {
-          return { visible: false }; // ensure hole lines are suppressed even if present
-        }
+        if (golf === "hole") return { visible: false }; // hide hole centerlines
         if (golf === "fairway") {
           return {
-            fillColor: "#66bb6a",
+            fillColor: "#c8e0bb",
             fillOpacity: 0.25,
-            strokeColor: "#388e3c",
+            strokeColor: "#b9d1ac",
             strokeWeight: 1,
+            zIndex: 2,
           };
         }
         if (golf === "green") {
           return {
-            fillColor: "#a5d6a7",
+            fillColor: "#c8e0bb",
             fillOpacity: 0.35,
-            strokeColor: "#2e7d32",
+            strokeColor: "#b9d1ac",
             strokeWeight: 1,
+            zIndex: 3,
           };
         }
         if (golf === "tee") {
           return {
-            fillColor: "#81c784",
+            fillColor: "#c8e0bb",
             fillOpacity: 0.35,
-            strokeColor: "#2e7d32",
+            strokeColor: "#b9d1ac",
             strokeWeight: 1,
+            zIndex: 2,
           };
         }
 
-        // Buildings: show only when zoomed in enough
         if (hasBuilding) {
           if (zoom < 15) return { visible: false };
           return {
-            fillColor: "#9e9e9e",
-            fillOpacity: 0.55,
-            strokeColor: "#616161",
+            fillColor: "#eeeeee",
+            fillOpacity: 0.8,
+            strokeColor: "#dbdbdb",
             strokeWeight: 1,
+            zIndex: 4,
           };
         }
 
@@ -115,17 +300,63 @@ export default function HeroSection() {
         map.data.setStyle((f) => styleFor(f, z));
       };
 
-      // Keep styles in sync with zoom level
       map.addListener("zoom_changed", applyStyle);
+
+      // ---- MAP CLICK LISTENER ----
+      map.addListener("click", () => {
+        if (currentInfoWindow) {
+          currentInfoWindow.close();
+          currentInfoWindow = null;
+        }
+      });
+
+      // ---- PROPERTIES LAYER ----
+      console.log("Loading properties from:", PROPERTIES_URL);
+      fetch(PROPERTIES_URL)
+         .then((r) => {
+           console.log("Fetch response status:", r.status);
+           if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText}`);
+           return r.json();
+         })
+         .then((fc) => {
+           console.log("Properties data loaded:", fc);
+           if (!fc || !Array.isArray(fc.features)) {
+             throw new Error("Bad properties geojson structure");
+           }
+           console.log("Found", fc.features.length, "properties");
+           fc.features.forEach((feat: any, index: number) => {
+             console.log(`Processing feature ${index}:`, feat);
+             if (!feat.geometry || feat.geometry.type !== "Point") {
+               console.log(`Skipping feature ${index}: not a Point geometry`);
+               return;
+             }
+             const [lng, lat] = feat.geometry.coordinates;
+             const p = feat.properties || {};
+             console.log(`Adding marker for ${p.title} at [${lat}, ${lng}]`);
+             addPropertyMarker(map, { lat, lng }, p);
+           });
+         })
+         .catch((error) => {
+           console.error("Error loading properties:", error);
+           // fallback marker if properties.geojson is missing
+           console.log("Adding fallback marker");
+           addPropertyMarker(
+             map,
+             { lat: 52.55886548383084, lng: -8.78699909386544 },
+             {
+               title: "Putters Way",
+               desc: "Deluxe residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
+               url: "http://localhost:3000/property/putters-way",
+             }
+           );
+         });
     };
 
-    // If API already loaded (client-side route back), just init
+    // Handle script loading
     if ((window as any).google) {
       initMapFn();
       return;
     }
-
-    // Otherwise load the script once
     const existingScript = document.getElementById("google-maps-script");
     if (!existingScript) {
       (window as any).initMap = initMapFn;
@@ -133,11 +364,9 @@ export default function HeroSection() {
       script.id = "google-maps-script";
       script.async = true;
       script.defer = true;
-      script.src =
-        `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&callback=initMap`;
       document.body.appendChild(script);
     } else {
-      // script tag exists but google isn’t on window yet
       (window as any).initMap = initMapFn;
     }
   }, []);
@@ -149,7 +378,7 @@ export default function HeroSection() {
           {/* Image Gallery Section */}
           <div className="lg:w-3/5 w-full lg:h-full relative bg-white flex flex-col lg:mr-4">
             {/* Main Image with fade transition */}
-            <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-auto lg:flex-1 overflow-hidden">
+            <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-auto lg:flex-1 overflow-hidden mb-4">
               {propertyImages.map((src, idx) => (
                 <img
                   key={src}
@@ -160,8 +389,6 @@ export default function HeroSection() {
                   }`}
                 />
               ))}
-
-
 
               {/* Overlay Content */}
               <div className="absolute inset-0 bg-black bg-opacity-20 flex items-end">
@@ -194,7 +421,6 @@ export default function HeroSection() {
               >
                 <ChevronLeft className="h-4 w-4 text-gray-700" />
               </button>
-
               <div className="flex-1 grid grid-cols-4 gap-2 sm:gap-3">
                 {propertyImages.map((image, index) => (
                   <button
@@ -217,7 +443,6 @@ export default function HeroSection() {
                   </button>
                 ))}
               </div>
-
               <button
                 onClick={nextImage}
                 className="inline-flex p-1 hover:bg-gray-100 transition-colors"

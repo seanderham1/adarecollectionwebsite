@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.786999475136705, 52.5588746741587]},
+      "properties":{
+        "id":"house-2",
+        "title":"House 2",
+        "desc":"Stately luxurious residence within the private gated enclave of Adare Manor Resort, 300 yards from the 2027 Ryder Cup driving range.",
+        "url":"http://localhost:3000/property/house-2",
+        "beds": 6,
+        "baths": 6,
+        "price":"POA",
+        "thumb":"/images/houses/house 2/house-2-main.jpg"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.786388314512122, 52.559044262159176]},
+      "properties":{
+        "id":"the-demesne-residence",
+        "title":"The Demesne Residence",
+        "desc":"Luxury estate home within Adare Manor's gated enclave, moments from the Carriage House and first tee.",
+        "url":"http://localhost:3000/property/the-demesne-residence",
+        "beds": 6,
+        "baths": 6,
+        "price":"POA",
+        "thumb":"/images/houses/house 3/house-3-main.jpg"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.780790470041158, 52.561675058520805]},
+      "properties":{
+        "id":"putters-way",
+        "title":"Putters Way",
+        "desc":"Deluxe residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
+        "url":"http://localhost:3000/property/putters-way",
+        "beds": 2,
+        "baths": 2,
+        "price":"POA",
+        "thumb":"/images/houses/house 4/adare-house-4.jpg"
+      }
+    }
+  ]
+}
