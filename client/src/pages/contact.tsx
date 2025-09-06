@@ -131,7 +131,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
                 placeholder="Name"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 required
                 disabled={isSubmitting}
                 data-testid="input-name"
@@ -140,7 +140,7 @@ export default function Contact() {
 
             <div>
               <Select value={formData.country} onValueChange={(value) => handleInputChange("country", value)} disabled={isSubmitting}>
-                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-primary focus:ring-0" data-testid="select-country">
+                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0" data-testid="select-country">
                   <SelectValue placeholder="Country" />
                 </SelectTrigger>
                 <SelectContent>
@@ -155,7 +155,7 @@ export default function Contact() {
 
             <div>
               <Select value={formData.extension} onValueChange={(value) => handleInputChange("extension", value)} disabled={isSubmitting}>
-                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-primary focus:ring-0" data-testid="select-extension">
+                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0" data-testid="select-extension">
                   <SelectValue placeholder="Extension" />
                 </SelectTrigger>
                 <SelectContent>
@@ -201,7 +201,7 @@ export default function Contact() {
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
                 placeholder="Phone Number"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 disabled={isSubmitting}
                 data-testid="input-phone"
               />
@@ -214,7 +214,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 placeholder="Email"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 required
                 disabled={isSubmitting}
                 data-testid="input-email"
@@ -228,7 +228,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
                 placeholder="Message"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium resize-none placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium resize-none placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 required
                 disabled={isSubmitting}
                 data-testid="textarea-message"
@@ -238,11 +238,11 @@ export default function Contact() {
             <div className="pt-8">
               <Button 
                 type="submit" 
-                className="w-full bg-primary hover:bg-gray-800 text-white py-4 px-8 text-sm font-medium tracking-wide uppercase transition-colors"
+                className="w-full border border-gray-700 bg-gray-700 text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-transparent hover:!text-gray-700 transition-all duration-200"
                 disabled={isSubmitting}
                 data-testid="button-send-inquiry"
               >
-                {isSubmitting ? "SENDING..." : "SUBMIT →"}
+                {isSubmitting ? "Sending..." : "Send Request"}
               </Button>
             </div>
           </form>

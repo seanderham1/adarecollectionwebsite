@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { properties, type Property } from "@/lib/properties";
 import { Link } from "wouter";
-import { Heart, Bed } from "lucide-react";
 
 interface PropertyCardProps {
   property: Property;
@@ -10,80 +9,76 @@ interface PropertyCardProps {
 
 function PropertyCard({ property }: PropertyCardProps) {
   return (
-    <div className="property-card bg-white overflow-hidden" data-testid={`property-card-${property.id}`}>
-      <div className="relative group">
-        <Link href={`/property/${property.id}`}>
+    <Link href={`/property/${property.id}`}>
+      <div className="property-card bg-neutral-100 overflow-hidden border-0 shadow-none cursor-pointer group" data-testid={`property-card-${property.id}`}>
+        <div className="relative aspect-[16/9]">
           <img 
-            src={property.images[0]} 
+            src={property.thumbnail || property.images[0]} 
             alt={property.name}
-            className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+            className="w-full h-full object-cover"
             data-testid={`property-image-${property.id}-0`}
           />
-        </Link>
-        <div className="absolute top-4 left-4">
-          <Badge variant="secondary" className="bg-black bg-opacity-70 text-white text-xs font-medium px-2 py-1 uppercase tracking-wide">
-            EXCLUSIVE
-          </Badge>
-        </div>
-        <button className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-all">
-          <Heart className="h-4 w-4 text-gray-600" />
-        </button>
-      </div>
-      
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-3">
-          <div className="text-xs text-muted uppercase tracking-wide font-medium">
-            REF {property.id.toUpperCase().replace('-', '')} 
-          </div>
-          <div className="flex items-center text-xs text-muted">
-            <Bed className="h-3 w-3 mr-1" />
-            <span>{property.bedrooms}</span>
-          </div>
+          <Link href={`/property/${property.id}`}>
+            <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
+              <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
+                <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
+                  {property.id === 'cragleigh-house' ? 'DELUXE' : 'EXCLUSIVE'}
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
         
-        <h3 className="font-serif text-xl font-normal mb-2 text-primary" data-testid={`property-name-${property.id}`}>
-          {property.name}
-        </h3>
-        
-        <p className="text-secondary text-sm leading-relaxed mb-6" data-testid={`property-description-${property.id}`}>
-          {property.description}
-        </p>
-        
+        <div className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-xs text-muted uppercase tracking-wider font-medium">
+              {property.bedrooms} BEDROOMS
+            </div>
+            <div className="text-xs text-muted uppercase tracking-wider font-medium">
+              AVAILABLE
+            </div>
+          </div>
+          
+          <h3 className="font-serif text-xl font-normal mb-2 text-primary" data-testid={`property-name-${property.id}`}>
+            {property.name}
+          </h3>
+          
+          <p className="text-secondary text-sm leading-relaxed mb-6" data-testid={`property-description-${property.id}`}>
+            {property.description}
+          </p>
+          
           <div className="space-y-3">
-            <Link href={`/property/${property.id}`}>
-              <Button
-                className="btn-primary text-white w-full text-sm font-medium py-2"
-                data-testid={`button-discover-more-${property.id}`}
-              >
-                DISCOVER MORE
-              </Button>
-            </Link>
+            <Button
+              className="border border-gray-700 bg-transparent text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
+              data-testid={`button-discover-more-${property.id}`}
+            >
+              DISCOVER MORE
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
 export default function PropertyGrid() {
   return (
-    <section id="properties" className="py-12 px-4 bg-white" data-testid="property-grid-section">
-      <div className="max-w-[1600px] mx-auto">
+    <section id="properties" className="py-12 px-4 bg-neutral-100 w-full" data-testid="property-grid-section">
+      <div className="w-full max-w-[2000px] mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl font-normal mb-6 text-primary tracking-tight" data-testid="properties-title">
+          <h2 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-6" data-testid="properties-title">
             Our Collection
           </h2>
-          <div className="flex justify-center">
-            <p className="text-base text-secondary leading-relaxed max-w-3xl">
-              Premium homes within the grounds of Adare Manor, just steps from the 1st tee and Carriage House.<br />
-              Deluxe manor residences just minutes from Adare, offering exceptional space and privacy.<br />
-              All properties feature elegant interiors, multiple ensuite bedrooms, and generous entertainment areas.
+          <div className="text-base text-gray-900 leading-relaxed max-w-5xl mx-auto">
+            <p className="font-serif text-base font-normal">
+              Executive type homes within the grounds of Adare Manor, just steps from the 1st tee box of Ryder Cup 2027. Deluxe properties within driving distance from Adare, some located near some of Ireland's finest championship lynx golf courses on the Atlantic way. All properties feature elegant interiors, multiple ensuite bedrooms, and generous entertainment areas.
             </p>
           </div>
         </div>
 
         {/* Property Grid */}
-        <div className="grid md:grid-cols-3 gap-8" data-testid="properties-grid">
-          {properties.map((property) => (
+        <div className="grid md:grid-cols-3 gap-6" data-testid="properties-grid">
+          {properties.filter(property => property.id !== 'riverbank-manor').map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
         </div>

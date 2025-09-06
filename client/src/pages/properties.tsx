@@ -6,88 +6,70 @@ import { Link } from "wouter";
 import { Bed } from "lucide-react";
 
 export default function PropertiesPage() {
-  // create 3 additional inspired properties (lightweight client-side array)
-  const extras = [
-    {
-      id: "woodlands-villa",
-      name: "Woodlands Villa",
-      subtitle: "Modern Serenity by the Trees",
-      bedrooms: 5,
-      description:
-        "Contemporary villa set on a private lane near Adare, with floor-to-ceiling glazing and expansive terraces.",
-      images: [
-        "https://images.unsplash.com/photo-1502005229762-cf1b2da7c08e?auto=format&fit=crop&w=1200&h=800",
-      ],
-    },
-    {
-      id: "carriage-house-residence",
-      name: "Carriage House Residence",
-      subtitle: "Steps from Dining & The First Tee",
-      bedrooms: 4,
-      description:
-        "Elegant townhouse a short walk from the Carriage House, featuring refined interiors and private courtyard.",
-      images: [
-        "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&h=800",
-      ],
-    },
-    {
-      id: "riverbank-manor",
-      name: "Riverbank Manor",
-      subtitle: "Classic Style with River Views",
-      bedrooms: 6,
-      description:
-        "Grand residence overlooking the river, with formal reception rooms and landscaped gardens for entertaining.",
-      images: [
-        "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1200&h=800",
-      ],
-    },
-  ];
-
-  const all = [...properties, ...extras];
+  // All properties are now in the main properties array
+  const all = properties;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-neutral-100">
       <Navigation />
 
-      <main className="pt-24 pb-16 px-6">
-        <div className="max-w-[1600px] mx-auto text-center mb-12">
-          <h1 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-4">
-            Explore our properties
-          </h1>
-          <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
-            Discover a curated selection of private residences in and around Adare Manor—each chosen for comfort,
-            privacy, and proximity. Whether you seek a discreet estate within the grounds or a spacious home just
-            minutes away, our collection is tailored for Ryder Cup week and beyond.
-          </p>
-        </div>
+      <main className="pt-24 pb-16 px-6 bg-neutral-100">
+        {/* Header Section - Full Width */}
+        <section className="bg-white py-12 mb-12 -mx-6 px-6 -mt-24 pt-24 border-b border-gray-200">
+          <div className="text-center">
+            <h1 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-4">
+              Explore our properties
+            </h1>
+            <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
+              Discover a curated selection of private residences in and around Adare Manor—each chosen for comfort,
+              privacy, and proximity. Whether you seek a discreet estate within the grounds or a spacious home just
+              minutes away, our collection is tailored for Ryder Cup week and beyond.
+            </p>
+          </div>
+        </section>
 
-        <div className="max-w-[1600px] mx-auto grid md:grid-cols-3 gap-8">
-          {all.map((p) => (
-            <div key={p.id} className="property-card bg-white overflow-hidden">
-              <div className="relative group">
+        {/* Property Grid Section */}
+        <div className="max-w-[2000px] mx-auto grid md:grid-cols-3 gap-6">
+          {all.filter(p => p.id !== 'riverbank-manor').map((p) => (
+            <div key={p.id} className="property-card bg-neutral-100 overflow-hidden border-0 shadow-none cursor-pointer group">
+              <div className="relative aspect-[16/9]">
                 <Link href={`/property/${p.id}`}>
                   <img
-                    src={p.images[0]}
+                    src={p.thumbnail || p.images[0]}
                     alt={p.name}
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+                    className="w-full h-full object-cover"
                   />
                 </Link>
+                <Link href={`/property/${p.id}`}>
+                  <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
+                    <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
+                      <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
+                        {p.id === 'cragleigh-house' ? 'DELUXE' : 'EXCLUSIVE'}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </div>
-              <div className="p-6">
+              <div className="p-4">
                 <div className="flex items-center justify-between mb-3">
-                  <div className="text-xs text-muted uppercase tracking-wide font-medium">{p.subtitle}</div>
-                  <div className="flex items-center text-xs text-muted">
-                    <Bed className="h-3 w-3 mr-1" />
-                    <span>{p.bedrooms}</span>
+                  <div className="text-xs text-muted uppercase tracking-wider font-medium">
+                    {p.bedrooms} BEDROOMS
+                  </div>
+                  <div className="text-xs text-muted uppercase tracking-wider font-medium">
+                    AVAILABLE
                   </div>
                 </div>
                 <h3 className="font-serif text-xl font-normal mb-2 text-primary">{p.name}</h3>
                 <p className="text-secondary text-sm leading-relaxed mb-6">{p.description}</p>
-                <Link href={`/property/${p.id}`}>
-                  <Button className="btn-primary text-white w-full text-sm font-medium py-2">
-                    DISCOVER MORE
-                  </Button>
-                </Link>
+                <div className="space-y-3">
+                  <Link href={`/property/${p.id}`}>
+                    <Button
+                      className="border border-gray-700 bg-transparent text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
+                    >
+                      DISCOVER MORE
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

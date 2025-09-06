@@ -140,19 +140,19 @@ export default function Home() {
       <HeroSection />
       
       {/* Introduction Section */}
-      <section className="py-16 px-6 bg-neutral-100" data-testid="introduction-section">
-        <div className="max-w-4xl mx-auto text-center scroll-animation">
-          <h2 className="font-serif text-3xl md:text-4xl font-normal mb-8 text-primary" data-testid="introduction-title">
+      <section className="py-16 px-6 bg-white w-full" data-testid="introduction-section">
+        <div className="w-full text-center">
+          <h1 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-6" data-testid="introduction-title">
             Curated Luxury, Local Expertise
-          </h2>
-          <div className="text-base text-secondary leading-relaxed max-w-3xl mx-auto space-y-4" data-testid="introduction-description">
-            <p>
+          </h1>
+          <div className="text-base text-gray-900 leading-relaxed max-w-5xl mx-auto" data-testid="introduction-description">
+            <p className="font-serif text-base font-normal">
               The Adare Collection offers a select number of exceptional private residences for exclusive rental during Ryder Cup 2027.
             </p>
-            <p>
-              Every property has been handpicked by a local promoter with deep knowledge of each home, its setting, and its unique features — backed by a proven track record in high-profile hospitality and event management.
+            <p className="font-serif text-base font-normal">
+              Each property has been handpicked by a local promoter with deep knowledge of each home, its setting, and its unique features — backed by a proven track record in high-profile hospitality and event management.
             </p>
-            <p>
+            <p className="font-serif text-base font-normal">
               Whether you're a global sponsor, corporate guest, or private individual, you'll receive discreet, personal guidance in selecting a home that matches your exact needs.
             </p>
           </div>
@@ -162,8 +162,8 @@ export default function Home() {
       <PropertyGrid />
 
       {/* Contact Section */}
-      <section className="py-16 px-6 bg-white" data-testid="contact-section">
-        <div className="max-w-2xl mx-auto">
+      <section className="py-16 px-6 bg-white w-full" data-testid="contact-section">
+        <div className="w-full max-w-2xl mx-auto">
           <div className="text-left mb-12">
             <h2 className="font-serif text-4xl font-normal text-primary mb-12" data-testid="contact-title">
               Contact request
@@ -179,7 +179,7 @@ export default function Home() {
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
                 placeholder="Name"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 required
                 disabled={isSubmitting}
                 data-testid="input-name"
@@ -188,7 +188,7 @@ export default function Home() {
 
             <div>
               <Select value={formData.country} onValueChange={(value) => handleInputChange("country", value)} disabled={isSubmitting}>
-                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-primary focus:ring-0" data-testid="select-country">
+                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0" data-testid="select-country">
                   <SelectValue placeholder="Country" />
                 </SelectTrigger>
                 <SelectContent>
@@ -203,7 +203,7 @@ export default function Home() {
 
             <div>
               <Select value={formData.extension} onValueChange={(value) => handleInputChange("extension", value)} disabled={isSubmitting}>
-                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-primary focus:ring-0" data-testid="select-extension">
+                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0" data-testid="select-extension">
                   <SelectValue placeholder="Extension" />
                 </SelectTrigger>
                 <SelectContent>
@@ -249,7 +249,7 @@ export default function Home() {
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
                 placeholder="Phone Number"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 disabled={isSubmitting}
                 data-testid="input-phone"
               />
@@ -262,7 +262,7 @@ export default function Home() {
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 placeholder="Email"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0"
+                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 required
                 disabled={isSubmitting}
                 data-testid="input-email"
@@ -275,7 +275,7 @@ export default function Home() {
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
                 placeholder="Message"
-                className="w-full min-h-[120px] border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-primary focus:ring-0 resize-none"
+                className="w-full min-h-[120px] border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 resize-none"
                 disabled={isSubmitting}
                 data-testid="textarea-message"
               />
@@ -284,7 +284,7 @@ export default function Home() {
             <div className="pt-8">
               <Button 
                 type="submit" 
-                className="bg-primary text-white px-8 py-3 text-sm font-medium hover:bg-primary/80 hover:scale-105 transition-all duration-200"
+                className="w-full border border-gray-700 bg-gray-700 text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-transparent hover:!text-gray-700 transition-all duration-200"
                 disabled={isSubmitting}
                 data-testid="button-submit-contact"
               >
@@ -296,23 +296,24 @@ export default function Home() {
       </section>
 
       {/* Exclusive Access Teaser */}
-      <section className="py-16 px-6 bg-neutral-100" data-testid="exclusive-teaser-section">
-        <div className="max-w-4xl mx-auto text-center scroll-animation">
-          <h2 className="font-serif text-3xl md:text-4xl font-normal mb-8 text-primary" data-testid="exclusive-teaser-title">
+      <section className="py-16 px-6 bg-neutral-100 w-full" data-testid="exclusive-teaser-section">
+        <div className="w-full text-center">
+          <h2 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-6" data-testid="exclusive-teaser-title">
             A New Chapter Begins Here, With You
           </h2>
           
-          <div className="mt-12 text-center">
-            <p className="text-lg text-secondary leading-relaxed mb-12 max-w-3xl mx-auto italic" data-testid="exclusive-quote">
-              "A curated collection of ultra-private estate homes, offered exclusively during Ryder Cup 2027. Some inside the Adare Manor estate. Others, just minutes away — each delivering unmatched comfort, security, and access."
-            </p>
-            <Link href="/exclusive">
+          <div className="text-center">
+            <div className="text-base text-gray-900 leading-relaxed max-w-5xl mx-auto mb-12">
+              <p className="font-serif text-base font-normal" data-testid="exclusive-quote">
+                "A curated collection of ultra-private estate homes, offered exclusively during Ryder Cup 2027. Some inside the Adare Manor estate. Others, just minutes away — each delivering unmatched comfort, security, and access."
+              </p>
+            </div>
+            <Link href="/properties">
               <Button 
-                variant="outline"
-                className="btn-outline px-8 py-3 text-sm font-medium"
+                className="border border-gray-700 bg-transparent text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200"
                 data-testid="button-access-exclusive"
               >
-                Access Exclusive Properties
+                ACCESS EXCLUSIVE PROPERTIES
               </Button>
             </Link>
           </div>

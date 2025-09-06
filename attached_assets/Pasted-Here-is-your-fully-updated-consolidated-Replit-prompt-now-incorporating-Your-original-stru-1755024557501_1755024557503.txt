@@ -102,7 +102,7 @@ Use Flexbox or CSS Grid with responsiveness in mind. Load map lazily to improve 
 * Gallery (carousel)
 * Map section showing walking distance to golf course
 * Add-on Services (chauffeur, chef, helicopter)
-* CTA: “Request Availability” (mailto: `info@theadarecollection.com`)
+* CTA: “Request Availability” (mailto: `info@theadarecollection.ie`)
 
 **Example Property Copy (Putters Way):**
 
@@ -122,7 +122,7 @@ Use Flexbox or CSS Grid with responsiveness in mind. Load map lazily to improve 
 **Structure:**
 
 * Access form (password field with basic JS)
-* CTA: "Request Access" → sends enquiry to `info@theadarecollection.com`
+* CTA: "Request Access" → sends enquiry to `info@theadarecollection.ie`
 * If authenticated: redirect to `/exclusive-properties.html`
 
 ---
@@ -141,7 +141,7 @@ Styled to match image 1 from earlier.
 
 **Functionality:**
 
-* On Submit: sends to `info@theadarecollection.com` (use `mailto:` or integrate EmailJS/Formspree)
+* On Submit: sends to `info@theadarecollection.ie` (use `mailto:` or integrate EmailJS/Formspree)
 
 ---
 
@@ -186,7 +186,7 @@ Sticky nav with burger menu for mobile.
 Simple, elegant layout:
 
 * The Adare Collection
-* [info@theadarecollection.com](mailto:info@theadarecollection.com)
+* [info@theadarecollection.ie](mailto:info@theadarecollection.ie)
 * \[Phone Number]
 * Social icons (if provided)
 * Location: Adare, Co. Limerick, Ireland

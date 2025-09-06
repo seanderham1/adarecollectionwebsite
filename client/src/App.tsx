@@ -11,6 +11,8 @@ import ExclusiveAccess from "@/pages/exclusive-access";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import PropertiesPage from "@/pages/properties";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import TermsConditions from "@/pages/terms-conditions";
 
 function Router() {
   return (
@@ -21,6 +23,8 @@ function Router() {
       <Route path="/properties" component={PropertiesPage} />
       <Route path="/exclusive" component={ExclusiveAccess} />
       <Route path="/contact" component={Contact} />
+      <Route path="/privacy" component={PrivacyPolicy} />
+      <Route path="/terms" component={TermsConditions} />
       <Route component={NotFound} />
     </Switch>
   );

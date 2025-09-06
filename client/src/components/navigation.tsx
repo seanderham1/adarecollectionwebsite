@@ -16,84 +16,76 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navigationItems = [
+  const leftNavigationItems = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
     { href: "/properties", label: "View Properties" },
-    { href: "/exclusive", label: "Exclusive Access" },
+  ];
+
+  const rightNavigationItems = [
+    { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
 
-  const handleRequestBrochure = () => {
-    // Create mailto link with pre-filled content
-    const subject = encodeURIComponent("Brochure Request - The Adare Collection");
-    const body = encodeURIComponent("I would like to request a brochure for The Adare Collection properties for Ryder Cup 2027.\n\nThank you.");
-    window.location.href = `mailto:info@theadarecollection.com?subject=${subject}&body=${body}`;
-  };
 
   return (
     <nav 
-      className="fixed top-0 left-0 right-0 z-50 nav-blur"
+      className="fixed top-0 left-0 right-0 z-50 nav-blur w-full border-b border-gray-200"
       data-testid="navigation"
     >
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
+      <div className="w-full px-6 lg:px-8">
+        <div className="flex items-center h-16">
+          {/* Left Navigation */}
+          <div className="hidden md:flex items-center space-x-8 flex-1 justify-start">
+            {leftNavigationItems.map((item) => (
+              <Link key={item.href} href={item.href} data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                <span className={`text-xs font-medium text-secondary hover:text-gray-700 transition-colors cursor-pointer uppercase tracking-wider ${
+                  location === item.href ? "text-gray-700" : ""
+                }`}>
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          {/* Center Logo */}
+          <div className="flex-shrink-0 flex-1 flex justify-center">
             <Link href="/" data-testid="link-home">
-              <div className="font-serif text-xl font-normal text-primary cursor-pointer">
+              <div className="font-serif text-lg font-normal text-gray-700 cursor-pointer">
                 The Adare Collection
               </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
-              {navigationItems.slice(0, -1).map((item) => (
-                <Link key={item.href} href={item.href} data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                  <span className={`text-sm text-secondary hover:text-primary transition-colors cursor-pointer font-medium ${
-                    location === item.href ? "text-primary" : ""
-                  }`}>
-                    {item.label}
-                  </span>
-                </Link>
-              ))}
-              <Link href="/contact" data-testid="link-contact">
-                <Button 
-                  className="btn-primary text-white px-6 py-2 text-sm font-medium"
-                  data-testid="button-contact"
-                >
-                  Contact
-                </Button>
+          {/* Right Navigation */}
+          <div className="hidden md:flex items-center space-x-8 flex-1 justify-end">
+            {rightNavigationItems.map((item) => (
+              <Link key={item.href} href={item.href} data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                <span className={`text-xs font-medium text-secondary hover:text-gray-700 transition-colors cursor-pointer uppercase tracking-wider ${
+                  location === item.href ? "text-gray-700" : ""
+                }`}>
+                  {item.label}
+                </span>
               </Link>
-            </div>
+            ))}
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" data-testid="button-mobile-menu">
-                  <Menu className="h-5 w-5 text-primary" />
+                <Button variant="ghost" size="icon" className="hover:bg-gray-100 hover:text-gray-700" data-testid="button-mobile-menu">
+                  <Menu className="h-5 w-5 text-gray-700" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-white">
+              <SheetContent side="right" className="bg-white [&>button]:hover:bg-gray-100 [&>button]:focus:ring-gray-700 [&>button]:focus:ring-offset-2 [&>button]:text-gray-700 [&>button]:border-gray-700 [&>button]:outline-gray-700 [&>button]:focus:outline-gray-700 [&>button]:focus-visible:ring-gray-700 [&>button]:focus-visible:ring-offset-2 [&>button]:ring-offset-background">
                 <div className="flex flex-col space-y-6 mt-8">
-                  {navigationItems.map((item) => (
+                  {[...leftNavigationItems, ...rightNavigationItems].map((item) => (
                     <Link key={item.href} href={item.href} data-testid={`mobile-link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                      <span className="block text-secondary hover:text-primary transition-colors cursor-pointer text-sm font-medium">
+                      <span className="block text-secondary hover:text-gray-700 transition-colors cursor-pointer text-sm font-medium">
                         {item.label}
                       </span>
                     </Link>
                   ))}
-                  <Button 
-                    onClick={handleRequestBrochure}
-                    className="btn-primary text-white"
-                    data-testid="mobile-button-request-brochure"
-                  >
-                    Request Brochure
-                  </Button>
                 </div>
               </SheetContent>
             </Sheet>

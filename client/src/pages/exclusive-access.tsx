@@ -36,7 +36,7 @@ export default function ExclusiveAccess() {
   const handleRequestAccess = () => {
     const subject = encodeURIComponent("Exclusive Access Request - The Adare Collection");
     const body = encodeURIComponent(`I would like to request exclusive access to The Adare Collection's premium properties.\n\nEmail: ${email}\n\nThank you.`);
-    window.location.href = `mailto:info@theadarecollection.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@theadarecollection.ie?subject=${subject}&body=${body}`;
     
     toast({
       title: "Request Sent",
@@ -140,6 +140,13 @@ export default function ExclusiveAccess() {
                       <p className="text-sm text-dark-gray text-center" data-testid="request-access-description">
                         Don't have access? We'll review your request and send you an invitation.
                       </p>
+                      <p className="text-xs text-gray-500 text-center">
+                        By submitting your email, you agree to our{" "}
+                        <a href="/privacy" className="underline hover:text-gray-700 transition-colors">
+                          Privacy Policy
+                        </a>
+                        .
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -175,7 +182,7 @@ export default function ExclusiveAccess() {
                     onClick={() => {
                       const subject = encodeURIComponent("Exclusive Property Inquiry");
                       const body = encodeURIComponent("I am interested in learning more about your exclusive properties for Ryder Cup 2027.");
-                      window.location.href = `mailto:info@theadarecollection.com?subject=${subject}&body=${body}`;
+                      window.location.href = `mailto:info@theadarecollection.ie?subject=${subject}&body=${body}`;
                     }}
                     className="btn-primary text-white px-8 py-3 rounded-lg font-medium"
                     data-testid="button-inquire-exclusive"

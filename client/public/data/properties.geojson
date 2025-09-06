@@ -5,10 +5,10 @@
       "type":"Feature",
       "geometry":{"type":"Point","coordinates":[-8.786999475136705, 52.5588746741587]},
       "properties":{
-        "id":"house-2",
-        "title":"House 2",
-        "desc":"Stately luxurious residence within the private gated enclave of Adare Manor Resort, 300 yards from the 2027 Ryder Cup driving range.",
-        "url":"http://localhost:3000/property/house-2",
+        "id":"rangeview",
+        "title":"Range View",
+        "desc":"Located within Adare Manor estate, 'Range View' offers front-row proximity to Ryder Cup 2027.",
+        "url":"http://localhost:3000/property/rangeview",
         "beds": 6,
         "baths": 6,
         "price":"POA",
@@ -19,10 +19,10 @@
       "type":"Feature",
       "geometry":{"type":"Point","coordinates":[-8.786388314512122, 52.559044262159176]},
       "properties":{
-        "id":"the-demesne-residence",
-        "title":"The Demesne Residence",
-        "desc":"Luxury estate home within Adare Manor's gated enclave, moments from the Carriage House and first tee.",
-        "url":"http://localhost:3000/property/the-demesne-residence",
+        "id":"the-captains",
+        "title":"The Captains",
+        "desc":"Within Adare Manor's secure walls, 'Captains House' places you at the heart of Ryder Cup action in complete privacy.",
+        "url":"http://localhost:3000/property/the-captains",
         "beds": 6,
         "baths": 6,
         "price":"POA",
@@ -35,12 +35,40 @@
       "properties":{
         "id":"putters-way",
         "title":"Putters Way",
-        "desc":"Deluxe residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
+        "desc":"Premium residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
         "url":"http://localhost:3000/property/putters-way",
         "beds": 2,
         "baths": 2,
         "price":"POA",
         "thumb":"/images/houses/house 4/adare-house-4.jpg"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.788175127542624, 52.56053856598162]},
+      "properties":{
+        "id":"the-fairways",
+        "title":"The Fairways",
+        "desc":"Within Adare Manor's gates — Ireland's most prestigious estate, steps from Ryder Cup 2027.",
+        "url":"http://localhost:3000/property/the-fairways",
+        "beds": 6,
+        "baths": 6,
+        "price":"POA",
+        "thumb":"/images/houses/house 1/house-1-main-optimized.jpg"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.633716487242898, 52.60004283130491]},
+      "properties":{
+        "id":"cragleigh-house",
+        "title":"Cragleigh House",
+        "desc":"Just 15 minutes from Adare Manor with easy access to Limerick, Shannon Airport, and Ryder Cup 2027.",
+        "url":"http://localhost:3000/property/cragleigh-house",
+        "beds": 5,
+        "baths": 5,
+        "price":"POA",
+        "thumb":"/images/houses/house 5/cragleigh-house-main-optimized.jpg"
       }
     }
   ]
