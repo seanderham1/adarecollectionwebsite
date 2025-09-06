@@ -70,6 +70,8 @@ export function loadGoogleMapsScript(): Promise<void> {
     // Use environment variable or fallback to the working API key
     const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg';
     console.log('Google Maps API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
+    console.log('Full API Key:', apiKey);
+    console.log('Environment variable VITE_GOOGLE_MAPS_API_KEY:', import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initGoogleMaps&libraries=geometry`;
     
     script.onerror = (error) => {
