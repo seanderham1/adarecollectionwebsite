@@ -68,7 +68,7 @@ export function loadGoogleMapsScript(): Promise<void> {
     script.async = true;
     script.defer = true;
     // Use environment variable or fallback to the working API key
-    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg';
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyCNQfvlQLy7tm9sB57m2mMsUt9CWln41_s';
     console.log('Google Maps API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
     console.log('Full API Key:', apiKey);
     console.log('Environment variable VITE_GOOGLE_MAPS_API_KEY:', import.meta.env.VITE_GOOGLE_MAPS_API_KEY);

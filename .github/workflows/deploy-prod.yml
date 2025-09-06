@@ -19,7 +19,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          VITE_GOOGLE_MAPS_API_KEY: AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg
+          VITE_GOOGLE_MAPS_API_KEY: AIzaSyCNQfvlQLy7tm9sB57m2mMsUt9CWln41_s
 
       - name: Install Firebase CLI
         run: npm i -g firebase-tools
