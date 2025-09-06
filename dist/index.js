@@ -4,6 +4,27 @@ import express2 from "express";
 // server/routes.ts
 import { createServer } from "http";
 async function registerRoutes(app2) {
+  app2.post("/api/newsletter-subscription", async (req, res) => {
+    try {
+      const { email, timestamp, source } = req.body;
+      if (!email || !email.includes("@")) {
+        return res.status(400).json({ error: "Invalid email address" });
+      }
+      console.log("Newsletter subscription received:", {
+        email,
+        timestamp,
+        source,
+        adminEmail: "info@theadarecollection.ie"
+      });
+      res.status(200).json({
+        success: true,
+        message: "Newsletter subscription processed successfully"
+      });
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
   const httpServer = createServer(app2);
   return httpServer;
 }
@@ -42,7 +63,16 @@ var vite_config_default = defineConfig({
   root: path.resolve(__dirname, "client"),
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          ui: ["@radix-ui/react-select", "@radix-ui/react-dialog", "@radix-ui/react-toast"]
+        }
+      }
+    },
+    minify: "esbuild"
   },
   server: {
     fs: {

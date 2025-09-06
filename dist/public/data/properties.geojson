@@ -42,6 +42,34 @@
         "price":"POA",
         "thumb":"/images/houses/house 4/adare-house-4.jpg"
       }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.788175127542624, 52.56053856598162]},
+      "properties":{
+        "id":"the-fairways",
+        "title":"The Fairways",
+        "desc":"Within Adare Manor's gates — Ireland's most prestigious estate, steps from Ryder Cup 2027.",
+        "url":"http://localhost:3000/property/the-fairways",
+        "beds": 6,
+        "baths": 6,
+        "price":"POA",
+        "thumb":"/images/houses/house 1/house-1-main-optimized.jpg"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.633716487242898, 52.60004283130491]},
+      "properties":{
+        "id":"cragleigh-house",
+        "title":"Cragleigh House",
+        "desc":"Just 15 minutes from Adare Manor with easy access to Limerick, Shannon Airport, and Ryder Cup 2027.",
+        "url":"http://localhost:3000/property/cragleigh-house",
+        "beds": 5,
+        "baths": 5,
+        "price":"POA",
+        "thumb":"/images/houses/house 5/cragleigh-house-main-optimized.jpg"
+      }
     }
   ]
 }
