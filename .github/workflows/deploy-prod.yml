@@ -19,15 +19,12 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
+          VITE_GOOGLE_MAPS_API_KEY: AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg
 
       - name: Install Firebase CLI
         run: npm i -g firebase-tools
 
-      - name: Build Functions
-        run: cd functions && npm ci && npm run build
-      
       - name: Deploy to Firebase
-        run: firebase deploy --only hosting,functions --project theadarecollection-site --non-interactive --force
+        run: firebase deploy --only hosting --project theadarecollection-site --non-interactive --force
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
