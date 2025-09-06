@@ -67,11 +67,15 @@ export function loadGoogleMapsScript(): Promise<void> {
     script.id = "google-maps-script";
     script.async = true;
     script.defer = true;
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg'}&callback=initGoogleMaps&libraries=geometry`;
+    // Use environment variable or fallback to the working API key
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg';
+    console.log('Google Maps API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initGoogleMaps&libraries=geometry`;
     
-    script.onerror = () => {
+    script.onerror = (error) => {
       isMapScriptLoading = false;
-      reject(new Error("Failed to load Google Maps script"));
+      console.error('Google Maps script failed to load:', error);
+      reject(new Error(`Failed to load Google Maps script. API Key: ${apiKey ? 'Present' : 'Missing'}`));
     };
 
     document.head.appendChild(script);
