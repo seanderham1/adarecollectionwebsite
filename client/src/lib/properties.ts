@@ -28,12 +28,24 @@ export const properties: Property[] = [
     fullDescription: "Range View is a stately luxurious residence nestled within the private and gated enclave of Adare Manor Resort — just 300 yards from the Ryder Cup 2027 driving range and a five-minute walk to the first tee box. Offering over 7,000 sq ft of refined living space across three expansive floors, this home delivers unrivalled proximity to the event alongside world-class interiors, making it ideal for corporate hospitality or discerning private guests.",
     price: "Enquire Now",
     images: [
-      "/images/houses/house 2/house-2-main-original.jpg",
-      "/images/houses/house 2/house-2-bedroom-2.jpg",
-      "/images/houses/house 2/house-2-bedroom-1.jpg",
-      "/images/houses/house 2/house-2-games-room.jpg"
+      "/images/houses/house 2/house-2-main-original.webp",
+      "/images/houses/house 2/house-2-living-room-3.webp",
+      "/images/houses/house 2/house-2-living-room-2.webp",
+      "/images/houses/house 2/house-2-living-room-1.webp",
+      "/images/houses/house 2/house-2-living-room.webp",
+      "/images/houses/house 2/house-2-dining.webp",
+      "/images/houses/house 2/house-2-cinema-room.webp",
+      "/images/houses/house 2/house-2-master-bedroom.webp",
+      "/images/houses/house 2/house-2-bedroom-2.webp",
+      "/images/houses/house 2/house-2-bedroom-1.webp",
+      "/images/houses/house 2/house-2-bedroom-3.webp",
+      "/images/houses/house 2/house-2-games-room.webp",
+      "/images/houses/house 2/house-2-study.webp",
+      "/images/houses/house 2/house-2-sauna.webp",
+      "/images/houses/house 2/house-2-gym.webp",
+      "/images/houses/house 2/house-2-outdoor-seating.webp"
     ],
-    thumbnail: "/images/houses/house 2/house-2-main.jpg",
+    thumbnail: "/images/houses/house 2/house-2-main.webp",
     features: [
       "Grand chandelier-lit entrance hall with open fireplace",
       "5/6 double ensuite bedrooms including a 95m² master suite with jacuzzi bath",
@@ -55,7 +67,8 @@ export const properties: Property[] = [
       lat: 52.55891014565409,
       lng: -8.78703798127682
     },
-    walkingDistance: "5 minutes to first tee"
+    walkingDistance: "Just a short stroll to Ryder Cup practice range and golf course",
+    videoUrl: "/videos/rangeview.mp4"
   },
   {
     id: "the-captains",
@@ -66,13 +79,38 @@ export const properties: Property[] = [
     fullDescription: "Situated within the exclusive and secure walls of the Adare Manor resort, 'The Captains' home offers an extraordinary opportunity to stay at the epicentre of the Ryder Cup 2027. This six-bedroom estate is not just near the event—it's almost part of it.\n\nWith the practice range just over the hedge, and a 5 minute stroll from the 1st tee box, this residence is ideal for the discerning client, sponsors, media, and corporate clients seeking to be immersed in the heart of the Ryder Cup action, without compromising on space, luxury, or privacy.",
     price: "POA",
     images: [
-      "/images/houses/house 3/house-3-main-original.jpg",
-      "/images/houses/house 3/house-3-bedroom-1.jpg",
-      "/images/houses/house 3/house-3-bedroom-2.jpg",
-      "/images/houses/house 3/house-3-kitchen.jpg",
-      "/images/houses/house 3/house-3-chandelier.jpg"
+      "/images/houses/house 3/house-3-main-original.webp",
+      "/images/houses/house 3/house-3-entry-hall.webp",
+      "/images/houses/house 3/house-3-kitchen.webp",
+      "/images/houses/house 3/house-3-kitchen-2.webp",
+      "/images/houses/house 3/house-3-kitchen-3.webp",
+      "/images/houses/house 3/house-3-living-room-1.webp",
+      "/images/houses/house 3/house-3-living-room-2.webp",
+      "/images/houses/house 3/house-3-living-room-3.webp",
+      "/images/houses/house 3/house-3-living-room-4.webp",
+      "/images/houses/house 3/house-3-living-room-5.webp",
+      "/images/houses/house 3/house-3-living-room-6.webp",
+      "/images/houses/house 3/house-3-living-room-7.webp",
+      "/images/houses/house 3/house-3-stairs.webp",
+      "/images/houses/house 3/house-3-chandelier.webp",
+      "/images/houses/house 3/house-3-reading-room.webp",
+      "/images/houses/house 3/house-3-bedroom-1.webp",
+      "/images/houses/house 3/house-3-bedroom-2.webp",
+      "/images/houses/house 3/house-3-bedroom-3.webp",
+      "/images/houses/house 3/house-3-master-bath-1.webp",
+      "/images/houses/house 3/house-3-master-bath-2.webp",
+      "/images/houses/house 3/house-3-master-bath-3.webp",
+      "/images/houses/house 3/house-3-bedroom-4.webp",
+      "/images/houses/house 3/house-3-bedroom-5.webp",
+      "/images/houses/house 3/house-3-bedroom-6.webp",
+      "/images/houses/house 3/house-3-bedroom-7.webp",
+      "/images/houses/house 3/house-3-bedroom-8.webp",
+      "/images/houses/house 3/house-3-bedroom-9.webp",
+      "/images/houses/house 3/house-3-bedroom-10.webp",
+      "/images/houses/house 3/house-3-bedroom-11.webp",
+      "/images/houses/house 3/house-3-exterior.webp"
     ],
-    thumbnail: "/images/houses/house 3/house-3-main.jpg",
+    thumbnail: "/images/houses/house 3/house-3-main.webp",
     features: [
       "Six luxury ensuite bedrooms, including an exquisite master suite with jacuzzi bath, open fireplace, and walk-in wardrobe",
       "Grand entrance hall with crystal chandelier and a grand piano – perfect for welcoming guests or evening entertainment.",
@@ -91,7 +129,7 @@ export const properties: Property[] = [
       lng: -8.786145768660083
     },
     walkingDistance: "Short stroll to first tee",
-    videoUrl: "https://drive.google.com/file/d/13Um9Gga9t66tkLRcyEviEG1KfKkz2Hmj/view?usp=sharing"
+    videoUrl: "/videos/thecaptains.mp4"
   },
   {
     id: "putters-way",
@@ -102,12 +140,17 @@ export const properties: Property[] = [
     fullDescription: "'Putters Way' is a rare and exclusive opportunity to stay at the very heart of the Ryder Cup action 2027. Situated just metres from where the U.S and European team will warm up on practice range and putting green and a one minute stroll to the 1st tee, it just doesn't get any closer than this!\n\nLocated in the prestigious private Golf Village, this deluxe residence places guests at the centre of the tournament atmosphere — while offering elegant privacy, luxury finishes, and complete immersion in the experience.\n\nThis is not just a place to stay — it's a chance to live the event.",
     price: "POA",
     images: [
-      "/images/houses/house 4/adare-house-4-original.jpg",
-      "/images/houses/house 4/house-4-dining.jpg",
-      "/images/houses/house 4/house-4-bedroom.png",
-      "/images/houses/house 4/house-4-living.jpg"
+      "/images/houses/house 4/adare-house-4-original.webp",
+      "/images/houses/house 4/house-4-dining.webp",
+      "/images/houses/house 4/house-4-dining-2.webp",
+      "/images/houses/house 4/house-4-living.webp",
+      "/images/houses/house 4/house-4-living-2.webp",
+      "/images/houses/house 4/house-4-bedroom.webp",
+      "/images/houses/house 4/house-4-bathroom.webp",
+      "/images/houses/house 4/house-4-exterior.webp",
+      "/images/houses/house 4/house-4-rolex.webp"
     ],
-    thumbnail: "/images/houses/house 4/adare-house-4.jpg",
+    thumbnail: "/images/houses/house 4/adare-house-4.webp",
     features: [
       "Modern, bright open-plan kitchen and dining room, perfect for entertaining or relaxing after a day on the course",
       "Spacious, beautifully appointed sitting room with premium seating and contemporary comforts",
@@ -125,23 +168,38 @@ export const properties: Property[] = [
       lng: -8.780515540696719
     },
     walkingDistance: "1 minute to 1st tee",
-    videoUrl: "https://drive.google.com/file/d/1I08p0Jfca7wfPi3xdGx3_Re54RFNAcPZ/view?usp=sharing"
+    videoUrl: "/videos/puttersway.mp4"
   },
   {
     id: "the-fairways",
     name: "The Fairways",
-    subtitle: "Located within the gates of Adare Manor — one of the most sought-after addresses in Ireland and steps from the 2027 Ryder Cup venue.",
+    subtitle: "Located within the gates of Adare Manor — just steps from the 2027 Ryder Cup venue.",
     bedrooms: 6,
     description: "Within Adare Manor's gates — Ireland's most prestigious estate, steps from Ryder Cup 2027.",
     fullDescription: "The Fairways is a contemporary luxury residence located within the Demesne, a gated secure luxury neighbourhood on the grounds of Adare Manor, offering unrivalled proximity to Ryder Cup 2027. This expansive 6-bedroom home spans over 4,800 sq ft of immaculately designed interiors, combining privacy, grandeur, and modern elegance.\n\nPositioned just a short walk from the beautifully appointed Adare Manor Ryder Cup venue and 1st tee, this is one of the closest private properties at the heart of the tournament, making it an ideal choice for sponsors, media, or executive guests.",
     price: "POA",
     images: [
-      "/images/houses/house 1/house-1-main.jpg",
-      "/images/houses/house 1/house-1-bedroom-1.jpg",
-      "/images/houses/house 1/house-1-bedroom-2.jpg",
-      "/images/houses/house 1/house-1-kitchen.jpg"
+      "/images/houses/house 1/house-1-main.webp",
+      "/images/houses/house 1/house-1-hall.webp",
+      "/images/houses/house 1/house-1-kitchen.webp",
+      "/images/houses/house 1/house-1-kitchen-2.webp",
+      "/images/houses/house 1/house-1-living-room.webp",
+      "/images/houses/house 1/house-1-living-room-2.webp",
+      "/images/houses/house 1/house-1-living-room-3.webp",
+      "/images/houses/house 1/house-1-living-room-4.webp",
+      "/images/houses/house 1/house-1-bedroom-1.webp",
+      "/images/houses/house 1/house-1-bedroom-2.webp",
+      "/images/houses/house 1/house-1-bedroom-3.webp",
+      "/images/houses/house 1/house-1-bedroom-4.webp",
+      "/images/houses/house 1/house-1-bedroom-5.webp",
+      "/images/houses/house 1/house-1-bedroom-6.webp",
+      "/images/houses/house 1/house-1-gym.webp",
+      "/images/houses/house 1/house-1-exterior-3.webp",
+      "/images/houses/house 1/house-1-exterior-4.webp",
+      "/images/houses/house 1/house-1-exterior-1.webp",
+      "/images/houses/house 1/house-1-exterior-2.webp"
     ],
-    thumbnail: "/images/houses/house 1/house-1-main-optimized.jpg",
+    thumbnail: "/images/houses/house 1/house-1-main-optimized.webp",
     features: [
       "Grand entrance foyer with natural light and architectural presence",
       "Exquisite master suite (80m²) with lounge, dual walk-in wardrobes, jacuzzi bath, double vanity, and dual showers",
@@ -163,24 +221,34 @@ export const properties: Property[] = [
       lat: 52.561116990572174,
       lng: -8.788021971381418
     },
-    walkingDistance: "5 minutes to first tee",
-    videoUrl: "https://drive.google.com/file/d/1QnY-RRTlfys2hhFlnaL89GeaG0FoZOkE/view?usp=sharing"
+    walkingDistance: "Just a short stroll to Ryder Cup practice range and golf course",
+    videoUrl: "/videos/thefairways.mp4"
   },
   {
     id: "cragleigh-house",
     name: "Cragleigh House",
-    subtitle: "Located just 15 minutes from Adare Manor, with convenient access to Limerick, the M20 motorway, and Shannon Airport – Cragleigh House offers privacy, space, and effortless access to Ryder Cup 2027",
+    subtitle: "Located just 15 drive minutes from Adare Manor, with convenient access to Limerick, the M20 motorway, and Shannon Airport – Cragleigh House offers privacy, space, and effortless access to Ryder Cup 2027",
     bedrooms: 5,
     description: "Just 15 minutes from Adare Manor with easy access to Limerick, Shannon Airport, and Ryder Cup 2027.",
     fullDescription: "Cragleigh House is a magnificent manor-style residence located just under 15 minutes from the Ryder Cup 2027 venue at Adare Manor. Privately positioned yet within easy reach of the action, this elegant estate combines traditional charm with modern luxury across extensive gardens and refined interiors.\n\nOffering five spacious double bedrooms, multiple reception rooms, and formal dining areas, Cragleigh House is ideal for the discerning client, sponsors, media teams, or corporate hosts seeking a prestigious base during Ryder Cup week.",
     price: "POA",
     images: [
-      "/images/houses/house 5/cragleighhouse-main.jpg",
-      "/images/houses/house 5/cragleigh-interior.jpg",
-      "/images/houses/house 5/cragleigh-bedroom-1.jpg",
-      "/images/houses/house 5/cragleigh-bedroom-2.jpg"
+      "/images/houses/house 5/cragleighhouse-main.webp",
+      "/images/houses/house 5/cragleigh-interior.webp",
+      "/images/houses/house 5/cragleigh-dining.webp",
+      "/images/houses/house 5/cragleigh-house-living-room-2.webp",
+      "/images/houses/house 5/cragleigh-house-living-room-1.webp",
+      "/images/houses/house 5/cragleigh-master-bedroom.webp",
+      "/images/houses/house 5/cragleigh-master-ensuite.webp",
+      "/images/houses/house 5/cragleigh-master-ensuite-2.webp",
+      "/images/houses/house 5/cragleigh-bedroom-1.webp",
+      "/images/houses/house 5/cragleigh-bedroom-2.webp",
+      "/images/houses/house 5/cragleigh-bedroom-3.webp",
+      "/images/houses/house 5/cragleigh-bedroom-4.webp",
+      "/images/houses/house 5/cragleigh-bedroom-5.webp",
+      "/images/houses/house 5/cragleigh-patio.webp"
     ],
-    thumbnail: "/images/houses/house 5/cragleigh-house-main-optimized.jpg",
+    thumbnail: "/images/houses/house 5/cragleigh-house-main-optimized.webp",
     features: [
       "Five double bedrooms: 1 master ensuite, 2 bedrooms sharing a large ensuite with bathtub, and 2 bedrooms sharing another ensuite",
       "Two large elegant sitting rooms with ample space for entertaining",
@@ -199,8 +267,8 @@ export const properties: Property[] = [
       lat: 52.60043120307769,
       lng: -8.633705271352245
     },
-    walkingDistance: "2 minutes to first tee",
-    videoUrl: "https://drive.google.com/file/d/1_ZXcGSUVknu1CyfLnppBwuO_z5FKCWIk/view?usp=sharing"
+    walkingDistance: "15 minutes drive",
+    videoUrl: "/videos/cragleighhouse.mp4"
   },
   {
     id: "riverbank-manor",

@@ -10,14 +10,14 @@ import {
   PROPERTIES_URL,
   createPropertyMarker,
   createPropertyInfoWindowContent,
-  addHeroWalkRadiusCircle
+  addHeroWalkRadiusCircle,
+  getPropertyUrl
 } from "@/lib/map-utils";
 
 const propertyImages = [
-  "/images/hero/adaremanor-img3.jpg",
-  "/images/hero/adaremanor-img2.jpg",
-  "/images/hero/adaremanor-img1.jpg",
   "/images/hero/adaremanor-img3.webp",
+  "/images/hero/adaremanor-img2.webp",
+  "/images/hero/adaremanor-img1.webp",
 ];
 
 // Countdown component
@@ -275,9 +275,9 @@ export default function HeroSection() {
             // fallback marker if properties.geojson is missing
             console.log("Adding fallback marker");
             const fallbackProps = {
+              id: "putters-way",
               title: "Putters Way",
               desc: "Premium residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
-              url: "http://localhost:3000/property/putters-way",
             };
             
             const marker = createPropertyMarker(

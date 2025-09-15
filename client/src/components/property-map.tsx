@@ -9,15 +9,17 @@ import {
   createPropertyMarker,
   createPropertyInfoWindowContent,
   addWalkRadiusCircle,
-  applyMapStyling
+  applyMapStyling,
+  getPropertyUrl
 } from "@/lib/map-utils";
 import { properties } from "@/lib/properties";
 
 interface PropertyMapProps {
   propertyId: string;
+  containerId?: string;
 }
 
-export default function PropertyMap({ propertyId }: PropertyMapProps) {
+export default function PropertyMap({ propertyId, containerId = "property-map" }: PropertyMapProps) {
   useEffect(() => {
     // Create a single info window that will be reused
     let currentInfoWindow: google.maps.InfoWindow | null = null;
@@ -32,7 +34,7 @@ export default function PropertyMap({ propertyId }: PropertyMapProps) {
         const mapCenter = property?.location || MAP_CENTER;
 
         const map = new google.maps.Map(
-          document.getElementById("property-map") as HTMLElement,
+          document.getElementById(containerId) as HTMLElement,
           {
             center: mapCenter,
             zoom: 15,
@@ -223,9 +225,9 @@ export default function PropertyMap({ propertyId }: PropertyMapProps) {
             // fallback marker if properties.geojson is missing
             console.log("Adding fallback marker");
             const fallbackProps = {
+              id: "putters-way",
               title: "Putters Way",
               desc: "Premium residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
-              url: "http://localhost:3000/property/putters-way",
             };
             
             const marker = createPropertyMarker(

@@ -4,6 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Video Player Styles */
+.video-progress-bar {
+  background: linear-gradient(to right, #ffffff, #e5e7eb);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.video-controls-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-in-out;
+}
+
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(0, 0%, 15%);

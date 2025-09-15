@@ -23,6 +23,7 @@ export default function Home() {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
   const { toast } = useToast();
 
   const countries = [
@@ -61,10 +62,42 @@ export default function Home() {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear validation error when user starts typing
+    if (validationErrors[field]) {
+      setValidationErrors(prev => ({ ...prev, [field]: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const errors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+    }
+    
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = "Please enter a valid email address";
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form before submission
+    if (!validateForm()) {
+      toast({
+        title: "Please complete required fields",
+        description: "Name and email are required to send your request.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
@@ -93,6 +126,7 @@ export default function Home() {
           email: "",
           message: ""
         });
+        setValidationErrors({});
       } else {
         toast({
           title: "Error",
@@ -178,12 +212,21 @@ export default function Home() {
                 id="name"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                placeholder="Name"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                placeholder="Name *"
+                className={`w-full border-0 border-b rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 ${
+                  validationErrors.name 
+                    ? "border-red-500 focus:border-red-500" 
+                    : "border-gray-200 focus:border-gray-700"
+                }`}
                 required
                 disabled={isSubmitting}
                 data-testid="input-name"
               />
+              {validationErrors.name && (
+                <p className="text-red-500 text-sm mt-1" data-testid="name-error">
+                  {validationErrors.name}
+                </p>
+              )}
             </div>
 
             <div>
@@ -261,12 +304,21 @@ export default function Home() {
                 id="email"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                placeholder="Email"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                placeholder="Email *"
+                className={`w-full border-0 border-b rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 ${
+                  validationErrors.email 
+                    ? "border-red-500 focus:border-red-500" 
+                    : "border-gray-200 focus:border-gray-700"
+                }`}
                 required
                 disabled={isSubmitting}
                 data-testid="input-email"
               />
+              {validationErrors.email && (
+                <p className="text-red-500 text-sm mt-1" data-testid="email-error">
+                  {validationErrors.email}
+                </p>
+              )}
             </div>
 
             <div>

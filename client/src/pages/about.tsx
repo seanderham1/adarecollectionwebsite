@@ -87,7 +87,7 @@ export default function About() {
           </h2>
           <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
             Secure your exclusive accommodation for Ryder Cup 2027 with the confidence that comes 
-            from working with a true hospitality professional who knows Adare Manor like no one else.
+            from working with a true hospitality professional.
           </p>
         </div>
       </section>

@@ -8,7 +8,7 @@ import { properties } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Tickets, Bed, Mail, MessageCircle } from "lucide-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useState } from "react";
 
 export default function PropertyDetail() {
@@ -19,7 +19,7 @@ export default function PropertyDetail() {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   
   // Use property-specific video URL or fallback to default
-  const videoUrl = property?.videoUrl || "https://drive.google.com/file/d/1egGccj6K0K1XLVAAfDFTO2YjBC7yGHrM/view?usp=sharing";
+  const videoUrl = property?.videoUrl || "/videos/rangeview.mp4";
 
   if (!property) {
     return (
@@ -123,15 +123,41 @@ export default function PropertyDetail() {
                         key={image}
                         src={image}
                         alt={`${property.name} - Image ${index + 1}`}
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
+                          property.images[index].includes('house-1-hall.webp') ||
+                          property.images[index].includes('house-3-master-bath-1.webp') ||
+                          property.images[index].includes('house-3-master-bath-2.webp') ||
+                          property.images[index].includes('house-3-master-bath-3.webp') ||
+                          property.images[index].includes('house-4-rolex.webp')
+                            ? 'object-contain'
+                            : 'object-cover'
+                        } ${
                           index === currentImageIndex ? "opacity-100" : "opacity-0"
                         }`}
                         style={{ 
-                          transform: 'translateY(5%)',
-                          objectPosition: property.id === 'the-captains' 
-                            ? '5% center' 
+                          transform: property.images[index].includes('house-1-hall.webp') 
+                            ? 'translateY(0%)' 
+                            : (property.images[index].includes('/house 4/house-4-rolex.webp') || 
+                               (property.id === 'putters-way' && index === 8))
+                            ? 'translateY(10%)'
+                            : 'translateY(5%)',
+                          objectPosition: (property.images[index].includes('/house 4/house-4-rolex.webp') || 
+                                          (property.id === 'putters-way' && index === 8))
+                            ? 'center 50%'
+                            : property.id === 'the-captains' 
+                            ? property.images[index].includes('house-3-master-bath-1.webp') ||
+                              property.images[index].includes('house-3-master-bath-2.webp') ||
+                              property.images[index].includes('house-3-master-bath-3.webp')
+                              ? 'center center'
+                              : '5% center'
                             : property.id === 'rangeview' 
                             ? 'center 30%' 
+                            : property.images[index].includes('house-1-hall.webp')
+                            ? 'center 30%'
+                            : property.images[index].includes('house-3-master-bath-1.webp') ||
+                              property.images[index].includes('house-3-master-bath-2.webp') ||
+                              property.images[index].includes('house-3-master-bath-3.webp')
+                            ? 'center center'
                             : 'center center'
                         }}
                         data-testid={`property-gallery-image-${index}`}
@@ -147,8 +173,18 @@ export default function PropertyDetail() {
                       </div>
                     </div>
 
-                    {/* Bottom Right Navigation with Separate White Squares */}
+                    {/* Bottom Right Navigation with Play Video and Arrow Buttons */}
                     <div className="absolute bottom-6 right-6 z-10 flex space-x-2">
+                      {/* Play Video Button */}
+                      <button
+                        onClick={handleViewVideo}
+                        className="bg-white shadow-lg px-4 h-10 flex items-center justify-center gap-2 transition-all duration-200 hover:bg-gray-100 cursor-pointer"
+                        aria-label="Play video"
+                      >
+                        <Play className="h-4 w-4 stroke-2 text-black" />
+                        <span className="text-sm font-medium text-black">PLAY VIDEO</span>
+                      </button>
+                      
                       {/* Left Arrow Square */}
                       <button
                         onClick={prevImage}
@@ -196,12 +232,6 @@ export default function PropertyDetail() {
                       REQUEST AVAILABILITY
                     </Button>
                     
-                    <Button 
-                      onClick={handleViewVideo}
-                      className="border border-gray-700 bg-gray-700 text-white px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-transparent hover:!text-gray-700 transition-all duration-200 w-full"
-                    >
-                      VIEW VIDEO
-                    </Button>
 
                     <Button 
                       onClick={handleViewMap}
@@ -337,9 +367,9 @@ export default function PropertyDetail() {
                 <div className="mb-8 lg:pl-4 lg:pr-4">
                   <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-2 mt-4" data-testid="location-map-title">Location</h3>
                   <p className="text-sm text-primary font-serif mb-4" data-testid="property-walking-distance-detail">
-                    {property.walkingDistance} to Adare Manor Golf Course
+                    {property.walkingDistance}
                   </p>
-                  <div className="aspect-[1.7/1] bg-gray-200 relative overflow-hidden">
+                  <div className="aspect-[1.7/1.1] bg-gray-200 relative overflow-hidden">
                     <PropertyMap propertyId={property.id} />
                   </div>
                 </div>
@@ -406,32 +436,26 @@ export default function PropertyDetail() {
                       REQUEST AVAILABILITY
                     </Button>
                     
-                    <Button 
-                      onClick={handleViewVideo}
-                      className="border border-gray-700 bg-gray-700 text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-transparent hover:!text-gray-700 transition-all duration-200 w-full"
-                    >
-                      VIEW VIDEO
-                    </Button>
                   </div>
 
                   {/* Map & Brochure Links */}
                   <div className="space-y-4 mb-7 mt-4">
                     <div className="flex justify-center space-x-2">
-                      <button 
+                      <Button 
                         onClick={handleViewMap}
                         className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${
                           (property.id === 'the-captains' || property.id === 'cragleigh-house') ? 'w-full' : 'w-1/2'
                         }`}
                       >
                         MAP
-                      </button>
+                      </Button>
                       {property.id !== 'the-captains' && property.id !== 'cragleigh-house' && (
-                        <button 
+                        <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
                         >
                           BROCHURE
-                        </button>
+                        </Button>
                       )}
                     </div>
                   </div>

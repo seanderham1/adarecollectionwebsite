@@ -9,6 +9,28 @@ const mapCallbacks: Array<() => void> = [];
 export const WALK_RADIUS_METERS = 800; // Approximately 10 minutes walk at average speed
 export const MAP_CENTER = { lat: 52.562213, lng: -8.781279 };
 
+/**
+ * Get the base URL for property links based on environment
+ */
+export function getBaseUrl(): string {
+  // Check if we're in development (localhost) or production
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+      return 'http://localhost:3000';
+    }
+  }
+  // Production URL
+  return 'https://theadarecollection-site.web.app';
+}
+
+/**
+ * Generate property URL from property ID
+ */
+export function getPropertyUrl(propertyId: string): string {
+  return `${getBaseUrl()}/property/${propertyId}`;
+}
+
 // Base overlay (golf course + buildings)
 export const GEOJSON_URL = "/data/adare_demesne.geojson";
 // Properties (points layer)
@@ -67,11 +89,14 @@ export function loadGoogleMapsScript(): Promise<void> {
     script.id = "google-maps-script";
     script.async = true;
     script.defer = true;
-    // Use environment variable or fallback to the working API key
-    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyCNQfvlQLy7tm9sB57m2mMsUt9CWln41_s';
+    // Use environment variable for API key
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+    if (!apiKey) {
+      console.error('Google Maps API Key not found in environment variables');
+      reject(new Error('Google Maps API Key is required but not set in environment variables'));
+      return;
+    }
     console.log('Google Maps API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
-    console.log('Full API Key:', apiKey);
-    console.log('Environment variable VITE_GOOGLE_MAPS_API_KEY:', import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initGoogleMaps&libraries=geometry`;
     
     script.onerror = (error) => {
@@ -138,7 +163,11 @@ export function createPropertyInfoWindowContent(props: {
   thumb?: string;
   desc?: string;
   url?: string;
+  id?: string;
 }): string {
+  // Use the provided URL or generate one from the property ID
+  const propertyUrl = props.url || (props.id ? getPropertyUrl(props.id) : '');
+  
   return `
     <div style="max-width:260px;font-family:inherit;line-height:1.35">
       ${
@@ -158,8 +187,8 @@ export function createPropertyInfoWindowContent(props: {
           : ""
       }
       ${
-        props.url
-          ? `<a href="${props.url}" style="display:inline-block;background:#142a4d;color:white;padding:6px 12px;text-decoration:none;border-radius:4px;font-size:12px;font-weight:500;">View Property</a>`
+        propertyUrl
+          ? `<a href="${propertyUrl}" style="display:inline-block;background:#142a4d;color:white;padding:6px 12px;text-decoration:none;border-radius:4px;font-size:12px;font-weight:500;">View Property</a>`
           : ""
       }
     </div>
