@@ -90,7 +90,7 @@ export function loadGoogleMapsScript(): Promise<void> {
     script.async = true;
     script.defer = true;
     // Use environment variable for API key
-    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyCNQfvlQLy7tm9sB57m2mMsUt9CWln41_s';
     if (!apiKey) {
       console.error('Google Maps API Key not found in environment variables');
       reject(new Error('Google Maps API Key is required but not set in environment variables'));
