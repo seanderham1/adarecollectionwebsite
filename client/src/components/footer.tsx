@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Instagram, Facebook, Youtube, Linkedin, Mail, AlertCircle, CheckCircle } from "lucide-react";
+import { AlertCircle, CheckCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export default function Footer() {
@@ -70,7 +70,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white py-10 px-6 w-full" data-testid="footer">
+    <footer className="bg-black text-white py-8 px-6 w-full" data-testid="footer">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           
@@ -107,11 +107,6 @@ export default function Footer() {
               <li>
                 <a href="mailto:info@theadarecollection.ie" className="hover:text-gray-300 transition-colors" data-testid="footer-link-availability">
                   Request Availability
-                </a>
-              </li>
-              <li>
-                <a href="mailto:info@theadarecollection.ie" className="hover:text-gray-300 transition-colors" data-testid="footer-link-alerts">
-                  Property Alerts
                 </a>
               </li>
               <li className="text-white">
@@ -195,34 +190,11 @@ export default function Footer() {
               </div>
             </form>
 
-            {/* FOLLOW US Section */}
+            {/* Copyright */}
             <div className="mt-12">
-              <h3 className="font-serif text-sm font-medium uppercase tracking-wider mb-6" data-testid="footer-follow-title">
-                Follow Us
-              </h3>
-              <div className="flex justify-between items-center">
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://linkedin.com/company/adarecollection" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:text-gray-300 transition-colors"
-                    data-testid="footer-social-linkedin"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                  <a 
-                    href="mailto:info@theadarecollection.ie"
-                    className="hover:text-gray-300 transition-colors"
-                    data-testid="footer-social-email"
-                  >
-                    <Mail className="h-5 w-5" />
-                  </a>
-                </div>
-                <p className="text-gray-400 text-xs" data-testid="footer-copyright">
-                  © 2025 The Adare Collection. All rights reserved.
-                </p>
-              </div>
+              <p className="text-gray-400 text-xs text-right mt-[25px]" data-testid="footer-copyright">
+                © 2025 The Adare Collection. All rights reserved.
+              </p>
             </div>
           </div>
         </div>

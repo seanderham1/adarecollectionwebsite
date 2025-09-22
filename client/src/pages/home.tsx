@@ -244,58 +244,59 @@ export default function Home() {
               </Select>
             </div>
 
-            <div>
-              <Select value={formData.extension} onValueChange={(value) => handleInputChange("extension", value)} disabled={isSubmitting}>
-                <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0" data-testid="select-extension">
-                  <SelectValue placeholder="Extension" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="+1">United States / Canada (+1)</SelectItem>
-                  <SelectItem value="+44">United Kingdom (+44)</SelectItem>
-                  <SelectItem value="+49">Germany (+49)</SelectItem>
-                  <SelectItem value="+33">France (+33)</SelectItem>
-                  <SelectItem value="+39">Italy (+39)</SelectItem>
-                  <SelectItem value="+34">Spain (+34)</SelectItem>
-                  <SelectItem value="+31">Netherlands (+31)</SelectItem>
-                  <SelectItem value="+32">Belgium (+32)</SelectItem>
-                  <SelectItem value="+41">Switzerland (+41)</SelectItem>
-                  <SelectItem value="+43">Austria (+43)</SelectItem>
-                  <SelectItem value="+353">Ireland (+353)</SelectItem>
-                  <SelectItem value="+61">Australia (+61)</SelectItem>
-                  <SelectItem value="+64">New Zealand (+64)</SelectItem>
-                  <SelectItem value="+86">China (+86)</SelectItem>
-                  <SelectItem value="+81">Japan (+81)</SelectItem>
-                  <SelectItem value="+82">South Korea (+82)</SelectItem>
-                  <SelectItem value="+91">India (+91)</SelectItem>
-                  <SelectItem value="+92">Pakistan (+92)</SelectItem>
-                  <SelectItem value="+880">Bangladesh (+880)</SelectItem>
-                  <SelectItem value="+62">Indonesia (+62)</SelectItem>
-                  <SelectItem value="+63">Philippines (+63)</SelectItem>
-                  <SelectItem value="+65">Singapore (+65)</SelectItem>
-                  <SelectItem value="+60">Malaysia (+60)</SelectItem>
-                  <SelectItem value="+66">Thailand (+66)</SelectItem>
-                  <SelectItem value="+84">Vietnam (+84)</SelectItem>
-                  <SelectItem value="+55">Brazil (+55)</SelectItem>
-                  <SelectItem value="+52">Mexico (+52)</SelectItem>
-                  <SelectItem value="+54">Argentina (+54)</SelectItem>
-                  <SelectItem value="+27">South Africa (+27)</SelectItem>
-                  <SelectItem value="+234">Nigeria (+234)</SelectItem>
-                  <SelectItem value="none">Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div>
-              <Input
-                type="tel"
-                id="phone"
-                value={formData.phone}
-                onChange={(e) => handleInputChange("phone", e.target.value)}
-                placeholder="Phone Number"
-                className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                disabled={isSubmitting}
-                data-testid="input-phone"
-              />
+            <div className="flex gap-4">
+              <div className="w-32">
+                <Select value={formData.extension} onValueChange={(value) => handleInputChange("extension", value)} disabled={isSubmitting}>
+                  <SelectTrigger className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0" data-testid="select-extension">
+                    <SelectValue placeholder="Extension" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="+1">United States / Canada (+1)</SelectItem>
+                    <SelectItem value="+44">United Kingdom (+44)</SelectItem>
+                    <SelectItem value="+49">Germany (+49)</SelectItem>
+                    <SelectItem value="+33">France (+33)</SelectItem>
+                    <SelectItem value="+39">Italy (+39)</SelectItem>
+                    <SelectItem value="+34">Spain (+34)</SelectItem>
+                    <SelectItem value="+31">Netherlands (+31)</SelectItem>
+                    <SelectItem value="+32">Belgium (+32)</SelectItem>
+                    <SelectItem value="+41">Switzerland (+41)</SelectItem>
+                    <SelectItem value="+43">Austria (+43)</SelectItem>
+                    <SelectItem value="+353">Ireland (+353)</SelectItem>
+                    <SelectItem value="+61">Australia (+61)</SelectItem>
+                    <SelectItem value="+64">New Zealand (+64)</SelectItem>
+                    <SelectItem value="+86">China (+86)</SelectItem>
+                    <SelectItem value="+81">Japan (+81)</SelectItem>
+                    <SelectItem value="+82">South Korea (+82)</SelectItem>
+                    <SelectItem value="+91">India (+91)</SelectItem>
+                    <SelectItem value="+92">Pakistan (+92)</SelectItem>
+                    <SelectItem value="+880">Bangladesh (+880)</SelectItem>
+                    <SelectItem value="+62">Indonesia (+62)</SelectItem>
+                    <SelectItem value="+63">Philippines (+63)</SelectItem>
+                    <SelectItem value="+65">Singapore (+65)</SelectItem>
+                    <SelectItem value="+60">Malaysia (+60)</SelectItem>
+                    <SelectItem value="+66">Thailand (+66)</SelectItem>
+                    <SelectItem value="+84">Vietnam (+84)</SelectItem>
+                    <SelectItem value="+55">Brazil (+55)</SelectItem>
+                    <SelectItem value="+52">Mexico (+52)</SelectItem>
+                    <SelectItem value="+54">Argentina (+54)</SelectItem>
+                    <SelectItem value="+27">South Africa (+27)</SelectItem>
+                    <SelectItem value="+234">Nigeria (+234)</SelectItem>
+                    <SelectItem value="none">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex-1">
+                <Input
+                  type="tel"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={(e) => handleInputChange("phone", e.target.value)}
+                  placeholder="Phone Number"
+                  className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  disabled={isSubmitting}
+                  data-testid="input-phone"
+                />
+              </div>
             </div>
 
             <div>

@@ -241,7 +241,6 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
             className="absolute top-0 left-0 w-full h-full object-cover"
             controls
             autoPlay
-            muted
             loop
             playsInline
             preload={connectionSpeed === 'slow' ? 'none' : 'metadata'}

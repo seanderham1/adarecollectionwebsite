@@ -12,7 +12,8 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -50,7 +51,12 @@ export default function Navigation() {
           {/* Center Logo */}
           <div className="flex-shrink-0 flex-1 flex justify-center">
             <Link href="/" data-testid="link-home">
-              <div className="font-serif text-lg font-normal text-gray-700 cursor-pointer">
+              <div className="font-serif text-lg font-normal text-gray-700 cursor-pointer flex items-center gap-2">
+                <img 
+                  src="/images/navbar/adarecollectionlogo.png" 
+                  alt="The Adare Collection Logo" 
+                  className="h-9 w-auto"
+                />
                 The Adare Collection
               </div>
             </Link>

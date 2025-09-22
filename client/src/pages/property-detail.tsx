@@ -349,7 +349,7 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways') && (
+                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house') && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Crown className="text-white h-6 w-6" />
@@ -407,10 +407,9 @@ export default function PropertyDetail() {
             {/* Right Column - Sticky Enquire Section with proper positioning */}
             <div className="lg:col-span-1 hidden lg:block bg-neutral-100 -mt-24">
               <div 
-                className="sticky bg-neutral-100 px-8 pt-8" 
+                className="sticky bg-neutral-100 px-8 pt-8 h-[530px] overflow-hidden" 
                 style={{
-                  top: '6.5rem', // ENQUIRE SECTION VERTICAL POSITION CONTROL - adjust this value to move content up/down
-                  maxHeight: 'calc(100vh - 0rem)', // ENQUIRE SECTION BOTTOM POSITION CONTROL - decrease this value to allow content to extend lower
+                  top: '4rem', // ENQUIRE SECTION VERTICAL POSITION CONTROL - adjust this value to move content up/down
                 }}
               >
                 <div className="max-w-sm mx-auto">

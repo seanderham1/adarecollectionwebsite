@@ -31,6 +31,7 @@ export function getPropertyUrl(propertyId: string): string {
   return `${getBaseUrl()}/property/${propertyId}`;
 }
 
+
 // Base overlay (golf course + buildings)
 export const GEOJSON_URL = "/data/adare_demesne.geojson";
 // Properties (points layer)
@@ -97,7 +98,7 @@ export function loadGoogleMapsScript(): Promise<void> {
       return;
     }
     console.log('Google Maps API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initGoogleMaps&libraries=geometry`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initGoogleMaps&libraries=geometry&v=weekly`;
     
     script.onerror = (error) => {
       isMapScriptLoading = false;
@@ -389,6 +390,12 @@ export function addHeroWalkRadiusCircle(map: google.maps.Map) {
         this.div_ = null;
       }
     }
+
+    setVisible(visible: boolean) {
+      if (this.div_) {
+        this.div_.style.display = visible ? 'flex' : 'none';
+      }
+    }
   }
 
   // Calculate position at the top of the circle for the label
@@ -402,6 +409,122 @@ export function addHeroWalkRadiusCircle(map: google.maps.Map) {
   walkLabel.setMap(map);
 
   return { circle: walkCircle, label: walkLabel };
+}
+
+/**
+ * Add golf course text overlay to map
+ */
+export function addGolfCourseTextOverlay(map: google.maps.Map) {
+  // Create a custom overlay for the golf course text
+  class GolfCourseLabel extends google.maps.OverlayView {
+    private div_: HTMLElement | null = null;
+    private position_: google.maps.LatLng;
+
+    constructor(position: google.maps.LatLng) {
+      super();
+      this.position_ = position;
+    }
+
+    onAdd() {
+      const div = document.createElement('div');
+      div.style.cssText = `
+        position: absolute;
+        background-color: transparent;
+        color: #1a1a1a;
+        padding: 0;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: 'Google Sans', 'Roboto', sans-serif;
+        text-align: center;
+        pointer-events: none;
+        z-index: 1000;
+        line-height: 1.2;
+        text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+      `;
+
+      // Create golf course icon
+      const golfIcon = document.createElement('div');
+      golfIcon.style.cssText = `
+        width: 24px;
+        height: 24px;
+        margin: 0 auto 4px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      `;
+      
+      // Create SVG golf course icon
+      const golfSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      golfSvg.setAttribute('width', '24');
+      golfSvg.setAttribute('height', '24');
+      golfSvg.setAttribute('viewBox', '0 -960 960 960');
+      golfSvg.setAttribute('fill', '#1a1a1a');
+      golfSvg.style.filter = 'drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white)';
+      
+      // Golf course path
+      const golfPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      golfPath.setAttribute('d', 'M780-120q-25 0-42.5-17.5T720-180q0-25 17.5-42.5T780-240q25 0 42.5 17.5T840-180q0 25-17.5 42.5T780-120ZM400-80q-100 0-170-23.5T160-160q0-23 33-41t87-29v70h80v-720l320 156-240 124v362q86 5 143 26.5t57 51.5q0 33-70 56.5T400-80Z');
+      golfSvg.appendChild(golfPath);
+      
+      golfIcon.appendChild(golfSvg);
+      div.appendChild(golfIcon);
+
+      const textSpan = document.createElement('div');
+      textSpan.innerHTML = 'Ryder Cup<br>Golf Course';
+      div.appendChild(textSpan);
+
+      this.div_ = div;
+      const panes = this.getPanes();
+      if (panes) {
+        panes.overlayLayer.appendChild(div);
+      }
+    }
+
+    draw() {
+      if (this.div_) {
+        const overlayProjection = this.getProjection();
+        if (overlayProjection) {
+          const position = overlayProjection.fromLatLngToDivPixel(this.position_);
+          if (position) {
+            this.div_.style.left = (position.x - this.div_.offsetWidth / 2) + 'px';
+            this.div_.style.top = (position.y - this.div_.offsetHeight / 2) + 'px';
+          }
+        }
+      }
+    }
+
+    onRemove() {
+      if (this.div_ && this.div_.parentNode) {
+        this.div_.parentNode.removeChild(this.div_);
+        this.div_ = null;
+      }
+    }
+
+    setVisible(visible: boolean) {
+      if (this.div_) {
+        this.div_.style.display = visible ? 'block' : 'none';
+      }
+    }
+  }
+
+  // Calculate the center position of the golf course
+  // Based on the fairway coordinates from the GeoJSON, the golf course center is approximately:
+  // Adjusted 200m east and 500m south from the original position
+  const earthRadius = 6371000; // Earth's radius in meters
+  
+  // Convert meters to degrees
+  // 1 degree latitude ≈ 111,320 meters
+  // 1 degree longitude ≈ 111,320 * cos(latitude) meters
+  const latOffset = -1000 / 111320; // 1000m south (900m + 100m more)
+  const lngOffset = 350 / (111320 * Math.cos(52.571 * Math.PI / 180)); // 350m east (300m + 50m more)
+  
+  const golfCourseCenter = new google.maps.LatLng(52.571 + latOffset, -8.780 + lngOffset);
+
+  // Add the custom label
+  const golfLabel = new GolfCourseLabel(golfCourseCenter);
+  golfLabel.setMap(map);
+
+  return golfLabel;
 }
 
 /**

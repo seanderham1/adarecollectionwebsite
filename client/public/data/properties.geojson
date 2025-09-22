@@ -11,7 +11,7 @@
         "beds": 6,
         "baths": 6,
         "price":"POA",
-        "thumb":"/images/houses/house 2/house-2-main.jpg"
+        "thumb":"/images/houses/house 2/house-2-main.webp"
       }
     },
     {
@@ -24,7 +24,7 @@
         "beds": 6,
         "baths": 6,
         "price":"POA",
-        "thumb":"/images/houses/house 3/house-3-main.jpg"
+        "thumb":"/images/houses/house 3/house-3-main.webp"
       }
     },
     {
@@ -37,7 +37,7 @@
         "beds": 2,
         "baths": 2,
         "price":"POA",
-        "thumb":"/images/houses/house 4/adare-house-4.jpg"
+        "thumb":"/images/houses/house 4/adare-house-4.webp"
       }
     },
     {
@@ -50,7 +50,7 @@
         "beds": 6,
         "baths": 6,
         "price":"POA",
-        "thumb":"/images/houses/house 1/house-1-main-optimized.jpg"
+        "thumb":"/images/houses/house 1/house-1-main-optimized.webp"
       }
     },
     {
@@ -63,7 +63,7 @@
         "beds": 5,
         "baths": 5,
         "price":"POA",
-        "thumb":"/images/houses/house 5/cragleigh-house-main-optimized.jpg"
+        "thumb":"/images/houses/house 5/cragleigh-house-main-optimized.webp"
       }
     }
   ]

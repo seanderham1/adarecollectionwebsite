@@ -9,6 +9,7 @@ import {
   createPropertyMarker,
   createPropertyInfoWindowContent,
   addWalkRadiusCircle,
+  addGolfCourseTextOverlay,
   applyMapStyling,
   getPropertyUrl
 } from "@/lib/map-utils";
@@ -47,6 +48,9 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
         if (propertyId !== 'cragleigh-house') {
           addWalkRadiusCircle(map, mapCenter);
         }
+
+        // Add golf course text overlay
+        addGolfCourseTextOverlay(map);
 
         // Load and style GeoJSON overlay
         map.data.loadGeoJson(GEOJSON_URL, null, (features) => {

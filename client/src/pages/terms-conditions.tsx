@@ -86,13 +86,15 @@ export default function TermsConditions() {
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
                     3.3 Cancellation and Refund Policy
                   </h3>
+                  <p className="mb-4">
+                    We understand that plans may change, and we have established a fair cancellation policy to accommodate different circumstances. All cancellation requests must be made in writing to info@theadarecollection.ie.
+                  </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Cancellations made more than 60 days before arrival: 100% refund</li>
-                    <li>Cancellations made 30-60 days before arrival: 50% refund</li>
-                    <li>Cancellations made less than 30 days before arrival: No refund</li>
-                    <li>Special cancellation terms may apply during Ryder Cup 2027 period</li>
+                    <li>Cancellations made more than 180 days before arrival: 100% refund</li>
+                    <li>Cancellations made 120-180 days before arrival: 50% refund</li>
+                    <li>Cancellations made less than 120 days before arrival: No refund</li>
                     <li>Refunds will be processed within 14 business days of cancellation confirmation</li>
-                    <li>Force majeure events may be subject to different cancellation terms</li>
+                    <li>Force majeure events may be subject to different cancellation terms as outlined in Section 8</li>
                   </ul>
                 </div>
               </section>

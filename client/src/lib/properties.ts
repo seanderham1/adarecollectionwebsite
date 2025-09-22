@@ -119,7 +119,7 @@ export const properties: Property[] = [
       "Separate dining area capable of hosting 50+ guests."
     ],
     amenities: [
-      "Fresh linen and towels (serviced daily)",
+      "Daily serviced fresh towels and linens",
       "High-speed Wi-Fi and satellite TV",
       "Games room with pool table, table tennis, and dart board – convertible into a fitness studio with treadmill (if required)",
       "Secure private parking"
@@ -128,7 +128,7 @@ export const properties: Property[] = [
       lat: 52.55909971573407,
       lng: -8.786145768660083
     },
-    walkingDistance: "Short stroll to first tee",
+    walkingDistance: "Just a short stroll to Ryder Cup practice range and golf course",
     videoUrl: "/videos/thecaptains.mp4"
   },
   {
@@ -137,7 +137,7 @@ export const properties: Property[] = [
     subtitle: "At the very centre of Ryder Cup 2027 – Golf Village, Adare Manor",
     bedrooms: 2,
     description: "Premium residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
-    fullDescription: "'Putters Way' is a rare and exclusive opportunity to stay at the very heart of the Ryder Cup action 2027. Situated just metres from where the U.S and European team will warm up on practice range and putting green and a one minute stroll to the 1st tee, it just doesn't get any closer than this!\n\nLocated in the prestigious private Golf Village, this deluxe residence places guests at the centre of the tournament atmosphere — while offering elegant privacy, luxury finishes, and complete immersion in the experience.\n\nThis is not just a place to stay — it's a chance to live the event.",
+    fullDescription: "'Putters Way' is a rare and exclusive opportunity to stay at the very heart of the Ryder Cup action 2027. Situated just metres from where the U.S and European team will warm up on the practice range and putting green and a one minute stroll to the 1st tee, it just doesn't get any closer than this!\n\nLocated in the prestigious private Golf Village, this deluxe residence places guests at the centre of the tournament atmosphere — while offering elegant privacy, luxury finishes, and complete immersion in the experience.\n\nThis is not just a place to stay — it's a chance to live the event.",
     price: "POA",
     images: [
       "/images/houses/house 4/adare-house-4-original.webp",
@@ -167,7 +167,7 @@ export const properties: Property[] = [
       lat: 52.56182292270544,
       lng: -8.780515540696719
     },
-    walkingDistance: "1 minute to 1st tee",
+    walkingDistance: "1 minute stroll to the 1st tee box",
     videoUrl: "/videos/puttersway.mp4"
   },
   {

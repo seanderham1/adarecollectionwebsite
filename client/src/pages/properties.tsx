@@ -70,16 +70,14 @@ export default function PropertiesPage() {
         {/* Property Grid Section */}
         <div className="max-w-[2000px] mx-auto grid md:grid-cols-3 gap-6">
           {all.filter(p => p.id !== 'riverbank-manor').map((p) => (
-            <div key={p.id} className="property-card bg-neutral-100 overflow-hidden border-0 shadow-none cursor-pointer group">
-              <div className="relative aspect-[16/9]">
-                <Link href={`/property/${p.id}`}>
+            <Link key={p.id} href={`/property/${p.id}`}>
+              <div className="property-card bg-neutral-100 overflow-hidden border-0 shadow-none cursor-pointer group">
+                <div className="relative aspect-[16/9]">
                   <img
                     src={p.thumbnail || p.images[0]}
                     alt={p.name}
                     className="w-full h-full object-cover"
                   />
-                </Link>
-                <Link href={`/property/${p.id}`}>
                   <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
                     <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                       <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
@@ -87,30 +85,28 @@ export default function PropertiesPage() {
                       </div>
                     </div>
                   </div>
-                </Link>
-              </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="text-xs text-muted uppercase tracking-wider font-medium">
-                    {p.bedrooms} BEDROOMS
-                  </div>
-                  <div className="text-xs text-muted uppercase tracking-wider font-medium">
-                    AVAILABLE
-                  </div>
                 </div>
-                <h3 className="font-serif text-xl font-normal mb-2 text-primary">{p.name}</h3>
-                <p className="text-secondary text-sm leading-relaxed mb-6">{p.description}</p>
-                <div className="space-y-3">
-                  <Link href={`/property/${p.id}`}>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-xs text-muted uppercase tracking-wider font-medium">
+                      {p.bedrooms} BEDROOMS
+                    </div>
+                    <div className="text-xs text-muted uppercase tracking-wider font-medium">
+                      AVAILABLE
+                    </div>
+                  </div>
+                  <h3 className="font-serif text-xl font-normal mb-2 text-primary">{p.name}</h3>
+                  <p className="text-secondary text-sm leading-relaxed mb-6">{p.description}</p>
+                  <div className="space-y-3">
                     <Button
                       className="border border-gray-700 bg-transparent text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
                     >
                       DISCOVER MORE
                     </Button>
-                  </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
           <ComingSoonCard />
         </div>
