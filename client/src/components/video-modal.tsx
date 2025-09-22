@@ -14,6 +14,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
   const [retryCount, setRetryCount] = useState(0);
   const [connectionSpeed, setConnectionSpeed] = useState<'slow' | 'medium' | 'fast'>('medium');
   const [showControls, setShowControls] = useState(true);
+  const [isHoveringCloseButton, setIsHoveringCloseButton] = useState(false);
   
   const videoRef = useRef<HTMLVideoElement>(null);
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -114,13 +115,16 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
     showControlsTemporarily();
   };
 
-  // Auto-hide controls after 2.5 seconds
+  // Auto-hide controls after 2.5 seconds (unless hovering over close button)
   const hideControlsAfterDelay = () => {
     if (controlsTimeoutRef.current) {
       clearTimeout(controlsTimeoutRef.current);
     }
     controlsTimeoutRef.current = setTimeout(() => {
-      setShowControls(false);
+      // Don't hide controls if hovering over the close button
+      if (!isHoveringCloseButton) {
+        setShowControls(false);
+      }
     }, 2500);
   };
 
@@ -135,11 +139,14 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
   };
 
   const handleMouseLeave = () => {
-    // Fade out immediately when mouse leaves the player
+    // Fade out immediately when mouse leaves the player (unless hovering over close button)
     if (controlsTimeoutRef.current) {
       clearTimeout(controlsTimeoutRef.current);
     }
-    setShowControls(false);
+    // Only hide controls if not hovering over the close button
+    if (!isHoveringCloseButton) {
+      setShowControls(false);
+    }
   };
 
   const handleClick = () => {
@@ -157,10 +164,28 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
       />
       
       {/* Modal Content */}
-      <div className="relative w-full max-w-6xl mx-4 bg-black overflow-hidden shadow-2xl">
+      <div 
+        className="relative w-full max-w-6xl mx-4 bg-black overflow-hidden shadow-2xl"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
+          onMouseEnter={() => {
+            setIsHoveringCloseButton(true);
+            setShowControls(true);
+            // Clear any pending hide timeout when hovering over close button
+            if (controlsTimeoutRef.current) {
+              clearTimeout(controlsTimeoutRef.current);
+            }
+          }}
+          onMouseLeave={() => {
+            setIsHoveringCloseButton(false);
+            // Start the hide timer when leaving the close button
+            hideControlsAfterDelay();
+          }}
           className={`absolute top-4 right-4 z-50 text-white hover:text-gray-300 transition-opacity duration-300 bg-black/50 p-1 ${
             showControls ? 'opacity-100' : 'opacity-0'
           }`}
@@ -172,9 +197,6 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
         <div 
           className="relative w-full"
           style={{ paddingBottom: "56.25%" }}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          onClick={handleClick}
         >
           {isLoading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black">
