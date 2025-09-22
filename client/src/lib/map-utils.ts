@@ -21,7 +21,7 @@ export function getBaseUrl(): string {
     }
   }
   // Production URL
-  return 'https://theadarecollection-site.web.app';
+  return 'https://theadarecollection.com';
 }
 
 /**
@@ -170,12 +170,12 @@ export function createPropertyInfoWindowContent(props: {
   const propertyUrl = props.url || (props.id ? getPropertyUrl(props.id) : '');
   
   return `
-    <div style="max-width:260px;font-family:inherit;line-height:1.35">
-      ${
-        props.thumb
-          ? `<img src="${props.thumb}" alt="${props.title ?? "Property"}" style="width:100%;height:auto;border-radius:10px;margin:0 0 8px 0;display:block;"/>`
-          : ""
-      }
+    <div style="max-width:380px;font-family:inherit;line-height:1.35;padding:0 8px 0 8px;">
+             ${
+               props.thumb
+                 ? `<img src="${props.thumb}" alt="${props.title ?? "Property"}" style="width:100%;height:auto;margin:0 0 8px 0;display:block;border-radius:6px;"/>`
+                 : ""
+             }
       <div style="font-weight:600;margin:0 0 4px 0">${props.title || "Property"}</div>
       <div style="color:#666;font-size:12px;margin:0 0 6px 0">
         ${props.beds ?? "–"} bed · ${props.baths ?? "–"} bath ${
@@ -189,7 +189,7 @@ export function createPropertyInfoWindowContent(props: {
       }
       ${
         propertyUrl
-          ? `<a href="${propertyUrl}" style="display:inline-block;background:#142a4d;color:white;padding:6px 12px;text-decoration:none;border-radius:4px;font-size:12px;font-weight:500;">View Property</a>`
+          ? `<div style="text-align:center;margin-top:8px;"><a href="${propertyUrl}" style="display:inline-block;border:1px solid #374151;background:#374151;color:white;padding:6px 16px;text-decoration:none;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;transition:all 0.2s;" onmouseover="this.style.backgroundColor='transparent';this.style.color='#374151';" onmouseout="this.style.backgroundColor='#374151';this.style.color='white';">View Property</a></div>`
           : ""
       }
     </div>

@@ -1,12 +1,23 @@
 {
   "functions": { "source": "functions" },
-  "hosting": {
-    "site": "theadarecollection-site",
-    "public": "dist/public",
-    "ignore": ["**/.*", "**/node_modules/**"],
-    "rewrites": [
-      { "source": "/api/**", "function": "api" },
-      { "source": "**", "destination": "/index.html" }
-    ]
-  }
+  "hosting": [
+    {
+      "site": "theadarecollection-site",
+      "public": "dist/public",
+      "ignore": ["**/.*", "**/node_modules/**"],
+      "rewrites": [
+        { "source": "/api/**", "function": "api" },
+        { "source": "**", "destination": "/index.html" }
+      ]
+    },
+    {
+      "site": "theadarecollection-com",
+      "public": "dist/public",
+      "ignore": ["**/.*", "**/node_modules/**"],
+      "rewrites": [
+        { "source": "/api/**", "function": "api" },
+        { "source": "**", "destination": "/index.html" }
+      ]
+    }
+  ]
 }

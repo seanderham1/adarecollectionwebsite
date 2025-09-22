@@ -216,7 +216,7 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
                 }
                 currentInfoWindow = new google.maps.InfoWindow({
                   content: createPropertyInfoWindowContent(p),
-                  maxWidth: 280,
+                  maxWidth: 400,
                 });
                 currentInfoWindow.open(map, marker);
               });
@@ -246,7 +246,7 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
               }
               currentInfoWindow = new google.maps.InfoWindow({
                 content: createPropertyInfoWindowContent(fallbackProps),
-                maxWidth: 280,
+                maxWidth: 400,
               });
               currentInfoWindow.open(map, marker);
             });
