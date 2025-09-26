@@ -1,4 +1,4 @@
-import { useParams } from "wouter";
+import { useParams, useSearch } from "wouter";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import PropertyMap from "@/components/property-map";
@@ -9,10 +9,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Tickets, Bed, Mail, MessageCircle } from "lucide-react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function PropertyDetail() {
   const { id } = useParams();
+  const search = useSearch();
   const property = properties.find(p => p.id === id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -20,6 +21,21 @@ export default function PropertyDetail() {
   
   // Use property-specific video URL or fallback to default
   const videoUrl = property?.videoUrl || "/videos/rangeview.mp4";
+
+  // Auto-play video if URL parameter is present
+  useEffect(() => {
+    const urlParams = new URLSearchParams(search);
+    const autoPlay = urlParams.get('video');
+    
+    if (autoPlay === 'true' && property) {
+      // Small delay to ensure page is fully loaded
+      const timer = setTimeout(() => {
+        setIsVideoModalOpen(true);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [search, property]);
 
   if (!property) {
     return (
