@@ -1,4 +1,4 @@
-import { useParams, useSearch } from "wouter";
+import { useParams, useSearch, useLocation } from "wouter";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import PropertyMap from "@/components/property-map";
@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 export default function PropertyDetail() {
   const { id } = useParams();
   const search = useSearch();
+  const [location] = useLocation();
   const property = properties.find(p => p.id === id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -25,7 +26,8 @@ export default function PropertyDetail() {
 
   // Auto-play video if URL parameter is present
   useEffect(() => {
-    const urlParams = new URLSearchParams(search);
+    // Use window.location.search as the most reliable method
+    const urlParams = new URLSearchParams(window.location.search);
     const autoPlay = urlParams.get('video');
     
     if (autoPlay === 'true' && property) {
@@ -38,7 +40,7 @@ export default function PropertyDetail() {
       
       return () => clearTimeout(timer);
     }
-  }, [search, property]);
+  }, [property]);
 
   if (!property) {
     return (
