@@ -18,6 +18,7 @@ export default function PropertyDetail() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [videoStartMuted, setVideoStartMuted] = useState(true);
   
   // Use property-specific video URL or fallback to default
   const videoUrl = property?.videoUrl || "/videos/rangeview.mp4";
@@ -28,6 +29,8 @@ export default function PropertyDetail() {
     const autoPlay = urlParams.get('video');
     
     if (autoPlay === 'true' && property) {
+      // Set video to start muted for autoplay to work
+      setVideoStartMuted(true);
       // Small delay to ensure page is fully loaded
       const timer = setTimeout(() => {
         setIsVideoModalOpen(true);
@@ -69,6 +72,8 @@ export default function PropertyDetail() {
   };
 
   const handleViewVideo = () => {
+    // Set video to start unmuted when manually clicked
+    setVideoStartMuted(false);
     setIsVideoModalOpen(true);
   };
 
@@ -522,6 +527,7 @@ export default function PropertyDetail() {
         isOpen={isVideoModalOpen}
         onClose={handleCloseVideo}
         videoUrl={videoUrl}
+        startMuted={videoStartMuted}
       />
       
       {/* Map Modal */}

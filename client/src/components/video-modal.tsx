@@ -5,9 +5,10 @@ interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
   videoUrl: string;
+  startMuted?: boolean;
 }
 
-export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProps) {
+export default function VideoModal({ isOpen, onClose, videoUrl, startMuted = true }: VideoModalProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [showMobileWarning, setShowMobileWarning] = useState(false);
@@ -15,6 +16,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
   const [connectionSpeed, setConnectionSpeed] = useState<'slow' | 'medium' | 'fast'>('medium');
   const [showControls, setShowControls] = useState(true);
   const [isHoveringCloseButton, setIsHoveringCloseButton] = useState(false);
+  const [isMuted, setIsMuted] = useState(startMuted);
   
   const videoRef = useRef<HTMLVideoElement>(null);
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -46,6 +48,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
       setHasError(false);
       setRetryCount(0);
       setShowControls(true);
+      setIsMuted(startMuted);
       
       // Detect connection speed
       if ('connection' in navigator) {
@@ -151,6 +154,11 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
 
   const handleClick = () => {
     showControlsTemporarily();
+    // Unmute video on first user interaction (only if it was initially muted)
+    if (videoRef.current && videoRef.current.muted && startMuted) {
+      videoRef.current.muted = false;
+      setIsMuted(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -238,6 +246,18 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
             </div>
           )}
 
+          {/* Muted Indicator - only show if video was initially muted */}
+          {isMuted && startMuted && !isLoading && !hasError && (
+            <div className="absolute top-4 left-4 z-30 bg-black/70 text-white px-3 py-2 rounded-lg text-sm">
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.794L4.617 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.617l3.766-3.794a1 1 0 011-.13zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+                <span>Click to unmute</span>
+              </div>
+            </div>
+          )}
+
           {hasError && (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black text-white">
               <p className="text-lg mb-4">Failed to load video</p>
@@ -263,6 +283,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
             className="absolute top-0 left-0 w-full h-full object-cover"
             controls
             autoPlay
+            muted={isMuted}
             loop
             playsInline
             preload={connectionSpeed === 'slow' ? 'none' : 'metadata'}
