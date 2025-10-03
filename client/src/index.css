@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 
+
 /* Minimal smooth scrolling optimization */
 html {
   scroll-behavior: smooth;

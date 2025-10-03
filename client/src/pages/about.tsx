@@ -1,8 +1,16 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { useSEO } from "@/hooks/use-seo";
 import { Button } from "@/components/ui/button";
 
 export default function About() {
+  useSEO({
+    title: 'About The Adare Collection - Ryder Cup 2027 Luxury Accommodation',
+    description: 'Learn about The Adare Collection\'s exclusive luxury properties for Ryder Cup 2027. Handpicked residences in Adare Manor Estate with local expertise and premium hospitality services.',
+    keywords: 'About Adare Collection, Ryder Cup 2027, luxury accommodation, Adare Manor, local expertise, premium hospitality',
+    ogImage: 'https://theadarecollection.com/images/about/about-photo.jpg',
+    ogUrl: 'https://theadarecollection.com/about'
+  });
 
   return (
     <div className="min-h-screen bg-white">
@@ -12,13 +20,14 @@ export default function About() {
       <section className="py-20 px-6 bg-white w-full">
         <div className="max-w-4xl mx-auto">
           {/* Profile Image - Centered */}
-          <div className="flex justify-center mb-12 pt-[50px]">
+          <div className="flex justify-center mb-8 md:mb-[30px] pt-[50px] md:pt-[30px]">
             <div className="relative">
-              <div className="aspect-square w-64 overflow-hidden">
+              <div className="aspect-square overflow-hidden w-[325px] md:w-[425px]">
                 <img 
-                  src="/images/about/about-page-profile.jpeg" 
+                  src="/images/about/about-photo.jpg" 
                   alt="Joe - Hospitality & Property Expert"
-                  className="w-full h-full object-cover grayscale"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center 60%' }}
                 />
               </div>
               {/* Architectural accent */}

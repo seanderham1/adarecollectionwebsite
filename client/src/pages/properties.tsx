@@ -4,6 +4,7 @@ import { properties } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Bed } from "lucide-react";
+import { useSEO } from "@/hooks/use-seo";
 
 // Coming Soon Card Component
 function ComingSoonCard() {
@@ -47,6 +48,14 @@ function ComingSoonCard() {
 export default function PropertiesPage() {
   // All properties are now in the main properties array
   const all = properties;
+
+  useSEO({
+    title: 'Luxury Properties for Ryder Cup 2027 - The Adare Collection',
+    description: 'Explore our curated selection of luxury private residences for Ryder Cup 2027. Premium accommodations in and around Adare Manor Estate with exclusive amenities and concierge services.',
+    keywords: 'Ryder Cup 2027 properties, luxury rental Adare Manor, golf accommodation Ireland, private residences, executive rentals',
+    ogImage: 'https://theadarecollection.com/images/hero/adaremanor-img1.webp',
+    ogUrl: 'https://theadarecollection.com/properties'
+  });
 
   return (
     <div className="min-h-screen bg-neutral-100">

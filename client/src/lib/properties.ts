@@ -25,7 +25,7 @@ export const properties: Property[] = [
     subtitle: "Located within Adare Manor estate, offering front-row proximity to Ryder Cup 2027",
     bedrooms: 6,
     description: "Located within Adare Manor estate, 'Range View' offers front-row proximity to Ryder Cup 2027.",
-    fullDescription: "Range View is a stately luxurious residence nestled within the private and gated enclave of Adare Manor Resort — just 300 yards from the Ryder Cup 2027 driving range and a five-minute walk to the first tee box. Offering over 7,000 sq ft of refined living space across three expansive floors, this home delivers unrivalled proximity to the event alongside world-class interiors, making it ideal for corporate hospitality or discerning private guests.",
+    fullDescription: "Range View is a stately luxurious residence nestled within the private and gated enclave of Adare Manor Resort — just 300 yards from the Ryder Cup 2027 driving range and a five-minute walk to the first tee box. Offering over 7,000ft²/650m² of refined living space across three expansive floors, this home delivers unrivalled proximity to the event alongside world-class interiors, making it ideal for corporate hospitality or discerning private guests.",
     price: "Enquire Now",
     images: [
       "/images/houses/house 2/house-2-main-original.webp",
@@ -51,7 +51,7 @@ export const properties: Property[] = [
       "5/6 double ensuite bedrooms including a 95m² master suite with jacuzzi bath",
       "Formal sitting room flowing into a dining room for up to 18 guests",
       "Expansive gourmet kitchen with walk-in cold room and professional-grade appliances",
-      "Large outdoor areas including 300m of landscaped gardens and 250m of Liscannor paving, perfect for marquee events (up to 100 guests)"
+      "Large outdoor areas including 3230ft²/300m² of landscaped gardens and 2690ft²/250m² of Liscannor paving, perfect for marquee events (up to 100 guests)"
     ],
     amenities: [
       "Private cinema room with retractable projector, stereo system, and automatic blinds",
@@ -76,7 +76,7 @@ export const properties: Property[] = [
     subtitle: "Within Adare Manor's secure walls, 'Captains House' places you at the heart of Ryder Cup action in complete privacy.",
     bedrooms: 6,
     description: "Within Adare Manor's secure walls, 'Captains House' places you at the heart of Ryder Cup action in complete privacy.",
-    fullDescription: "Situated within the exclusive and secure walls of the Adare Manor resort, 'The Captains' home offers an extraordinary opportunity to stay at the epicentre of the Ryder Cup 2027. This six-bedroom estate is not just near the event—it's almost part of it.\n\nWith the practice range just over the hedge, and a 5 minute stroll from the 1st tee box, this residence is ideal for the discerning client, sponsors, media, and corporate clients seeking to be immersed in the heart of the Ryder Cup action, without compromising on space, luxury, or privacy.",
+    fullDescription: "Situated within the exclusive and secure walls of the Adare Manor resort, 'The Captains' home offers an extraordinary opportunity to stay at the epicentre of the Ryder Cup 2027. This six-bedroom estate spanning over 8500ft²/790m² is not just near the event—it's almost part of it.\n\nWith the practice range just over the hedge, and a 5 minute stroll from the 1st tee box, this residence is ideal for the discerning client, sponsors, media, and corporate clients seeking to be immersed in the heart of the Ryder Cup action, without compromising on space, luxury, or privacy.",
     price: "POA",
     images: [
       "/images/houses/house 3/house-3-main-original.webp",
@@ -176,7 +176,7 @@ export const properties: Property[] = [
     subtitle: "Located within the gates of Adare Manor — just steps from the 2027 Ryder Cup venue.",
     bedrooms: 6,
     description: "Within Adare Manor's gates — Ireland's most prestigious estate, steps from Ryder Cup 2027.",
-    fullDescription: "The Fairways is a contemporary luxury residence located within the Demesne, a gated secure luxury neighbourhood on the grounds of Adare Manor, offering unrivalled proximity to Ryder Cup 2027. This expansive 6-bedroom home spans over 4,800 sq ft of immaculately designed interiors, combining privacy, grandeur, and modern elegance.\n\nPositioned just a short walk from the beautifully appointed Adare Manor Ryder Cup venue and 1st tee, this is one of the closest private properties at the heart of the tournament, making it an ideal choice for sponsors, media, or executive guests.",
+    fullDescription: "The Fairways is a contemporary luxury residence located within the Demesne, a gated secure luxury neighbourhood on the grounds of Adare Manor, offering unrivalled proximity to Ryder Cup 2027. This expansive 6-bedroom home spans over 4,840 ft² of immaculately designed interiors, combining privacy, grandeur, and modern elegance.\n\nPositioned just a short walk from the beautifully appointed Adare Manor Ryder Cup venue and 1st tee, this is one of the closest private properties at the heart of the tournament, making it an ideal choice for sponsors, media, or executive guests.",
     price: "POA",
     images: [
       "/images/houses/house 1/house-1-main.webp",
@@ -202,7 +202,7 @@ export const properties: Property[] = [
     thumbnail: "/images/houses/house 1/house-1-main-optimized.webp",
     features: [
       "Grand entrance foyer with natural light and architectural presence",
-      "Exquisite master suite (80m²) with lounge, dual walk-in wardrobes, jacuzzi bath, double vanity, and dual showers",
+      "Exquisite master suite (860ft²/80m²) with lounge, dual walk-in wardrobes, jacuzzi bath, double vanity, and dual showers",
       "Five additional double bedrooms, including ensuites",
       "Two spacious formal lounges with TV and large seating areas",
       "Upper-level private retreat with lounge/TV space, shower, bath, and a fully fitted office",

@@ -17,8 +17,9 @@ export default function ExclusiveAccess() {
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Demo password validation
-    if (password === "adare2027") {
+    // Password validation using environment variable
+    const correctPassword = import.meta.env.VITE_EXCLUSIVE_ACCESS_PASSWORD;
+    if (password === correctPassword) {
       setIsAuthenticated(true);
       toast({
         title: "Access Granted",

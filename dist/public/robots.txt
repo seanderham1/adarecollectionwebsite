@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://theadarecollection-site.web.app/sitemap.xml
+Sitemap: https://theadarecollection.com/sitemap.xml
 
 # Disallow admin or private areas
 Disallow: /admin/

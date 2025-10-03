@@ -4,12 +4,14 @@ import Footer from "@/components/footer";
 import PropertyMap from "@/components/property-map";
 import VideoModal from "@/components/video-modal";
 import MapModal from "@/components/map-modal";
+import BrochureModal from "@/components/brochure-modal";
 import { properties } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Tickets, Bed, Mail, MessageCircle } from "lucide-react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useSEO } from "@/hooks/use-seo";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -17,30 +19,47 @@ export default function PropertyDetail() {
   const [location] = useLocation();
   const property = properties.find(p => p.id === id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Check for video parameter immediately and set initial state
+  const urlParams = new URLSearchParams(window.location.search);
+  const hasVideoParam = urlParams.get('video') === 'true';
+  
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
-  const [videoStartMuted, setVideoStartMuted] = useState(true);
+  const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
+  const [videoStartMuted, setVideoStartMuted] = useState(hasVideoParam); // Start muted if video param is present
   
   // Use property-specific video URL or fallback to default
   const videoUrl = property?.videoUrl || "/videos/rangeview.mp4";
 
+  // SEO optimization
+  useSEO({
+    title: property ? `${property.name} - Ryder Cup 2027 Luxury Rental | The Adare Collection` : 'Property Details - The Adare Collection',
+    description: property ? `${property.name} - Exclusive luxury rental for Ryder Cup 2027. ${property.bedrooms} bedrooms, premium amenities, located in Adare Manor Estate. Book your Ryder Cup accommodation today.` : 'Discover luxury properties for Ryder Cup 2027 at The Adare Collection.',
+    keywords: property ? `${property.name}, Ryder Cup 2027, luxury rental, Adare Manor, ${property.bedrooms} bedroom, golf accommodation, Ireland` : 'Ryder Cup 2027, luxury rental, Adare Manor, golf accommodation',
+    ogImage: property ? `https://theadarecollection.com${property.images[0]}` : 'https://theadarecollection.com/images/hero/adaremanor-img1.webp',
+    ogUrl: `https://theadarecollection.com/property/${id}`
+  });
+
   // Auto-play video if URL parameter is present
   useEffect(() => {
-    // Use window.location.search as the most reliable method
-    const urlParams = new URLSearchParams(window.location.search);
-    const autoPlay = urlParams.get('video');
+    console.log('Video autoplay check:', { 
+      hasVideoParam, 
+      property: property?.id,
+      url: window.location.href 
+    });
     
-    if (autoPlay === 'true' && property) {
-      // Set video to start muted for autoplay to work
-      setVideoStartMuted(true);
+    if (hasVideoParam && property) {
+      console.log('Opening video modal for property:', property.id);
       // Small delay to ensure page is fully loaded
       const timer = setTimeout(() => {
+        console.log('Setting video modal open');
         setIsVideoModalOpen(true);
-      }, 500);
+      }, 1500); // Increased delay to ensure everything is loaded
       
       return () => clearTimeout(timer);
     }
-  }, [property]);
+  }, [hasVideoParam, property]);
 
   if (!property) {
     return (
@@ -50,12 +69,22 @@ export default function PropertyDetail() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-playfair text-4xl font-bold text-charcoal mb-4">Property Not Found</h1>
             <p className="text-dark-gray">The property you're looking for doesn't exist.</p>
+            <p className="text-sm text-gray-500 mt-2">ID: {id}</p>
           </div>
         </div>
         <Footer />
       </div>
     );
   }
+
+  // Debug info - remove this later
+  console.log('PropertyDetail rendered:', { 
+    id, 
+    property: property.id, 
+    hasVideoParam, 
+    isVideoModalOpen,
+    url: window.location.href 
+  });
 
   const nextImage = () =>
     setCurrentImageIndex((prev) => (prev + 1) % property.images.length);
@@ -91,33 +120,36 @@ export default function PropertyDetail() {
     setIsMapModalOpen(false);
   };
 
-  const handleDownloadBrochure = () => {
+  const handleViewBrochure = () => {
+    setIsBrochureModalOpen(true);
+  };
+
+  const handleCloseBrochure = () => {
+    setIsBrochureModalOpen(false);
+  };
+
+  const getBrochureUrl = () => {
     if (property.id === 'putters-way') {
-      // Download the specific Putters Way brochure
-      const link = document.createElement('a');
-      link.href = '/downloads/Putters Way - Brochure.pdf';
-      link.download = 'Putters Way - Brochure.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      return '/downloads/Putters Way - Brochure.pdf';
     } else if (property.id === 'rangeview') {
-      // Download the specific Range View brochure
-      const link = document.createElement('a');
-      link.href = '/downloads/Range View - Brochure.pdf';
-      link.download = 'Range View - Brochure.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      return '/downloads/Range View - Brochure.pdf';
     } else if (property.id === 'the-fairways') {
-      // Download the specific The Fairways brochure
-      const link = document.createElement('a');
-      link.href = '/downloads/The Fairways - Brochure.pdf';
-      link.download = 'The Fairways - Brochure.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      return '/downloads/The Fairways - Brochure.pdf';
+    } else if (property.id === 'the-captains') {
+      return '/downloads/The Captains - Brochure.pdf';
+    } else if (property.id === 'cragleigh-house') {
+      return '/downloads/Cragleigh House - Brochure.pdf';
+    }
+    return null;
+  };
+
+  const handleDownloadBrochure = () => {
+    const brochureUrl = getBrochureUrl();
+    if (brochureUrl) {
+      // Open brochure modal for properties with brochures
+      setIsBrochureModalOpen(true);
     } else {
-      // Default brochure download for other properties
+      // Default brochure request for other properties
       const subject = encodeURIComponent(`Brochure Request - ${property.name}`);
       const body = encodeURIComponent(`I would like to request a brochure for ${property.name} at The Adare Collection for Ryder Cup 2027.\n\nThank you.`);
       window.location.href = `mailto:info@theadarecollection.ie?subject=${subject}&body=${body}`;
@@ -263,14 +295,12 @@ export default function PropertyDetail() {
                       MAP
                     </Button>
 
-                    {property.id !== 'the-captains' && property.id !== 'cragleigh-house' && (
-                      <Button 
-                        onClick={handleDownloadBrochure}
-                        className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
-                      >
-                        BROCHURE
-                      </Button>
-                    )}
+                    <Button 
+                      onClick={handleDownloadBrochure}
+                      className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
+                    >
+                      BROCHURE
+                    </Button>
                   </div>
 
                   {/* Share Section */}
@@ -465,20 +495,16 @@ export default function PropertyDetail() {
                     <div className="flex justify-center space-x-2">
                       <Button 
                         onClick={handleViewMap}
-                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${
-                          (property.id === 'the-captains' || property.id === 'cragleigh-house') ? 'w-full' : 'w-1/2'
-                        }`}
+                        className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
                       >
                         MAP
                       </Button>
-                      {property.id !== 'the-captains' && property.id !== 'cragleigh-house' && (
-                        <Button 
-                          onClick={handleDownloadBrochure}
-                          className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
-                        >
-                          BROCHURE
-                        </Button>
-                      )}
+                      <Button 
+                        onClick={handleDownloadBrochure}
+                        className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
+                      >
+                        BROCHURE
+                      </Button>
                     </div>
                   </div>
 
@@ -538,6 +564,16 @@ export default function PropertyDetail() {
         onClose={handleCloseMap}
         propertyId={property?.id || ''}
       />
+      
+      {/* Brochure Modal */}
+      {getBrochureUrl() && (
+        <BrochureModal 
+          isOpen={isBrochureModalOpen}
+          onClose={handleCloseBrochure}
+          propertyId={property?.id || ''}
+          title={property?.name || ''}
+        />
+      )}
     </div>
   );
 }
