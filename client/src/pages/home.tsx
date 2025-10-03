@@ -348,30 +348,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Exclusive Access Teaser */}
-      <section className="py-16 px-6 bg-neutral-100 w-full" data-testid="exclusive-teaser-section">
-        <div className="w-full text-center">
-          <h2 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-6" data-testid="exclusive-teaser-title">
-            A New Chapter Begins Here, With You
-          </h2>
-          
-          <div className="text-center">
-            <div className="text-base text-gray-900 leading-relaxed max-w-5xl mx-auto mb-12">
-              <p className="font-serif text-base font-normal" data-testid="exclusive-quote">
-                "A curated collection of ultra-private estate homes, offered exclusively during Ryder Cup 2027. Some inside the Adare Manor estate. Others, just minutes away — each delivering unmatched comfort, security, and access."
-              </p>
-            </div>
-            <Link href="/properties">
-              <Button 
-                className="border border-gray-700 bg-transparent text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200"
-                data-testid="button-access-exclusive"
-              >
-                ACCESS EXCLUSIVE PROPERTIES
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>
