@@ -37,7 +37,6 @@ jobs:
         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
         projectId: 'theadarecollection-site'
         channelId: 'live'
-        entryPoint: 'dist/public'
         
     - name: Deploy to Firebase (Fallback)
       if: failure()
