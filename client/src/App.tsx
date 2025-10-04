@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { GoogleAnalytics, GoogleSearchConsole } from "@/components/google-analytics";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import PropertyDetail from "@/pages/property-detail";
@@ -12,6 +13,7 @@ import NotFound from "@/pages/not-found";
 import PropertiesPage from "@/pages/properties";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import TermsConditions from "@/pages/terms-conditions";
+import FAQ from "@/pages/faq";
 
 function Router() {
   return (
@@ -21,6 +23,7 @@ function Router() {
       <Route path="/property/:id" component={PropertyDetail} />
       <Route path="/properties" component={PropertiesPage} />
       <Route path="/contact" component={Contact} />
+      <Route path="/faq" component={FAQ} />
       <Route path="/privacy" component={PrivacyPolicy} />
       <Route path="/terms" component={TermsConditions} />
       <Route component={NotFound} />
@@ -40,6 +43,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <GoogleAnalytics />
+        <GoogleSearchConsole />
         <Toaster />
         <ScrollToTop />
         <Router />

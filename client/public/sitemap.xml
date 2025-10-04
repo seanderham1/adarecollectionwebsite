@@ -25,6 +25,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theadarecollection.com/faq</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://theadarecollection.com/property/rangeview</loc>
     <lastmod>2025-01-13</lastmod>
     <changefreq>weekly</changefreq>
