@@ -59,17 +59,43 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
     "event": {
       "@type": "SportsEvent",
       "name": "Ryder Cup 2027",
+      "description": "The 2027 Ryder Cup golf tournament at Adare Manor, featuring the best golfers from Europe and the United States.",
       "startDate": "2027-09-29",
       "endDate": "2027-10-01",
+      "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
-        "name": "Adare Manor",
+        "name": "Adare Manor Golf Course",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Adare Manor",
           "addressLocality": "Adare",
           "addressRegion": "Limerick",
-          "addressCountry": "IE"
+          "addressCountry": "IE",
+          "postalCode": "V94 W8WR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 52.5644,
+          "longitude": -8.7892
         }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Ryder Cup Europe",
+        "url": "https://www.rydercup.com"
+      },
+      "performer": {
+        "@type": "SportsTeam",
+        "name": "European Ryder Cup Team"
+      },
+      "image": "https://theadarecollection.com/images/hero/adaremanor-img1.webp",
+      "offers": {
+        "@type": "Offer",
+        "name": "Ryder Cup 2027 Tickets",
+        "description": "Official tickets for the 2027 Ryder Cup at Adare Manor",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.rydercup.com"
       }
     }
   };
