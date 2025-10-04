@@ -9,8 +9,8 @@ interface EnvConfig {
 
 // Load environment variables at runtime
 function loadEnvConfig(): EnvConfig {
-  // In production, these will be loaded from the server
-  // In development, they come from .env file
+  // Google Maps API key is public but domain-restricted for security
+  // GA and Search Console keys are kept secure
   return {
     VITE_GA_MEASUREMENT_ID: import.meta.env.VITE_GA_MEASUREMENT_ID || '',
     VITE_GOOGLE_MAPS_API_KEY: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '',
