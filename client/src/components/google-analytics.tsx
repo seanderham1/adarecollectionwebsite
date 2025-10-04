@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
+import { env } from '@/lib/env';
 
 // Google Analytics 4 setup
 export function GoogleAnalytics() {
   useEffect(() => {
-    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    const measurementId = env.VITE_GA_MEASUREMENT_ID;
     
     if (!measurementId) {
       console.log('Google Analytics: No measurement ID provided');
@@ -36,7 +37,7 @@ export function GoogleAnalytics() {
 // Google Search Console verification
 export function GoogleSearchConsole() {
   useEffect(() => {
-    const verificationCode = import.meta.env.VITE_GOOGLE_SITE_VERIFICATION;
+    const verificationCode = env.VITE_GOOGLE_SITE_VERIFICATION;
     
     if (!verificationCode) {
       console.log('Google Search Console: No verification code provided');

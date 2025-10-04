@@ -19,6 +19,12 @@ export default defineConfig({
         ]
       : []),
   ],
+  define: {
+    // Exclude sensitive environment variables from build
+    'import.meta.env.VITE_GA_MEASUREMENT_ID': JSON.stringify(process.env.VITE_GA_MEASUREMENT_ID || ''),
+    'import.meta.env.VITE_GOOGLE_MAPS_API_KEY': JSON.stringify(process.env.VITE_GOOGLE_MAPS_API_KEY || ''),
+    'import.meta.env.VITE_GOOGLE_SITE_VERIFICATION': JSON.stringify(process.env.VITE_GOOGLE_SITE_VERIFICATION || ''),
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
