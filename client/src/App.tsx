@@ -5,6 +5,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GoogleAnalytics, GoogleSearchConsole } from "@/components/google-analytics";
+import { ComingSoon } from "@/components/coming-soon";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import PropertyDetail from "@/pages/property-detail";
@@ -47,7 +48,9 @@ function App() {
         <GoogleSearchConsole />
         <Toaster />
         <ScrollToTop />
-        <Router />
+        <ComingSoon>
+          <Router />
+        </ComingSoon>
       </TooltipProvider>
     </QueryClientProvider>
   );

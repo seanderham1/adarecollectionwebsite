@@ -32,7 +32,20 @@ VITE_GOOGLE_SITE_VERIFICATION=JcCXU571lDgwzeNXmi3aPO2_S9zVR-H1NJR64hILP8s
 - **Config**: `firebase.json` (public: "dist/public")
 - **Build**: `npm run build` → `dist/public/`
 
-### 6. Common Issues & Solutions
+### 6. API Key Security Model
+
+**Current Approach** (as of latest update):
+- **Google Maps API Key**: Public but domain-restricted (standard practice)
+- **Google Analytics ID**: Secure, loaded at runtime
+- **Google Search Console**: Secure, loaded at runtime
+- **Environment Variables**: Loaded via `client/src/lib/env.ts`
+
+**Important**: Google Maps API keys are designed to be public but secured by:
+- Domain restrictions in Google Cloud Console
+- API quotas and billing limits
+- Usage monitoring
+
+### 7. Common Issues & Solutions
 
 **Authentication Error**: 
 - Run `firebase login --reauth`
@@ -49,7 +62,12 @@ VITE_GOOGLE_SITE_VERIFICATION=JcCXU571lDgwzeNXmi3aPO2_S9zVR-H1NJR64hILP8s
 - Check `firebase.json` configuration
 - Ensure hosting site is active
 
-### 7. Quick Commands
+**Maps Not Working**:
+- Verify Google Maps API key is accessible in build
+- Check domain restrictions in Google Cloud Console
+- Ensure API key has proper permissions
+
+### 8. Quick Commands
 ```bash
 # Re-authenticate
 firebase login --reauth
@@ -64,7 +82,7 @@ firebase deploy --only hosting
 firebase hosting:sites:list
 ```
 
-### 8. GitHub Secrets Required
+### 9. GitHub Secrets Required
 - `FIREBASE_TOKEN` - Firebase CI authentication
 - `VITE_GA_MEASUREMENT_ID` - Google Analytics
 - `VITE_GOOGLE_MAPS_API_KEY` - Google Maps
