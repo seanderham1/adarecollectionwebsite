@@ -14,7 +14,7 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [images, setImages] = useState<string[]>([]);
-  const [lastPagePdf, setLastPagePdf] = useState<string>("");
+  const [lastPageImage, setLastPageImage] = useState<string>("");
 
   // Close modal on Escape key
   useEffect(() => {
@@ -66,48 +66,48 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
           const validImages = results.filter((img): img is string => img !== null);
           
           setImages(validImages);
-          // Set total pages based on property - some have PDF final page, others are all images
+          // Set total pages based on property - all pages are now WebP images
           let totalPageCount = validImages.length;
           if (propertyId === 'rangeview') {
-            // Range View: pages 0-10 are images, page 11 is PDF final page
+            // Range View: pages 0-10 are images, page 11 is WebP final page
             totalPageCount = validImages.length + 1;
           } else if (propertyId === 'the-fairways') {
-            // The Fairways: pages 0-12 are images, page 14 is PDF final page
+            // The Fairways: pages 0-12 are images, page 13 is WebP final page
             totalPageCount = validImages.length + 1;
           } else if (propertyId === 'the-captains') {
-            // The Captains: pages 0-11 are images, page 12 is PDF final page
+            // The Captains: pages 0-11 are images, page 12 is WebP final page
             totalPageCount = validImages.length + 1;
           } else if (propertyId === 'cragleigh-house') {
-            // Cragleigh House: pages 0-10 are images, page 11 is PDF final page
+            // Cragleigh House: pages 0-10 are images, page 11 is WebP final page
             totalPageCount = validImages.length + 1;
           } else {
-            // Other properties: images + 1 PDF final page
+            // Other properties: images + 1 WebP final page
             totalPageCount = validImages.length + 1;
           }
           setTotalPages(totalPageCount);
           
-          // Use the extracted final page PDF based on property ID
-          let finalPagePdfPath = '';
+          // Use the WebP final page image based on property ID
+          let finalPageImagePath = '';
           switch(propertyId) {
             case 'rangeview':
-              finalPagePdfPath = '/images/brochures/rangeview/last-page.pdf';
+              finalPageImagePath = '/images/brochures/rangeview/last-page.webp';
               break;
             case 'putters-way':
-              finalPagePdfPath = '/images/brochures/putters-way/last-page.pdf';
+              finalPageImagePath = '/images/brochures/putters-way/last-page.webp';
               break;
             case 'the-fairways':
-              finalPagePdfPath = '/images/brochures/the-fairways/last-page.pdf';
+              finalPageImagePath = '/images/brochures/the-fairways/last-page.webp';
               break;
             case 'the-captains':
-              finalPagePdfPath = '/images/brochures/the-captains/last-page.pdf';
+              finalPageImagePath = '/images/brochures/the-captains/last-page.webp';
               break;
             case 'cragleigh-house':
-              finalPagePdfPath = '/images/brochures/cragleigh-house/last-page.pdf';
+              finalPageImagePath = '/images/brochures/cragleigh-house/last-page.webp';
               break;
             default:
-              finalPagePdfPath = `/images/brochures/${propertyId}/last-page.pdf`;
+              finalPageImagePath = `/images/brochures/${propertyId}/last-page.webp`;
           }
-          setLastPagePdf(finalPagePdfPath);
+          setLastPageImage(finalPageImagePath);
           setIsLoading(false);
         } catch (error) {
           console.error('Error loading brochure:', error);
@@ -229,35 +229,20 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
           {!isLoading && !hasError && (
             <>
               {isLastPage ? (
-                // Show PDF for last page with clickable links
-                <div 
+                // Show WebP image for last page (same as other pages)
+                <img
+                  src={lastPageImage}
+                  alt={`${title} Brochure - Page ${currentPage + 1}`}
                   className="shadow-lg"
                   style={{ 
-                    width: '1000px',
-                    height: '562px', // 1440:810 aspect ratio (1000/1440*810 = 562)
                     maxWidth: '90%',
                     maxHeight: '90%',
-                    backgroundColor: 'white',
-                    overflow: 'hidden',
-                    border: 'none',
-                    position: 'relative'
+                    width: 'auto',
+                    height: 'auto',
                   }}
-                >
-                  <iframe
-                    src={`${lastPagePdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH&disableprint=1`}
-                    className="border-0"
-                    style={{ 
-                      width: '100%',
-                      height: '100%',
-                      border: 'none',
-                      backgroundColor: 'white',
-                      display: 'block'
-                    }}
-                    title={`${title} Brochure - Last Page`}
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
-                  />
-                </div>
+                  onLoad={handleImageLoad}
+                  onError={handleImageError}
+                />
               ) : (
                 // Show optimized WebP image
                 <img

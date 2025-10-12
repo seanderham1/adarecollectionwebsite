@@ -38,7 +38,6 @@ export const properties: Property[] = [
       "/images/houses/house 2/house-2-master-bedroom.webp",
       "/images/houses/house 2/house-2-bedroom-2.webp",
       "/images/houses/house 2/house-2-bedroom-1.webp",
-      "/images/houses/house 2/house-2-bedroom-3.webp",
       "/images/houses/house 2/house-2-games-room.webp",
       "/images/houses/house 2/house-2-study.webp",
       "/images/houses/house 2/house-2-sauna.webp",
@@ -54,6 +53,7 @@ export const properties: Property[] = [
       "Large outdoor areas including 3230ft²/300m² of landscaped gardens and 2690ft²/250m² of Liscannor paving, perfect for marquee events (up to 100 guests)"
     ],
     amenities: [
+      "Chef cooked breakfast",
       "Private cinema room with retractable projector, stereo system, and automatic blinds",
       "Fully equipped lounge bar with draught taps, keg room, pool table and classic 'Pac-man' arcade game.",
       "Fitness suite including gym, sauna, and shower facilities",
@@ -119,6 +119,7 @@ export const properties: Property[] = [
       "Separate dining area capable of hosting 50+ guests."
     ],
     amenities: [
+      "Chef cooked breakfast",
       "Daily serviced fresh towels and linens",
       "High-speed Wi-Fi and satellite TV",
       "Games room with pool table, table tennis, and dart board – convertible into a fitness studio with treadmill (if required)",
@@ -210,6 +211,7 @@ export const properties: Property[] = [
       "Elegant dining area adjoining a conservatory that opens to the garden"
     ],
     amenities: [
+      "Chef cooked breakfast",
       "Fitness Suite – a fully equipped private gym above the garage",
       "Firepit Terrace & Gazebo – covered outdoor living area with built-in fireplace, lounge seating for 10–12, and Kamado Joe BBQ",
       "Secluded rear garden with patio, dining area, and cushioned seating for al fresco entertaining",
@@ -257,6 +259,7 @@ export const properties: Property[] = [
       "Extensive garden space suitable for outdoor receptions and large gatherings"
     ],
     amenities: [
+      "Chef cooked breakfast",
       "Private gated and secure manor residence",
       "Beautifully landscaped outdoor areas",
       "Flexible living and dining spaces for formal or relaxed hosting",
@@ -269,44 +272,5 @@ export const properties: Property[] = [
     },
     walkingDistance: "15 minutes drive",
     videoUrl: "/videos/cragleighhouse.mp4"
-  },
-  {
-    id: "riverbank-manor",
-    name: "Riverbank Manor",
-    subtitle: "Classic Style with River Views",
-    bedrooms: 6,
-    description: "Grand residence overlooking the river, with formal reception rooms and landscaped gardens for entertaining.",
-    fullDescription: "Riverbank Manor stands as a grand residence overlooking the serene river, offering classic style and sophisticated entertaining spaces. This magnificent property features formal reception rooms designed for elegant gatherings, alongside beautifully landscaped gardens that provide the perfect backdrop for outdoor entertaining. The six-bedroom manor combines traditional architectural elements with modern luxury amenities, creating an atmosphere of refined grandeur. Each room has been thoughtfully designed to maximize the stunning river views, while the formal dining and reception areas can accommodate large groups for corporate hospitality or private celebrations. The landscaped gardens offer multiple outdoor entertaining areas, from intimate terraces to expansive lawns, all with the river as a breathtaking natural backdrop. This is the perfect choice for those seeking a classic, grand residence with exceptional entertaining capabilities during Ryder Cup 2027.",
-    price: "POA",
-    images: [
-      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1200&h=800",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800",
-      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800"
-    ],
-    features: [
-      "6 Spacious Double Ensuite Bedrooms",
-      "Formal Reception Rooms",
-      "Grand Dining Room",
-      "Landscaped Gardens",
-      "River Views Throughout",
-      "Classic Architectural Style",
-      "Multiple Entertaining Areas",
-      "Private River Access"
-    ],
-    amenities: [
-      "High-speed WiFi and Satellite TV",
-      "Daily Serviced Fresh Towels and Linens",
-      "Private Parking Included",
-      "Executive Chauffeur Available",
-      "Private Chef Services",
-      "Concierge Support",
-      "Garden Maintenance Services",
-      "Perfect for Large Group Entertaining"
-    ],
-    location: {
-      lat: 52.5620,
-      lng: -8.7870
-    },
-    walkingDistance: "7 minutes to first tee"
   }
 ];

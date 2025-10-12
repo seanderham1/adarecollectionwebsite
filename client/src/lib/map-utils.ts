@@ -6,8 +6,9 @@ let isMapScriptLoading = false;
 let mapScriptLoaded = false;
 const mapCallbacks: Array<() => void> = [];
 
-// Constants for walk radius
+// Constants for walk and drive radius
 export const WALK_RADIUS_METERS = 800; // Approximately 10 minutes walk at average speed
+export const DRIVE_RADIUS_METERS = 65000; // Approximately 1 hour drive at average speed (65km)
 export const MAP_CENTER = { lat: 52.562213, lng: -8.781279 };
 
 /**
@@ -303,10 +304,10 @@ export function addWalkRadiusCircle(map: google.maps.Map, center?: google.maps.L
 }
 
 /**
- * Add walk radius circle to map (for hero section with walking icon)
+ * Add walk and drive radius circles to map (for hero section)
  */
 export function addHeroWalkRadiusCircle(map: google.maps.Map) {
-  // Create the circle
+  // Create the walk circle
   const walkCircle = new google.maps.Circle({
     strokeColor: '#142a4d',
     strokeOpacity: 0.8,
@@ -318,6 +319,21 @@ export function addHeroWalkRadiusCircle(map: google.maps.Map) {
     radius: WALK_RADIUS_METERS,
     zIndex: 20,
     clickable: false,
+  });
+
+  // Create the drive circle (initially hidden)
+  const driveCircle = new google.maps.Circle({
+    strokeColor: '#142a4d',
+    strokeOpacity: 0.6,
+    strokeWeight: 1.5,
+    fillColor: 'transparent',
+    fillOpacity: 0,
+    map,
+    center: MAP_CENTER,
+    radius: DRIVE_RADIUS_METERS,
+    zIndex: 15,
+    clickable: false,
+    visible: false, // Start hidden
   });
 
   // Create a custom overlay for the walking icon and text
@@ -399,17 +415,135 @@ export function addHeroWalkRadiusCircle(map: google.maps.Map) {
     }
   }
 
-  // Calculate position at the top of the circle for the label
-  const earthRadius = 6371000; // Earth's radius in meters
-  const dLat = WALK_RADIUS_METERS / earthRadius;
-  const labelLat = MAP_CENTER.lat + (dLat * 180 / Math.PI);
-  const labelPosition = new google.maps.LatLng(labelLat, MAP_CENTER.lng);
+  // Create a custom overlay for the drive icon and text
+  class DriveRadiusLabel extends google.maps.OverlayView {
+    private div_: HTMLElement | null = null;
+    private position_: google.maps.LatLng;
 
-  // Add the custom label
-  const walkLabel = new WalkRadiusLabel(labelPosition);
+    constructor(position: google.maps.LatLng) {
+      super();
+      this.position_ = position;
+    }
+
+    onAdd() {
+      const div = document.createElement('div');
+      div.style.cssText = `
+        position: absolute;
+        background-color: #142a4d;
+        color: white;
+        padding: 6px 10px;
+        border-radius: 16px;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        pointer-events: none;
+        z-index: 1000;
+      `;
+
+      // Create car icon using Lucide SVG
+      const carSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      carSvg.setAttribute('viewBox', '0 0 24 24');
+      carSvg.setAttribute('width', '14');
+      carSvg.setAttribute('height', '14');
+      carSvg.setAttribute('fill', 'none');
+      carSvg.setAttribute('stroke', 'currentColor');
+      carSvg.setAttribute('stroke-width', '2');
+      carSvg.setAttribute('stroke-linecap', 'round');
+      carSvg.setAttribute('stroke-linejoin', 'round');
+      carSvg.style.cssText = `
+        filter: brightness(0) invert(1);
+      `;
+      
+      // Lucide Car icon paths
+      const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path1.setAttribute('d', 'M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2');
+      carSvg.appendChild(path1);
+      
+      const circle1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle1.setAttribute('cx', '7');
+      circle1.setAttribute('cy', '17');
+      circle1.setAttribute('r', '2');
+      carSvg.appendChild(circle1);
+      
+      const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path2.setAttribute('d', 'M9 17h6');
+      carSvg.appendChild(path2);
+      
+      const circle2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle2.setAttribute('cx', '17');
+      circle2.setAttribute('cy', '17');
+      circle2.setAttribute('r', '2');
+      carSvg.appendChild(circle2);
+
+      const textSpan = document.createElement('span');
+      textSpan.textContent = '1 hour drive';
+
+      div.appendChild(carSvg);
+      div.appendChild(textSpan);
+
+      this.div_ = div;
+      const panes = this.getPanes();
+      if (panes) {
+        panes.overlayLayer.appendChild(div);
+      }
+    }
+
+    draw() {
+      if (this.div_) {
+        const overlayProjection = this.getProjection();
+        if (overlayProjection) {
+          const position = overlayProjection.fromLatLngToDivPixel(this.position_);
+          if (position) {
+            // Position the label at the top of the circle
+            this.div_.style.left = (position.x - this.div_.offsetWidth / 2) + 'px';
+            this.div_.style.top = (position.y - 10) + 'px';
+          }
+        }
+      }
+    }
+
+    onRemove() {
+      if (this.div_ && this.div_.parentNode) {
+        this.div_.parentNode.removeChild(this.div_);
+        this.div_ = null;
+      }
+    }
+
+    setVisible(visible: boolean) {
+      if (this.div_) {
+        this.div_.style.display = visible ? 'flex' : 'none';
+      }
+    }
+  }
+
+  // Calculate position at the top of the walk circle for the label
+  const earthRadius = 6371000; // Earth's radius in meters
+  const walkDLat = WALK_RADIUS_METERS / earthRadius;
+  const walkLabelLat = MAP_CENTER.lat + (walkDLat * 180 / Math.PI);
+  const walkLabelPosition = new google.maps.LatLng(walkLabelLat, MAP_CENTER.lng);
+
+  // Calculate position at the top of the drive circle for the label
+  const driveDLat = DRIVE_RADIUS_METERS / earthRadius;
+  const driveLabelLat = MAP_CENTER.lat + (driveDLat * 180 / Math.PI);
+  const driveLabelPosition = new google.maps.LatLng(driveLabelLat, MAP_CENTER.lng);
+
+  // Add the custom labels
+  const walkLabel = new WalkRadiusLabel(walkLabelPosition);
   walkLabel.setMap(map);
 
-  return { circle: walkCircle, label: walkLabel };
+  const driveLabel = new DriveRadiusLabel(driveLabelPosition);
+  driveLabel.setMap(map);
+
+  return { 
+    walkCircle, 
+    walkLabel, 
+    driveCircle, 
+    driveLabel 
+  };
 }
 
 /**
@@ -433,7 +567,7 @@ export function addGolfCourseTextOverlay(map: google.maps.Map) {
         background-color: transparent;
         color: #1a1a1a;
         padding: 0;
-        font-size: 16px;
+        margin: 0;
         font-weight: 500;
         font-family: 'Google Sans', 'Roboto', sans-serif;
         text-align: center;
@@ -441,6 +575,11 @@ export function addGolfCourseTextOverlay(map: google.maps.Map) {
         z-index: 1000;
         line-height: 1.2;
         text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+        width: 24px;
+        height: 24px;
       `;
 
       // Create golf course icon
@@ -456,9 +595,9 @@ export function addGolfCourseTextOverlay(map: google.maps.Map) {
       
       // Create SVG golf course icon
       const golfSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      golfSvg.setAttribute('viewBox', '0 -960 960 960');
       golfSvg.setAttribute('width', '24');
       golfSvg.setAttribute('height', '24');
-      golfSvg.setAttribute('viewBox', '0 -960 960 960');
       golfSvg.setAttribute('fill', '#1a1a1a');
       golfSvg.style.filter = 'drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white)';
       
@@ -472,6 +611,10 @@ export function addGolfCourseTextOverlay(map: google.maps.Map) {
 
       const textSpan = document.createElement('div');
       textSpan.innerHTML = 'Ryder Cup<br>Golf Course';
+      textSpan.style.cssText = `
+        font-size: 16px;
+        white-space: nowrap;
+      `;
       div.appendChild(textSpan);
 
       this.div_ = div;
@@ -479,22 +622,63 @@ export function addGolfCourseTextOverlay(map: google.maps.Map) {
       if (panes) {
         panes.overlayLayer.appendChild(div);
       }
+
+      // Add zoom change listener to update sizing
+      const zoomListener = map.addListener('zoom_changed', () => {
+        this.updateSize();
+      });
+      
+      // Store listener for cleanup
+      (this as any).zoomListener = zoomListener;
+      
+      // Initial size calculation
+      this.updateSize();
+    }
+
+    updateSize() {
+      if (!this.div_) return;
+      
+      const zoom = map.getZoom() || 15;
+      
+      // Calculate scale factor based on zoom level
+      let scale = 1;
+      
+      if (zoom >= 12) {
+        scale = 1;
+      } else if (zoom >= 10) {
+        scale = 0.83;
+      } else if (zoom >= 8) {
+        scale = 0.67;
+      } else {
+        scale = 0.5;
+      }
+      
+      // Apply scale transform from the center of the 24x24 container
+      this.div_.style.transform = `scale(${scale})`;
+      this.div_.style.transformOrigin = 'center center';
     }
 
     draw() {
-      if (this.div_) {
-        const overlayProjection = this.getProjection();
-        if (overlayProjection) {
-          const position = overlayProjection.fromLatLngToDivPixel(this.position_);
-          if (position) {
-            this.div_.style.left = (position.x - this.div_.offsetWidth / 2) + 'px';
-            this.div_.style.top = (position.y - this.div_.offsetHeight / 2) + 'px';
-          }
-        }
+      const overlayProjection = this.getProjection();
+      if (!overlayProjection || !this.div_) return;
+
+      const position = overlayProjection.fromLatLngToDivPixel(this.position_);
+      if (position) {
+        // Position the 24x24 container so its center is at the exact coordinates
+        const left = Math.round(position.x - 12); // 12 = half of 24px width
+        const top = Math.round(position.y - 12);  // 12 = half of 24px height
+        
+        this.div_.style.left = left + 'px';
+        this.div_.style.top = top + 'px';
       }
     }
 
     onRemove() {
+      // Clean up zoom listener
+      if ((this as any).zoomListener) {
+        google.maps.event.removeListener((this as any).zoomListener);
+      }
+      
       if (this.div_ && this.div_.parentNode) {
         this.div_.parentNode.removeChild(this.div_);
         this.div_ = null;

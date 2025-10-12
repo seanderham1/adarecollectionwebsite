@@ -63,13 +63,13 @@ export function ComingSoon({ children }: ComingSoonProps) {
     return (
       <div>
         {children}
-        {/* Admin logout button - positioned in top right */}
+        {/* Logout button - positioned in bottom right */}
         <button
           onClick={handleLogout}
-          className="fixed top-4 right-4 z-50 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors"
+          className="fixed bottom-4 right-4 z-50 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors"
           title="Logout from admin access"
         >
-          Admin Logout
+          Logout
         </button>
       </div>
     );

@@ -67,7 +67,7 @@ export default function HeroSection() {
   const [isZoomedOut, setIsZoomedOut] = useState(false);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const originalStateRef = useRef<{center: google.maps.LatLng, zoom: number} | null>(null);
-  const walkRadiusElementsRef = useRef<{circle: google.maps.Circle, label: any} | null>(null);
+  const radiusElementsRef = useRef<{walkCircle: google.maps.Circle, walkLabel: any, driveCircle: google.maps.Circle, driveLabel: any} | null>(null);
 
   const scrollToProperties = () => {
     const el = document.getElementById("properties");
@@ -102,7 +102,7 @@ export default function HeroSection() {
         // Use requestAnimationFrame for smoother zoom transition
         requestAnimationFrame(() => {
           if (mapRef.current) {
-            mapRef.current.setZoom(11);
+            mapRef.current.setZoom(9);
           }
         });
         setIsZoomedOut(true);
@@ -149,8 +149,8 @@ export default function HeroSection() {
           zoom: 15
         };
 
-        // Add walk radius circle and label
-        walkRadiusElementsRef.current = addHeroWalkRadiusCircle(map);
+        // Add walk and drive radius circles and labels
+        radiusElementsRef.current = addHeroWalkRadiusCircle(map);
 
         // Load properties and add markers with lazy loading
         setTimeout(() => {
@@ -192,7 +192,34 @@ export default function HeroSection() {
               });
             });
             
-            // Add golf course text overlay after markers are loaded to ensure it appears on top
+            // Add additional non-clickable markers
+            console.log("Adding additional non-clickable markers");
+            
+            // Marker 1: 52.86637358952869, -9.106905125730453
+            const marker1Props = {
+              id: "marker-1",
+              title: "Additional Location 1",
+              desc: "Future property location"
+            };
+            const marker1 = createPropertyMarker(map, { 
+              lat: 52.86637358952869, 
+              lng: -9.106905125730453 
+            }, marker1Props);
+            // No click listener added - marker is non-interactive
+            
+            // Marker 2: 52.654085127621414, -8.63587254864716
+            const marker2Props = {
+              id: "marker-2", 
+              title: "Additional Location 2",
+              desc: "Future property location"
+            };
+            const marker2 = createPropertyMarker(map, { 
+              lat: 52.654085127621414, 
+              lng: -8.63587254864716 
+            }, marker2Props);
+            // No click listener added - marker is non-interactive
+            
+            // Add golf course text overlay after ALL markers are loaded to ensure it appears on top
             addGolfCourseTextOverlay(map);
           })
           .catch((error) => {
@@ -294,15 +321,21 @@ export default function HeroSection() {
             return {};
           });
           
-        // Add zoom change listener to reapply styling and manage walk radius visibility
+        // Add zoom change listener to reapply styling and manage radius visibility
         map.addListener("zoom_changed", () => {
           const newZ = map.getZoom() ?? 15;
           
-          // Manage walk radius visibility based on zoom level
-          if (walkRadiusElementsRef.current) {
-            const shouldShowWalkRadius = newZ >= 13; // Show when zoom level is 13 or higher (hide 3 levels out from 15)
-            walkRadiusElementsRef.current.circle.setVisible(shouldShowWalkRadius);
-            walkRadiusElementsRef.current.label.setVisible(shouldShowWalkRadius);
+          // Manage radius visibility based on zoom level
+          if (radiusElementsRef.current) {
+            // Walk radius: Show when zoom level is 13 or higher (hide 3 levels out from 15)
+            const shouldShowWalkRadius = newZ >= 13;
+            radiusElementsRef.current.walkCircle.setVisible(shouldShowWalkRadius);
+            radiusElementsRef.current.walkLabel.setVisible(shouldShowWalkRadius);
+            
+            // Drive radius: Show when zoom level is 11 or lower (fade in around zoom 11)
+            const shouldShowDriveRadius = newZ <= 11;
+            radiusElementsRef.current.driveCircle.setVisible(shouldShowDriveRadius);
+            radiusElementsRef.current.driveLabel.setVisible(shouldShowDriveRadius);
           }
           
           map.data.setStyle((f) => {
@@ -370,74 +403,6 @@ export default function HeroSection() {
           }
         });
 
-        // Load properties and add markers with lazy loading
-        setTimeout(() => {
-          console.log("Loading properties from:", PROPERTIES_URL);
-          fetch(PROPERTIES_URL)
-          .then((r) => {
-            console.log("Fetch response status:", r.status);
-            if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText}`);
-            return r.json();
-          })
-          .then((fc) => {
-            console.log("Properties data loaded:", fc);
-            if (!fc || !Array.isArray(fc.features)) {
-              throw new Error("Bad properties geojson structure");
-            }
-            console.log("Found", fc.features.length, "properties");
-            fc.features.forEach((feat: any, index: number) => {
-              console.log(`Processing feature ${index}:`, feat);
-              if (!feat.geometry || feat.geometry.type !== "Point") {
-                console.log(`Skipping feature ${index}: not a Point geometry`);
-                return;
-              }
-              const [lng, lat] = feat.geometry.coordinates;
-              const p = feat.properties || {};
-              console.log(`Adding marker for ${p.title} at [${lat}, ${lng}]`);
-              
-              const marker = createPropertyMarker(map, { lat, lng }, p);
-              
-              // Add click listener to marker
-              marker.addListener("click", () => {
-                if (currentInfoWindow) {
-                  currentInfoWindow.close();
-                }
-                currentInfoWindow = new google.maps.InfoWindow({
-                  content: createPropertyInfoWindowContent(p),
-                  maxWidth: 280,
-                });
-                currentInfoWindow.open(map, marker);
-              });
-            });
-          })
-          .catch((error) => {
-            console.error("Error loading properties:", error);
-            // fallback marker if properties.geojson is missing
-            console.log("Adding fallback marker");
-            const fallbackProps = {
-              id: "putters-way",
-              title: "Putters Way",
-              desc: "Premium residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
-            };
-            
-            const marker = createPropertyMarker(
-              map,
-              { lat: 52.55886548383084, lng: -8.78699909386544 },
-              fallbackProps
-            );
-            
-            marker.addListener("click", () => {
-              if (currentInfoWindow) {
-                currentInfoWindow.close();
-              }
-              currentInfoWindow = new google.maps.InfoWindow({
-                content: createPropertyInfoWindowContent(fallbackProps),
-                maxWidth: 280,
-              });
-              currentInfoWindow.open(map, marker);
-            });
-          });
-        }, 100); // Delay properties loading by 100ms
         }, 50); // Delay GeoJSON loading by 50ms
       } catch (error) {
         console.error("Error initializing map:", error);
