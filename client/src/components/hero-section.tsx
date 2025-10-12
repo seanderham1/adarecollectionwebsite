@@ -102,7 +102,7 @@ export default function HeroSection() {
         // Use requestAnimationFrame for smoother zoom transition
         requestAnimationFrame(() => {
           if (mapRef.current) {
-            mapRef.current.setZoom(9);
+            mapRef.current.setZoom(8);
           }
         });
         setIsZoomedOut(true);
