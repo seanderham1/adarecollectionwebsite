@@ -1,12 +1,8 @@
 #!/bin/bash
 
-# Script to update Firebase token for GitHub Actions
-# Run this when your Firebase token expires
-
 echo "🔄 Generating new Firebase CI token..."
 echo "This will open a browser window for authentication."
 
-# Generate new token
 NEW_TOKEN=$(firebase login:ci)
 
 if [ $? -eq 0 ]; then
