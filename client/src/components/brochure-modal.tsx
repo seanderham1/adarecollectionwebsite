@@ -71,41 +71,26 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
           if (propertyId === 'rangeview') {
             // Range View: pages 0-10 are images, page 11 is WebP final page
             totalPageCount = validImages.length + 1;
-          } else if (propertyId === 'the-fairways') {
-            // The Fairways: pages 0-12 are images, page 13 is WebP final page
-            totalPageCount = validImages.length + 1;
-          } else if (propertyId === 'the-captains') {
-            // The Captains: pages 0-11 are images, page 12 is WebP final page
-            totalPageCount = validImages.length + 1;
           } else if (propertyId === 'cragleigh-house') {
             // Cragleigh House: pages 0-10 are images, page 11 is WebP final page
             totalPageCount = validImages.length + 1;
           } else {
-            // Other properties: images + 1 WebP final page
-            totalPageCount = validImages.length + 1;
+            // Other properties: images only (no final page)
+            totalPageCount = validImages.length;
           }
           setTotalPages(totalPageCount);
           
-          // Use the WebP final page image based on property ID
+          // Use the WebP final page image based on property ID (only for properties that use final pages)
           let finalPageImagePath = '';
           switch(propertyId) {
             case 'rangeview':
               finalPageImagePath = '/images/brochures/rangeview/last-page.webp';
               break;
-            case 'putters-way':
-              finalPageImagePath = '/images/brochures/putters-way/last-page.webp';
-              break;
-            case 'the-fairways':
-              finalPageImagePath = '/images/brochures/the-fairways/last-page.webp';
-              break;
-            case 'the-captains':
-              finalPageImagePath = '/images/brochures/the-captains/last-page.webp';
-              break;
             case 'cragleigh-house':
               finalPageImagePath = '/images/brochures/cragleigh-house/last-page.webp';
               break;
             default:
-              finalPageImagePath = `/images/brochures/${propertyId}/last-page.webp`;
+              finalPageImagePath = ''; // No final page for other properties
           }
           setLastPageImage(finalPageImagePath);
           setIsLoading(false);
@@ -228,8 +213,8 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
 
           {!isLoading && !hasError && (
             <>
-              {isLastPage ? (
-                // Show WebP image for last page (same as other pages)
+              {isLastPage && lastPageImage ? (
+                // Show WebP image for last page (only if lastPageImage exists)
                 <img
                   src={lastPageImage}
                   alt={`${title} Brochure - Page ${currentPage + 1}`}
@@ -244,7 +229,7 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
                   onError={handleImageError}
                 />
               ) : (
-                // Show optimized WebP image
+                // Show optimized WebP image (for all pages when no final page, or regular pages when final page exists)
                 <img
                   src={images[currentPage]}
                   alt={`${title} Brochure - Page ${currentPage + 1}`}
