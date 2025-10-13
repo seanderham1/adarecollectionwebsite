@@ -102,7 +102,7 @@ export default function HeroSection() {
         // Use requestAnimationFrame for smoother zoom transition
         requestAnimationFrame(() => {
           if (mapRef.current) {
-            mapRef.current.setZoom(8);
+            mapRef.current.setZoom(9);
           }
         });
         setIsZoomedOut(true);
@@ -195,15 +195,15 @@ export default function HeroSection() {
             // Add additional non-clickable markers
             console.log("Adding additional non-clickable markers");
             
-            // Marker 1: 52.86637358952869, -9.106905125730453
+            // Marker 1: 52.551039997567266, -8.874492253335745
             const marker1Props = {
               id: "marker-1",
               title: "Additional Location 1",
               desc: "Future property location"
             };
             const marker1 = createPropertyMarker(map, { 
-              lat: 52.86637358952869, 
-              lng: -9.106905125730453 
+              lat: 52.551039997567266, 
+              lng: -8.874492253335745 
             }, marker1Props);
             // No click listener added - marker is non-interactive
             
@@ -217,6 +217,18 @@ export default function HeroSection() {
               lat: 52.654085127621414, 
               lng: -8.63587254864716 
             }, marker2Props);
+            // No click listener added - marker is non-interactive
+            
+            // Marker 3: 52.63127441477973, -8.65766015890796
+            const marker3Props = {
+              id: "marker-3", 
+              title: "Additional Location 3",
+              desc: "Future property location"
+            };
+            const marker3 = createPropertyMarker(map, { 
+              lat: 52.63127441477973, 
+              lng: -8.65766015890796 
+            }, marker3Props);
             // No click listener added - marker is non-interactive
             
             // Add golf course text overlay after ALL markers are loaded to ensure it appears on top

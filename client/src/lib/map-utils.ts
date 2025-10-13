@@ -8,7 +8,7 @@ const mapCallbacks: Array<() => void> = [];
 
 // Constants for walk and drive radius
 export const WALK_RADIUS_METERS = 800; // Approximately 10 minutes walk at average speed
-export const DRIVE_RADIUS_METERS = 65000; // Approximately 1 hour drive at average speed (65km)
+export const DRIVE_RADIUS_METERS = 32500; // Approximately 30 minute drive at average speed (32.5km)
 export const MAP_CENTER = { lat: 52.562213, lng: -8.781279 };
 
 /**
@@ -480,7 +480,7 @@ export function addHeroWalkRadiusCircle(map: google.maps.Map) {
       carSvg.appendChild(circle2);
 
       const textSpan = document.createElement('span');
-      textSpan.textContent = '1 hour drive';
+      textSpan.textContent = '30 minute drive';
 
       div.appendChild(carSvg);
       div.appendChild(textSpan);

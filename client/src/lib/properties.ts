@@ -246,8 +246,6 @@ export const properties: Property[] = [
       "/images/houses/house 5/cragleigh-bedroom-1.webp",
       "/images/houses/house 5/cragleigh-bedroom-2.webp",
       "/images/houses/house 5/cragleigh-bedroom-3.webp",
-      "/images/houses/house 5/cragleigh-bedroom-4.webp",
-      "/images/houses/house 5/cragleigh-bedroom-5.webp",
       "/images/houses/house 5/cragleigh-patio.webp"
     ],
     thumbnail: "/images/houses/house 5/cragleigh-house-main-optimized.webp",
