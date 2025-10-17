@@ -56,7 +56,8 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
             const promise = new Promise<string | null>((resolve) => {
               img.onload = () => resolve(imagePath);
               img.onerror = () => resolve(null);
-              img.src = imagePath;
+              // Add cache-busting parameter to force reload
+              img.src = `${imagePath}?t=${Date.now()}`;
             });
             
             imagePromises.push(promise);
@@ -71,9 +72,6 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
           if (propertyId === 'rangeview') {
             // Range View: pages 0-10 are images, page 11 is WebP final page
             totalPageCount = validImages.length + 1;
-          } else if (propertyId === 'cragleigh-house') {
-            // Cragleigh House: pages 0-10 are images, page 11 is WebP final page
-            totalPageCount = validImages.length + 1;
           } else {
             // Other properties: images only (no final page)
             totalPageCount = validImages.length;
@@ -85,9 +83,6 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
           switch(propertyId) {
             case 'rangeview':
               finalPageImagePath = '/images/brochures/rangeview/last-page.webp';
-              break;
-            case 'cragleigh-house':
-              finalPageImagePath = '/images/brochures/cragleigh-house/last-page.webp';
               break;
             default:
               finalPageImagePath = ''; // No final page for other properties
@@ -216,7 +211,7 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
               {isLastPage && lastPageImage ? (
                 // Show WebP image for last page (only if lastPageImage exists)
                 <img
-                  src={lastPageImage}
+                  src={`${lastPageImage}?t=${Date.now()}`}
                   alt={`${title} Brochure - Page ${currentPage + 1}`}
                   className="shadow-lg"
                   style={{ 
@@ -231,7 +226,7 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
               ) : (
                 // Show optimized WebP image (for all pages when no final page, or regular pages when final page exists)
                 <img
-                  src={images[currentPage]}
+                  src={`${images[currentPage]}?t=${Date.now()}`}
                   alt={`${title} Brochure - Page ${currentPage + 1}`}
                   className="shadow-lg"
                   style={{ 

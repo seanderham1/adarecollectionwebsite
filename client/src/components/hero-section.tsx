@@ -195,10 +195,10 @@ export default function HeroSection() {
             // Add additional non-clickable markers
             console.log("Adding additional non-clickable markers");
             
-            // Marker 1: 52.551039997567266, -8.874492253335745
+            // Marker 1: Darrira House - 52.551039997567266, -8.874492253335745
             const marker1Props = {
               id: "marker-1",
-              title: "Additional Location 1",
+              title: "Darrira House",
               desc: "Future property location"
             };
             const marker1 = createPropertyMarker(map, { 
@@ -207,10 +207,10 @@ export default function HeroSection() {
             }, marker1Props);
             // No click listener added - marker is non-interactive
             
-            // Marker 2: 52.654085127621414, -8.63587254864716
+            // Marker 2: O Connel Avenue - 52.654085127621414, -8.63587254864716
             const marker2Props = {
               id: "marker-2", 
-              title: "Additional Location 2",
+              title: "O Connel Avenue",
               desc: "Future property location"
             };
             const marker2 = createPropertyMarker(map, { 
@@ -219,16 +219,28 @@ export default function HeroSection() {
             }, marker2Props);
             // No click listener added - marker is non-interactive
             
-            // Marker 3: 52.63127441477973, -8.65766015890796
+            // Marker 3: Conor Breen - 52.631795401261556, -8.654847123780948
             const marker3Props = {
               id: "marker-3", 
-              title: "Additional Location 3",
+              title: "Conor Breen",
               desc: "Future property location"
             };
             const marker3 = createPropertyMarker(map, { 
-              lat: 52.63127441477973, 
-              lng: -8.65766015890796 
+              lat: 52.631795401261556, 
+              lng: -8.654847123780948 
             }, marker3Props);
+            // No click listener added - marker is non-interactive
+            
+            // Marker 5: Waye Cronin - 52.446729098305156, -9.069888413087508
+            const marker5Props = {
+              id: "marker-5", 
+              title: "Waye Cronin",
+              desc: "Future property location"
+            };
+            const marker5 = createPropertyMarker(map, { 
+              lat: 52.446729098305156, 
+              lng: -9.069888413087508 
+            }, marker5Props);
             // No click listener added - marker is non-interactive
             
             // Add golf course text overlay after ALL markers are loaded to ensure it appears on top

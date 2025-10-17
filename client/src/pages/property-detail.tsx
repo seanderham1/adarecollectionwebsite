@@ -387,7 +387,7 @@ export default function PropertyDetail() {
                           <Shirt className="text-white h-6 w-6" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-primary mb-1" data-testid="service-housekeeping-title">Full Laundry & Housekeeping</h4>
+                          <h4 className="font-semibold text-primary mb-1" data-testid="service-housekeeping-title">Full Laundry</h4>
                           <p className="text-primary text-sm" data-testid="service-housekeeping-description">Daily serviced fresh towels and linens</p>
                         </div>
                       </div>

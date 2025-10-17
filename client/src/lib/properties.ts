@@ -60,6 +60,7 @@ export const properties: Property[] = [
       "Executive home office",
       "High-speed WiFi and satellite TV",
       "Daily serviced fresh towels and linens",
+      "Daily housekeeping",
       "BBQ and smoker",
       "Secure private parking"
     ],
@@ -121,6 +122,7 @@ export const properties: Property[] = [
     amenities: [
       "Chef cooked breakfast",
       "Daily serviced fresh towels and linens",
+      "Daily housekeeping",
       "High-speed Wi-Fi and satellite TV",
       "Games room with pool table, table tennis, and dart board – convertible into a fitness studio with treadmill (if required)",
       "Secure private parking"
@@ -162,7 +164,7 @@ export const properties: Property[] = [
       "Located at the centre of the Adare Manor resort",
       "High-speed internet access",
       "Premium seating and entertainment areas",
-      "Daily housekeeping service"
+      "Daily housekeeping"
     ],
     location: {
       lat: 52.56182292270544,
@@ -204,7 +206,7 @@ export const properties: Property[] = [
     features: [
       "Grand entrance foyer with natural light and architectural presence",
       "Exquisite master suite (860ft²/80m²) with lounge, dual walk-in wardrobes, jacuzzi bath, double vanity, and dual showers",
-      "Five additional double bedrooms, including ensuites",
+      "Five additional double bedrooms",
       "Two spacious formal lounges with TV and large seating areas",
       "Upper-level private retreat with lounge/TV space, shower, bath, and a fully fitted office",
       "Large open-plan kitchen with premium appliances, dual ovens, gas stove, under-counter fridges, and a full utility room",
@@ -217,6 +219,7 @@ export const properties: Property[] = [
       "Secluded rear garden with patio, dining area, and cushioned seating for al fresco entertaining",
       "High-speed WiFi & Satellite TV",
       "Fresh linen and towel service (daily)",
+      "Daily housekeeping",
       "Secure private parking"
     ],
     location: {

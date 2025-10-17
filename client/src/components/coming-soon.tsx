@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Lock, Eye, EyeOff } from 'lucide-react';
+import { Lock, Eye, EyeOff, Mail } from 'lucide-react';
+import { AccessRequestForm } from './access-request-form';
 
 interface ComingSoonProps {
   children: React.ReactNode;
@@ -24,6 +25,7 @@ export function ComingSoon({ children }: ComingSoonProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [showAccessRequest, setShowAccessRequest] = useState(false);
 
   useEffect(() => {
     // Check if user is already authenticated
@@ -55,6 +57,14 @@ export function ComingSoon({ children }: ComingSoonProps) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-700"></div>
+      </div>
+    );
+  }
+
+  if (showAccessRequest) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white p-4">
+        <AccessRequestForm onBack={() => setShowAccessRequest(false)} />
       </div>
     );
   }
@@ -149,6 +159,24 @@ export function ComingSoon({ children }: ComingSoonProps) {
               Access Site
             </Button>
           </form>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-gray-200" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-white px-2 text-gray-500">Or</span>
+            </div>
+          </div>
+
+          <Button 
+            onClick={() => setShowAccessRequest(true)}
+            variant="outline"
+            className="w-full border border-gray-300 text-gray-700 px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors"
+          >
+            <Mail className="w-4 h-4 mr-2" />
+            Request Access
+          </Button>
 
           <div className="text-center text-xs text-gray-500 pt-4 border-t">
             <p>© 2025 The Adare Collection. All rights reserved.</p>
