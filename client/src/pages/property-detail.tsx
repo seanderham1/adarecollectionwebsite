@@ -129,31 +129,13 @@ export default function PropertyDetail() {
   };
 
   const getBrochureUrl = () => {
-    if (property.id === 'putters-way') {
-      return '/downloads/Putters Way - Brochure.pdf';
-    } else if (property.id === 'rangeview') {
-      return '/downloads/Range View - Brochure.pdf';
-    } else if (property.id === 'the-fairways') {
-      return '/downloads/The Fairways - Brochure.pdf';
-    } else if (property.id === 'the-captains') {
-      return '/downloads/The Captains - Brochure.pdf';
-    } else if (property.id === 'cragleigh-house') {
-      return '/downloads/Cragleigh House - Brochure.pdf';
-    }
+    // PDF brochures removed - using WebP brochure modal instead
     return null;
   };
 
   const handleDownloadBrochure = () => {
-    const brochureUrl = getBrochureUrl();
-    if (brochureUrl) {
-      // Open brochure modal for properties with brochures
-      setIsBrochureModalOpen(true);
-    } else {
-      // Default brochure request for other properties
-      const subject = encodeURIComponent(`Brochure Request - ${property.name}`);
-      const body = encodeURIComponent(`I would like to request a brochure for ${property.name} at The Adare Collection for Ryder Cup 2027.\n\nThank you.`);
-      window.location.href = `mailto:info@theadarecollection.ie?subject=${subject}&body=${body}`;
-    }
+    // Always open brochure modal for WebP brochure viewing
+    setIsBrochureModalOpen(true);
   };
 
   return (
@@ -566,14 +548,12 @@ export default function PropertyDetail() {
       />
       
       {/* Brochure Modal */}
-      {getBrochureUrl() && (
-        <BrochureModal 
-          isOpen={isBrochureModalOpen}
-          onClose={handleCloseBrochure}
-          propertyId={property?.id || ''}
-          title={property?.name || ''}
-        />
-      )}
+      <BrochureModal 
+        isOpen={isBrochureModalOpen}
+        onClose={handleCloseBrochure}
+        propertyId={property?.id || ''}
+        title={property?.name || ''}
+      />
     </div>
   );
 }
