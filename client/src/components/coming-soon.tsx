@@ -42,7 +42,7 @@ export function ComingSoon({ children }: ComingSoonProps) {
       setIsAuthenticated(true);
       sessionStorage.setItem(SESSION_KEY, 'true');
     } else {
-      setError('Incorrect password. Please try again.');
+      setError('Invalid access code. Please try again.');
       setPassword('');
     }
   };
@@ -77,9 +77,9 @@ export function ComingSoon({ children }: ComingSoonProps) {
         <button
           onClick={handleLogout}
           className="fixed bottom-4 right-4 z-50 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors"
-          title="Logout from admin access"
+          title="Exit exclusive access"
         >
-          Logout
+          Exit
         </button>
       </div>
     );
@@ -109,22 +109,22 @@ export function ComingSoon({ children }: ComingSoonProps) {
         
         <CardContent className="space-y-6">
           <div className="text-center space-y-3">
-            <h2 className="text-xl font-semibold text-gray-800">Coming Soon</h2>
+            <h2 className="text-xl font-semibold text-gray-800">Exclusive Access</h2>
             <p className="text-gray-600 text-sm leading-relaxed">
-              We're putting the finishing touches on our new website showcasing 
-              the finest luxury properties at Adare Manor. Our collection of 
-              exclusive golf properties will be available soon.
+              Our curated collection of luxury golf properties at Adare Manor is 
+              available by invitation only. Access to this exclusive portfolio 
+              requires prior authorization.
             </p>
             <div className="flex items-center justify-center space-x-2 text-sm text-gray-500">
               <Lock className="w-4 h-4" />
-              <span>Admin Access Required</span>
+              <span>Access Code Required</span>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="password" className="text-sm font-medium text-gray-700">
-                Enter Admin Password
+                Access Code
               </label>
               <div className="relative">
                 <Input
@@ -132,7 +132,7 @@ export function ComingSoon({ children }: ComingSoonProps) {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter password"
+                  placeholder="Enter access code"
                   className="w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 pr-10"
                   required
                 />
@@ -156,7 +156,7 @@ export function ComingSoon({ children }: ComingSoonProps) {
               type="submit" 
               className="w-full border border-gray-700 bg-gray-700 text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-transparent hover:!text-gray-700 transition-all duration-200"
             >
-              Access Site
+              Enter Site
             </Button>
           </form>
 
