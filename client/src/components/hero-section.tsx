@@ -222,7 +222,7 @@ export default function HeroSection() {
             // Marker 3: Conor Breen - 52.631795401261556, -8.654847123780948
             const marker3Props = {
               id: "marker-3", 
-              title: "Conor Breen",
+              title: "",
               desc: "Future property location"
             };
             const marker3 = createPropertyMarker(map, { 
@@ -234,7 +234,7 @@ export default function HeroSection() {
             // Marker 5: Waye Cronin - 52.446729098305156, -9.069888413087508
             const marker5Props = {
               id: "marker-5", 
-              title: "Waye Cronin",
+              title: "",
               desc: "Future property location"
             };
             const marker5 = createPropertyMarker(map, { 
