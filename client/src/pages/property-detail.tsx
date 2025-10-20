@@ -344,15 +344,17 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                          <ChefHat className="text-white h-6 w-6" />
+                      {property.id !== 'putters-way' && (
+                        <div className="flex items-start space-x-4">
+                          <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                            <ChefHat className="text-white h-6 w-6" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-primary mb-1" data-testid="service-chef-title">In-residence Private Chef</h4>
+                            <p className="text-primary text-sm" data-testid="service-chef-description">Bespoke dining experiences in your residence</p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="font-semibold text-primary mb-1" data-testid="service-chef-title">In-residence Private Chef</h4>
-                          <p className="text-primary text-sm" data-testid="service-chef-description">Bespoke dining experiences in your residence</p>
-                        </div>
-                      </div>
+                      )}
                       
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">

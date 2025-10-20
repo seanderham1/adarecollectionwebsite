@@ -67,27 +67,11 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
           const validImages = results.filter((img): img is string => img !== null);
           
           setImages(validImages);
-          // Set total pages based on property - all pages are now WebP images
-          let totalPageCount = validImages.length;
-          if (propertyId === 'rangeview') {
-            // Range View: pages 0-10 are images, page 11 is WebP final page
-            totalPageCount = validImages.length + 1;
-          } else {
-            // Other properties: images only (no final page)
-            totalPageCount = validImages.length;
-          }
-          setTotalPages(totalPageCount);
+          // Set total pages - all properties now use only WebP images (no final pages)
+          setTotalPages(validImages.length);
           
-          // Use the WebP final page image based on property ID (only for properties that use final pages)
-          let finalPageImagePath = '';
-          switch(propertyId) {
-            case 'rangeview':
-              finalPageImagePath = '/images/brochures/rangeview/last-page.webp';
-              break;
-            default:
-              finalPageImagePath = ''; // No final page for other properties
-          }
-          setLastPageImage(finalPageImagePath);
+          // No properties use final pages anymore - all use regular page images
+          setLastPageImage('');
           setIsLoading(false);
         } catch (error) {
           console.error('Error loading brochure:', error);
@@ -207,39 +191,20 @@ export default function BrochureModal({ isOpen, onClose, propertyId, title }: Br
           )}
 
           {!isLoading && !hasError && (
-            <>
-              {isLastPage && lastPageImage ? (
-                // Show WebP image for last page (only if lastPageImage exists)
-                <img
-                  src={`${lastPageImage}?t=${Date.now()}`}
-                  alt={`${title} Brochure - Page ${currentPage + 1}`}
-                  className="shadow-lg"
-                  style={{ 
-                    maxWidth: '90%',
-                    maxHeight: '90%',
-                    width: 'auto',
-                    height: 'auto',
-                  }}
-                  onLoad={handleImageLoad}
-                  onError={handleImageError}
-                />
-              ) : (
-                // Show optimized WebP image (for all pages when no final page, or regular pages when final page exists)
-                <img
-                  src={`${images[currentPage]}?t=${Date.now()}`}
-                  alt={`${title} Brochure - Page ${currentPage + 1}`}
-                  className="shadow-lg"
-                  style={{ 
-                    maxWidth: '90%',
-                    maxHeight: '90%',
-                    width: 'auto',
-                    height: 'auto',
-                  }}
-                  onLoad={handleImageLoad}
-                  onError={handleImageError}
-                />
-              )}
-            </>
+            // Show optimized WebP image for all pages
+            <img
+              src={`${images[currentPage]}?t=${Date.now()}`}
+              alt={`${title} Brochure - Page ${currentPage + 1}`}
+              className="shadow-lg"
+              style={{ 
+                maxWidth: '90%',
+                maxHeight: '90%',
+                width: 'auto',
+                height: 'auto',
+              }}
+              onLoad={handleImageLoad}
+              onError={handleImageError}
+            />
           )}
         </div>
 
