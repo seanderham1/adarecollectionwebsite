@@ -6,6 +6,7 @@ import {
   MAP_CENTER, 
   GEOJSON_URL, 
   PROPERTIES_URL,
+  TEN_MIN_DRIVE_RADIUS_METERS,
   createPropertyMarker,
   createPropertyInfoWindowContent,
   addWalkRadiusCircle,
@@ -38,15 +39,23 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           document.getElementById(containerId) as HTMLElement,
           {
             center: mapCenter,
-            zoom: 15,
+            zoom: 11,
             mapId: "c3acdccb9694c869d85b690f", // your Map ID
             disableDefaultUI: true,
           }
         );
 
-        // Add walk radius circle and label centered on the property (hide for Cragleigh House)
+        // Add radius circle and label centered on the property (hide for Cragleigh House)
         if (propertyId !== 'cragleigh-house') {
-          addWalkRadiusCircle(map, mapCenter);
+          if (propertyId === 'darrira-house') {
+            addWalkRadiusCircle(map, mapCenter, {
+              radiusMeters: TEN_MIN_DRIVE_RADIUS_METERS,
+              labelText: '10 minute drive',
+              icon: 'car',
+            });
+          } else {
+            addWalkRadiusCircle(map, mapCenter);
+          }
         }
 
         // Add golf course text overlay

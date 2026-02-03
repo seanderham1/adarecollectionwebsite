@@ -22,7 +22,7 @@ function PropertyCard({ property }: PropertyCardProps) {
             <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
               <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                 <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                  {property.id === 'cragleigh-house' ? 'DELUXE' : 'EXCLUSIVE'}
+                  {['cragleigh-house', 'darrira-house'].includes(property.id) ? 'DELUXE' : 'EXCLUSIVE'}
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function PropertyGrid() {
 
         {/* Property Grid */}
         <div className="grid md:grid-cols-3 gap-6" data-testid="properties-grid">
-          {properties.filter(property => property.id !== 'riverbank-manor').map((property) => (
+          {properties.filter(property => property.id !== 'darrira-house').map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
           <ComingSoonCard />

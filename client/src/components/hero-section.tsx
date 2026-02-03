@@ -195,30 +195,6 @@ export default function HeroSection() {
             // Add additional non-clickable markers
             console.log("Adding additional non-clickable markers");
             
-            // Marker 1: Darrira House - 52.551039997567266, -8.874492253335745
-            const marker1Props = {
-              id: "marker-1",
-              title: "Darrira House",
-              desc: "Future property location"
-            };
-            const marker1 = createPropertyMarker(map, { 
-              lat: 52.551039997567266, 
-              lng: -8.874492253335745 
-            }, marker1Props);
-            // No click listener added - marker is non-interactive
-            
-            // Marker 2: O Connel Avenue - 52.654085127621414, -8.63587254864716
-            const marker2Props = {
-              id: "marker-2", 
-              title: "O Connel Avenue",
-              desc: "Future property location"
-            };
-            const marker2 = createPropertyMarker(map, { 
-              lat: 52.654085127621414, 
-              lng: -8.63587254864716 
-            }, marker2Props);
-            // No click listener added - marker is non-interactive
-            
             // Marker 3: Conor Breen - 52.631795401261556, -8.654847123780948
             const marker3Props = {
               id: "marker-3", 

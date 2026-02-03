@@ -3,6 +3,19 @@
   "features": [
     {
       "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.874792660717345, 52.551248755996916]},
+      "properties":{
+        "id":"darrira-house",
+        "title":"Darrira House",
+        "desc":"Placeholder description for Darrira House. Replace with final copy.",
+        "beds": 4,
+        "baths": 4,
+        "price":"POA",
+        "thumb":"/images/houses/house 6/house-6-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
       "geometry":{"type":"Point","coordinates":[-8.786999475136705, 52.5588746741587]},
       "properties":{
         "id":"rangeview",

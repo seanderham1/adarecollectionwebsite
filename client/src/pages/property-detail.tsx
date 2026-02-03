@@ -165,14 +165,16 @@ export default function PropertyDetail() {
                           property.images[index].includes('house-3-master-bath-1.webp') ||
                           property.images[index].includes('house-3-master-bath-2.webp') ||
                           property.images[index].includes('house-3-master-bath-3.webp') ||
-                          property.images[index].includes('house-4-rolex.webp')
+                          property.images[index].includes('house-4-rolex.webp') ||
+                          property.images[index].includes('house-6-shower-room.webp')
                             ? 'object-contain'
                             : 'object-cover'
                         } ${
                           index === currentImageIndex ? "opacity-100" : "opacity-0"
                         }`}
                         style={{ 
-                          transform: property.images[index].includes('house-1-hall.webp') 
+                          transform: property.images[index].includes('house-1-hall.webp') ||
+                            property.images[index].includes('house-6-shower-room.webp')
                             ? 'translateY(0%)' 
                             : (property.images[index].includes('/house 4/house-4-rolex.webp') || 
                                (property.id === 'putters-way' && index === 8))
@@ -205,7 +207,7 @@ export default function PropertyDetail() {
                     <div className="absolute top-16 left-0 right-0 z-20">
                       <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                         <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                          {property.id === 'cragleigh-house' ? 'DELUXE' : 'EXCLUSIVE'}
+                          {['cragleigh-house', 'darrira-house'].includes(property.id) ? 'DELUXE' : 'EXCLUSIVE'}
                         </div>
                       </div>
                     </div>
@@ -277,12 +279,14 @@ export default function PropertyDetail() {
                       MAP
                     </Button>
 
-                    <Button 
-                      onClick={handleDownloadBrochure}
-                      className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
-                    >
-                      BROCHURE
-                    </Button>
+                    {property.id !== 'darrira-house' && (
+                      <Button 
+                        onClick={handleDownloadBrochure}
+                        className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
+                      >
+                        BROCHURE
+                      </Button>
+                    )}
                   </div>
 
                   {/* Share Section */}
@@ -372,7 +376,7 @@ export default function PropertyDetail() {
                         </div>
                         <div>
                           <h4 className="font-semibold text-primary mb-1" data-testid="service-housekeeping-title">Full Laundry</h4>
-                          <p className="text-primary text-sm" data-testid="service-housekeeping-description">Daily serviced fresh towels and linens</p>
+                          <p className="text-primary text-sm" data-testid="service-housekeeping-description">Professional washing, drying, and pressing service</p>
                         </div>
                       </div>
                       
@@ -479,16 +483,18 @@ export default function PropertyDetail() {
                     <div className="flex justify-center space-x-2">
                       <Button 
                         onClick={handleViewMap}
-                        className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
+                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'darrira-house' ? 'w-1/2' : 'w-full'}`}
                       >
                         MAP
                       </Button>
-                      <Button 
-                        onClick={handleDownloadBrochure}
-                        className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
-                      >
-                        BROCHURE
-                      </Button>
+                      {property.id !== 'darrira-house' && (
+                        <Button 
+                          onClick={handleDownloadBrochure}
+                          className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
+                        >
+                          BROCHURE
+                        </Button>
+                      )}
                     </div>
                   </div>
 

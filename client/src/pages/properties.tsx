@@ -78,7 +78,7 @@ export default function PropertiesPage() {
 
         {/* Property Grid Section */}
         <div className="max-w-[2000px] mx-auto grid md:grid-cols-3 gap-6">
-          {all.filter(p => p.id !== 'riverbank-manor').map((p) => (
+          {all.map((p) => (
             <Link key={p.id} href={`/property/${p.id}`}>
               <div className="property-card bg-neutral-100 overflow-hidden border-0 shadow-none cursor-pointer group">
                 <div className="relative aspect-[16/9]">
@@ -90,7 +90,7 @@ export default function PropertiesPage() {
                   <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
                     <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                       <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                        {p.id === 'cragleigh-house' ? 'DELUXE' : 'EXCLUSIVE'}
+                        {['cragleigh-house', 'darrira-house'].includes(p.id) ? 'DELUXE' : 'EXCLUSIVE'}
                       </div>
                     </div>
                   </div>

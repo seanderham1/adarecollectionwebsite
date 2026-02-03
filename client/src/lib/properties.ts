@@ -273,5 +273,60 @@ export const properties: Property[] = [
     },
     walkingDistance: "15 minutes drive",
     videoUrl: "/videos/cragleighhouse.mp4"
+  },
+  {
+    id: "darrira-house",
+    name: "Darrira House",
+    subtitle: "Just ten minutes from Adare Manor, an elegant private retreat in Croagh, County Limerick.",
+    bedrooms: 5,
+    description: "An elegant and private countryside retreat ten minutes from Adare Manor, ideal for discreet stays with generous indoor and outdoor spaces.",
+    fullDescription: "Nestled just ten minutes from the Ryder Cup 2027 venue at Adare Manor, Darrira House offers an elegant and private retreat in the peaceful countryside of Croagh, County Limerick. With its graceful proportions, beautifully furnished interiors, and expansive outdoor spaces, this residence is ideally suited for discerning guests seeking comfort, convenience, and discretion.\n\nBoasting four double bedrooms and one single — including two en-suites with one lovingly adapted to accommodate guests with specific accessibility needs — the property is perfect for golfers, corporate groups, or families looking to stay close to the action without compromising on tranquility.\n\nThe heart of the home is a bright, open-plan kitchen and dining area that opens into a sun-filled conservatory, ideal for casual breakfasts or evening gatherings. Elegant living spaces and charming garden views complete the warm and inviting atmosphere.\n\nThis deluxe property includes thoughtful accessibility features for guests with special needs. The property has ramp access through the front door. Double doors from the hallway open into the sitting room, which flows into a spacious open-plan kitchen and onwards to a bright conservatory — allowing smooth wheelchair access throughout the downstairs level.\n\nA generously proportioned downstairs double bedroom features an electric profile double bed and a 44-inch wall-mounted television. Attached is a separate wet room equipped with a shower chair, shower sling, and (if required) a shower bed. An overhead ceiling hoist enables safe and dignified transfers from wheelchair to bed. A separate WC is also located nearby.",
+    price: "POA",
+    images: [
+      "/images/houses/house 6/house-6-exterior-1.webp",
+      "/images/houses/house 6/house-6-kitchen-2.webp",
+      "/images/houses/house 6/house-6-kitchen-1.webp",
+      "/images/houses/house 6/house-6-kitchen-3.webp",
+      "/images/houses/house 6/house-6-sunroom.webp",
+      "/images/houses/house 6/house-6-livingroom.webp",
+      "/images/houses/house 6/house-6-hallway.webp",
+      "/images/houses/house 6/house-6-master-bedroom-2.webp",
+      "/images/houses/house 6/house-6-master-bedroom-1.webp",
+      "/images/houses/house 6/house-6-master-ensuite-1.webp",
+      "/images/houses/house 6/house-6-master-ensuite-2.webp",
+      "/images/houses/house 6/house-6-bedroom-2.webp",
+      "/images/houses/house 6/house-6-bedroom-3.webp",
+      "/images/houses/house 6/house-6-main-bathroom-1.webp",
+      "/images/houses/house 6/house-6-jacuzzi.webp",
+      "/images/houses/house 6/house-6-shower-room.webp"
+    ],
+    thumbnail: "/images/houses/house 6/house-6-exterior-1.webp",
+    features: [
+      "4 double bedrooms (one ensuite)",
+      "Downstairs double bedroom adapted for special needs",
+      "1 single bedroom",
+      "Stylish kitchen-dining space opening to conservatory",
+      "Elegant interiors and abundant natural light",
+      "Quiet village location just 10 minutes from Adare Manor"
+    ],
+    amenities: [
+      "Home cooked breakfast",
+      "Daily housekeeping",
+      "High-speed WiFi",
+      "Satellite TV",
+      "Secure private parking",
+      "Private chef",
+      "Chauffeur",
+      "Concierge services",
+      "Helicopter transfers (subject to availability)",
+      "Full laundry services",
+      "Ryder Cup tickets (subject to availability)"
+    ],
+    location: {
+      lat: 52.551248755996916,
+      lng: -8.874792660717345
+    },
+    walkingDistance: "10 minutes drive",
+    videoUrl: "/videos/thefairways.mp4"
   }
 ];

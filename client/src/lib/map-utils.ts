@@ -8,6 +8,7 @@ const mapCallbacks: Array<() => void> = [];
 
 // Constants for walk and drive radius
 export const WALK_RADIUS_METERS = 800; // Approximately 10 minutes walk at average speed
+export const TEN_MIN_DRIVE_RADIUS_METERS = 8000; // Roughly 10 minute drive at average local speed
 export const DRIVE_RADIUS_METERS = 32500; // Approximately 30 minute drive at average speed (32.5km)
 export const MAP_CENTER = { lat: 52.562213, lng: -8.781279 };
 
@@ -201,9 +202,61 @@ export function createPropertyInfoWindowContent(props: {
 /**
  * Add walk radius circle to map (for property pages)
  */
-export function addWalkRadiusCircle(map: google.maps.Map, center?: google.maps.LatLngLiteral) {
+type RadiusLabelIcon = 'walk' | 'car';
+
+interface RadiusLabelOptions {
+  radiusMeters?: number;
+  labelText?: string;
+  icon?: RadiusLabelIcon;
+}
+
+function createCarIconSvg(): SVGElement {
+  const carSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  carSvg.setAttribute('viewBox', '0 0 24 24');
+  carSvg.setAttribute('width', '14');
+  carSvg.setAttribute('height', '14');
+  carSvg.setAttribute('fill', 'none');
+  carSvg.setAttribute('stroke', 'currentColor');
+  carSvg.setAttribute('stroke-width', '2');
+  carSvg.setAttribute('stroke-linecap', 'round');
+  carSvg.setAttribute('stroke-linejoin', 'round');
+  carSvg.style.cssText = `
+    filter: brightness(0) invert(1);
+  `;
+
+  const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path1.setAttribute('d', 'M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2');
+  carSvg.appendChild(path1);
+
+  const circle1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle1.setAttribute('cx', '7');
+  circle1.setAttribute('cy', '17');
+  circle1.setAttribute('r', '2');
+  carSvg.appendChild(circle1);
+
+  const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path2.setAttribute('d', 'M9 17h6');
+  carSvg.appendChild(path2);
+
+  const circle2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle2.setAttribute('cx', '17');
+  circle2.setAttribute('cy', '17');
+  circle2.setAttribute('r', '2');
+  carSvg.appendChild(circle2);
+
+  return carSvg;
+}
+
+export function addWalkRadiusCircle(
+  map: google.maps.Map,
+  center?: google.maps.LatLngLiteral,
+  options?: RadiusLabelOptions
+) {
   // Create the circle with same styling as hero section
   const circleCenter = center || MAP_CENTER;
+  const radiusMeters = options?.radiusMeters ?? WALK_RADIUS_METERS;
+  const labelText = options?.labelText ?? '10 minute walk';
+  const iconType = options?.icon ?? 'walk';
   const walkCircle = new google.maps.Circle({
     strokeColor: '#142a4d',
     strokeOpacity: 0.8,
@@ -212,7 +265,7 @@ export function addWalkRadiusCircle(map: google.maps.Map, center?: google.maps.L
     fillOpacity: 0,
     map,
     center: circleCenter,
-    radius: WALK_RADIUS_METERS,
+    radius: radiusMeters,
     zIndex: 20,
     clickable: false,
   });
@@ -246,19 +299,25 @@ export function addWalkRadiusCircle(map: google.maps.Map, center?: google.maps.L
         z-index: 1000;
       `;
 
-      // Create walking icon using custom SVG
-      const iconSvg = document.createElement('img');
-      iconSvg.src = '/icons/walking.svg';
-      iconSvg.style.cssText = `
-        width: 14px;
-        height: 14px;
-        filter: brightness(0) invert(1);
-      `;
+      let iconNode: HTMLElement | SVGElement;
+      if (iconType === 'car') {
+        iconNode = createCarIconSvg();
+      } else {
+        // Create walking icon using custom SVG
+        const iconSvg = document.createElement('img');
+        iconSvg.src = '/icons/walking.svg';
+        iconSvg.style.cssText = `
+          width: 14px;
+          height: 14px;
+          filter: brightness(0) invert(1);
+        `;
+        iconNode = iconSvg;
+      }
 
       const textSpan = document.createElement('span');
-      textSpan.textContent = '10 minute walk';
+      textSpan.textContent = labelText;
 
-      div.appendChild(iconSvg);
+      div.appendChild(iconNode);
       div.appendChild(textSpan);
 
       this.div_ = div;
@@ -292,7 +351,7 @@ export function addWalkRadiusCircle(map: google.maps.Map, center?: google.maps.L
 
   // Calculate position at the top of the circle for the label
   const earthRadius = 6371000; // Earth's radius in meters
-  const dLat = WALK_RADIUS_METERS / earthRadius;
+  const dLat = radiusMeters / earthRadius;
   const labelLat = circleCenter.lat + (dLat * 180 / Math.PI);
   const labelPosition = new google.maps.LatLng(labelLat, circleCenter.lng);
 

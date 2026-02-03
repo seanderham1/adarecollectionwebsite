@@ -60,10 +60,4 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://theadarecollection.com/property/riverbank-manor</loc>
-    <lastmod>2025-01-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
 </urlset>
