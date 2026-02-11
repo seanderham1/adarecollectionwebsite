@@ -8,7 +8,7 @@ import BrochureModal from "@/components/brochure-modal";
 import { properties } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Tickets, Bed, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Bed, Mail, MessageCircle } from "lucide-react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useSEO } from "@/hooks/use-seo";
@@ -29,8 +29,9 @@ export default function PropertyDetail() {
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [videoStartMuted, setVideoStartMuted] = useState(hasVideoParam); // Start muted if video param is present
   
-  // Use property-specific video URL or fallback to default
-  const videoUrl = property?.videoUrl || "/videos/rangeview.mp4";
+  // Use property-specific video URL only
+  const videoUrl = property?.videoUrl;
+  const hasVideo = Boolean(videoUrl);
 
   // SEO optimization
   useSEO({
@@ -203,11 +204,15 @@ export default function PropertyDetail() {
                       />
                     ))}
 
-                    {/* EXCLUSIVE/DELUXE Banner */}
+                    {/* EXECUTIVE/DELUXE/PREMIUM Banner */}
                     <div className="absolute top-16 left-0 right-0 z-20">
                       <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                         <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                          {['cragleigh-house', 'darrira-house'].includes(property.id) ? 'DELUXE' : 'EXCLUSIVE'}
+                          {property.id === 'cragleigh-house'
+                            ? 'PREMIUM'
+                            : ['darrira-house', 'dunes-lodge'].includes(property.id)
+                              ? 'DELUXE'
+                              : 'EXECUTIVE'}
                         </div>
                       </div>
                     </div>
@@ -215,14 +220,16 @@ export default function PropertyDetail() {
                     {/* Bottom Right Navigation with Play Video and Arrow Buttons */}
                     <div className="absolute bottom-6 right-6 z-10 flex space-x-2">
                       {/* Play Video Button */}
-                      <button
-                        onClick={handleViewVideo}
-                        className="bg-white shadow-lg px-4 h-10 flex items-center justify-center gap-2 transition-all duration-200 hover:bg-gray-100 cursor-pointer"
-                        aria-label="Play video"
-                      >
-                        <Play className="h-4 w-4 stroke-2 text-black" />
-                        <span className="text-sm font-medium text-black">PLAY VIDEO</span>
-                      </button>
+                      {hasVideo && (
+                        <button
+                          onClick={handleViewVideo}
+                          className="bg-white shadow-lg px-4 h-10 flex items-center justify-center gap-2 transition-all duration-200 hover:bg-gray-100 cursor-pointer"
+                          aria-label="Play video"
+                        >
+                          <Play className="h-4 w-4 stroke-2 text-black" />
+                          <span className="text-sm font-medium text-black">PLAY VIDEO</span>
+                        </button>
+                      )}
                       
                       {/* Left Arrow Square */}
                       <button
@@ -279,7 +286,7 @@ export default function PropertyDetail() {
                       MAP
                     </Button>
 
-                    {property.id !== 'darrira-house' && (
+                    {property.id !== 'dunes-lodge' && (
                       <Button 
                         onClick={handleDownloadBrochure}
                         className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
@@ -380,16 +387,6 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Tickets className="text-white h-6 w-6" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-primary mb-1" data-testid="service-tickets-title">Ryder Cup Tickets</h4>
-                          <p className="text-primary text-sm" data-testid="service-tickets-description">Subject to availability</p>
-                        </div>
-                      </div>
-                      
                       {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house') && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
@@ -483,11 +480,11 @@ export default function PropertyDetail() {
                     <div className="flex justify-center space-x-2">
                       <Button 
                         onClick={handleViewMap}
-                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'darrira-house' ? 'w-1/2' : 'w-full'}`}
+                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' ? 'w-1/2' : 'w-full'}`}
                       >
                         MAP
                       </Button>
-                      {property.id !== 'darrira-house' && (
+                      {property.id !== 'dunes-lodge' && (
                         <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
@@ -541,12 +538,14 @@ export default function PropertyDetail() {
       <Footer />
       
       {/* Video Modal */}
-      <VideoModal 
-        isOpen={isVideoModalOpen}
-        onClose={handleCloseVideo}
-        videoUrl={videoUrl}
-        startMuted={videoStartMuted}
-      />
+      {hasVideo && (
+        <VideoModal 
+          isOpen={isVideoModalOpen}
+          onClose={handleCloseVideo}
+          videoUrl={videoUrl!}
+          startMuted={videoStartMuted}
+        />
+      )}
       
       {/* Map Modal */}
       <MapModal 

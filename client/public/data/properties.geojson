@@ -78,6 +78,19 @@
         "price":"POA",
         "thumb":"/images/houses/house 5/cragleigh-house-main-optimized.webp"
       }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-9.3432, 52.9346]},
+      "properties":{
+        "id":"dunes-lodge",
+        "title":"Dunes Lodge",
+        "desc":"Architect-designed A-rated home overlooking the Lahinch Old Course along the Wild Atlantic Way.",
+        "beds": 4,
+        "baths": 3,
+        "price":"POA",
+        "thumb":"/images/houses/house 9/house-9-exterior-2.jpg"
+      }
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { properties, type Property } from "@/lib/properties";
+import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 interface PropertyCardProps {
@@ -22,7 +23,11 @@ function PropertyCard({ property }: PropertyCardProps) {
             <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
               <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                 <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                  {['cragleigh-house', 'darrira-house'].includes(property.id) ? 'DELUXE' : 'EXCLUSIVE'}
+                  {property.id === 'cragleigh-house'
+                    ? 'PREMIUM'
+                    : ['darrira-house', 'dunes-lodge'].includes(property.id)
+                      ? 'DELUXE'
+                      : 'EXECUTIVE'}
                 </div>
               </div>
             </div>
@@ -63,39 +68,42 @@ function PropertyCard({ property }: PropertyCardProps) {
 
 function ComingSoonCard() {
   return (
-    <div className="property-card bg-neutral-100 overflow-hidden border-0 shadow-none" data-testid="coming-soon-card">
-      <div className="relative aspect-[16/9]">
-        <img 
-          src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=1200&h=800"
-          alt="Coming Soon Property"
-          className="w-full h-full object-cover blur-sm"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-          <div className="text-center">
-            <div className="text-white text-lg font-medium uppercase tracking-wider">COMING SOON</div>
-          </div>
-        </div>
-      </div>
-      
-      <div className="p-4">
-        <div className="flex items-center justify-between mb-3">
-          <div className="text-xs text-muted uppercase tracking-wider font-medium">
-            &nbsp;
-          </div>
-          <div className="text-xs text-muted uppercase tracking-wider font-medium">
-            &nbsp;
+    <Link href="/properties">
+      <div className="property-card bg-neutral-100 overflow-hidden border-0 shadow-none cursor-pointer group" data-testid="coming-soon-card">
+        <div className="relative aspect-[16/9]">
+          <img 
+            src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=1200&h=800"
+            alt="View More Properties"
+            className="w-full h-full object-cover blur-sm"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+            <div className="text-white text-lg font-medium uppercase tracking-wider flex items-center gap-2">
+              VIEW MORE
+              <ArrowRight className="h-4 w-4" />
+            </div>
           </div>
         </div>
         
-        <h3 className="font-serif text-xl font-normal mb-2 text-primary">
-          Additional Properties Coming Soon
-        </h3>
-        
-        <p className="text-secondary text-sm leading-relaxed mb-6">
-          Additional properties will be added to our collection soon. Stay tuned for more exceptional accommodations for Ryder Cup 2027.
-        </p>
+        <div className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-xs text-muted uppercase tracking-wider font-medium">
+              &nbsp;
+            </div>
+            <div className="text-xs text-muted uppercase tracking-wider font-medium">
+              &nbsp;
+            </div>
+          </div>
+          
+          <h3 className="font-serif text-xl font-normal mb-2 text-primary">
+            View Our Additional Properties
+          </h3>
+
+          <p className="text-secondary text-sm leading-relaxed mb-6">
+            Stay tuned for more exceptional accommodations for Ryder Cup 2027.
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -116,7 +124,7 @@ export default function PropertyGrid() {
 
         {/* Property Grid */}
         <div className="grid md:grid-cols-3 gap-6" data-testid="properties-grid">
-          {properties.filter(property => property.id !== 'darrira-house').map((property) => (
+          {properties.filter(property => property.id !== 'darrira-house' && property.id !== 'dunes-lodge').map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
           <ComingSoonCard />

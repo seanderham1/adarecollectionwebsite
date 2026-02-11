@@ -9,7 +9,9 @@ const mapCallbacks: Array<() => void> = [];
 // Constants for walk and drive radius
 export const WALK_RADIUS_METERS = 800; // Approximately 10 minutes walk at average speed
 export const TEN_MIN_DRIVE_RADIUS_METERS = 8000; // Roughly 10 minute drive at average local speed
-export const DRIVE_RADIUS_METERS = 32500; // Approximately 30 minute drive at average speed (32.5km)
+export const FIFTEEN_MIN_DRIVE_RADIUS_METERS = 12000; // Roughly 15 minute drive at average local speed
+export const ONE_HOUR_DRIVE_RADIUS_METERS = 55000; // Roughly 1 hour drive at average speeds
+export const DRIVE_RADIUS_METERS = 26000; // Approximately 30 minute drive at average speed (26km)
 export const MAP_CENTER = { lat: 52.562213, lng: -8.781279 };
 
 /**

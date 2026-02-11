@@ -192,33 +192,6 @@ export default function HeroSection() {
               });
             });
             
-            // Add additional non-clickable markers
-            console.log("Adding additional non-clickable markers");
-            
-            // Marker 3: Conor Breen - 52.631795401261556, -8.654847123780948
-            const marker3Props = {
-              id: "marker-3", 
-              title: "",
-              desc: "Future property location"
-            };
-            const marker3 = createPropertyMarker(map, { 
-              lat: 52.631795401261556, 
-              lng: -8.654847123780948 
-            }, marker3Props);
-            // No click listener added - marker is non-interactive
-            
-            // Marker 5: Waye Cronin - 52.446729098305156, -9.069888413087508
-            const marker5Props = {
-              id: "marker-5", 
-              title: "",
-              desc: "Future property location"
-            };
-            const marker5 = createPropertyMarker(map, { 
-              lat: 52.446729098305156, 
-              lng: -9.069888413087508 
-            }, marker5Props);
-            // No click listener added - marker is non-interactive
-            
             // Add golf course text overlay after ALL markers are loaded to ensure it appears on top
             addGolfCourseTextOverlay(map);
           })

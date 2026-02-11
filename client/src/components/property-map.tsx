@@ -7,8 +7,9 @@ import {
   GEOJSON_URL, 
   PROPERTIES_URL,
   TEN_MIN_DRIVE_RADIUS_METERS,
+  FIFTEEN_MIN_DRIVE_RADIUS_METERS,
+  ONE_HOUR_DRIVE_RADIUS_METERS,
   createPropertyMarker,
-  createPropertyInfoWindowContent,
   addWalkRadiusCircle,
   addGolfCourseTextOverlay,
   applyMapStyling,
@@ -23,9 +24,6 @@ interface PropertyMapProps {
 
 export default function PropertyMap({ propertyId, containerId = "property-map" }: PropertyMapProps) {
   useEffect(() => {
-    // Create a single info window that will be reused
-    let currentInfoWindow: google.maps.InfoWindow | null = null;
-
     const initMap = async () => {
       try {
         // Load Google Maps script
@@ -39,23 +37,39 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           document.getElementById(containerId) as HTMLElement,
           {
             center: mapCenter,
-            zoom: 11,
+            zoom: propertyId === 'dunes-lodge'
+              ? 8
+              : propertyId === 'darrira-house'
+                ? 11
+                : propertyId === 'cragleigh-house'
+                  ? 10
+                  : 14,
             mapId: "c3acdccb9694c869d85b690f", // your Map ID
             disableDefaultUI: true,
           }
         );
 
-        // Add radius circle and label centered on the property (hide for Cragleigh House)
-        if (propertyId !== 'cragleigh-house') {
-          if (propertyId === 'darrira-house') {
-            addWalkRadiusCircle(map, mapCenter, {
-              radiusMeters: TEN_MIN_DRIVE_RADIUS_METERS,
-              labelText: '10 minute drive',
-              icon: 'car',
-            });
-          } else {
-            addWalkRadiusCircle(map, mapCenter);
-          }
+        // Add radius circle and label centered on the property
+        if (propertyId === 'darrira-house') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: TEN_MIN_DRIVE_RADIUS_METERS,
+            labelText: '10 minute drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'cragleigh-house') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: FIFTEEN_MIN_DRIVE_RADIUS_METERS,
+            labelText: '15 minute drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'dunes-lodge') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: ONE_HOUR_DRIVE_RADIUS_METERS,
+            labelText: '1 hour drive',
+            icon: 'car',
+          });
+        } else {
+          addWalkRadiusCircle(map, mapCenter);
         }
 
         // Add golf course text overlay
@@ -183,14 +197,6 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           });
         });
 
-        // Map click listener to close info windows
-        map.addListener("click", () => {
-          if (currentInfoWindow) {
-            currentInfoWindow.close();
-            currentInfoWindow = null;
-          }
-        });
-
         // Load properties and add markers (only show current property)
         console.log("Loading properties from:", PROPERTIES_URL);
         fetch(PROPERTIES_URL)
@@ -216,19 +222,7 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
               const p = currentPropertyFeature.properties || {};
               console.log(`Adding marker for current property ${p.title} at [${lat}, ${lng}]`);
               
-              const marker = createPropertyMarker(map, { lat, lng }, p);
-              
-              // Add click listener to marker
-              marker.addListener("click", () => {
-                if (currentInfoWindow) {
-                  currentInfoWindow.close();
-                }
-                currentInfoWindow = new google.maps.InfoWindow({
-                  content: createPropertyInfoWindowContent(p),
-                  maxWidth: 400,
-                });
-                currentInfoWindow.open(map, marker);
-              });
+              createPropertyMarker(map, { lat, lng }, p);
             } else {
               console.log(`Property ${propertyId} not found in GeoJSON data`);
             }
@@ -243,22 +237,11 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
               desc: "Premium residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
             };
             
-            const marker = createPropertyMarker(
+            createPropertyMarker(
               map,
               { lat: 52.55886548383084, lng: -8.78699909386544 },
               fallbackProps
             );
-            
-            marker.addListener("click", () => {
-              if (currentInfoWindow) {
-                currentInfoWindow.close();
-              }
-              currentInfoWindow = new google.maps.InfoWindow({
-                content: createPropertyInfoWindowContent(fallbackProps),
-                maxWidth: 400,
-              });
-              currentInfoWindow.open(map, marker);
-            });
           });
       } catch (error) {
         console.error("Error initializing map:", error);

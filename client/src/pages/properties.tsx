@@ -90,7 +90,11 @@ export default function PropertiesPage() {
                   <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
                     <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                       <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                        {['cragleigh-house', 'darrira-house'].includes(p.id) ? 'DELUXE' : 'EXCLUSIVE'}
+                        {p.id === 'cragleigh-house'
+                          ? 'PREMIUM'
+                          : ['darrira-house', 'dunes-lodge'].includes(p.id)
+                            ? 'DELUXE'
+                            : 'EXECUTIVE'}
                       </div>
                     </div>
                   </div>

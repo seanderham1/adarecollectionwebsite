@@ -279,6 +279,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl, startMuted = tru
 
           <video
             ref={videoRef}
+            key={videoUrl}
             src={videoUrl}
             className="absolute top-0 left-0 w-full h-full object-cover"
             controls

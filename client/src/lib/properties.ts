@@ -327,6 +327,65 @@ export const properties: Property[] = [
       lng: -8.874792660717345
     },
     walkingDistance: "10 minutes drive",
-    videoUrl: "/videos/thefairways.mp4"
+    videoUrl: "/videos/darrirahouse.mp4"
+  },
+  {
+    id: "dunes-lodge",
+    name: "Dunes Lodge",
+    subtitle: "Architect-designed A-rated home overlooking the Lahinch Old Course, just over one hour from Adare Manor.",
+    bedrooms: 4,
+    description: "Recently renovated, energy-efficient retreat in Lahinch with sea and golf course views, ideal for Ryder Cup stays.",
+    fullDescription: "Located in the vibrant surf and golf town of Lahinch along the scenic Wild Atlantic Way, Dunes Lodge is a recently renovated, architect-designed A-rated energy-efficient home. It provides an idyllic retreat for golfers, surfers, families, and groups attending major events like the Ryder Cup 2027. Overlooking the 18th green of the Lahinch Old Course, this home boasts exceptional sea and golf course views and is just over one hour drive or a short helicopter ride from Adare Manor.",
+    price: "POA",
+    images: [
+      "/images/houses/house 9/house-9-exterior-5.jpg",
+      "/images/houses/house 9/house-9-kitchen-3.jpg",
+      "/images/houses/house 9/house-9-kitchen-5.jpg",
+      "/images/houses/house 9/house-9-kitchen-living.jpg",
+      "/images/houses/house 9/house-9-living-room-1.jpg",
+      "/images/houses/house 9/house-9-living-room-2.jpg",
+      "/images/houses/house 9/house-9-living-room-4.jpg",
+      "/images/houses/house 9/house-9-kitchen-4.jpg",
+      "/images/houses/house 9/house-9-primary-bedroom-1.jpg",
+      "/images/houses/house 9/house-9-primary-bedroom-2.jpg",
+      "/images/houses/house 9/house-9-bathroom-2.jpg",
+      "/images/houses/house 9/house-9-bedroom-2.jpg",
+      "/images/houses/house 9/house-9-bedroom-3.jpg",
+      "/images/houses/house 9/house-9-bathroom-1.jpg",
+      "/images/houses/house 9/house-9-stairs.jpg",
+      "/images/houses/house 9/house-9-stairs-under.jpg",
+      "/images/houses/house 9/house-9-exterior-2.jpg"
+    ],
+    thumbnail: "/images/houses/house 9/house-9-exterior-5.jpg",
+    features: [
+      "Open-plan kitchen, dining and living area with wood-burning stove",
+      "Upstairs lounge with bar and panoramic golf and ocean views",
+      "3 bedrooms with king beds, 1 bedroom with 4 single beds",
+      "3 bathrooms with wet room rain showers",
+      "Fully equipped utility room",
+      "Architect-designed layout, ideal for social gatherings",
+      "High-speed Wi-Fi, streaming services, and dedicated workspace",
+      "Garage for golf clubs",
+      "Outdoor BBQ and entertainment area",
+      "Sauna, ice bath, and outdoor shower"
+    ],
+    amenities: [
+      "A-rated energy-efficient home",
+      "Short walk to Lahinch village, beach, and surf",
+      "Hugo’s Bakery, cafés, restaurants, and traditional Irish pubs nearby",
+      "5-minute drive to Cliffs of Moher",
+      "Close to ferry for Aran Islands, The Burren, Loop Head, Doolin",
+      "Lahinch Leisure Centre nearby",
+      "Helicopter landing possible on Lahinch Golf Course (100m away)",
+      "Welcome hamper provided on arrival",
+      "Optional transport services (airport pick-up, transfers to Adare Manor)",
+      "Laundry and catering available on request",
+      "One-week rental only (week before, during, and after Ryder Cup available separately)"
+    ],
+    location: {
+      lat: 52.9346,
+      lng: -9.3432
+    },
+    walkingDistance: "Just over one hour drive to Adare Manor"
   }
 ];
