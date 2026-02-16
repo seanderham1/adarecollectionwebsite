@@ -127,8 +127,8 @@ export default function HeroSection() {
             zoom: 15,
             mapId: "c3acdccb9694c869d85b690f", // your Map ID
             disableDefaultUI: true,
-            // Optimize map performance
-            gestureHandling: 'greedy',
+            // Enable "Use cmd + scroll to zoom" hint like property maps
+            gestureHandling: 'cooperative',
             clickableIcons: false,
             styles: [
               {

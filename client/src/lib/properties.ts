@@ -29,15 +29,23 @@ export const properties: Property[] = [
     price: "Enquire Now",
     images: [
       "/images/houses/house 2/house-2-main-original.webp",
+      "/images/houses/house 2/house-2-stairway-1.webp",
       "/images/houses/house 2/house-2-living-room-3.webp",
       "/images/houses/house 2/house-2-living-room-2.webp",
       "/images/houses/house 2/house-2-living-room-1.webp",
+      "/images/houses/house 2/house-2-living-room-4.webp",
       "/images/houses/house 2/house-2-living-room.webp",
       "/images/houses/house 2/house-2-dining.webp",
       "/images/houses/house 2/house-2-cinema-room.webp",
       "/images/houses/house 2/house-2-master-bedroom.webp",
+      "/images/houses/house 2/house-2-master-bedroom-2.webp",
+      "/images/houses/house 2/house-2-master-changing-room.webp",
+      "/images/houses/house 2/house-2-master-bathroom.webp",
       "/images/houses/house 2/house-2-bedroom-2.webp",
       "/images/houses/house 2/house-2-bedroom-1.webp",
+      "/images/houses/house 2/house-2-bathroom-1.webp",
+      "/images/houses/house 2/house-2-bathroom-2.webp",
+      "/images/houses/house 2/house-2-bathroom-3.webp",
       "/images/houses/house 2/house-2-games-room.webp",
       "/images/houses/house 2/house-2-study.webp",
       "/images/houses/house 2/house-2-sauna.webp",
@@ -102,12 +110,9 @@ export const properties: Property[] = [
       "/images/houses/house 3/house-3-master-bath-2.webp",
       "/images/houses/house 3/house-3-master-bath-3.webp",
       "/images/houses/house 3/house-3-bedroom-4.webp",
-      "/images/houses/house 3/house-3-bedroom-5.webp",
       "/images/houses/house 3/house-3-bedroom-6.webp",
       "/images/houses/house 3/house-3-bedroom-7.webp",
-      "/images/houses/house 3/house-3-bedroom-8.webp",
       "/images/houses/house 3/house-3-bedroom-9.webp",
-      "/images/houses/house 3/house-3-bedroom-10.webp",
       "/images/houses/house 3/house-3-bedroom-11.webp",
       "/images/houses/house 3/house-3-exterior.webp"
     ],
@@ -314,13 +319,7 @@ export const properties: Property[] = [
       "Daily housekeeping",
       "High-speed WiFi",
       "Satellite TV",
-      "Secure private parking",
-      "Private chef",
-      "Chauffeur",
-      "Concierge services",
-      "Helicopter transfers (subject to availability)",
-      "Full laundry services",
-      "Ryder Cup tickets (subject to availability)"
+      "Secure private parking"
     ],
     location: {
       lat: 52.551248755996916,
@@ -338,7 +337,6 @@ export const properties: Property[] = [
     fullDescription: "Located in the vibrant surf and golf town of Lahinch along the scenic Wild Atlantic Way, Dunes Lodge is a recently renovated, architect-designed A-rated energy-efficient home. It provides an idyllic retreat for golfers, surfers, families, and groups attending major events like the Ryder Cup 2027. Overlooking the 18th green of the Lahinch Old Course, this home boasts exceptional sea and golf course views and is just over one hour drive or a short helicopter ride from Adare Manor.",
     price: "POA",
     images: [
-      "/images/houses/house 9/house-9-exterior-5.jpg",
       "/images/houses/house 9/house-9-kitchen-3.jpg",
       "/images/houses/house 9/house-9-kitchen-5.jpg",
       "/images/houses/house 9/house-9-kitchen-living.jpg",
@@ -353,10 +351,9 @@ export const properties: Property[] = [
       "/images/houses/house 9/house-9-bedroom-3.jpg",
       "/images/houses/house 9/house-9-bathroom-1.jpg",
       "/images/houses/house 9/house-9-stairs.jpg",
-      "/images/houses/house 9/house-9-stairs-under.jpg",
-      "/images/houses/house 9/house-9-exterior-2.jpg"
+      "/images/houses/house 9/house-9-stairs-under.jpg"
     ],
-    thumbnail: "/images/houses/house 9/house-9-exterior-5.jpg",
+    thumbnail: "/images/houses/house 9/house-9-living-room-1.jpg",
     features: [
       "Open-plan kitchen, dining and living area with wood-burning stove",
       "Upstairs lounge with bar and panoramic golf and ocean views",

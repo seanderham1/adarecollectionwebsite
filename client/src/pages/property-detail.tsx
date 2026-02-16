@@ -163,6 +163,9 @@ export default function PropertyDetail() {
                         alt={`${property.name} - Image ${index + 1}`}
                         className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
                           property.images[index].includes('house-1-hall.webp') ||
+                          property.images[index].includes('house-2-bathroom-1.webp') ||
+                          property.images[index].includes('house-2-bathroom-2.webp') ||
+                          property.images[index].includes('house-2-bathroom-3.webp') ||
                           property.images[index].includes('house-3-master-bath-1.webp') ||
                           property.images[index].includes('house-3-master-bath-2.webp') ||
                           property.images[index].includes('house-3-master-bath-3.webp') ||
@@ -175,6 +178,9 @@ export default function PropertyDetail() {
                         }`}
                         style={{ 
                           transform: property.images[index].includes('house-1-hall.webp') ||
+                            property.images[index].includes('house-2-bathroom-1.webp') ||
+                            property.images[index].includes('house-2-bathroom-2.webp') ||
+                            property.images[index].includes('house-2-bathroom-3.webp') ||
                             property.images[index].includes('house-6-shower-room.webp')
                             ? 'translateY(0%)' 
                             : (property.images[index].includes('/house 4/house-4-rolex.webp') || 
@@ -204,15 +210,13 @@ export default function PropertyDetail() {
                       />
                     ))}
 
-                    {/* EXECUTIVE/DELUXE/PREMIUM Banner */}
+                    {/* EXECUTIVE/DELUXE Banner */}
                     <div className="absolute top-16 left-0 right-0 z-20">
                       <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                         <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                          {property.id === 'cragleigh-house'
-                            ? 'PREMIUM'
-                            : ['darrira-house', 'dunes-lodge'].includes(property.id)
-                              ? 'DELUXE'
-                              : 'EXECUTIVE'}
+                          {['darrira-house', 'dunes-lodge'].includes(property.id)
+                            ? 'DELUXE'
+                            : 'EXECUTIVE'}
                         </div>
                       </div>
                     </div>
@@ -261,8 +265,8 @@ export default function PropertyDetail() {
                     <h1 className="font-serif text-2xl font-normal text-primary mb-2">
                       {property.name}
                     </h1>
-                    <p className="text-sm text-primary font-serif mb-0">Available exclusively for Ryder Cup 2027</p>
-                    <p className="text-sm text-primary font-serif mb-3">10-day minimum stay</p>
+                    <p className="text-sm text-primary font-serif mb-1">Available exclusively for Ryder Cup 2027</p>
+                    
                     <p className="text-sm text-primary leading-relaxed">
                       {property.subtitle}
                     </p>
@@ -456,8 +460,8 @@ export default function PropertyDetail() {
                     <h1 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-2 text-left">
                       {property.name}
                     </h1>
-                    <p className="text-sm text-primary font-serif mb-0 text-left">Available exclusively for Ryder Cup 2027</p>
-                    <p className="text-sm text-primary font-serif mb-4 text-left">10-day minimum stay</p>
+                    <p className="text-sm text-primary font-serif mb-1 text-left">Available exclusively for Ryder Cup 2027</p>
+                  
                     <p className="text-sm text-primary leading-relaxed mb-1 text-left">
                       {property.subtitle}
                     </p>
