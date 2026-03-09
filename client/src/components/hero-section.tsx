@@ -430,7 +430,7 @@ export default function HeroSection() {
               </div>
 
               {/* Overlay Content */}
-              <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center">
+              <div className="absolute inset-0 bg-black bg-opacity-15 flex items-center">
                 <div className="text-left text-white px-6 lg:px-8 max-w-2xl">
                   <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-0 md:mb-2 leading-tight font-medium">
                     Ryder Cup 2027

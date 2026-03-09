@@ -170,7 +170,14 @@ export default function PropertyDetail() {
                           property.images[index].includes('house-3-master-bath-2.webp') ||
                           property.images[index].includes('house-3-master-bath-3.webp') ||
                           property.images[index].includes('house-4-rolex.webp') ||
-                          property.images[index].includes('house-6-shower-room.webp')
+                          property.images[index].includes('house-6-shower-room.webp') ||
+                          property.images[index].includes('house-9-bathroom-1.jpg') ||
+                          property.images[index].includes('house-9-bathroom-2.jpg') ||
+                          property.images[index].includes('house-9-bedroom-2.jpg') ||
+                          property.images[index].includes('house-9-bedroom-3.jpg') ||
+                          property.images[index].includes('house-9-kitchen-4.jpg') ||
+                          property.images[index].includes('house-9-stairs-under.jpg') ||
+                          property.images[index].includes('house-9-stairs.jpg')
                             ? 'object-contain'
                             : 'object-cover'
                         } ${
@@ -181,7 +188,14 @@ export default function PropertyDetail() {
                             property.images[index].includes('house-2-bathroom-1.webp') ||
                             property.images[index].includes('house-2-bathroom-2.webp') ||
                             property.images[index].includes('house-2-bathroom-3.webp') ||
-                            property.images[index].includes('house-6-shower-room.webp')
+                            property.images[index].includes('house-6-shower-room.webp') ||
+                            property.images[index].includes('house-9-bathroom-1.jpg') ||
+                            property.images[index].includes('house-9-bathroom-2.jpg') ||
+                            property.images[index].includes('house-9-bedroom-2.jpg') ||
+                            property.images[index].includes('house-9-bedroom-3.jpg') ||
+                            property.images[index].includes('house-9-kitchen-4.jpg') ||
+                            property.images[index].includes('house-9-stairs-under.jpg') ||
+                            property.images[index].includes('house-9-stairs.jpg')
                             ? 'translateY(0%)' 
                             : (property.images[index].includes('/house 4/house-4-rolex.webp') || 
                                (property.id === 'putters-way' && index === 8))

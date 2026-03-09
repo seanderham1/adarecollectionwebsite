@@ -11,7 +11,7 @@ interface ComingSoonProps {
 
 // TEMPORARY: Easy to remove - just set ENABLE_COMING_SOON to false
 const ENABLE_COMING_SOON = true;
-const ADMIN_PASSWORD = 'access123';
+const ADMIN_PASSWORD = 'access345';
 const SESSION_KEY = 'adare_admin_access';
 
 export function ComingSoon({ children }: ComingSoonProps) {

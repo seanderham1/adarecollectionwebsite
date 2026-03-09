@@ -331,9 +331,9 @@ export const properties: Property[] = [
   {
     id: "dunes-lodge",
     name: "Dunes Lodge",
-    subtitle: "Architect-designed A-rated home overlooking the Lahinch Old Course, just over one hour from Adare Manor.",
+    subtitle: "Architect-designed A-rated home in Lahinch with sea and golf course views, ideal for Ryder Cup 2027 stays.",
     bedrooms: 4,
-    description: "Recently renovated, energy-efficient retreat in Lahinch with sea and golf course views, ideal for Ryder Cup stays.",
+    description: "Architect-designed A-rated home in Lahinch with sea and golf course views, ideal for Ryder Cup 2027 stays.",
     fullDescription: "Located in the vibrant surf and golf town of Lahinch along the scenic Wild Atlantic Way, Dunes Lodge is a recently renovated, architect-designed A-rated energy-efficient home. It provides an idyllic retreat for golfers, surfers, families, and groups attending major events like the Ryder Cup 2027. Overlooking the 18th green of the Lahinch Old Course, this home boasts exceptional sea and golf course views and is just over one hour drive or a short helicopter ride from Adare Manor.",
     price: "POA",
     images: [
@@ -377,7 +377,8 @@ export const properties: Property[] = [
       "Welcome hamper provided on arrival",
       "Optional transport services (airport pick-up, transfers to Adare Manor)",
       "Laundry and catering available on request",
-      "One-week rental only (week before, during, and after Ryder Cup available separately)"
+      "One-week rental only (week before, during, and after Ryder Cup available separately)",
+      "Price on application"
     ],
     location: {
       lat: 52.9346,

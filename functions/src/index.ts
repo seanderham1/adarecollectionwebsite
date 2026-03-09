@@ -57,7 +57,7 @@ app.post("/api/access-request", async (req, res) => {
         <p><strong>Request Date:</strong> ${new Date().toLocaleString()}</p>
         <hr>
         <p><strong>To grant access:</strong></p>
-        <p>Reply to this email with the access code: <code>access123</code></p>
+        <p>Reply to this email with the access code: <code>access345</code></p>
         <p>Or send a custom message to the requester.</p>
         <hr>
         <p><em>This access request was submitted from the Adare Collection website.</em></p>
