@@ -15,10 +15,11 @@ import {
   getPropertyUrl
 } from "@/lib/map-utils";
 
+const enableHeroCarousel = false;
 const propertyImages = [
-  "/images/hero/adaremanor-img3.webp",
   "/images/hero/adaremanor-img2.webp",
-  "/images/hero/adaremanor-img1.webp",
+  // "/images/hero/adaremanor-img3.webp",
+  // "/images/hero/adaremanor-img1.webp",
 ];
 
 // Countdown component
@@ -409,30 +410,32 @@ export default function HeroSection() {
               <RyderCupCountdown />
 
               {/* Bottom Right Navigation with Separate White Squares */}
-              <div className="absolute bottom-6 right-6 z-10 flex space-x-2">
-                {/* Left Arrow Square */}
-                <button
-                  onClick={prevImage}
-                  className="bg-white shadow-lg w-10 h-10 flex items-center justify-center transition-all duration-200 hover:bg-gray-100 cursor-pointer"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="h-6 w-6 stroke-2 text-black" />
-                </button>
-                
-                {/* Right Arrow Square */}
-                <button
-                  onClick={nextImage}
-                  className="bg-white shadow-lg w-10 h-10 flex items-center justify-center transition-all duration-200 hover:bg-gray-100 cursor-pointer"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="h-6 w-6 stroke-2 text-black" />
-                </button>
-              </div>
+              {enableHeroCarousel && (
+                <div className="absolute bottom-6 right-6 z-10 flex space-x-2">
+                  {/* Left Arrow Square */}
+                  <button
+                    onClick={prevImage}
+                    className="bg-white shadow-lg w-10 h-10 flex items-center justify-center transition-all duration-200 hover:bg-gray-100 cursor-pointer"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="h-6 w-6 stroke-2 text-black" />
+                  </button>
+                  
+                  {/* Right Arrow Square */}
+                  <button
+                    onClick={nextImage}
+                    className="bg-white shadow-lg w-10 h-10 flex items-center justify-center transition-all duration-200 hover:bg-gray-100 cursor-pointer"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="h-6 w-6 stroke-2 text-black" />
+                  </button>
+                </div>
+              )}
 
               {/* Overlay Content */}
               <div className="absolute inset-0 bg-black bg-opacity-15 flex items-center">
                 <div className="text-left text-white px-6 lg:px-8 max-w-2xl">
-                  <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-0 md:mb-2 leading-tight font-medium">
+                  <h1 className="font-serif text-sm sm:text-base md:text-[calc(1.55*0.875rem)] mb-0 md:mb-1 leading-tight font-medium">
                     Ryder Cup 2027
                   </h1>
                   <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mt-0 mb-2 md:mb-6 leading-tight font-medium">

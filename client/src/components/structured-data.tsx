@@ -89,7 +89,7 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
         "@type": "SportsTeam",
         "name": "European Ryder Cup Team"
       },
-      "image": "https://theadarecollection.com/images/hero/adaremanor-img1.webp",
+      "image": "https://theadarecollection.com/images/hero/adaremanor-img2.webp",
       "offers": {
         "@type": "Offer",
         "name": "Ryder Cup 2027 Tickets",
