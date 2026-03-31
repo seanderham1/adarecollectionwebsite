@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Navigation from "@/components/navigation";
+import { useSEO } from "@/hooks/use-seo";
 import HeroSection from "@/components/hero-section";
 import PropertyGrid from "@/components/property-grid";
 import Footer from "@/components/footer";
@@ -13,6 +14,14 @@ import { Link } from "wouter";
 import { Crown, Shield, Users } from "lucide-react";
 
 export default function Home() {
+  useSEO({
+    title: 'Ryder Cup 2027 Accommodation | Luxury Rentals Adare Manor | The Adare Collection',
+    description: 'Discover a curated selection of private residences—each chosen for comfort, privacy, and proximity. Private residences, villas and homes for rent. Adare rental for Ryder Cup - premium golf accommodation Ireland.',
+    keywords: 'Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental 2027, luxury golf accommodation Ireland',
+    ogImage: 'https://theadarecollection.com/images/hero/adaremanor-img2.webp',
+    ogUrl: 'https://theadarecollection.com/'
+  });
+
   const [formData, setFormData] = useState({
     name: "",
     country: "",

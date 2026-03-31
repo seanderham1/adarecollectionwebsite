@@ -16,6 +16,7 @@ export interface Property {
   };
   walkingDistance: string;
   videoUrl?: string;
+  eircode?: string;
 }
 
 export const properties: Property[] = [
@@ -177,6 +178,71 @@ export const properties: Property[] = [
     },
     walkingDistance: "1 minute stroll to the 1st tee box",
     videoUrl: "/videos/puttersway.mp4"
+  },
+  {
+    id: "the-first-tee",
+    name: "The First Tee",
+    subtitle: "Closest residence to the Ryder Cup course — just 150 yards from the practice range and 1st tee.",
+    bedrooms: 5,
+    description: "The closest residence to the Ryder Cup action — 150 yards from the practice range and 1st tee.",
+    fullDescription: "Nestled within the prestigious grounds of Adare Manor, just steps from the world-renowned championship course and practice facilities, The First Tee offers a truly unrivalled location for golf enthusiasts and discerning guests alike.\n\nPositioned closer to the Ryder Cup action than any other residence in The Demesne, this exceptional home provides a rare opportunity to stay quite literally at the starting point of one of the world's most celebrated golfing experiences.\n\nDesigned with elegance and comfort in mind, the property blends timeless architecture with refined contemporary interiors. Expansive living spaces filled with natural light create a seamless flow throughout, offering both relaxed and formal settings for entertaining, unwinding, or hosting in style.\n\nThe residence features 5 beautifully appointed bedrooms, including four en-suite, alongside luxurious bathrooms designed for comfort and relaxation after a day on the course.\n\nThe First Tee is more than a residence — it is a privileged position at the very heart of Adare Manor.",
+    price: "POA",
+    images: [
+      "/images/houses/house 7/house-7-exterior-3.webp",
+      "/images/houses/house 7/house-7-kitchen-1.webp",
+      "/images/houses/house 7/house-7-kitchen-2.webp",
+      "/images/houses/house 7/house-7-dining-1.webp",
+      "/images/houses/house 7/house-7-lounge-1.webp",
+      "/images/houses/house 7/house-7-sitting-room-1.webp",
+      "/images/houses/house 7/house-7-downstairs-bathroom-1.webp",
+      "/images/houses/house 7/house-7-master-bedroom-1.webp",
+      "/images/houses/house 7/house-7-master-bathroom-1.webp",
+      "/images/houses/house 7/house-7-master-bathroom-2.webp",
+      "/images/houses/house 7/house-7-second-bedroom-1.webp",
+      "/images/houses/house 7/house-7-fourth-bedroom-2.webp",
+      "/images/houses/house 7/house-7-fourth-bedroom-1.webp",
+      "/images/houses/house 7/house-7-fourth-bedroombath-1.webp",
+      "/images/houses/house 7/house-7-fourth-bedroombath-2.webp",
+      "/images/houses/house 7/house-7-fourth-bedroombath-3.webp",
+      "/images/houses/house 7/house-7-second-bedroom-2.webp",
+      "/images/houses/house 7/house-7-third-bedroom-1.webp",
+      "/images/houses/house 7/house-7-third-bedroom-2.webp",
+      "/images/houses/house 7/house-7-fifth-bedroom-1.webp",
+      "/images/houses/house 7/house-7-snooker-1.webp",
+      "/images/houses/house 7/house-7-exterior-1.webp"
+    ],
+    thumbnail: "/images/houses/house 7/house-7-exterior-3.webp",
+    features: [
+      "Located on the grounds of Adare Manor",
+      "Closest residence to the course and practice range (150 yards)",
+      "5 spacious bedrooms, including 4 en-suite",
+      "Multiple reception rooms and lounges",
+      "Open-plan kitchen and dining areas",
+      "Formal dining room",
+      "Luxury bathroom with jacuzzi bath",
+      "High-quality finishes throughout",
+      "Private driveway with parking",
+      "Landscaped grounds"
+    ],
+    amenities: [
+      "Chef cooked breakfast",
+      "Fully equipped kitchen",
+      "High-speed Wi-Fi",
+      "Multiple living areas",
+      "Luxury bathrooms with jacuzzi bath and walk-in showers",
+      "Large outdoor patio for evening BBQs",
+      "Home office space",
+      "Laundry facilities",
+      "Fresh linens and towels",
+      "Secure private setting"
+    ],
+    location: {
+      lat: 52.5620,
+      lng: -8.7795
+    },
+    walkingDistance: "150 yards to practice range and 1st tee",
+    videoUrl: "/videos/thefirsttee.mp4",
+    eircode: "V94 D40K"
   },
   {
     id: "the-fairways",

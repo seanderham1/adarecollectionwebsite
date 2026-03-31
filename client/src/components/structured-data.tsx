@@ -21,23 +21,18 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
       "addressLocality": "Adare",
       "addressRegion": "Limerick",
       "addressCountry": "IE",
-      "postalCode": "V94 W8WR"
+      "postalCode": property.eircode ?? "V94 W8WR"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": property.coordinates?.lat || 52.5644,
-      "longitude": property.coordinates?.lng || -8.7892
+      "latitude": property.location?.lat ?? 52.5644,
+      "longitude": property.location?.lng ?? -8.7892
     },
     "amenityFeature": [
       {
         "@type": "LocationFeatureSpecification",
         "name": "Bedrooms",
         "value": property.bedrooms
-      },
-      {
-        "@type": "LocationFeatureSpecification", 
-        "name": "Bathrooms",
-        "value": property.bathrooms
       },
       {
         "@type": "LocationFeatureSpecification",
@@ -98,6 +93,65 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
         "url": "https://www.rydercup.com"
       }
     }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function WebSiteStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "The Adare Collection",
+    "description": "Ryder Cup 2027 accommodation at Adare Manor. Luxury rentals, private residences, villas for rent.",
+    "url": "https://theadarecollection.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://theadarecollection.com/properties?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function BreadcrumbListStructuredData({ propertyName, propertyId }: { propertyName: string; propertyId: string }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://theadarecollection.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Properties",
+        "item": "https://theadarecollection.com/properties"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": propertyName,
+        "item": `https://theadarecollection.com/property/${propertyId}`
+      }
+    ]
   };
 
   return (

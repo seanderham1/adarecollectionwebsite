@@ -15,7 +15,7 @@ function PropertyCard({ property }: PropertyCardProps) {
         <div className="relative aspect-[16/9]">
           <img 
             src={property.thumbnail || property.images[0]} 
-            alt={property.name}
+            alt={`${property.name} - Ryder Cup 2027 accommodation at Adare Manor`}
             className="w-full h-full object-cover"
             data-testid={`property-image-${property.id}-0`}
           />

@@ -135,7 +135,7 @@ if [ $? -eq 0 ]; then
     echo "1. Go to: https://github.com/seanderham1/adarecollectionwebsite/settings/secrets/actions"
     echo "2. Find 'FIREBASE_TOKEN' and click 'Update'"
     echo "3. Paste this new token:"
-    echo ""
+    echo "" 
     echo "$NEW_TOKEN"
     echo ""
     echo "4. Click 'Update secret'"

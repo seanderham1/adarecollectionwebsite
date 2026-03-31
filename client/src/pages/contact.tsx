@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navigation from "@/components/navigation";
+import { useSEO } from "@/hooks/use-seo";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +12,14 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact | Ryder Cup 2027 Accommodation | The Adare Collection',
+    description: 'Enquire about luxury Ryder Cup 2027 accommodation at Adare Manor. Book your Adare rental for the Ryder Cup. Contact The Adare Collection.',
+    keywords: 'Ryder Cup 2027 accommodation contact, Adare rental enquiry, Adare Manor booking',
+    ogImage: 'https://theadarecollection.com/images/hero/adaremanor-img2.webp',
+    ogUrl: 'https://theadarecollection.com/contact'
+  });
+
   const [formData, setFormData] = useState({
     name: "",
     country: "",

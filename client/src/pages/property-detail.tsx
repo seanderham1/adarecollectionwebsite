@@ -12,6 +12,7 @@ import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Bed, Mail, MessageCircle }
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useSEO } from "@/hooks/use-seo";
+import { PropertyStructuredData, BreadcrumbListStructuredData } from "@/components/structured-data";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -35,9 +36,9 @@ export default function PropertyDetail() {
 
   // SEO optimization
   useSEO({
-    title: property ? `${property.name} - Ryder Cup 2027 Luxury Rental | The Adare Collection` : 'Property Details - The Adare Collection',
-    description: property ? `${property.name} - Exclusive luxury rental for Ryder Cup 2027. ${property.bedrooms} bedrooms, premium amenities, located in Adare Manor Estate. Book your Ryder Cup accommodation today.` : 'Discover luxury properties for Ryder Cup 2027 at The Adare Collection.',
-    keywords: property ? `${property.name}, Ryder Cup 2027, luxury rental, Adare Manor, ${property.bedrooms} bedroom, golf accommodation, Ireland` : 'Ryder Cup 2027, luxury rental, Adare Manor, golf accommodation',
+    title: property ? `${property.name} - Ryder Cup 2027 Accommodation | Adare Manor Rental` : 'Property Details - The Adare Collection',
+    description: property ? `${property.name} - Ryder Cup 2027 accommodation at Adare Manor. ${property.bedrooms} bedrooms, premium amenities. Book your Adare rental for the Ryder Cup.` : 'Discover luxury Ryder Cup 2027 accommodation at The Adare Collection.',
+    keywords: property ? `${property.name}, Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, ${property.bedrooms} bedroom, golf accommodation Ireland` : 'Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, golf accommodation',
     ogImage: property ? `https://theadarecollection.com${property.images[0]}` : 'https://theadarecollection.com/images/hero/adaremanor-img1.webp',
     ogUrl: `https://theadarecollection.com/property/${id}`
   });
@@ -141,6 +142,8 @@ export default function PropertyDetail() {
 
   return (
     <div className="min-h-screen bg-white">
+      <PropertyStructuredData propertyId={property.id} />
+      <BreadcrumbListStructuredData propertyName={property.name} propertyId={property.id} />
       <Navigation />
       
       <div className="pt-24">
@@ -160,49 +163,59 @@ export default function PropertyDetail() {
                       <img
                         key={image}
                         src={image}
-                        alt={`${property.name} - Image ${index + 1}`}
-                        className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
-                          property.images[index].includes('house-1-hall.webp') ||
-                          property.images[index].includes('house-2-bathroom-1.webp') ||
-                          property.images[index].includes('house-2-bathroom-2.webp') ||
-                          property.images[index].includes('house-2-bathroom-3.webp') ||
-                          property.images[index].includes('house-3-master-bath-1.webp') ||
-                          property.images[index].includes('house-3-master-bath-2.webp') ||
-                          property.images[index].includes('house-3-master-bath-3.webp') ||
-                          property.images[index].includes('house-4-rolex.webp') ||
-                          property.images[index].includes('house-6-shower-room.webp') ||
-                          property.images[index].includes('house-9-bathroom-1.jpg') ||
-                          property.images[index].includes('house-9-bathroom-2.jpg') ||
-                          property.images[index].includes('house-9-bedroom-2.jpg') ||
-                          property.images[index].includes('house-9-bedroom-3.jpg') ||
-                          property.images[index].includes('house-9-kitchen-4.jpg') ||
-                          property.images[index].includes('house-9-stairs-under.jpg') ||
-                          property.images[index].includes('house-9-stairs.jpg')
-                            ? 'object-contain'
-                            : 'object-cover'
+                        alt={`${property.name} - Ryder Cup 2027 accommodation at Adare Manor - Image ${index + 1}`}
+                        className={`absolute inset-0 w-full h-full min-w-full min-h-full transition-opacity duration-700 ${
+                          property.id === 'the-first-tee'
+                            ? (property.images[index].includes('house-7-downstairs-bathroom') ||
+                               property.images[index].includes('house-7-fourth-bedroombath-2') ||
+                               property.images[index].includes('house-7-fourth-bedroombath-3'))
+                              ? 'object-contain'
+                              : 'object-cover'
+                            : property.images[index].includes('house-1-hall.webp') ||
+                              property.images[index].includes('house-2-bathroom-1.webp') ||
+                              property.images[index].includes('house-2-bathroom-2.webp') ||
+                              property.images[index].includes('house-2-bathroom-3.webp') ||
+                              property.images[index].includes('house-3-master-bath-1.webp') ||
+                              property.images[index].includes('house-3-master-bath-2.webp') ||
+                              property.images[index].includes('house-3-master-bath-3.webp') ||
+                              property.images[index].includes('house-4-rolex.webp') ||
+                              property.images[index].includes('house-6-shower-room.webp') ||
+                              property.images[index].includes('house-9-bathroom-1.jpg') ||
+                              property.images[index].includes('house-9-bathroom-2.jpg') ||
+                              property.images[index].includes('house-9-bedroom-2.jpg') ||
+                              property.images[index].includes('house-9-bedroom-3.jpg') ||
+                              property.images[index].includes('house-9-kitchen-4.jpg') ||
+                              property.images[index].includes('house-9-stairs-under.jpg') ||
+                              property.images[index].includes('house-9-stairs.jpg')
+                              ? 'object-contain'
+                              : 'object-cover'
                         } ${
                           index === currentImageIndex ? "opacity-100" : "opacity-0"
                         }`}
                         style={{ 
-                          transform: property.images[index].includes('house-1-hall.webp') ||
-                            property.images[index].includes('house-2-bathroom-1.webp') ||
-                            property.images[index].includes('house-2-bathroom-2.webp') ||
-                            property.images[index].includes('house-2-bathroom-3.webp') ||
-                            property.images[index].includes('house-6-shower-room.webp') ||
-                            property.images[index].includes('house-9-bathroom-1.jpg') ||
-                            property.images[index].includes('house-9-bathroom-2.jpg') ||
-                            property.images[index].includes('house-9-bedroom-2.jpg') ||
-                            property.images[index].includes('house-9-bedroom-3.jpg') ||
-                            property.images[index].includes('house-9-kitchen-4.jpg') ||
-                            property.images[index].includes('house-9-stairs-under.jpg') ||
-                            property.images[index].includes('house-9-stairs.jpg')
-                            ? 'translateY(0%)' 
+                          transform: property.id === 'the-first-tee'
+                            ? 'translateY(0%)'
+                            : property.images[index].includes('house-1-hall.webp') ||
+                              property.images[index].includes('house-2-bathroom-1.webp') ||
+                              property.images[index].includes('house-2-bathroom-2.webp') ||
+                              property.images[index].includes('house-2-bathroom-3.webp') ||
+                              property.images[index].includes('house-6-shower-room.webp') ||
+                              property.images[index].includes('house-9-bathroom-1.jpg') ||
+                              property.images[index].includes('house-9-bathroom-2.jpg') ||
+                              property.images[index].includes('house-9-bedroom-2.jpg') ||
+                              property.images[index].includes('house-9-bedroom-3.jpg') ||
+                              property.images[index].includes('house-9-kitchen-4.jpg') ||
+                              property.images[index].includes('house-9-stairs-under.jpg') ||
+                              property.images[index].includes('house-9-stairs.jpg')
+                              ? 'translateY(0%)' 
+                              : (property.images[index].includes('/house 4/house-4-rolex.webp') || 
+                                 (property.id === 'putters-way' && index === 8))
+                              ? 'translateY(10%)'
+                              : 'translateY(5%)',
+                          objectPosition: property.id === 'the-first-tee'
+                            ? 'center center'
                             : (property.images[index].includes('/house 4/house-4-rolex.webp') || 
                                (property.id === 'putters-way' && index === 8))
-                            ? 'translateY(10%)'
-                            : 'translateY(5%)',
-                          objectPosition: (property.images[index].includes('/house 4/house-4-rolex.webp') || 
-                                          (property.id === 'putters-way' && index === 8))
                             ? 'center 50%'
                             : property.id === 'the-captains' 
                             ? property.images[index].includes('house-3-master-bath-1.webp') ||
@@ -304,14 +317,14 @@ export default function PropertyDetail() {
                       MAP
                     </Button>
 
-                    {property.id !== 'dunes-lodge' && (
-                      <Button 
-                        onClick={handleDownloadBrochure}
-                        className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
-                      >
-                        BROCHURE
-                      </Button>
-                    )}
+{property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && (
+                        <Button 
+                          onClick={handleDownloadBrochure}
+                          className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
+                        >
+                          BROCHURE
+                        </Button>
+                      )}
                   </div>
 
                   {/* Share Section */}
@@ -405,7 +418,7 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house') && (
+                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee') && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Crown className="text-white h-6 w-6" />
@@ -425,6 +438,11 @@ export default function PropertyDetail() {
                   <p className="text-sm text-primary font-serif mb-4" data-testid="property-walking-distance-detail">
                     {property.walkingDistance}
                   </p>
+                  {property.eircode && property.id !== "the-first-tee" && (
+                    <p className="text-sm text-primary font-serif mb-4" data-testid="property-eircode">
+                      Eircode: {property.eircode}
+                    </p>
+                  )}
                   <div className="aspect-[1.7/1.1] bg-gray-200 relative overflow-hidden">
                     <PropertyMap propertyId={property.id} />
                   </div>
@@ -498,11 +516,11 @@ export default function PropertyDetail() {
                     <div className="flex justify-center space-x-2">
                       <Button 
                         onClick={handleViewMap}
-                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' ? 'w-1/2' : 'w-full'}`}
+                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' ? 'w-1/2' : 'w-full'}`}
                       >
                         MAP
                       </Button>
-                      {property.id !== 'dunes-lodge' && (
+                      {property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && (
                         <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"

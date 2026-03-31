@@ -50,9 +50,9 @@ export default function PropertiesPage() {
   const all = properties;
 
   useSEO({
-    title: 'Luxury Properties for Ryder Cup 2027 - The Adare Collection',
-    description: 'Explore our curated selection of luxury private residences for Ryder Cup 2027. Premium accommodations in and around Adare Manor Estate with exclusive amenities and concierge services.',
-    keywords: 'Ryder Cup 2027 properties, luxury rental Adare Manor, golf accommodation Ireland, private residences, executive rentals',
+    title: 'Ryder Cup 2027 Accommodation | Luxury Rentals Adare Manor | The Adare Collection',
+    description: 'Discover a curated selection of private residences—each chosen for comfort, privacy, and proximity. Private residences, villas and homes for rent. Adare rental for Ryder Cup.',
+    keywords: 'Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, golf accommodation Ireland',
     ogImage: 'https://theadarecollection.com/images/hero/adaremanor-img1.webp',
     ogUrl: 'https://theadarecollection.com/properties'
   });
@@ -66,12 +66,12 @@ export default function PropertiesPage() {
         <section className="bg-white py-12 mb-12 -mx-6 px-6 -mt-24 pt-24 border-b border-gray-200">
           <div className="text-center">
             <h1 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-4">
-              Explore our properties
+              Ryder Cup 2027 Accommodation at Adare Manor
             </h1>
             <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
-              Discover a curated selection of private residences in and around Adare Manor—each chosen for comfort,
-              privacy, and proximity. Whether you seek a discreet estate within the grounds or a spacious home just
-              minutes away, our collection is tailored for Ryder Cup week and beyond.
+              Discover a curated selection of private residences—each chosen for comfort, privacy, and proximity.
+              Whether you seek a discreet estate within the grounds or a spacious home just minutes away, our Adare
+              rental collection is tailored for Ryder Cup week.
             </p>
           </div>
         </section>
@@ -84,7 +84,7 @@ export default function PropertiesPage() {
                 <div className="relative aspect-[16/9]">
                   <img
                     src={p.thumbnail || p.images[0]}
-                    alt={p.name}
+                    alt={`${p.name} - Ryder Cup 2027 accommodation at Adare Manor`}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">

@@ -55,6 +55,19 @@
     },
     {
       "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.7795, 52.5620]},
+      "properties":{
+        "id":"the-first-tee",
+        "title":"The First Tee",
+        "desc":"Closest residence to the Ryder Cup action — 150 yards from the practice range and 1st tee.",
+        "beds": 5,
+        "baths": 5,
+        "price":"POA",
+        "thumb":"/images/houses/house 7/house-7-exterior-3.webp"
+      }
+    },
+    {
+      "type":"Feature",
       "geometry":{"type":"Point","coordinates":[-8.788175127542624, 52.56053856598162]},
       "properties":{
         "id":"the-fairways",

@@ -399,7 +399,7 @@ export default function HeroSection() {
                 <img
                   key={src}
                   src={src}
-                  alt={`Property view ${idx + 1}`}
+                  alt={`Ryder Cup 2027 accommodation - Adare Manor luxury rental`}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                     idx === currentImageIndex ? "opacity-100" : "opacity-0"
                   }`}
@@ -436,19 +436,19 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-black bg-opacity-15 flex items-center">
                 <div className="text-left text-white px-6 lg:px-8 max-w-2xl">
                   <h1 className="font-serif text-sm sm:text-base md:text-[calc(1.55*0.875rem)] mb-0 md:mb-1 leading-tight font-medium">
-                    Ryder Cup 2027
+                    Ryder Cup 2027 Accommodation
                   </h1>
                   <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mt-0 mb-2 md:mb-6 leading-tight font-medium">
-                    Executive Rentals
+                    Luxury Rentals at Adare Manor
                   </h2>
                   <p className="text-white mb-2 md:mb-6 font-medium text-xs sm:text-sm md:text-[calc(1.4*0.875rem)]">
-                    Private Residences | Adare Manor Estate & Surrounds
+                    Private Residences | Adare Manor Estate & Surrounds | Adare rental for Ryder Cup
                   </p>
                   <Button
                     onClick={scrollToProperties}
                     className="border border-white bg-transparent text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:bg-white hover:text-gray-900 transition-all duration-200"
                   >
-                    SEE PROPERTIES
+                    VIEW RYDER CUP 2027 ACCOMMODATION
                   </Button>
                 </div>
               </div>

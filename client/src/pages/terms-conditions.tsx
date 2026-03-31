@@ -1,7 +1,15 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { useSEO } from "@/hooks/use-seo";
 
 export default function TermsConditions() {
+  useSEO({
+    title: 'Terms and Conditions | The Adare Collection',
+    description: 'Terms and conditions for The Adare Collection - luxury Ryder Cup 2027 accommodation at Adare Manor.',
+    keywords: 'The Adare Collection terms, Ryder Cup 2027 accommodation',
+    ogUrl: 'https://theadarecollection.com/terms'
+  });
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />

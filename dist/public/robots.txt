@@ -13,4 +13,3 @@ Disallow: /api/
 Allow: /properties
 Allow: /about
 Allow: /contact
-Allow: /exclusive
