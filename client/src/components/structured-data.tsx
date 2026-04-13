@@ -1,4 +1,4 @@
-import { properties } from "@/lib/properties";
+import { properties, formatPropertyBedroomsShort } from "@/lib/properties";
 
 interface PropertyStructuredDataProps {
   propertyId?: string;
@@ -13,7 +13,7 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
     "name": property.name,
-    "description": `${property.name} - Exclusive luxury rental for Ryder Cup 2027. ${property.bedrooms} bedrooms, premium amenities, located in Adare Manor Estate.`,
+    "description": `${property.name} - Exclusive luxury rental for Ryder Cup 2027. ${formatPropertyBedroomsShort(property)} bedrooms, premium amenities, located in Adare Manor Estate.`,
     "url": `https://theadarecollection.com/property/${property.id}`,
     "image": `https://theadarecollection.com${property.images[0]}`,
     "address": {
@@ -21,7 +21,7 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
       "addressLocality": "Adare",
       "addressRegion": "Limerick",
       "addressCountry": "IE",
-      "postalCode": property.eircode ?? "V94 W8WR"
+      ...(property.eircode ? { postalCode: property.eircode } : {}),
     },
     "geo": {
       "@type": "GeoCoordinates",
@@ -32,7 +32,7 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
       {
         "@type": "LocationFeatureSpecification",
         "name": "Bedrooms",
-        "value": property.bedrooms
+        "value": formatPropertyBedroomsShort(property)
       },
       {
         "@type": "LocationFeatureSpecification",

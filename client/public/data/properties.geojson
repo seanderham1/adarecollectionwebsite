@@ -61,6 +61,7 @@
         "title":"The First Tee",
         "desc":"Closest residence to the Ryder Cup action — 150 yards from the practice range and 1st tee.",
         "beds": 5,
+        "bedsLabel":"5-6",
         "baths": 5,
         "price":"POA",
         "thumb":"/images/houses/house 7/house-7-exterior-3.webp"
@@ -90,6 +91,34 @@
         "baths": 5,
         "price":"POA",
         "thumb":"/images/houses/house 5/cragleigh-house-main-optimized.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.880012509768715, 52.54885726209432]},
+      "properties":{
+        "id":"croagh-house",
+        "title":"Croagh House",
+        "desc":"Privacy and direct Ryder Cup access — 10 minutes from Adare Manor, 2 minutes from the official Park & Ride.",
+        "beds": 4,
+        "bedsLabel":"4-5",
+        "baths": 4,
+        "price":"POA",
+        "thumb":"/images/houses/croaghhouse/exterior/croaghhouse-exterior-2.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.880395148400085, 52.54854779330623]},
+      "properties":{
+        "id":"parkview-house",
+        "title":"Parkview House",
+        "desc":"High-capacity private residence for up to 12 guests — 10 minutes from Adare Manor, 2 minutes from the official Park & Ride.",
+        "beds": 6,
+        "bedsLabel":"6-7",
+        "baths": 4,
+        "price":"POA",
+        "thumb":"/images/houses/parkviewhouse/exterior/parkview-exterior-1.webp"
       }
     },
     {

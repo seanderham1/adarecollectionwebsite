@@ -1,6 +1,6 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { properties } from "@/lib/properties";
+import { properties, formatPropertyBedroomsShort } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Bed } from "lucide-react";
@@ -90,7 +90,7 @@ export default function PropertiesPage() {
                   <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
                     <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                       <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                        {['darrira-house', 'dunes-lodge'].includes(p.id)
+                        {['darrira-house', 'dunes-lodge', 'croagh-house', 'parkview-house'].includes(p.id)
                           ? 'DELUXE'
                           : 'EXECUTIVE'}
                       </div>
@@ -100,7 +100,7 @@ export default function PropertiesPage() {
                 <div className="p-4">
                   <div className="flex items-center justify-between mb-3">
                     <div className="text-xs text-muted uppercase tracking-wider font-medium">
-                      {p.bedrooms} BEDROOMS
+                      {formatPropertyBedroomsShort(p)} BEDROOMS
                     </div>
                     <div className="text-xs text-muted uppercase tracking-wider font-medium">
                       AVAILABLE

@@ -4,15 +4,42 @@ import Footer from "@/components/footer";
 import PropertyMap from "@/components/property-map";
 import VideoModal from "@/components/video-modal";
 import MapModal from "@/components/map-modal";
+import MatterportModal from "@/components/matterport-modal";
 import BrochureModal from "@/components/brochure-modal";
-import { properties } from "@/lib/properties";
+import { properties, formatPropertyBedroomsShort } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Bed, Mail, MessageCircle } from "lucide-react";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Play, Scan } from "lucide-react";
+import { useState, useEffect, type CSSProperties } from "react";
 import { useSEO } from "@/hooks/use-seo";
 import { PropertyStructuredData, BreadcrumbListStructuredData } from "@/components/structured-data";
+
+/** Portrait / tall Croagh House gallery shots — path segments avoid false positives (e.g. sitting vs utility) */
+function isCroaghGalleryContain(src: string): boolean {
+  if (!src.includes("/croaghhouse/")) return false;
+  return (
+    src.includes("/bathroom/") ||
+    src.includes("/stairs/") ||
+    src.includes("utilitybathroom") ||
+    src.includes("closet") ||
+    src.includes("bedroom2-2")
+  );
+}
+
+/** Parkview: pre-load guess (overridden by intrinsic size on onLoad). Exterior/kitchen/sitting are typically landscape. */
+function parkviewGuessLandscape(src: string): boolean {
+  return (
+    src.includes("/exterior/") ||
+    src.includes("/kitchen/") ||
+    src.includes("/sitting-room/")
+  );
+}
+
+function isDeluxeGalleryContain(propertyId: string, src: string): boolean {
+  if (propertyId === "croagh-house") return isCroaghGalleryContain(src);
+  return false;
+}
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -28,17 +55,25 @@ export default function PropertyDetail() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
+  const [isMatterportModalOpen, setIsMatterportModalOpen] = useState(false);
   const [videoStartMuted, setVideoStartMuted] = useState(hasVideoParam); // Start muted if video param is present
   
   // Use property-specific video URL only
   const videoUrl = property?.videoUrl;
   const hasVideo = Boolean(videoUrl);
+  const matterportUrl = property?.matterportUrl;
+  const hasMatterport = Boolean(matterportUrl);
+
+  /** Parkview gallery: intrinsic portrait vs landscape (src key), so vertical shots aren’t full-bleed cover */
+  const [parkviewImageOrient, setParkviewImageOrient] = useState<
+    Record<string, "portrait" | "landscape">
+  >({});
 
   // SEO optimization
   useSEO({
     title: property ? `${property.name} - Ryder Cup 2027 Accommodation | Adare Manor Rental` : 'Property Details - The Adare Collection',
-    description: property ? `${property.name} - Ryder Cup 2027 accommodation at Adare Manor. ${property.bedrooms} bedrooms, premium amenities. Book your Adare rental for the Ryder Cup.` : 'Discover luxury Ryder Cup 2027 accommodation at The Adare Collection.',
-    keywords: property ? `${property.name}, Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, ${property.bedrooms} bedroom, golf accommodation Ireland` : 'Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, golf accommodation',
+    description: property ? `${property.name} - Ryder Cup 2027 accommodation at Adare Manor. ${formatPropertyBedroomsShort(property)} bedrooms, premium amenities. Book your Adare rental for the Ryder Cup.` : 'Discover luxury Ryder Cup 2027 accommodation at The Adare Collection.',
+    keywords: property ? `${property.name}, Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, ${formatPropertyBedroomsShort(property)} bedroom, golf accommodation Ireland` : 'Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, golf accommodation',
     ogImage: property ? `https://theadarecollection.com${property.images[0]}` : 'https://theadarecollection.com/images/hero/adaremanor-img1.webp',
     ogUrl: `https://theadarecollection.com/property/${id}`
   });
@@ -130,6 +165,14 @@ export default function PropertyDetail() {
     setIsBrochureModalOpen(false);
   };
 
+  const handleOpenMatterport = () => {
+    setIsMatterportModalOpen(true);
+  };
+
+  const handleCloseMatterport = () => {
+    setIsMatterportModalOpen(false);
+  };
+
   const getBrochureUrl = () => {
     // PDF brochures removed - using WebP brochure modal instead
     return null;
@@ -151,97 +194,186 @@ export default function PropertyDetail() {
         <div className="max-w-[2000px] mx-auto">
           <div className="grid lg:grid-cols-3 gap-0 min-h-screen">
             {/* Left Content - Hero and Property Details */}
-            <div className="lg:col-span-2 bg-white">
+            <div className="lg:col-span-2 min-h-0 bg-white">
               {/* Hero Section */}
-              <section className="relative w-full overflow-hidden bg-white -mt-24">
+              <section className="relative w-full overflow-hidden bg-white -mt-24 lg:min-h-0">
                 {/* White mask to cover area above navigation */}
                 <div className="absolute top-0 left-0 right-0 h-16 bg-white z-10"></div>
-                <div className="lg:h-[85vh] relative bg-white flex flex-col">
-                  {/* Main Image with fade transition */}
-                  <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-auto lg:flex-1 overflow-hidden">
-                    {property.images.map((image, index) => (
-                      <img
-                        key={image}
-                        src={image}
-                        alt={`${property.name} - Ryder Cup 2027 accommodation at Adare Manor - Image ${index + 1}`}
-                        className={`absolute inset-0 w-full h-full min-w-full min-h-full transition-opacity duration-700 ${
-                          property.id === 'the-first-tee'
-                            ? (property.images[index].includes('house-7-downstairs-bathroom') ||
-                               property.images[index].includes('house-7-fourth-bedroombath-2') ||
-                               property.images[index].includes('house-7-fourth-bedroombath-3'))
-                              ? 'object-contain'
-                              : 'object-cover'
-                            : property.images[index].includes('house-1-hall.webp') ||
-                              property.images[index].includes('house-2-bathroom-1.webp') ||
-                              property.images[index].includes('house-2-bathroom-2.webp') ||
-                              property.images[index].includes('house-2-bathroom-3.webp') ||
-                              property.images[index].includes('house-3-master-bath-1.webp') ||
-                              property.images[index].includes('house-3-master-bath-2.webp') ||
-                              property.images[index].includes('house-3-master-bath-3.webp') ||
-                              property.images[index].includes('house-4-rolex.webp') ||
-                              property.images[index].includes('house-6-shower-room.webp') ||
-                              property.images[index].includes('house-9-bathroom-1.jpg') ||
-                              property.images[index].includes('house-9-bathroom-2.jpg') ||
-                              property.images[index].includes('house-9-bedroom-2.jpg') ||
-                              property.images[index].includes('house-9-bedroom-3.jpg') ||
-                              property.images[index].includes('house-9-kitchen-4.jpg') ||
-                              property.images[index].includes('house-9-stairs-under.jpg') ||
-                              property.images[index].includes('house-9-stairs.jpg')
-                              ? 'object-contain'
-                              : 'object-cover'
-                        } ${
-                          index === currentImageIndex ? "opacity-100" : "opacity-0"
-                        }`}
-                        style={{ 
-                          transform: property.id === 'the-first-tee'
-                            ? 'translateY(0%)'
-                            : property.images[index].includes('house-1-hall.webp') ||
-                              property.images[index].includes('house-2-bathroom-1.webp') ||
-                              property.images[index].includes('house-2-bathroom-2.webp') ||
-                              property.images[index].includes('house-2-bathroom-3.webp') ||
-                              property.images[index].includes('house-6-shower-room.webp') ||
-                              property.images[index].includes('house-9-bathroom-1.jpg') ||
-                              property.images[index].includes('house-9-bathroom-2.jpg') ||
-                              property.images[index].includes('house-9-bedroom-2.jpg') ||
-                              property.images[index].includes('house-9-bedroom-3.jpg') ||
-                              property.images[index].includes('house-9-kitchen-4.jpg') ||
-                              property.images[index].includes('house-9-stairs-under.jpg') ||
-                              property.images[index].includes('house-9-stairs.jpg')
-                              ? 'translateY(0%)' 
-                              : (property.images[index].includes('/house 4/house-4-rolex.webp') || 
-                                 (property.id === 'putters-way' && index === 8))
-                              ? 'translateY(10%)'
-                              : 'translateY(5%)',
-                          objectPosition: property.id === 'the-first-tee'
-                            ? 'center center'
-                            : (property.images[index].includes('/house 4/house-4-rolex.webp') || 
-                               (property.id === 'putters-way' && index === 8))
-                            ? 'center 50%'
-                            : property.id === 'the-captains' 
-                            ? property.images[index].includes('house-3-master-bath-1.webp') ||
-                              property.images[index].includes('house-3-master-bath-2.webp') ||
-                              property.images[index].includes('house-3-master-bath-3.webp')
-                              ? 'center center'
-                              : '5% center'
-                            : property.id === 'rangeview' 
-                            ? 'center 30%' 
-                            : property.images[index].includes('house-1-hall.webp')
-                            ? 'center 30%'
-                            : property.images[index].includes('house-3-master-bath-1.webp') ||
-                              property.images[index].includes('house-3-master-bath-2.webp') ||
-                              property.images[index].includes('house-3-master-bath-3.webp')
-                            ? 'center center'
-                            : 'center center'
-                        }}
-                        data-testid={`property-gallery-image-${index}`}
-                      />
-                    ))}
+                <div className="lg:h-[85vh] lg:min-h-0 relative bg-white flex min-h-0 flex-col">
+                  {/* Main Image with fade transition — min-h-0 + basis-0 so flex/grid ancestors don’t clip cover height */}
+                  <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-auto lg:min-h-0 lg:flex-1 lg:basis-0 w-full min-h-0 overflow-hidden bg-white">
+                    {property.images.map((image, index) => {
+                      const src = property.images[index];
+                      const isParkview = property.id === "parkview-house";
+                      const isCroagh = property.id === "croagh-house";
+                      const deluxePortrait =
+                        isCroagh && isDeluxeGalleryContain(property.id, src);
+
+                      const styleDeluxePortrait: CSSProperties = {
+                        transform: "translate(-50%, -50%)",
+                        objectPosition: "center center",
+                        objectFit: "contain",
+                      };
+                      const styleDeluxeLandscape: CSSProperties = {
+                        objectFit: "cover",
+                        objectPosition: "center center",
+                        width: "100%",
+                        height: "100%",
+                        minWidth: "100%",
+                        minHeight: "100%",
+                      };
+
+                      let layoutClass: string;
+                      let imgStyle: CSSProperties;
+
+                      if (isParkview) {
+                        const measured = parkviewImageOrient[src];
+                        const isPortrait =
+                          measured === "portrait"
+                            ? true
+                            : measured === "landscape"
+                              ? false
+                              : !parkviewGuessLandscape(src);
+                        if (isPortrait) {
+                          layoutClass =
+                            "left-1/2 top-1/2 block h-full max-h-full w-auto max-w-full object-contain";
+                          imgStyle = {
+                            transform: "translate(-50%, -50%)",
+                            objectFit: "contain",
+                            objectPosition: "center center",
+                          };
+                        } else {
+                          layoutClass =
+                            "top-0 left-1/2 block h-full max-h-full w-auto min-w-full -translate-x-1/2 object-cover";
+                          imgStyle = {
+                            objectFit: "cover",
+                            objectPosition: "center center",
+                            height: "100%",
+                            width: "auto",
+                            minWidth: "100%",
+                            maxHeight: "100%",
+                          };
+                        }
+                      } else if (deluxePortrait) {
+                        layoutClass =
+                          "left-1/2 top-1/2 h-full max-h-full w-auto max-w-full object-contain";
+                        imgStyle = styleDeluxePortrait;
+                      } else if (isCroagh) {
+                        layoutClass =
+                          "inset-0 block h-full w-full min-h-full min-w-full object-cover object-center";
+                        imgStyle = styleDeluxeLandscape;
+                      } else if (property.id === "the-first-tee") {
+                        layoutClass =
+                          src.includes("house-7-downstairs-bathroom") ||
+                          src.includes("house-7-fourth-bedroombath-2") ||
+                          src.includes("house-7-fourth-bedroombath-3")
+                            ? "inset-0 w-full h-full min-w-full min-h-full object-contain"
+                            : "inset-0 w-full h-full min-w-full min-h-full object-cover";
+                        imgStyle = {
+                          transform: "translateY(0%)",
+                          objectPosition: "center center",
+                        };
+                      } else if (
+                        src.includes("house-1-hall.webp") ||
+                        src.includes("house-2-bathroom-1.webp") ||
+                        src.includes("house-2-bathroom-2.webp") ||
+                        src.includes("house-2-bathroom-3.webp") ||
+                        src.includes("house-3-master-bath-1.webp") ||
+                        src.includes("house-3-master-bath-2.webp") ||
+                        src.includes("house-3-master-bath-3.webp") ||
+                        src.includes("house-4-rolex.webp") ||
+                        src.includes("house-6-shower-room.webp") ||
+                        src.includes("house-9-bathroom-1.jpg") ||
+                        src.includes("house-9-bathroom-2.jpg") ||
+                        src.includes("house-9-bedroom-2.jpg") ||
+                        src.includes("house-9-bedroom-3.jpg") ||
+                        src.includes("house-9-kitchen-4.jpg") ||
+                        src.includes("house-9-stairs-under.jpg") ||
+                        src.includes("house-9-stairs.jpg")
+                      ) {
+                        layoutClass =
+                          "inset-0 w-full h-full min-w-full min-h-full object-contain";
+                        imgStyle = {
+                          transform: "translateY(0%)",
+                          objectFit: "contain",
+                          objectPosition:
+                            property.id === "the-captains"
+                              ? src.includes("house-3-master-bath-1.webp") ||
+                                  src.includes("house-3-master-bath-2.webp") ||
+                                  src.includes("house-3-master-bath-3.webp")
+                                ? "center center"
+                                : "5% center"
+                              : property.id === "rangeview"
+                                ? "center 30%"
+                                : src.includes("house-1-hall.webp")
+                                  ? "center 30%"
+                                  : src.includes("house-3-master-bath-1.webp") ||
+                                      src.includes("house-3-master-bath-2.webp") ||
+                                      src.includes("house-3-master-bath-3.webp")
+                                    ? "center center"
+                                    : "center center",
+                        };
+                      } else {
+                        layoutClass =
+                          "inset-0 w-full h-full min-w-full min-h-full object-cover";
+                        imgStyle = {
+                          transform:
+                            src.includes("/house 4/house-4-rolex.webp") ||
+                            (property.id === "putters-way" && index === 8)
+                              ? "translateY(10%)"
+                              : "translateY(5%)",
+                          objectPosition:
+                            src.includes("/house 4/house-4-rolex.webp") ||
+                            (property.id === "putters-way" && index === 8)
+                              ? "center 50%"
+                              : property.id === "the-captains"
+                                ? src.includes("house-3-master-bath-1.webp") ||
+                                    src.includes("house-3-master-bath-2.webp") ||
+                                    src.includes("house-3-master-bath-3.webp")
+                                  ? "center center"
+                                  : "5% center"
+                                : property.id === "rangeview"
+                                  ? "center 30%"
+                                  : src.includes("house-1-hall.webp")
+                                    ? "center 30%"
+                                    : src.includes("house-3-master-bath-1.webp") ||
+                                        src.includes("house-3-master-bath-2.webp") ||
+                                        src.includes("house-3-master-bath-3.webp")
+                                      ? "center center"
+                                      : "center center",
+                        };
+                      }
+
+                      return (
+                        <img
+                          key={image}
+                          src={image}
+                          alt={`${property.name} - Ryder Cup 2027 accommodation at Adare Manor - Image ${index + 1}`}
+                          className={`absolute transition-opacity duration-700 ${layoutClass} ${
+                            index === currentImageIndex ? "opacity-100 z-[1]" : "opacity-0 z-0"
+                          }`}
+                          style={imgStyle}
+                          onLoad={(e) => {
+                            if (property.id !== "parkview-house") return;
+                            const el = e.currentTarget;
+                            const o =
+                              el.naturalHeight > el.naturalWidth * 1.02
+                                ? "portrait"
+                                : "landscape";
+                            setParkviewImageOrient((prev) =>
+                              prev[src] === o ? prev : { ...prev, [src]: o }
+                            );
+                          }}
+                          data-testid={`property-gallery-image-${index}`}
+                        />
+                      );
+                    })}
 
                     {/* EXECUTIVE/DELUXE Banner */}
                     <div className="absolute top-16 left-0 right-0 z-20">
                       <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                         <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                          {['darrira-house', 'dunes-lodge'].includes(property.id)
+                          {['darrira-house', 'dunes-lodge', 'croagh-house', 'parkview-house'].includes(property.id)
                             ? 'DELUXE'
                             : 'EXECUTIVE'}
                         </div>
@@ -249,7 +381,7 @@ export default function PropertyDetail() {
                     </div>
 
                     {/* Bottom Right Navigation with Play Video and Arrow Buttons */}
-                    <div className="absolute bottom-6 right-6 z-10 flex space-x-2">
+                    <div className="absolute bottom-6 right-6 z-10 flex flex-wrap justify-end gap-2 max-w-[calc(100%-3rem)]">
                       {/* Play Video Button */}
                       {hasVideo && (
                         <button
@@ -259,6 +391,19 @@ export default function PropertyDetail() {
                         >
                           <Play className="h-4 w-4 stroke-2 text-black" />
                           <span className="text-sm font-medium text-black">PLAY VIDEO</span>
+                        </button>
+                      )}
+                      {hasMatterport && (
+                        <button
+                          type="button"
+                          onClick={handleOpenMatterport}
+                          className="bg-white shadow-lg px-4 h-10 flex items-center justify-center gap-2 transition-all duration-200 hover:bg-gray-100 cursor-pointer"
+                          aria-label="Open 360 degree virtual tour"
+                        >
+                          <Scan className="h-4 w-4 stroke-2 text-black shrink-0" />
+                          <span className="text-sm font-medium text-black whitespace-nowrap">
+                            VIEW 360° TOUR
+                          </span>
                         </button>
                       )}
                       
@@ -317,7 +462,7 @@ export default function PropertyDetail() {
                       MAP
                     </Button>
 
-{property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && (
+{property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && (
                         <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
@@ -418,7 +563,7 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee') && (
+                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house') && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Crown className="text-white h-6 w-6" />
@@ -516,11 +661,11 @@ export default function PropertyDetail() {
                     <div className="flex justify-center space-x-2">
                       <Button 
                         onClick={handleViewMap}
-                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' ? 'w-1/2' : 'w-full'}`}
+                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' ? 'w-1/2' : 'w-full'}`}
                       >
                         MAP
                       </Button>
-                      {property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && (
+                      {property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && (
                         <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
@@ -589,6 +734,15 @@ export default function PropertyDetail() {
         onClose={handleCloseMap}
         propertyId={property?.id || ''}
       />
+
+      {hasMatterport && matterportUrl && (
+        <MatterportModal
+          isOpen={isMatterportModalOpen}
+          onClose={handleCloseMatterport}
+          src={matterportUrl}
+          title={`${property.name} — 360 degree virtual tour`}
+        />
+      )}
       
       {/* Brochure Modal */}
       <BrochureModal 

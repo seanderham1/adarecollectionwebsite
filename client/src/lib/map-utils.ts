@@ -126,6 +126,8 @@ export function createPropertyMarker(
     title?: string;
     url?: string;
     beds?: number;
+    /** When set (e.g. "5-6"), shown in place of numeric beds in info windows */
+    bedsLabel?: string;
     baths?: number;
     price?: string;
     thumb?: string;
@@ -164,6 +166,7 @@ export function createPropertyMarker(
 export function createPropertyInfoWindowContent(props: {
   title?: string;
   beds?: number;
+  bedsLabel?: string;
   baths?: number;
   price?: string;
   thumb?: string;
@@ -183,7 +186,7 @@ export function createPropertyInfoWindowContent(props: {
              }
       <div style="font-weight:600;margin:0 0 4px 0">${props.title || "Property"}</div>
       <div style="color:#666;font-size:12px;margin:0 0 6px 0">
-        ${props.beds ?? "–"} bed · ${props.baths ?? "–"} bath ${
+        ${props.bedsLabel ?? props.beds ?? "–"} bed · ${props.baths ?? "–"} bath ${
     props.price ? `· ${props.price}` : ""
   }
       </div>

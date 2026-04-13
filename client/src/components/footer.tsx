@@ -1,4 +1,5 @@
 import { Linkedin, Instagram, Facebook } from "lucide-react";
+import { Link } from "wouter";
 
 const socialLinks = [
   {
@@ -99,6 +100,21 @@ export default function Footer() {
             <p className="text-gray-400 text-xs text-left mt-5" data-testid="footer-copyright">
               © 2025 The Adare Collection. All rights reserved.
             </p>
+            <nav
+              className="text-gray-400 text-xs text-left mt-3 flex flex-wrap items-center gap-x-3 gap-y-1"
+              aria-label="Legal"
+              data-testid="footer-legal"
+            >
+              <Link href="/terms" className="hover:text-gray-300 transition-colors" data-testid="footer-link-terms">
+                Terms & Conditions
+              </Link>
+              <span className="text-gray-600" aria-hidden>
+                ·
+              </span>
+              <Link href="/privacy" className="hover:text-gray-300 transition-colors" data-testid="footer-link-privacy">
+                Privacy Policy
+              </Link>
+            </nav>
             <p
               className="text-gray-400 text-left mt-3 max-w-md leading-relaxed text-[8px]"
               data-testid="footer-disclaimer"
