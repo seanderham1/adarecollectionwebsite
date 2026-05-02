@@ -55,11 +55,11 @@
     },
     {
       "type":"Feature",
-      "geometry":{"type":"Point","coordinates":[-8.7795, 52.5620]},
+      "geometry":{"type":"Point","coordinates":[-8.787714781150669, 52.56157892845145]},
       "properties":{
         "id":"the-first-tee",
         "title":"The First Tee",
-        "desc":"Closest residence to the Ryder Cup action — 150 yards from the practice range and 1st tee.",
+        "desc":"Closest residence to the Ryder Cup action, 150 yards from the practice range and 1st tee.",
         "beds": 5,
         "bedsLabel":"5-6",
         "baths": 5,
@@ -73,7 +73,7 @@
       "properties":{
         "id":"the-fairways",
         "title":"The Fairways",
-        "desc":"Within Adare Manor's gates — Ireland's most prestigious estate, steps from Ryder Cup 2027.",
+        "desc":"Within Adare Manor's gates, on Ireland's most prestigious estate and steps from Ryder Cup 2027.",
         "beds": 6,
         "baths": 6,
         "price":"POA",
@@ -99,7 +99,7 @@
       "properties":{
         "id":"croagh-house",
         "title":"Croagh House",
-        "desc":"Privacy and direct Ryder Cup access — 10 minutes from Adare Manor, 2 minutes from the official Park & Ride.",
+        "desc":"Privacy and direct Ryder Cup access (10 minutes from Adare Manor, 2 minutes from the official Park & Ride).",
         "beds": 4,
         "bedsLabel":"4-5",
         "baths": 4,
@@ -113,7 +113,7 @@
       "properties":{
         "id":"parkview-house",
         "title":"Parkview House",
-        "desc":"High-capacity private residence for up to 12 guests — 10 minutes from Adare Manor, 2 minutes from the official Park & Ride.",
+        "desc":"High-capacity private residence for up to 12 guests (10 minutes from Adare Manor, 2 minutes from the official Park & Ride).",
         "beds": 6,
         "bedsLabel":"6-7",
         "baths": 4,

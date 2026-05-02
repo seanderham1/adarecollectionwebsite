@@ -27,6 +27,13 @@ export function formatPropertyBedroomsShort(property: Pick<Property, "bedrooms" 
   return property.bedroomsLabel ?? String(property.bedrooms);
 }
 
+/** Uppercase label on property cards and gallery (homepage, listing, detail). */
+export function getPropertyCollectionBadge(propertyId: string): string {
+  if (propertyId === "croagh-house") return "PREMIUM";
+  if (["darrira-house", "dunes-lodge", "parkview-house"].includes(propertyId)) return "DELUXE";
+  return "EXECUTIVE";
+}
+
 export const properties: Property[] = [
   {
     id: "rangeview",
@@ -34,7 +41,7 @@ export const properties: Property[] = [
     subtitle: "Located within Adare Manor estate, offering front-row proximity to Ryder Cup 2027",
     bedrooms: 6,
     description: "Located within Adare Manor estate, 'Range View' offers front-row proximity to Ryder Cup 2027.",
-    fullDescription: "Range View is a stately luxurious residence nestled within the private and gated enclave of Adare Manor Resort — just 300 yards from the Ryder Cup 2027 driving range and a five-minute walk to the first tee box. Offering over 7,000ft²/650m² of refined living space across three expansive floors, this home delivers unrivalled proximity to the event alongside world-class interiors, making it ideal for corporate hospitality or discerning private guests.",
+    fullDescription: "Range View is a stately luxurious residence nestled within the private and gated enclave of Adare Manor Resort, just 300 yards from the Ryder Cup 2027 driving range and a five-minute walk to the first tee box. Offering over 7,000ft²/650m² of refined living space across three expansive floors, this home delivers unrivalled proximity to the event alongside world-class interiors, making it ideal for corporate hospitality or discerning private guests.",
     price: "Enquire Now",
     images: [
       "/images/houses/house 2/house-2-main-original.webp",
@@ -94,7 +101,7 @@ export const properties: Property[] = [
     subtitle: "Within Adare Manor's secure walls, 'Captains House' places you at the heart of Ryder Cup action in complete privacy.",
     bedrooms: 6,
     description: "Within Adare Manor's secure walls, 'Captains House' places you at the heart of Ryder Cup action in complete privacy.",
-    fullDescription: "Situated within the exclusive and secure walls of the Adare Manor resort, 'The Captains' home offers an extraordinary opportunity to stay at the epicentre of the Ryder Cup 2027. This six-bedroom estate spanning over 8500ft²/790m² is not just near the event—it's almost part of it.\n\nWith the practice range just over the hedge, and a 5 minute stroll from the 1st tee box, this residence is ideal for the discerning client, sponsors, media, and corporate clients seeking to be immersed in the heart of the Ryder Cup action, without compromising on space, luxury, or privacy.",
+    fullDescription: "Situated within the exclusive and secure walls of the Adare Manor resort, 'The Captains' home offers an extraordinary opportunity to stay at the epicentre of the Ryder Cup 2027. This six-bedroom estate spanning over 8500ft²/790m² is not just near the event. It is almost part of it.\n\nWith the practice range just over the hedge, and a 5 minute stroll from the 1st tee box, this residence is ideal for the discerning client, sponsors, media, and corporate clients seeking to be immersed in the heart of the Ryder Cup action, without compromising on space, luxury, or privacy.",
     price: "POA",
     images: [
       "/images/houses/house 3/house-3-main-original.webp",
@@ -128,7 +135,7 @@ export const properties: Property[] = [
     thumbnail: "/images/houses/house 3/house-3-main.webp",
     features: [
       "Six luxury ensuite bedrooms, including an exquisite master suite with jacuzzi bath, open fireplace, and walk-in wardrobe",
-      "Grand entrance hall with crystal chandelier and a grand piano – perfect for welcoming guests or evening entertainment.",
+      "Grand entrance hall with crystal chandelier and a grand piano, perfect for welcoming guests or evening entertainment.",
       "Three elegant reception areas: a large drawing room and two sitting rooms with ample tranquil seating",
       "Open-plan kitchen and living space with high-end finishes, adjoining a formal dining room for 10 people",
       "Separate dining area capable of hosting 50+ guests."
@@ -138,7 +145,7 @@ export const properties: Property[] = [
       "Daily serviced fresh towels and linens",
       "Daily housekeeping",
       "High-speed Wi-Fi and satellite TV",
-      "Games room with pool table, table tennis, and dart board – convertible into a fitness studio with treadmill (if required)",
+      "Games room with pool table, table tennis, and dart board; convertible into a fitness studio with treadmill (if required)",
       "Secure private parking"
     ],
     location: {
@@ -151,10 +158,10 @@ export const properties: Property[] = [
   {
     id: "putters-way",
     name: "Putters Way",
-    subtitle: "At the very centre of Ryder Cup 2027 – Golf Village, Adare Manor",
+    subtitle: "At the very centre of Ryder Cup 2027, Golf Village, Adare Manor",
     bedrooms: 2,
     description: "Premium residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
-    fullDescription: "'Putters Way' is a rare and exclusive opportunity to stay at the very heart of the Ryder Cup action 2027. Situated just metres from where the U.S and European team will warm up on the practice range and putting green and a one minute stroll to the 1st tee, it just doesn't get any closer than this!\n\nLocated in the prestigious private Golf Village, this deluxe residence places guests at the centre of the tournament atmosphere — while offering elegant privacy, luxury finishes, and complete immersion in the experience.\n\nThis is not just a place to stay — it's a chance to live the event.",
+    fullDescription: "'Putters Way' is a rare and exclusive opportunity to stay at the very heart of the Ryder Cup action 2027. Situated just metres from where the U.S and European team will warm up on the practice range and putting green and a one minute stroll to the 1st tee, it just doesn't get any closer than this!\n\nLocated in the prestigious private Golf Village, this deluxe residence places guests at the centre of the tournament atmosphere while still offering elegant privacy, luxury finishes, and complete immersion in the experience.\n\nThis is not just a place to stay. It is a chance to live the event.",
     price: "POA",
     images: [
       "/images/houses/house 4/adare-house-4-original.webp",
@@ -190,11 +197,11 @@ export const properties: Property[] = [
   {
     id: "the-first-tee",
     name: "The First Tee",
-    subtitle: "Closest residence to the Ryder Cup course — just 150 yards from the practice range and 1st tee.",
+    subtitle: "Closest residence to the Ryder Cup course, just 150 yards from the practice range and 1st tee.",
     bedrooms: 5,
     bedroomsLabel: "5-6",
-    description: "The closest residence to the Ryder Cup action — 150 yards from the practice range and 1st tee.",
-    fullDescription: "Nestled within the prestigious grounds of Adare Manor, just steps from the world-renowned championship course and practice facilities, The First Tee offers a truly unrivalled location for golf enthusiasts and discerning guests alike.\n\nPositioned closer to the Ryder Cup action than any other residence in The Demesne, this exceptional home provides a rare opportunity to stay quite literally at the starting point of one of the world's most celebrated golfing experiences.\n\nDesigned with elegance and comfort in mind, the property blends timeless architecture with refined contemporary interiors. Expansive living spaces filled with natural light create a seamless flow throughout, offering both relaxed and formal settings for entertaining, unwinding, or hosting in style.\n\nThe residence features 5–6 beautifully appointed bedrooms, including four en-suite, alongside luxurious bathrooms designed for comfort and relaxation after a day on the course.\n\nThe First Tee is more than a residence — it is a privileged position at the very heart of Adare Manor.",
+    description: "The closest residence to the Ryder Cup action, 150 yards from the practice range and 1st tee.",
+    fullDescription: "Nestled within the prestigious grounds of Adare Manor, just steps from the world-renowned championship course and practice facilities, The First Tee offers a truly unrivalled location for golf enthusiasts and discerning guests alike.\n\nPositioned closer to the Ryder Cup action than any other residence in The Demesne, this exceptional home provides a rare opportunity to stay quite literally at the starting point of one of the world's most celebrated golfing experiences.\n\nDesigned with elegance and comfort in mind, the property blends timeless architecture with refined contemporary interiors. Expansive living spaces filled with natural light create a seamless flow throughout, offering both relaxed and formal settings for entertaining, unwinding, or hosting in style.\n\nThe residence features 5-6 beautifully appointed bedrooms, including four en-suite, alongside luxurious bathrooms designed for comfort and relaxation after a day on the course.\n\nThe First Tee is more than a residence. It holds a privileged position at the very heart of Adare Manor.",
     price: "POA",
     images: [
       "/images/houses/house 7/house-7-exterior-3.webp",
@@ -224,7 +231,7 @@ export const properties: Property[] = [
     features: [
       "Located on the grounds of Adare Manor",
       "Closest residence to the course and practice range (150 yards)",
-      "5–6 spacious bedrooms, including 4 en-suite",
+      "5-6 spacious bedrooms, including 4 en-suite",
       "Multiple reception rooms and lounges",
       "Open-plan kitchen and dining areas",
       "Formal dining room",
@@ -246,8 +253,8 @@ export const properties: Property[] = [
       "Secure private setting"
     ],
     location: {
-      lat: 52.5620,
-      lng: -8.7795
+      lat: 52.56157892845145,
+      lng: -8.787714781150669
     },
     walkingDistance: "150 yards to practice range and 1st tee",
     videoUrl: "/videos/thefirsttee.mp4",
@@ -256,9 +263,9 @@ export const properties: Property[] = [
   {
     id: "the-fairways",
     name: "The Fairways",
-    subtitle: "Located within the gates of Adare Manor — just steps from the 2027 Ryder Cup venue.",
+    subtitle: "Located within the gates of Adare Manor, just steps from the 2027 Ryder Cup venue.",
     bedrooms: 6,
-    description: "Within Adare Manor's gates — Ireland's most prestigious estate, steps from Ryder Cup 2027.",
+    description: "Within Adare Manor's gates, on Ireland's most prestigious estate and steps from Ryder Cup 2027.",
     fullDescription: "The Fairways is a contemporary luxury residence located within the Demesne, a gated secure luxury neighbourhood on the grounds of Adare Manor, offering unrivalled proximity to Ryder Cup 2027. This expansive 6-bedroom home spans over 4,840 ft² of immaculately designed interiors, combining privacy, grandeur, and modern elegance.\n\nPositioned just a short walk from the beautifully appointed Adare Manor Ryder Cup venue and 1st tee, this is one of the closest private properties at the heart of the tournament, making it an ideal choice for sponsors, media, or executive guests.",
     price: "POA",
     images: [
@@ -294,8 +301,8 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Chef cooked breakfast",
-      "Fitness Suite – a fully equipped private gym above the garage",
-      "Firepit Terrace & Gazebo – covered outdoor living area with built-in fireplace, lounge seating for 10–12, and Kamado Joe BBQ",
+      "Fitness Suite: a fully equipped private gym above the garage",
+      "Firepit Terrace & Gazebo: covered outdoor living area with built-in fireplace, lounge seating for 10 to 12, and Kamado Joe BBQ",
       "Secluded rear garden with patio, dining area, and cushioned seating for al fresco entertaining",
       "High-speed WiFi & Satellite TV",
       "Fresh linen and towel service (daily)",
@@ -312,7 +319,7 @@ export const properties: Property[] = [
   {
     id: "cragleigh-house",
     name: "Cragleigh House",
-    subtitle: "Located just 15 drive minutes from Adare Manor, with convenient access to Limerick, the M20 motorway, and Shannon Airport – Cragleigh House offers privacy, space, and effortless access to Ryder Cup 2027",
+    subtitle: "Located just 15 drive minutes from Adare Manor with convenient access to Limerick, the M20 motorway, and Shannon Airport. Cragleigh House offers privacy, space, and effortless access to Ryder Cup 2027",
     bedrooms: 5,
     description: "Just 15 minutes from Adare Manor with easy access to Limerick, Shannon Airport, and Ryder Cup 2027.",
     fullDescription: "Cragleigh House is a magnificent manor-style residence located just under 15 minutes from the Ryder Cup 2027 venue at Adare Manor. Privately positioned yet within easy reach of the action, this elegant estate combines traditional charm with modern luxury across extensive gardens and refined interiors.\n\nOffering five spacious double bedrooms, multiple reception rooms, and formal dining areas, Cragleigh House is ideal for the discerning client, sponsors, media teams, or corporate hosts seeking a prestigious base during Ryder Cup week.",
@@ -360,7 +367,7 @@ export const properties: Property[] = [
     subtitle: "Just ten minutes from Adare Manor, an elegant private retreat in Croagh, County Limerick.",
     bedrooms: 5,
     description: "An elegant and private countryside retreat ten minutes from Adare Manor, ideal for discreet stays with generous indoor and outdoor spaces.",
-    fullDescription: "Nestled just ten minutes from the Ryder Cup 2027 venue at Adare Manor, Darrira House offers an elegant and private retreat in the peaceful countryside of Croagh, County Limerick. With its graceful proportions, beautifully furnished interiors, and expansive outdoor spaces, this residence is ideally suited for discerning guests seeking comfort, convenience, and discretion.\n\nBoasting four double bedrooms and one single — including two en-suites with one lovingly adapted to accommodate guests with specific accessibility needs — the property is perfect for golfers, corporate groups, or families looking to stay close to the action without compromising on tranquility.\n\nThe heart of the home is a bright, open-plan kitchen and dining area that opens into a sun-filled conservatory, ideal for casual breakfasts or evening gatherings. Elegant living spaces and charming garden views complete the warm and inviting atmosphere.\n\nThis deluxe property includes thoughtful accessibility features for guests with special needs. The property has ramp access through the front door. Double doors from the hallway open into the sitting room, which flows into a spacious open-plan kitchen and onwards to a bright conservatory — allowing smooth wheelchair access throughout the downstairs level.\n\nA generously proportioned downstairs double bedroom features an electric profile double bed and a 44-inch wall-mounted television. Attached is a separate wet room equipped with a shower chair, shower sling, and (if required) a shower bed. An overhead ceiling hoist enables safe and dignified transfers from wheelchair to bed. A separate WC is also located nearby.",
+    fullDescription: "Nestled just ten minutes from the Ryder Cup 2027 venue at Adare Manor, Darrira House offers an elegant and private retreat in the peaceful countryside of Croagh, County Limerick. With its graceful proportions, beautifully furnished interiors, and expansive outdoor spaces, this residence is ideally suited for discerning guests seeking comfort, convenience, and discretion.\n\nBoasting four double bedrooms and one single bedroom, including two en-suites with one lovingly adapted to accommodate guests with specific accessibility needs, the property is perfect for golfers, corporate groups, or families looking to stay close to the action without compromising on tranquility.\n\nThe heart of the home is a bright, open-plan kitchen and dining area that opens into a sun-filled conservatory, ideal for casual breakfasts or evening gatherings. Elegant living spaces and charming garden views complete the warm and inviting atmosphere.\n\nThis deluxe property includes thoughtful accessibility features for guests with special needs. The property has ramp access through the front door. Double doors from the hallway open into the sitting room, which flows into a spacious open-plan kitchen and onwards to a bright conservatory, which allows smooth wheelchair access throughout the downstairs level.\n\nA generously proportioned downstairs double bedroom features an electric profile double bed and a 44-inch wall-mounted television. Attached is a separate wet room equipped with a shower chair, shower sling, and (if required) a shower bed. An overhead ceiling hoist enables safe and dignified transfers from wheelchair to bed. A separate WC is also located nearby.",
     price: "POA",
     images: [
       "/images/houses/house 6/house-6-exterior-1.webp",
@@ -406,17 +413,16 @@ export const properties: Property[] = [
   {
     id: "croagh-house",
     name: "Croagh House",
-    subtitle: "Privacy and direct Ryder Cup access — 10 minutes from Adare Manor, 2 minutes from the official Park & Ride.",
+    subtitle: "Privacy and direct Ryder Cup access (10 minutes from Adare Manor, 2 minutes from the official Park & Ride).",
     bedrooms: 4,
-    bedroomsLabel: "4–5",
+    bedroomsLabel: "4-5",
     description:
-      "Privacy and direct Ryder Cup access — 10 minutes from Adare Manor, 2 minutes from the official Park & Ride.",
+      "Privacy and direct Ryder Cup access (10 minutes from Adare Manor, 2 minutes from the official Park & Ride).",
     fullDescription:
-      "Positioned behind secure gates and accessed via a private driveway, Croagh House offers a refined base just 10 minutes from Adare Manor and 2 minutes from the official park & ride at Smithfield, Croagh, ensuring direct access to the event while maintaining complete privacy. This is not a generic rental property — it is a private modern, show-home standard residence curated for hosting, discretion, and seamless access during the Ryder Cup.\n\nIts proximity to Parkview House also creates a rare opportunity for larger corporate groups to secure adjacent accommodation, combining capacity with convenience.\n\nThe residence comprises 4–5 bedrooms (two en-suite), with the flexibility to accommodate an additional guest suite on the top floor if required. The master suite is designed as a private retreat, featuring a walk-in wardrobe and a spa-quality bathroom with a freestanding jacuzzi bath, walk-in shower, and double vanity.\n\nA ground-floor bathroom with shower adds further practicality and accessibility, ensuring comfort and ease of use for all guests.\n\nInternally, the home is presented to an exceptional standard throughout. A grand entrance hallway with statement chandelier leads into multiple reception spaces, including a main living area with electric reclining seating and a separate media lounge, allowing for both formal hosting and relaxed downtime.\n\nThe open-plan kitchen and dining area is designed for entertaining, featuring a bespoke in-frame solid kitchen finished with premium appliances including a Rangemaster cooker, smart American-style fridge/freezer, quartz worktops, and an integrated wine fridge, with direct access to a private landscaped patio and garden.\n\nEvery element of the residence has been considered for comfort, flow, and discretion, making it ideally suited to corporate groups, sponsors, and discerning guests seeking a controlled, high-quality environment during the Ryder Cup.",
+      "Positioned behind secure gates and accessed via a private driveway, Croagh House offers a refined base just 10 minutes from Adare Manor and 2 minutes from the official park & ride at Smithfield, Croagh, ensuring direct access to the event while maintaining complete privacy. This is not a generic rental property. It is a private modern, show-home standard residence curated for hosting, discretion, and seamless access during the Ryder Cup.\n\nIts proximity to Parkview House also creates a rare opportunity for larger corporate groups to secure adjacent accommodation, combining capacity with convenience.\n\nThe residence comprises 4-5 bedrooms (two en-suite), with the flexibility to accommodate an additional guest suite on the top floor if required. The master suite is designed as a private retreat, featuring a walk-in wardrobe and a spa-quality bathroom with a freestanding jacuzzi bath, walk-in shower, and double vanity.\n\nA ground-floor bathroom with shower adds further practicality and accessibility, ensuring comfort and ease of use for all guests.\n\nInternally, the home is presented to an exceptional standard throughout. A grand entrance hallway with statement chandelier leads into multiple reception spaces, including a main living area with electric reclining seating and a separate media lounge, allowing for both formal hosting and relaxed downtime.\n\nThe open-plan kitchen and dining area is designed for entertaining, featuring a bespoke in-frame solid kitchen finished with premium appliances including a Rangemaster cooker, smart American-style fridge/freezer, quartz worktops, and an integrated wine fridge, with direct access to a private landscaped patio and garden.\n\nEvery element of the residence has been considered for comfort, flow, and discretion, making it ideally suited to corporate groups, sponsors, and discerning guests seeking a controlled, high-quality environment during the Ryder Cup.",
     price: "POA",
     images: [
       "/images/houses/croaghhouse/exterior/croaghhouse-exterior-2.webp",
-      "/images/houses/croaghhouse/exterior/croaghhouse-exterior-1.webp",
       "/images/houses/croaghhouse/kitchen/croaghhouse-kitchen-2.webp",
       "/images/houses/croaghhouse/kitchen/croaghhouse-kitchen-1.webp",
       "/images/houses/croaghhouse/sittingroom/croaghhouse-sittingroom-1.webp",
@@ -431,6 +437,9 @@ export const properties: Property[] = [
       "/images/houses/croaghhouse/masterbedroom/croaghhouse-masterbedroom-bathroom-3.webp",
       "/images/houses/croaghhouse/bedroom 2/croaghhouse-bedroom2-1.webp",
       "/images/houses/croaghhouse/bedroom 2/croaghhouse-bedroom2-2.webp",
+      "/images/houses/croaghhouse/bedroom 3/croaghhouse-bedroom3.webp",
+      "/images/houses/croaghhouse/bedroom 4/croaghhouse-bedroom4.webp",
+      "/images/houses/croaghhouse/exterior/croaghhouse-exterior-1.webp",
       "/images/houses/croaghhouse/bathroom/croaghhouse-bathroom-1.webp",
       "/images/houses/croaghhouse/utilitiyroom/croaghhouse-utilitybathroom-1.webp",
       "/images/houses/croaghhouse/utilitiyroom/croaghhouse-utilitybathroom-2.webp",
@@ -438,7 +447,7 @@ export const properties: Property[] = [
     ],
     thumbnail: "/images/houses/croaghhouse/exterior/croaghhouse-exterior-2.webp",
     features: [
-      "4–5 bedrooms; 2 en-suite bedrooms",
+      "4-5 bedrooms; 2 en-suite bedrooms",
       "Additional top-floor bedroom option",
       "Master suite with walk-in wardrobe; spa-style bathroom with jacuzzi, walk-in shower, and double vanity",
       "Large main bathroom and shower",
@@ -470,13 +479,13 @@ export const properties: Property[] = [
     id: "parkview-house",
     name: "Parkview House",
     subtitle:
-      "High-capacity private residence for up to 12 guests — 10 minutes from Adare Manor, 2 minutes from the official Park & Ride.",
+      "High-capacity private residence for up to 12 guests (10 minutes from Adare Manor, 2 minutes from the official Park & Ride).",
     bedrooms: 6,
-    bedroomsLabel: "6–7",
+    bedroomsLabel: "6-7",
     description:
-      "High-capacity private residence for up to 12 guests — 10 minutes from Adare Manor, 2 minutes from the official Park & Ride.",
+      "High-capacity private residence for up to 12 guests (10 minutes from Adare Manor, 2 minutes from the official Park & Ride).",
     fullDescription:
-      "Parkview House is a substantial private residence positioned just 10 minutes from Adare Manor and only 2 minutes from the official Park & Ride at Smithfield, Croagh, offering one of the most practical and accessible bases available for Ryder Cup 2027.\n\nSet on private grounds with a generous driveway and a quiet, residential setting, the property is ideally configured for group hosting at scale, accommodating up to 12 guests across a flexible 6–7 bedroom layout. Its proximity to Croagh House also creates a rare opportunity for larger corporate groups to secure adjacent accommodation, combining capacity with convenience.\n\nInside, the home is designed around comfort, flow, and usability — with multiple living spaces that allow guests to gather, host, or unwind with ease. A bright, open-plan kitchen and dining area forms the centre of the home, complemented by a sunroom filled with natural light and two separate reception rooms, each with its own open fireplace, creating a warm and relaxed atmosphere throughout.\n\nThe bedroom configuration is particularly well suited to corporate and group stays, offering a mix of ensuite and shared arrangements that maximise both privacy and capacity. The master bedroom includes an ensuite bathroom, while a second ensuite bedroom and additional shared bathrooms support the remaining rooms. A Jacuzzi bath in the main bathroom provides a welcome space to relax after a day on the course.\n\nThis is a high-capacity private residence delivering space, flexibility, and one of the most efficient access points to the Ryder Cup.",
+      "Parkview House is a substantial private residence positioned just 10 minutes from Adare Manor and only 2 minutes from the official Park & Ride at Smithfield, Croagh, offering one of the most practical and accessible bases available for Ryder Cup 2027.\n\nSet on private grounds with a generous driveway and a quiet, residential setting, the property is ideally configured for group hosting at scale, accommodating up to 12 guests across a flexible 6-7 bedroom layout. Its proximity to Croagh House also creates a rare opportunity for larger corporate groups to secure adjacent accommodation, combining capacity with convenience.\n\nInside, the home is designed around comfort, flow, and usability, with multiple living spaces that allow guests to gather, host, or unwind with ease. A bright, open-plan kitchen and dining area forms the centre of the home, complemented by a sunroom filled with natural light and two separate reception rooms, each with its own open fireplace, creating a warm and relaxed atmosphere throughout.\n\nThe bedroom configuration is particularly well suited to corporate and group stays, offering a mix of ensuite and shared arrangements that maximise both privacy and capacity. The master bedroom includes an ensuite bathroom, while a second ensuite bedroom and additional shared bathrooms support the remaining rooms. A Jacuzzi bath in the main bathroom provides a welcome space to relax after a day on the course.\n\nThis is a high-capacity private residence delivering space, flexibility, and one of the most efficient access points to the Ryder Cup.",
     price: "POA",
     images: [
       "/images/houses/parkviewhouse/exterior/parkview-exterior-1.webp",
@@ -501,7 +510,7 @@ export const properties: Property[] = [
     thumbnail: "/images/houses/parkviewhouse/exterior/parkview-exterior-1.webp",
     features: [
       "Accommodates up to 12 guests",
-      "6–7 bedroom configuration",
+      "6-7 bedroom configuration",
       "Master ensuite bedroom, 2 doubles, one twin, triple and a single room",
       "Main bathroom with Jacuzzi bath",
       "Two reception rooms with open fireplaces",

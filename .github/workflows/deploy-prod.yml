@@ -1,7 +1,8 @@
-name: Deploy Production
+# Superseded for automatic deploys by deploy.yml per DEPLOYMENT_SETUP_GUIDE.md.
+# Trigger manually only if you need this legacy job (uses different secret names).
+name: Deploy Production (manual legacy)
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest

@@ -1,3 +1,7 @@
 node_modules
 .env
 .DS_Store
+
+# Hillview / house 13: DJI and other raw property videos (~10GB+ total). Do not commit;
+# keep on disk for local use or upload via hosting/storage/CDN outside Git.
+**/hillview-videos/

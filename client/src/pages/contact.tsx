@@ -9,13 +9,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { SEO_META_KEYWORDS_COMPACT } from "@/lib/seo-keyword-clusters";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Contact() {
   useSEO({
-    title: 'Contact | Ryder Cup 2027 Accommodation | The Adare Collection',
-    description: 'Enquire about luxury Ryder Cup 2027 accommodation at Adare Manor. Book your Adare rental for the Ryder Cup. Contact The Adare Collection.',
-    keywords: 'Ryder Cup 2027 accommodation contact, Adare rental enquiry, Adare Manor booking',
+    title: 'Contact | Ryder Cup 2027 Accommodation | The Adare Collection Limited',
+    description:
+      'Enquire about luxury Ryder Cup 2027 accommodation at Adare Manor. Book your Adare rental for the Ryder Cup. Contact The Adare Collection Limited (trading as The Adare Collection).',
+    keywords: SEO_META_KEYWORDS_COMPACT,
     ogImage: 'https://theadarecollection.com/images/hero/adaremanor-img2.webp',
     ogUrl: 'https://theadarecollection.com/contact'
   });
@@ -160,9 +162,14 @@ export default function Contact() {
       <div className="pt-24 pb-20">
         <div className="max-w-2xl mx-auto px-6">
           <div className="text-left mb-12">
-            <h1 className="font-serif text-4xl font-normal text-primary mb-12" data-testid="contact-title">
+            <h1 className="font-serif text-4xl font-normal text-primary mb-4" data-testid="contact-title">
               Contact request
             </h1>
+            <p className="text-sm text-secondary leading-relaxed mb-10 max-w-xl" data-testid="contact-intro">
+              Planning Ryder Cup 2027 with us? Share your preferred dates, group size, and whether you need corporate
+              or private accommodation. We will reply with tailored options and next steps. Send your enquiry using the
+              form below.
+            </p>
           </div>
 
           {/* Contact Form */}

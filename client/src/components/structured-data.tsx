@@ -80,10 +80,16 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
         "name": "Ryder Cup Europe",
         "url": "https://www.rydercup.com"
       },
-      "performer": {
-        "@type": "SportsTeam",
-        "name": "European Ryder Cup Team"
-      },
+      "performer": [
+        {
+          "@type": "SportsTeam",
+          "name": "European Ryder Cup Team"
+        },
+        {
+          "@type": "SportsTeam",
+          "name": "United States Ryder Cup Team"
+        }
+      ],
       "image": "https://theadarecollection.com/images/hero/adaremanor-img2.webp",
       "offers": {
         "@type": "Offer",
@@ -167,6 +173,7 @@ export function OrganizationStructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "The Adare Collection",
+    "legalName": "The Adare Collection Limited",
     "description": "Exclusive luxury property rentals for Ryder Cup 2027 at Adare Manor Estate",
     "url": "https://theadarecollection.com",
     "logo": "https://theadarecollection.com/images/navbar/adarecollectionlogo.png",

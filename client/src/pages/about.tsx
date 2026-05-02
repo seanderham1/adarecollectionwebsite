@@ -1,13 +1,15 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useSEO } from "@/hooks/use-seo";
+import { SEO_META_KEYWORDS_COMPACT } from "@/lib/seo-keyword-clusters";
 import { Button } from "@/components/ui/button";
 
 export default function About() {
   useSEO({
-    title: 'About The Adare Collection - Ryder Cup 2027 Luxury Accommodation',
-    description: 'Learn about The Adare Collection\'s exclusive luxury properties for Ryder Cup 2027. Handpicked residences in Adare Manor Estate with local expertise and premium hospitality services.',
-    keywords: 'About Adare Collection, Ryder Cup 2027, luxury accommodation, Adare Manor, local expertise, premium hospitality',
+    title: "About Us | Ryder Cup 2027 Accommodation & Executive Rentals | Adare Manor",
+    description:
+      "Meet the team behind The Adare Collection: exclusive Ryder Cup 2027 luxury accommodation, private estates near Adare Manor, and corporate rentals in County Limerick, Ireland.",
+    keywords: SEO_META_KEYWORDS_COMPACT,
     ogImage: 'https://theadarecollection.com/images/about/about-photo.jpg',
     ogUrl: 'https://theadarecollection.com/about'
   });
@@ -42,9 +44,10 @@ export default function About() {
                 Meet our local expert for exceptional Adare Manor Properties
               </h1>
               <p className="text-base text-secondary leading-relaxed mb-8 max-w-3xl mx-auto">
-                With unique access to exclusive properties within the prestigious Adare Manor estate and beyond, 
-                Joe combines his extensive hospitality expertise with intimate local knowledge to curate 
-                extraordinary accommodation experiences for Ryder Cup 2027.
+                With unique access to exclusive houses and private estates within the Adare Manor demesne and
+                select executive rentals across County Limerick, Joe combines extensive hospitality delivery
+                with local knowledge to pair sponsors, corporate delegations, and private guests with Ryder Cup 2027
+                accommodation that genuinely fits how you plan to live the week.
               </p>
               
               {/* Action Buttons */}
@@ -75,7 +78,7 @@ export default function About() {
         <div className="max-w-5xl mx-auto">
           <blockquote className="font-serif text-3xl md:text-4xl font-normal text-primary leading-relaxed text-center">
             "With over three decades of experience in high-end hospitality and luxury guest services, 
-            I bring a deep understanding of what discerning clients value most — discretion, detail, 
+            I bring a deep understanding of what discerning clients value most: discretion, detail, 
             and distinction. Several of the properties I represent are known to me personally, 
             allowing me to advise not just on layout and amenities, but on how each home feels in 
             terms of comfort, hosting potential, and proximity to the Ryder Cup course."

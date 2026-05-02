@@ -179,7 +179,7 @@ export function ComingSoon({ children }: ComingSoonProps) {
           </Button>
 
           <div className="text-center text-xs text-gray-500 pt-4 border-t">
-            <p>© 2025 The Adare Collection. All rights reserved.</p>
+            <p>© 2025 The Adare Collection Limited. All rights reserved.</p>
           </div>
         </CardContent>
       </Card>

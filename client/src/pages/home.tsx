@@ -10,14 +10,19 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import {
+  SEO_HOME_DESCRIPTION,
+  SEO_HOME_TITLE,
+  SEO_META_KEYWORDS_COMPACT,
+} from "@/lib/seo-keyword-clusters";
 import { Link } from "wouter";
 import { Crown, Shield, Users } from "lucide-react";
 
 export default function Home() {
   useSEO({
-    title: 'Ryder Cup 2027 Accommodation | Luxury Rentals Adare Manor | The Adare Collection',
-    description: 'Discover a curated selection of private residences—each chosen for comfort, privacy, and proximity. Private residences, villas and homes for rent. Adare rental for Ryder Cup - premium golf accommodation Ireland.',
-    keywords: 'Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental 2027, luxury golf accommodation Ireland',
+    title: SEO_HOME_TITLE,
+    description: SEO_HOME_DESCRIPTION,
+    keywords: SEO_META_KEYWORDS_COMPACT,
     ogImage: 'https://theadarecollection.com/images/hero/adaremanor-img2.webp',
     ogUrl: 'https://theadarecollection.com/'
   });
@@ -186,17 +191,26 @@ export default function Home() {
       <section className="py-16 px-6 bg-white w-full" data-testid="introduction-section">
         <div className="w-full text-center">
           <h1 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-6" data-testid="introduction-title">
-            Curated Luxury, Local Expertise
+            Curated luxury for Ryder Cup 2027
           </h1>
           <div className="text-base text-gray-900 leading-relaxed max-w-5xl mx-auto" data-testid="introduction-description">
             <p className="font-serif text-base font-normal">
-              The Adare Collection offers a select number of exceptional private residences for exclusive rental during Ryder Cup 2027.
+              The Adare Collection offers a select number of exceptional private houses and estates near Adare Manor for Ryder Cup 2027: exclusive homes on the demesne and upscale executive rentals elsewhere in County Limerick when you require more capacity or privacy.
             </p>
             <p className="font-serif text-base font-normal">
-              Each property has been handpicked by a local promoter with deep knowledge of each home, its setting, and its unique features — backed by a proven track record in high-profile hospitality and event management.
+              Each property has been handpicked by a local promoter who knows each home, its setting, and its character inside out, with a proven track record in high-profile hospitality and event management behind that work.
             </p>
             <p className="font-serif text-base font-normal">
-              Whether you're a global sponsor, corporate guest, or private individual, you'll receive discreet, personal guidance in selecting a home that matches your exact needs.
+              Whether you&apos;re hosting corporate guests for the tournament, sponsoring hospitality, or planning a private stay, you&apos;ll receive discreet, personal guidance in selecting accommodation that fits your itinerary and group size.
+            </p>
+            <p className="font-serif text-base font-normal mt-6">
+              <Link
+                href="/properties"
+                className="underline underline-offset-4 decoration-gray-900/40 hover:text-gray-700"
+              >
+                Browse Ryder Cup 2027 properties near Adare Manor
+              </Link>
+              .
             </p>
           </div>
         </div>
@@ -208,9 +222,14 @@ export default function Home() {
       <section className="py-16 px-6 bg-white w-full" data-testid="contact-section">
         <div className="w-full max-w-2xl mx-auto">
           <div className="text-left mb-12">
-            <h2 className="font-serif text-4xl font-normal text-primary mb-12" data-testid="contact-title">
+            <h2 className="font-serif text-4xl font-normal text-primary mb-4" data-testid="contact-title">
               Contact request
             </h2>
+            <p className="text-sm text-secondary leading-relaxed mb-10 max-w-xl" data-testid="home-contact-intro">
+              Planning Ryder Cup 2027 with us? Share your preferred dates, group size, and whether you need corporate
+              or private accommodation. We will reply with tailored options and next steps. Complete the form below to
+              start your enquiry.
+            </p>
           </div>
 
           {/* Contact Form */}

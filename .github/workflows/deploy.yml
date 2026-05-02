@@ -1,10 +1,10 @@
 name: Deploy to Firebase
 
+# Matches DEPLOYMENT_SETUP_GUIDE.md — deploy hosting only after merge to main.
+# (Pull requests are not deployed to prod from this workflow; avoid accidental live deploy.)
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:

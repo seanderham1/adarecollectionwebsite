@@ -4,9 +4,10 @@ import { useSEO } from "@/hooks/use-seo";
 
 export default function PrivacyPolicy() {
   useSEO({
-    title: 'Privacy Policy | The Adare Collection',
-    description: 'Privacy policy for The Adare Collection - luxury Ryder Cup 2027 accommodation at Adare Manor.',
-    keywords: 'The Adare Collection privacy, Ryder Cup 2027 accommodation',
+    title: 'Privacy Policy | The Adare Collection Limited',
+    description:
+      'Privacy policy for The Adare Collection Limited (trading as The Adare Collection), covering luxury Ryder Cup 2027 accommodation at Adare Manor.',
+    keywords: 'The Adare Collection Limited, The Adare Collection privacy, Ryder Cup 2027 accommodation',
     ogUrl: 'https://theadarecollection.com/privacy'
   });
 
@@ -35,7 +36,7 @@ export default function PrivacyPolicy() {
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    The Adare Collection ("we," "our," or "us") is committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in connection with luxury property rentals for Ryder Cup 2027 and related events.
+                    The Adare Collection Limited, trading as The Adare Collection (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), is committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in connection with luxury property rentals for Ryder Cup 2027 and related events.
                   </p>
                   <p>
                     By using our website and services, you consent to the data practices described in this policy. If you do not agree with the terms of this Privacy Policy, please do not access or use our services.
@@ -145,7 +146,7 @@ export default function PrivacyPolicy() {
                     <li><strong>Legal Requirements:</strong> When required by law, court order, or government regulation</li>
                     <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
                     <li><strong>Consent:</strong> When you have given explicit consent for us to share your information</li>
-                    <li><strong>Safety and Security:</strong> To protect the rights, property, or safety of The Adare Collection, our users, or others</li>
+                    <li><strong>Safety and Security:</strong> To protect the rights, property, or safety of The Adare Collection Limited, our users, or others</li>
                   </ul>
                 </div>
               </section>
@@ -298,7 +299,7 @@ export default function PrivacyPolicy() {
                     If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
                   </p>
                   <div className="bg-gray-50 p-6 rounded-lg">
-                    <p><strong>The Adare Collection</strong></p>
+                    <p><strong>The Adare Collection Limited</strong></p>
                     <p>Email: <a href="mailto:info@theadarecollection.ie" className="text-primary hover:underline">info@theadarecollection.ie</a></p>
                     <p>Phone: <a href="tel:+353866681930" className="text-primary hover:underline">+353 86 668 1930</a></p>
                     <p>Address: Adare Manor, Co. Limerick, Ireland</p>

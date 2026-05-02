@@ -4,9 +4,10 @@ import { useSEO } from "@/hooks/use-seo";
 
 export default function TermsConditions() {
   useSEO({
-    title: 'Terms and Conditions | The Adare Collection',
-    description: 'Terms and conditions for The Adare Collection - luxury Ryder Cup 2027 accommodation at Adare Manor.',
-    keywords: 'The Adare Collection terms, Ryder Cup 2027 accommodation',
+    title: 'Terms and Conditions | The Adare Collection Limited',
+    description:
+      'Terms and conditions for The Adare Collection Limited (trading as The Adare Collection), covering luxury Ryder Cup 2027 accommodation at Adare Manor.',
+    keywords: 'The Adare Collection Limited, The Adare Collection terms, Ryder Cup 2027 accommodation',
     ogUrl: 'https://theadarecollection.com/terms'
   });
 
@@ -35,7 +36,7 @@ export default function TermsConditions() {
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    Welcome to The Adare Collection. These Terms and Conditions ("Terms") govern your use of our website and services, including luxury property rental accommodations for Ryder Cup 2027 and related events at Adare Manor, County Limerick, Ireland.
+                    Welcome. These Terms and Conditions (&quot;Terms&quot;) govern your use of the website and services provided by The Adare Collection Limited, trading as The Adare Collection, including luxury property rental accommodations for Ryder Cup 2027 and related events at Adare Manor, County Limerick, Ireland.
                   </p>
                   <p>
                     By accessing our website, making inquiries, or booking our services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must not use our services.
@@ -53,12 +54,12 @@ export default function TermsConditions() {
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>"The Adare Collection," "we," "our," or "us"</strong> refers to our luxury property rental service</li>
-                    <li><strong>"Guest," "you," or "your"</strong> refers to any person making inquiries or bookings through our service</li>
-                    <li><strong>"Property"</strong> refers to any accommodation offered through The Adare Collection</li>
-                    <li><strong>"Booking"</strong> refers to a confirmed reservation for a property</li>
-                    <li><strong>"Services"</strong> refers to all services provided by The Adare Collection</li>
-                    <li><strong>"Website"</strong> refers to our online platform and all associated content</li>
+                    <li><strong>&quot;The Adare Collection Limited&quot;</strong> (trading as <strong>&quot;The Adare Collection&quot;</strong>), and <strong>&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;</strong>, means the luxury property rental business operated under that trading name</li>
+                    <li><strong>&quot;Guest,&quot; &quot;you,&quot; or &quot;your&quot;</strong> refers to any person making inquiries or bookings through our service</li>
+                    <li><strong>&quot;Property&quot;</strong> refers to any accommodation offered by us using The Adare Collection brand</li>
+                    <li><strong>&quot;Booking&quot;</strong> refers to a confirmed reservation for a property</li>
+                    <li><strong>&quot;Services&quot;</strong> refers to all services we provide under these Terms</li>
+                    <li><strong>&quot;Website&quot;</strong> refers to our online platform and all associated content</li>
                   </ul>
                 </div>
               </section>
@@ -73,7 +74,7 @@ export default function TermsConditions() {
                     3.1 Booking and Reservations
                   </h3>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>All bookings are subject to availability and confirmation by The Adare Collection</li>
+                    <li>All bookings are subject to availability and confirmation by The Adare Collection Limited (trading as The Adare Collection)</li>
                     <li>Bookings are confirmed only upon receipt of full payment and signed rental agreement</li>
                     <li>We reserve the right to refuse bookings at our discretion</li>
                     <li>Minimum stay requirements may apply during Ryder Cup 2027 and other special events</li>
@@ -157,7 +158,7 @@ export default function TermsConditions() {
                     5.1 Limitation of Liability
                   </h3>
                   <p>
-                    The Adare Collection's liability is limited to the maximum extent permitted by Irish law. We shall not be liable for:
+                    The liability of The Adare Collection Limited (trading as The Adare Collection) is limited to the maximum extent permitted by Irish law. We shall not be liable for:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Loss or damage to personal belongings</li>
@@ -294,7 +295,7 @@ export default function TermsConditions() {
                     If you have any questions about these Terms and Conditions, please contact us:
                   </p>
                   <div className="bg-gray-50 p-6 rounded-lg">
-                    <p><strong>The Adare Collection</strong></p>
+                    <p><strong>The Adare Collection Limited</strong></p>
                     <p>Email: <a href="mailto:info@theadarecollection.ie" className="text-primary hover:underline">info@theadarecollection.ie</a></p>
                     <p>Phone: <a href="tel:+353866681930" className="text-primary hover:underline">+353 86 668 1930</a></p>
                     <p>Address: Adare Manor, Co. Limerick, Ireland</p>

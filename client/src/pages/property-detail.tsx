@@ -1,4 +1,4 @@
-import { useParams, useSearch, useLocation } from "wouter";
+import { useParams, useSearch, useLocation, Link } from "wouter";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import PropertyMap from "@/components/property-map";
@@ -6,7 +6,7 @@ import VideoModal from "@/components/video-modal";
 import MapModal from "@/components/map-modal";
 import MatterportModal from "@/components/matterport-modal";
 import BrochureModal from "@/components/brochure-modal";
-import { properties, formatPropertyBedroomsShort } from "@/lib/properties";
+import { properties, formatPropertyBedroomsShort, getPropertyCollectionBadge } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Bed, Mail, MessageCircle } from "lucide-react";
@@ -14,18 +14,6 @@ import { ChevronLeft, ChevronRight, Play, Scan } from "lucide-react";
 import { useState, useEffect, type CSSProperties } from "react";
 import { useSEO } from "@/hooks/use-seo";
 import { PropertyStructuredData, BreadcrumbListStructuredData } from "@/components/structured-data";
-
-/** Portrait / tall Croagh House gallery shots — path segments avoid false positives (e.g. sitting vs utility) */
-function isCroaghGalleryContain(src: string): boolean {
-  if (!src.includes("/croaghhouse/")) return false;
-  return (
-    src.includes("/bathroom/") ||
-    src.includes("/stairs/") ||
-    src.includes("utilitybathroom") ||
-    src.includes("closet") ||
-    src.includes("bedroom2-2")
-  );
-}
 
 /** Parkview: pre-load guess (overridden by intrinsic size on onLoad). Exterior/kitchen/sitting are typically landscape. */
 function parkviewGuessLandscape(src: string): boolean {
@@ -36,9 +24,20 @@ function parkviewGuessLandscape(src: string): boolean {
   );
 }
 
-function isDeluxeGalleryContain(propertyId: string, src: string): boolean {
-  if (propertyId === "croagh-house") return isCroaghGalleryContain(src);
-  return false;
+/** Croagh: guessed landscape paths before intrinsic size is known; everything else defaults to centred contain until onLoad confirms. */
+function croaghGuessLandscape(src: string): boolean {
+  if (!src.includes("/croaghhouse/")) return false;
+  return (
+    src.includes("/exterior/") ||
+    src.includes("/kitchen/") ||
+    src.includes("/sittingroom/") ||
+    src.includes("/landing/") ||
+    src.includes("masterbedroom-1.webp") ||
+    src.includes("masterbedroom-2.webp") ||
+    src.includes("bedroom2-1.webp") ||
+    src.includes("croaghhouse-bedroom3.webp") ||
+    src.includes("croaghhouse-bedroom4.webp")
+  );
 }
 
 export default function PropertyDetail() {
@@ -66,6 +65,11 @@ export default function PropertyDetail() {
 
   /** Parkview gallery: intrinsic portrait vs landscape (src key), so vertical shots aren’t full-bleed cover */
   const [parkviewImageOrient, setParkviewImageOrient] = useState<
+    Record<string, "portrait" | "landscape">
+  >({});
+
+  /** Croagh House: same pattern; portrait assets get centred contain like utility bathrooms */
+  const [croaghImageOrient, setCroaghImageOrient] = useState<
     Record<string, "portrait" | "landscape">
   >({});
 
@@ -200,21 +204,19 @@ export default function PropertyDetail() {
                 {/* White mask to cover area above navigation */}
                 <div className="absolute top-0 left-0 right-0 h-16 bg-white z-10"></div>
                 <div className="lg:h-[85vh] lg:min-h-0 relative bg-white flex min-h-0 flex-col">
-                  {/* Main Image with fade transition — min-h-0 + basis-0 so flex/grid ancestors don’t clip cover height */}
+                  {/* Main Image with fade transition: min-h-0 + basis-0 so flex/grid ancestors don’t clip cover height */}
                   <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-auto lg:min-h-0 lg:flex-1 lg:basis-0 w-full min-h-0 overflow-hidden bg-white">
                     {property.images.map((image, index) => {
                       const src = property.images[index];
                       const isParkview = property.id === "parkview-house";
                       const isCroagh = property.id === "croagh-house";
-                      const deluxePortrait =
-                        isCroagh && isDeluxeGalleryContain(property.id, src);
 
-                      const styleDeluxePortrait: CSSProperties = {
+                      const croaghPortraitStyle: CSSProperties = {
                         transform: "translate(-50%, -50%)",
                         objectPosition: "center center",
                         objectFit: "contain",
                       };
-                      const styleDeluxeLandscape: CSSProperties = {
+                      const croaghLandscapeStyle: CSSProperties = {
                         objectFit: "cover",
                         objectPosition: "center center",
                         width: "100%",
@@ -254,14 +256,23 @@ export default function PropertyDetail() {
                             maxHeight: "100%",
                           };
                         }
-                      } else if (deluxePortrait) {
-                        layoutClass =
-                          "left-1/2 top-1/2 h-full max-h-full w-auto max-w-full object-contain";
-                        imgStyle = styleDeluxePortrait;
                       } else if (isCroagh) {
-                        layoutClass =
-                          "inset-0 block h-full w-full min-h-full min-w-full object-cover object-center";
-                        imgStyle = styleDeluxeLandscape;
+                        const measured = croaghImageOrient[src];
+                        const isPortrait =
+                          measured === "portrait"
+                            ? true
+                            : measured === "landscape"
+                              ? false
+                              : !croaghGuessLandscape(src);
+                        if (isPortrait) {
+                          layoutClass =
+                            "left-1/2 top-1/2 block h-full max-h-full w-auto max-w-full object-contain";
+                          imgStyle = croaghPortraitStyle;
+                        } else {
+                          layoutClass =
+                            "inset-0 block h-full w-full min-h-full min-w-full object-cover object-center";
+                          imgStyle = croaghLandscapeStyle;
+                        }
                       } else if (property.id === "the-first-tee") {
                         layoutClass =
                           src.includes("house-7-downstairs-bathroom") ||
@@ -354,28 +365,32 @@ export default function PropertyDetail() {
                           }`}
                           style={imgStyle}
                           onLoad={(e) => {
-                            if (property.id !== "parkview-house") return;
                             const el = e.currentTarget;
                             const o =
                               el.naturalHeight > el.naturalWidth * 1.02
                                 ? "portrait"
                                 : "landscape";
-                            setParkviewImageOrient((prev) =>
-                              prev[src] === o ? prev : { ...prev, [src]: o }
-                            );
+                            if (property.id === "parkview-house") {
+                              setParkviewImageOrient((prev) =>
+                                prev[src] === o ? prev : { ...prev, [src]: o }
+                              );
+                            }
+                            if (property.id === "croagh-house") {
+                              setCroaghImageOrient((prev) =>
+                                prev[src] === o ? prev : { ...prev, [src]: o }
+                              );
+                            }
                           }}
                           data-testid={`property-gallery-image-${index}`}
                         />
                       );
                     })}
 
-                    {/* EXECUTIVE/DELUXE Banner */}
+                    {/* Collection tier banner */}
                     <div className="absolute top-16 left-0 right-0 z-20">
                       <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                         <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                          {['darrira-house', 'dunes-lodge', 'croagh-house', 'parkview-house'].includes(property.id)
-                            ? 'DELUXE'
-                            : 'EXECUTIVE'}
+                          {getPropertyCollectionBadge(property.id)}
                         </div>
                       </div>
                     </div>
@@ -471,6 +486,14 @@ export default function PropertyDetail() {
                         </Button>
                       )}
                   </div>
+
+                  <p className="text-xs text-secondary text-center mt-4 leading-relaxed px-2">
+                    General questions about booking or Ryder week?{" "}
+                    <Link href="/faq" className="underline underline-offset-4 hover:text-gray-900">
+                      Read our FAQ
+                    </Link>
+                    .
+                  </p>
 
                   {/* Share Section */}
                   <div className="text-center">
@@ -656,6 +679,14 @@ export default function PropertyDetail() {
                     
                   </div>
 
+                  <p className="text-xs text-secondary text-left mt-3 leading-relaxed">
+                    General questions about booking or Ryder week?{" "}
+                    <Link href="/faq" className="underline underline-offset-4 hover:text-gray-900">
+                      Read our FAQ
+                    </Link>
+                    .
+                  </p>
+
                   {/* Map & Brochure Links */}
                   <div className="space-y-4 mb-7 mt-4">
                     <div className="flex justify-center space-x-2">
@@ -740,7 +771,7 @@ export default function PropertyDetail() {
           isOpen={isMatterportModalOpen}
           onClose={handleCloseMatterport}
           src={matterportUrl}
-          title={`${property.name} — 360 degree virtual tour`}
+          title={`${property.name}: 360 degree virtual tour`}
         />
       )}
       

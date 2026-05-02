@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Maximize2, Minimize2 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { Link } from "wouter";
 import { 
   loadGoogleMapsScript, 
   MAP_CENTER, 
@@ -69,11 +70,6 @@ export default function HeroSection() {
   const [isMapLoading, setIsMapLoading] = useState(true);
   const originalStateRef = useRef<{center: google.maps.LatLng, zoom: number} | null>(null);
   const radiusElementsRef = useRef<{walkCircle: google.maps.Circle, walkLabel: any, driveCircle: google.maps.Circle, driveLabel: any} | null>(null);
-
-  const scrollToProperties = () => {
-    const el = document.getElementById("properties");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   const nextImage = () =>
     setCurrentImageIndex((prev) => (prev + 1) % propertyImages.length);
@@ -445,10 +441,12 @@ export default function HeroSection() {
                     Private Residences | Adare Manor Estate & Surrounds | Adare rental for Ryder Cup
                   </p>
                   <Button
-                    onClick={scrollToProperties}
+                    asChild
                     className="border border-white bg-transparent text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:bg-white hover:text-gray-900 transition-all duration-200"
                   >
-                    VIEW RYDER CUP 2027 ACCOMMODATION
+                    <Link href="/properties">
+                      VIEW RYDER CUP 2027 ACCOMMODATION
+                    </Link>
                   </Button>
                 </div>
               </div>

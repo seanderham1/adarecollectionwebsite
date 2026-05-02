@@ -24,6 +24,7 @@ export default function Navigation() {
 
   const rightNavigationItems = [
     { href: "/about", label: "About" },
+    { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
   ];
 

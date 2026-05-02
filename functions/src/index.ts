@@ -61,6 +61,7 @@ app.post("/api/access-request", async (req, res) => {
         <p>Or send a custom message to the requester.</p>
         <hr>
         <p><em>This access request was submitted from the Adare Collection website.</em></p>
+        <p>The Adare Collection Limited</p>
       `
     };
 
@@ -136,6 +137,7 @@ app.post("/api/contact", async (req, res) => {
         <p>${message.replace(/\n/g, '<br>')}</p>
         <hr>
         <p><em>This inquiry was submitted from the Adare Collection website.</em></p>
+        <p>The Adare Collection Limited</p>
       `
     };
 

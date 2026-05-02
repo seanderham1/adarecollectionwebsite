@@ -235,7 +235,7 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           console.log(`Adding marker for current property ${p.title} at [${lat}, ${lng}]`);
           createPropertyMarker(map, { lat, lng }, p);
         } else {
-          console.log(`Property ${propertyId} not in GeoJSON — using fallback marker`);
+          console.log(`Property ${propertyId} not in GeoJSON; using fallback marker`);
           const fallbackProps = {
             id: "putters-way",
             title: "Putters Way",

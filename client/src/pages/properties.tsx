@@ -1,9 +1,13 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { properties, formatPropertyBedroomsShort } from "@/lib/properties";
+import { properties, formatPropertyBedroomsShort, getPropertyCollectionBadge } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { Bed } from "lucide-react";
+import {
+  SEO_META_KEYWORDS_COMPACT,
+  SEO_PROPERTIES_DESCRIPTION,
+  SEO_PROPERTIES_TITLE,
+} from "@/lib/seo-keyword-clusters";
 import { useSEO } from "@/hooks/use-seo";
 
 // Coming Soon Card Component
@@ -50,9 +54,9 @@ export default function PropertiesPage() {
   const all = properties;
 
   useSEO({
-    title: 'Ryder Cup 2027 Accommodation | Luxury Rentals Adare Manor | The Adare Collection',
-    description: 'Discover a curated selection of private residences—each chosen for comfort, privacy, and proximity. Private residences, villas and homes for rent. Adare rental for Ryder Cup.',
-    keywords: 'Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, golf accommodation Ireland',
+    title: SEO_PROPERTIES_TITLE,
+    description: SEO_PROPERTIES_DESCRIPTION,
+    keywords: SEO_META_KEYWORDS_COMPACT,
     ogImage: 'https://theadarecollection.com/images/hero/adaremanor-img1.webp',
     ogUrl: 'https://theadarecollection.com/properties'
   });
@@ -69,9 +73,10 @@ export default function PropertiesPage() {
               Ryder Cup 2027 Accommodation at Adare Manor
             </h1>
             <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
-              Discover a curated selection of private residences—each chosen for comfort, privacy, and proximity.
-              Whether you seek a discreet estate within the grounds or a spacious home just minutes away, our Adare
-              rental collection is tailored for Ryder Cup week.
+              Exclusive Ryder Cup 2027 accommodation: luxury houses for rent across our portfolio, from golf village
+              and demesne settings through to upscale executive retreats minutes from Adare Manor. Ideal for sponsors,
+              corporate hospitality, and groups who want a whole-home private Ireland rental near the Ryder Cup
+              venue.
             </p>
           </div>
         </section>
@@ -90,9 +95,7 @@ export default function PropertiesPage() {
                   <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
                     <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                       <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                        {['darrira-house', 'dunes-lodge', 'croagh-house', 'parkview-house'].includes(p.id)
-                          ? 'DELUXE'
-                          : 'EXECUTIVE'}
+                        {getPropertyCollectionBadge(p.id)}
                       </div>
                     </div>
                   </div>

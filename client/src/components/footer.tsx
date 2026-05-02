@@ -40,6 +40,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <Link href="/faq" className="hover:text-gray-300 transition-colors" data-testid="footer-link-faq">
+                  FAQ
+                </Link>
+              </li>
+              <li>
                 <a href="/properties" className="hover:text-gray-300 transition-colors" data-testid="footer-link-properties">
                   Ryder Cup 2027 Accommodation
                 </a>
@@ -98,7 +103,7 @@ export default function Footer() {
               ))}
             </ul>
             <p className="text-gray-400 text-xs text-left mt-5" data-testid="footer-copyright">
-              © 2025 The Adare Collection. All rights reserved.
+              © 2025 The Adare Collection Limited. All rights reserved.
             </p>
             <nav
               className="text-gray-400 text-xs text-left mt-3 flex flex-wrap items-center gap-x-3 gap-y-1"
@@ -119,7 +124,7 @@ export default function Footer() {
               className="text-gray-400 text-left mt-3 max-w-md leading-relaxed text-[8px]"
               data-testid="footer-disclaimer"
             >
-              The Adare Collection is an independent luxury accommodation provider and is not affiliated with, endorsed by, or connected to Adare Manor or the Ryder Cup.
+              The Adare Collection Limited, trading as The Adare Collection, is an independent luxury accommodation provider and is not affiliated with, endorsed by, or connected to Adare Manor or the Ryder Cup.
             </p>
           </div>
 

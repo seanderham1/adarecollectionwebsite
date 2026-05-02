@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { properties, type Property, formatPropertyBedroomsShort } from "@/lib/properties";
+import { properties, type Property, formatPropertyBedroomsShort, getPropertyCollectionBadge } from "@/lib/properties";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
@@ -23,9 +23,7 @@ function PropertyCard({ property }: PropertyCardProps) {
             <div className="absolute top-0 left-0 right-0 z-20 cursor-pointer">
               <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">
                 <div className="text-xs font-medium text-gray-900 uppercase tracking-wider font-sans">
-                  {['darrira-house', 'dunes-lodge', 'croagh-house'].includes(property.id)
-                    ? 'DELUXE'
-                    : 'EXECUTIVE'}
+                  {getPropertyCollectionBadge(property.id)}
                 </div>
               </div>
             </div>
@@ -122,7 +120,7 @@ export default function PropertyGrid() {
 
         {/* Property Grid */}
         <div className="grid md:grid-cols-3 gap-6" data-testid="properties-grid">
-          {properties.filter(property => property.id !== 'darrira-house' && property.id !== 'dunes-lodge' && property.id !== 'parkview-house').map((property) => (
+          {properties.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
           <ComingSoonCard />
