@@ -24,7 +24,7 @@
         "beds": 6,
         "baths": 6,
         "price":"POA",
-        "thumb":"/images/houses/house 2/house-2-main.webp"
+        "thumb":"/images/houses/house 2/house-2-main-original.webp"
       }
     },
     {
@@ -37,7 +37,7 @@
         "beds": 6,
         "baths": 6,
         "price":"POA",
-        "thumb":"/images/houses/house 3/house-3-main.webp"
+        "thumb":"/images/houses/house 3/house-3-main-original.webp"
       }
     },
     {
@@ -50,7 +50,7 @@
         "beds": 2,
         "baths": 2,
         "price":"POA",
-        "thumb":"/images/houses/house 4/adare-house-4.webp"
+        "thumb":"/images/houses/house 4/adare-house-4-original.webp"
       }
     },
     {
@@ -131,7 +131,33 @@
         "beds": 4,
         "baths": 3,
         "price":"POA",
-        "thumb":"/images/houses/house 9/house-9-exterior-2.jpg"
+        "thumb":"/images/houses/house 9/house-9-kitchen-3.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.3473484, 52.3714932]},
+      "properties":{
+        "id":"hillview-house",
+        "title":"Hillview House",
+        "desc":"Five-star modern residence for up to 14 guests — approximately 45 minutes from Adare Manor.",
+        "beds": 6,
+        "baths": 4,
+        "price":"POA",
+        "thumb":"/images/houses/house 13/house-13-exterior-4.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.3473484, 52.3714932]},
+      "properties":{
+        "id":"portland-house",
+        "title":"Portland House",
+        "desc":"Spacious Ballylanders home for Ryder Cup 2027 — about 45 minutes from Adare Manor; pairs with neighbouring Hillview House.",
+        "beds": 6,
+        "baths": 4,
+        "price":"POA",
+        "thumb":"/images/houses/house 14/house-14-exterior-21.webp"
       }
     }
   ]

@@ -73,6 +73,14 @@ export default function PropertyDetail() {
     Record<string, "portrait" | "landscape">
   >({});
 
+  /**
+   * Default carousel branch: intrinsic orientation per `src`, so portrait photos (taller than wide)
+   * use centred contain instead of cropped cover. Parkview/Croagh keep their own state + guesses.
+   */
+  const [carouselImageOrient, setCarouselImageOrient] = useState<
+    Record<string, "portrait" | "landscape">
+  >({});
+
   // SEO optimization
   useSEO({
     title: property ? `${property.name} - Ryder Cup 2027 Accommodation | Adare Manor Rental` : 'Property Details - The Adare Collection',
@@ -273,18 +281,10 @@ export default function PropertyDetail() {
                             "inset-0 block h-full w-full min-h-full min-w-full object-cover object-center";
                           imgStyle = croaghLandscapeStyle;
                         }
-                      } else if (property.id === "the-first-tee") {
-                        layoutClass =
-                          src.includes("house-7-downstairs-bathroom") ||
-                          src.includes("house-7-fourth-bedroombath-2") ||
-                          src.includes("house-7-fourth-bedroombath-3")
-                            ? "inset-0 w-full h-full min-w-full min-h-full object-contain"
-                            : "inset-0 w-full h-full min-w-full min-h-full object-cover";
-                        imgStyle = {
-                          transform: "translateY(0%)",
-                          objectPosition: "center center",
-                        };
                       } else if (
+                        src.includes("house-7-downstairs-bathroom") ||
+                        src.includes("house-7-fourth-bedroombath-2") ||
+                        src.includes("house-7-fourth-bedroombath-3") ||
                         src.includes("house-1-hall.webp") ||
                         src.includes("house-2-bathroom-1.webp") ||
                         src.includes("house-2-bathroom-2.webp") ||
@@ -294,13 +294,13 @@ export default function PropertyDetail() {
                         src.includes("house-3-master-bath-3.webp") ||
                         src.includes("house-4-rolex.webp") ||
                         src.includes("house-6-shower-room.webp") ||
-                        src.includes("house-9-bathroom-1.jpg") ||
-                        src.includes("house-9-bathroom-2.jpg") ||
-                        src.includes("house-9-bedroom-2.jpg") ||
-                        src.includes("house-9-bedroom-3.jpg") ||
-                        src.includes("house-9-kitchen-4.jpg") ||
-                        src.includes("house-9-stairs-under.jpg") ||
-                        src.includes("house-9-stairs.jpg")
+                        src.includes("house-9-bathroom-1.webp") ||
+                        src.includes("house-9-bathroom-2.webp") ||
+                        src.includes("house-9-bedroom-2.webp") ||
+                        src.includes("house-9-bedroom-3.webp") ||
+                        src.includes("house-9-kitchen-4.webp") ||
+                        src.includes("house-9-stairs-under.webp") ||
+                        src.includes("house-9-stairs.webp")
                       ) {
                         layoutClass =
                           "inset-0 w-full h-full min-w-full min-h-full object-contain";
@@ -324,6 +324,10 @@ export default function PropertyDetail() {
                                     ? "center center"
                                     : "center center",
                         };
+                      } else if (carouselImageOrient[src] === "portrait") {
+                        layoutClass =
+                          "left-1/2 top-1/2 block h-full max-h-full w-auto max-w-full object-contain";
+                        imgStyle = croaghPortraitStyle;
                       } else {
                         layoutClass =
                           "inset-0 w-full h-full min-w-full min-h-full object-cover";
@@ -370,6 +374,9 @@ export default function PropertyDetail() {
                               el.naturalHeight > el.naturalWidth * 1.02
                                 ? "portrait"
                                 : "landscape";
+                            setCarouselImageOrient((prev) =>
+                              prev[src] === o ? prev : { ...prev, [src]: o }
+                            );
                             if (property.id === "parkview-house") {
                               setParkviewImageOrient((prev) =>
                                 prev[src] === o ? prev : { ...prev, [src]: o }
@@ -586,7 +593,7 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house') && (
+                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house') && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Crown className="text-white h-6 w-6" />

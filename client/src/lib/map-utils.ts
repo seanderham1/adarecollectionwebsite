@@ -11,6 +11,8 @@ export const WALK_RADIUS_METERS = 800; // Approximately 10 minutes walk at avera
 export const TEN_MIN_DRIVE_RADIUS_METERS = 8000; // Roughly 10 minute drive at average local speed
 export const FIFTEEN_MIN_DRIVE_RADIUS_METERS = 12000; // Roughly 15 minute drive at average local speed
 export const ONE_HOUR_DRIVE_RADIUS_METERS = 55000; // Roughly 1 hour drive at average speeds
+/** ~45 minute drive at typical regional speeds (routing key for map circle only) */
+export const FORTY_FIVE_MIN_DRIVE_RADIUS_METERS = 38000;
 export const DRIVE_RADIUS_METERS = 26000; // Approximately 30 minute drive at average speed (26km)
 export const MAP_CENTER = { lat: 52.562213, lng: -8.781279 };
 
@@ -22,7 +24,7 @@ export function getBaseUrl(): string {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      return 'http://localhost:3000';
+      return window.location.origin;
     }
   }
   // Production URL

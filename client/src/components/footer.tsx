@@ -1,4 +1,4 @@
-import { Linkedin, Instagram, Facebook } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 import { Link } from "wouter";
 
 const socialLinks = [
@@ -13,12 +13,6 @@ const socialLinks = [
     href: "https://www.instagram.com/theadarecollection/",
     Icon: Instagram,
     testId: "footer-social-instagram",
-  },
-  {
-    name: "Facebook",
-    href: "https://www.facebook.com/theadarecollection",
-    Icon: Facebook,
-    testId: "footer-social-facebook",
   },
 ] as const;
 

@@ -1,14 +1,31 @@
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { fileURLToPath } from "url";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import { GLOBAL_SCHEMA_GRAPH } from "./client/src/lib/seo-global-graph";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+function injectGlobalSchemaLdJson(): Plugin {
+  const tag = `<!--INJECT_GLOBAL_SCHEMA_LD_JSON-->`;
+  return {
+    name: "inject-global-schema-ld-json",
+    transformIndexHtml(html) {
+      if (!html.includes(tag)) return html;
+      const json = JSON.stringify(GLOBAL_SCHEMA_GRAPH);
+      return html.replace(
+        tag,
+        `<script type="application/ld+json">${json}</script>`,
+      );
+    },
+  };
+}
 
 export default defineConfig({
   plugins: [
     react(),
+    injectGlobalSchemaLdJson(),
     runtimeErrorOverlay(),
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined

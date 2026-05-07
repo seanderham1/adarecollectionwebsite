@@ -8,6 +8,7 @@ import {
   PROPERTIES_URL,
   TEN_MIN_DRIVE_RADIUS_METERS,
   FIFTEEN_MIN_DRIVE_RADIUS_METERS,
+  FORTY_FIVE_MIN_DRIVE_RADIUS_METERS,
   ONE_HOUR_DRIVE_RADIUS_METERS,
   createPropertyMarker,
   addWalkRadiusCircle,
@@ -67,6 +68,8 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
               ? 8
               : propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house'
                 ? 11
+                : propertyId === 'hillview-house' || propertyId === 'portland-house'
+                  ? 9
                 : propertyId === 'cragleigh-house'
                   ? 10
                   : 14,
@@ -86,6 +89,12 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: FIFTEEN_MIN_DRIVE_RADIUS_METERS,
             labelText: '15 minute drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'hillview-house' || propertyId === 'portland-house') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: FORTY_FIVE_MIN_DRIVE_RADIUS_METERS,
+            labelText: '45 minute drive',
             icon: 'car',
           });
         } else if (propertyId === 'dunes-lodge') {

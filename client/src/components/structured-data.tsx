@@ -1,4 +1,5 @@
 import { properties, formatPropertyBedroomsShort } from "@/lib/properties";
+import { GLOBAL_SCHEMA_GRAPH } from "@/lib/seo-global-graph";
 
 interface PropertyStructuredDataProps {
   propertyId?: string;
@@ -109,27 +110,12 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
   );
 }
 
-export function WebSiteStructuredData() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "The Adare Collection",
-    "description": "Ryder Cup 2027 accommodation at Adare Manor. Luxury rentals, private residences, villas for rent.",
-    "url": "https://theadarecollection.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://theadarecollection.com/properties?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
-  };
-
+/** Sitewide Organization + WebSite + navigation hints + RealEstateAgent (see seo-global-graph.ts). */
+export function GlobalSchemaStructuredData() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(GLOBAL_SCHEMA_GRAPH) }}
     />
   );
 }
@@ -158,46 +144,6 @@ export function BreadcrumbListStructuredData({ propertyName, propertyId }: { pro
         "item": `https://theadarecollection.com/property/${propertyId}`
       }
     ]
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
-}
-
-export function OrganizationStructuredData() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "The Adare Collection",
-    "legalName": "The Adare Collection Limited",
-    "description": "Exclusive luxury property rentals for Ryder Cup 2027 at Adare Manor Estate",
-    "url": "https://theadarecollection.com",
-    "logo": "https://theadarecollection.com/images/navbar/adarecollectionlogo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Adare",
-      "addressRegion": "Limerick", 
-      "addressCountry": "IE"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+353-61-605-200",
-      "contactType": "customer service",
-      "email": "info@theadarecollection.com"
-    },
-    "sameAs": [
-      "https://theadarecollection.com"
-    ],
-    "foundingDate": "2024",
-    "areaServed": {
-      "@type": "Country",
-      "name": "Ireland"
-    },
-    "serviceType": "Luxury Accommodation Rental"
   };
 
   return (
