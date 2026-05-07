@@ -29,47 +29,49 @@ firebase login:ci
 
 ## Step 3: Create GitHub Actions Workflow
 
-Create the file `.github/workflows/deploy.yml` with this content:
+Create the file `.github/workflows/deploy.yml` with this content (or keep the copy already in-repo). **`workflow_dispatch`** lets you click “Run workflow” on `main` in the Actions tab without a push. Production deploy does **not** run on pull requests—only merges/pushes to `main`.
 
 ```yaml
 name: Deploy to Firebase
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build project
-      run: npm run build
-      env:
-        VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
-        VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
-        VITE_GOOGLE_SITE_VERIFICATION: ${{ secrets.VITE_GOOGLE_SITE_VERIFICATION }}
-        
-    - name: Deploy to Firebase
-      run: |
-        npm install -g firebase-tools
-        firebase deploy --only hosting --project theadarecollection-site --token "${{ secrets.FIREBASE_TOKEN }}"
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+        env:
+          VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
+          VITE_GOOGLE_SITE_VERIFICATION: ${{ secrets.VITE_GOOGLE_SITE_VERIFICATION }}
+
+      - name: Deploy to Firebase
+        run: |
+          npm install -g firebase-tools
+          firebase deploy --only hosting --project theadarecollection-site --non-interactive --token "${{ secrets.FIREBASE_TOKEN }}"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 ```
 
 ## Step 4: Set Up GitHub Repository Secrets
@@ -87,7 +89,7 @@ Add these secrets:
 
 ## Step 5: Verify Firebase Configuration
 
-Ensure your `firebase.json` is configured correctly:
+Ensure your `firebase.json` is configured correctly. Use `hosting.ignore` for dotfiles (`**/.*`), `node_modules`, and any bulky local folders (for example **`**/hillview-videos/**`**) so they are never uploaded—even if present on disk:
 
 ```json
 {
@@ -95,7 +97,7 @@ Ensure your `firebase.json` is configured correctly:
   "hosting": {
     "site": "theadarecollection-site",
     "public": "dist/public",
-    "ignore": ["**/.*", "**/node_modules/**"],
+    "ignore": ["**/.*", "**/node_modules/**", "**/hillview-videos/**"],
     "rewrites": [
       { "source": "/api/**", "function": "api" },
       { "source": "**", "destination": "/index.html" }
@@ -104,17 +106,22 @@ Ensure your `firebase.json` is configured correctly:
 }
 ```
 
+Add entries under `ignore` for any other large local-only directories (see `firebase.json` in this repo).
+
 ## Step 6: Test the Setup
 
-1. Make a small change to your code
-2. Commit and push to main branch:
+Automated deploy **only runs after code lands on GitHub** (local `firebase deploy` does not trigger Actions). Confirm **GitHub Actions** is allowed for the repo: **Settings → Actions → General**.
+
+1. Configure all secrets in Step 4 (missing `FIREBASE_TOKEN` or `VITE_*` values produces **failed** runs, not skipped runs).
+2. Either **push** to `main`:
    ```bash
    git add .
    git commit -m "Test automated deployment"
    git push origin main
    ```
-3. Check GitHub Actions tab to see deployment progress
-4. Verify your site is updated at: https://theadarecollection-site.web.app
+   or open **Actions → Deploy to Firebase → Run workflow** (because `workflow_dispatch` is enabled).
+3. Confirm the workflow run succeeds in the **Actions** tab.
+4. Verify your site at: https://theadarecollection-site.web.app (and custom domain DNS in Firebase Hosting if configured).
 
 ## Step 7: Create Token Management Script
 

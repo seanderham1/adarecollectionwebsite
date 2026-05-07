@@ -3,7 +3,13 @@
   "hosting": {
     "site": "theadarecollection-site",
     "public": "dist/public",
-    "ignore": ["**/.*", "**/node_modules/**"],
+    "ignore": [
+      "**/.*",
+      "**/node_modules/**",
+      "**/hillview-videos/**",
+      "**/Hillview House 1 Video Assets/**",
+      "**/Portland House 2 Video Assets/**"
+    ],
     "rewrites": [
       { "source": "/api/**", "function": "api" },
       { "source": "**", "destination": "/index.html" }
