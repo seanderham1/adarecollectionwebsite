@@ -1,5 +1,7 @@
 {
-  "functions": { "source": "functions" },
+  "functions": {
+    "source": "functions"
+  },
   "hosting": {
     "site": "theadarecollection-site",
     "public": "dist/public",
@@ -11,10 +13,259 @@
       "**/Portland House 2 Video Assets/**"
     ],
     "rewrites": [
-      { "source": "/api/**", "function": "api" },
-      { "source": "**", "destination": "/index.html" }
+      {
+        "source": "/api/**",
+        "function": "api"
+      },
+      {
+        "source": "/properties",
+        "destination": "/_prerender/properties.html"
+      },
+      {
+        "source": "/about",
+        "destination": "/_prerender/about.html"
+      },
+      {
+        "source": "/contact",
+        "destination": "/_prerender/contact.html"
+      },
+      {
+        "source": "/faq",
+        "destination": "/_prerender/faq.html"
+      },
+      {
+        "source": "/privacy",
+        "destination": "/_prerender/privacy.html"
+      },
+      {
+        "source": "/terms",
+        "destination": "/_prerender/terms.html"
+      },
+      {
+        "source": "/property/rangeview",
+        "destination": "/_prerender/property__rangeview.html"
+      },
+      {
+        "source": "/property/the-captains",
+        "destination": "/_prerender/property__the-captains.html"
+      },
+      {
+        "source": "/property/putters-way",
+        "destination": "/_prerender/property__putters-way.html"
+      },
+      {
+        "source": "/property/the-first-tee",
+        "destination": "/_prerender/property__the-first-tee.html"
+      },
+      {
+        "source": "/property/the-fairways",
+        "destination": "/_prerender/property__the-fairways.html"
+      },
+      {
+        "source": "/property/cragleigh-house",
+        "destination": "/_prerender/property__cragleigh-house.html"
+      },
+      {
+        "source": "/property/darrira-house",
+        "destination": "/_prerender/property__darrira-house.html"
+      },
+      {
+        "source": "/property/croagh-house",
+        "destination": "/_prerender/property__croagh-house.html"
+      },
+      {
+        "source": "/property/parkview-house",
+        "destination": "/_prerender/property__parkview-house.html"
+      },
+      {
+        "source": "/property/dunes-lodge",
+        "destination": "/_prerender/property__dunes-lodge.html"
+      },
+      {
+        "source": "/property/hillview-house",
+        "destination": "/_prerender/property__hillview-house.html"
+      },
+      {
+        "source": "/property/portland-house",
+        "destination": "/_prerender/property__portland-house.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ],
     "headers": [
+      {
+        "source": "/",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/properties",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/properties>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/about",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/about>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/contact",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/contact>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/faq",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/faq>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/rangeview",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/rangeview>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/the-captains",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/the-captains>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/putters-way",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/putters-way>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/the-first-tee",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/the-first-tee>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/the-fairways",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/the-fairways>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/cragleigh-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/cragleigh-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/darrira-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/darrira-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/croagh-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/croagh-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/parkview-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/parkview-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/dunes-lodge",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/dunes-lodge>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/hillview-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/hillview-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/portland-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/portland-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/privacy",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/privacy>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/terms",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/terms>; rel=\"canonical\""
+          }
+        ]
+      },
       {
         "source": "**",
         "headers": [
