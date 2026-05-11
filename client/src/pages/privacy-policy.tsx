@@ -1,15 +1,10 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useSEO } from "@/hooks/use-seo";
+import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
 
 export default function PrivacyPolicy() {
-  useSEO({
-    title: 'Privacy Policy | The Adare Collection Limited',
-    description:
-      'Privacy policy for The Adare Collection Limited (trading as The Adare Collection), covering luxury Ryder Cup 2027 accommodation at Adare Manor.',
-    keywords: 'The Adare Collection Limited, The Adare Collection privacy, Ryder Cup 2027 accommodation',
-    ogUrl: 'https://theadarecollection.com/privacy'
-  });
+  useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/privacy")!));
 
   return (
     <div className="min-h-screen bg-white">

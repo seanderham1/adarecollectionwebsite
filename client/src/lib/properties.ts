@@ -601,12 +601,12 @@ export const properties: Property[] = [
     id: "hillview-house",
     name: "Hillview House",
     subtitle:
-      "Five-star modern residence for Ryder Cup 2027 — up to 14 guests, approximately 45 minutes from Adare Manor.",
+      "Five-star modern residence for Ryder Cup 2027 — up to 14 guests, approximately 45 minutes from Adare Manor; about 20 minutes from Limerick Junction with direct trains to Adare.",
     bedrooms: 6,
     description:
       "A beautifully finished five-star home near Ballylanders: six double bedrooms, generous entertaining space, and secure gated privacy — ideal for Ryder Cup 2027.",
     fullDescription:
-      "Hillview House is a beautifully finished five-star modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor, this property combines contemporary design, generous living space, and a high-end finish throughout.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 14 guests sharing (or 6 individually) across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility for executive groups.\n\nSet behind secure electric gates and positioned alongside a second family residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.",
+      "Hillview House is a beautifully finished five-star modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor, this property combines contemporary design, generous living space, and a high-end finish throughout. It is about 20 minutes from Limerick Junction, with direct trains to Adare for flexible travel to the village and tournament.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 14 guests sharing (or 6 individually) across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility for executive groups.\n\nSet behind secure electric gates and positioned alongside a second family residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.",
     price: "POA",
     images: [
       "/images/houses/house 13/house-13-exterior-4.webp",
@@ -658,24 +658,24 @@ export const properties: Property[] = [
       "Private parking within gated grounds",
       "Electric vehicle charging points",
       "Office space",
+      "About 20 minutes from Limerick Junction, with direct trains to Adare",
     ],
     location: {
       lat: 52.3714932,
       lng: -8.3473484,
     },
     walkingDistance: "Approximately 45 minutes' drive to Adare Manor",
-    eircode: "V35 HX25",
   },
   {
     id: "portland-house",
     name: "Portland House",
     subtitle:
-      "Generous Ballylanders residence for Ryder Cup 2027 — sun room, attic space, and outdoor bar — about 45 minutes from Adare Manor; pairs naturally with neighbouring Hillview House.",
+      "Generous private residence for Ryder Cup 2027 — sun room, attic space, and outdoor bar — about 45 minutes from Adare Manor; about 20 minutes from Limerick Junction with direct trains to Adare; pairs naturally with neighbouring Hillview House.",
     bedrooms: 6,
     description:
-      "A substantial private home near Ballylanders with bright living spaces, a sun-filled sun room, attic bedrooms and bathroom, and a bar area in the shed — ideal for Ryder Cup 2027 groups.",
+      "A substantial private home with bright living spaces, a sun-filled sun room, attic bedrooms and bathroom, and a bar area in the shed — ideal for Ryder Cup 2027 groups.",
     fullDescription:
-      "Portland House is a roomy private residence in the Ballylanders area, suited to extended families and corporate groups travelling for the Ryder Cup 2027. It sits roughly 45 minutes from Adare Manor and can be booked alongside neighbouring Hillview House for larger parties who want two houses side by side.\n\nDownstairs revolves around generous reception space: a welcoming kitchen area, formal and informal sitting rooms, a study, back hall circulation, and a sun room that floods the plan with daylight. Outside, landscaping and elevations provide strong curb appeal, with additional imagery showing the grounds and elevations from several angles.\n\nSleeping quarters are arranged across ground and first floors and in the attic, including a ground-floor master suite, a first-floor master, two further first-floor bedrooms, and flexible attic accommodation with its own bathroom — giving privacy and flexibility for mixed groups.\n\nPractical touches include multiple bathrooms, an outdoor bar in the shed for relaxed evenings, and parking on site. The finish and layout are designed for comfortable longer stays, with space to gather, work, and unwind between tournament days.",
+      "Portland House is a roomy private residence suited to extended families and corporate groups travelling for the Ryder Cup 2027. It sits roughly 45 minutes from Adare Manor by road and about 20 minutes from Limerick Junction, where direct trains run to Adare. It can be booked alongside neighbouring Hillview House for larger parties who want two houses side by side.\n\nDownstairs revolves around generous reception space: a welcoming kitchen area, formal and informal sitting rooms, a study, back hall circulation, and a sun room that floods the plan with daylight. Outside, landscaping and elevations provide strong curb appeal, with additional imagery showing the grounds and elevations from several angles.\n\nSleeping quarters are arranged across ground and first floors and in the attic, including a ground-floor master suite, a first-floor master, two further first-floor bedrooms, and flexible attic accommodation with its own bathroom — giving privacy and flexibility for mixed groups.\n\nPractical touches include multiple bathrooms, an outdoor bar in the shed for relaxed evenings, and parking on site. The finish and layout are designed for comfortable longer stays, with space to gather, work, and unwind between tournament days.",
     price: "POA",
     images: [
       "/images/houses/house 14/house-14-exterior-21.webp",
@@ -741,12 +741,12 @@ export const properties: Property[] = [
       "Laundry facilities",
       "Multiple bathrooms across floors",
       "Private parking",
+      "About 20 minutes from Limerick Junction, with direct trains to Adare",
     ],
     location: {
       lat: 52.3714932,
       lng: -8.3473484,
     },
     walkingDistance: "Approximately 45 minutes' drive to Adare Manor",
-    eircode: "V35 HX25",
   },
 ];

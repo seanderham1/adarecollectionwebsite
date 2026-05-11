@@ -140,7 +140,7 @@
       "properties":{
         "id":"hillview-house",
         "title":"Hillview House",
-        "desc":"Five-star modern residence for up to 14 guests — approximately 45 minutes from Adare Manor.",
+        "desc":"Five-star modern residence for up to 14 guests — approximately 45 minutes from Adare Manor; about 20 minutes from Limerick Junction with direct trains to Adare.",
         "beds": 6,
         "baths": 4,
         "price":"POA",
@@ -153,7 +153,7 @@
       "properties":{
         "id":"portland-house",
         "title":"Portland House",
-        "desc":"Spacious Ballylanders home for Ryder Cup 2027 — about 45 minutes from Adare Manor; pairs with neighbouring Hillview House.",
+        "desc":"Spacious home for Ryder Cup 2027 — about 45 minutes from Adare Manor; about 20 minutes from Limerick Junction with direct trains to Adare; pairs with neighbouring Hillview House.",
         "beds": 6,
         "baths": 4,
         "price":"POA",

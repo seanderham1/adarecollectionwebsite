@@ -1,4 +1,5 @@
 import { properties, formatPropertyBedroomsShort } from "@/lib/properties";
+import { propertyPageDescription } from "@/lib/property-seo";
 import { GLOBAL_SCHEMA_GRAPH } from "@/lib/seo-global-graph";
 
 interface PropertyStructuredDataProps {
@@ -14,7 +15,7 @@ export function PropertyStructuredData({ propertyId }: PropertyStructuredDataPro
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
     "name": property.name,
-    "description": `${property.name} - Exclusive luxury rental for Ryder Cup 2027. ${formatPropertyBedroomsShort(property)} bedrooms, premium amenities, located in Adare Manor Estate.`,
+    "description": propertyPageDescription(property),
     "url": `https://theadarecollection.com/property/${property.id}`,
     "image": `https://theadarecollection.com${property.images[0]}`,
     "address": {

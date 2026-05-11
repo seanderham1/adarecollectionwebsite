@@ -2,17 +2,10 @@ import Navigation from "@/components/navigation";
 import { useSEO } from "@/hooks/use-seo";
 import Footer from "@/components/footer";
 import { ContactEnquiryForm } from "@/components/contact-enquiry-form";
-import { SEO_META_KEYWORDS_COMPACT } from "@/lib/seo-keyword-clusters";
+import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
 
 export default function Contact() {
-  useSEO({
-    title: "Contact | Ryder Cup 2027 Accommodation | The Adare Collection Limited",
-    description:
-      "Enquire about luxury Ryder Cup 2027 accommodation at Adare Manor. Book your Adare rental for the Ryder Cup. Contact The Adare Collection Limited (trading as The Adare Collection).",
-    keywords: SEO_META_KEYWORDS_COMPACT,
-    ogImage: "https://theadarecollection.com/images/hero/adaremanor-img2.webp",
-    ogUrl: "https://theadarecollection.com/contact",
-  });
+  useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/contact")!));
 
   return (
     <div className="min-h-screen bg-white">

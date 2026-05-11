@@ -2,6 +2,46 @@
 
 This guide will help you set up automated Firebase deployments using GitHub Actions. Follow these steps in order.
 
+## Gmail SMTP (`GMAIL_APP_PASSWORD`) — Firebase Secret Manager
+
+Public contact/access emails are sent via Gmail using an **App Password** (never your normal Google password). The password lives in **[Secret Manager](https://console.firebase.google.com/project/theadarecollection-site/functions/secrets)** as `GMAIL_APP_PASSWORD`; it must **not** appear in repo source or GitHub Actions build variables.
+
+### Initial setup or rotation (e.g. after exposure in Git)
+
+1. **Create a new app password**: Google Account → **Security** → **2-Step Verification** → **App passwords** → generate one (revoke obsolete app passwords you no longer need).
+2. **Store it in Firebase**:
+   ```bash
+   firebase functions:secrets:set GMAIL_APP_PASSWORD --project theadarecollection-site
+   ```
+3. **Redeploy** so the `api` function mounts the secret:
+   ```bash
+   firebase deploy --only functions:api --project theadarecollection-site
+   ```
+
+If `GMAIL_APP_PASSWORD` is missing or wrong, `/api/contact` and `/api/access-request` return a configuration error and mail is not sent.
+
+### If logs show `535 BadCredentials` / “Username and Password not accepted”
+
+The password is reaching Gmail but **SMTP rejects the login**:
+
+1. The **App Password** must be generated while signed into the Google account that **actually logs in** to Gmail (often the same as `info@theadarecollection.ie`; if not, see below).
+2. **Google Workspace:** If `info@theadarecollection.ie` is only an **alias** and your real workspace login is e.g. `yourname@theadarecollection.ie`, create the App Password on that **primary** account. Add `functions/.env.theadarecollection-site` (do not commit) with `GMAIL_SMTP_USER=yourname@theadarecollection.ie`. In Gmail for that account, use **Send mail as** → `info@theadarecollection.ie` if you want the From header to stay `info@`. Run `firebase deploy --only functions:api` again after editing the `.env.<project>` file.
+3. Confirm **2-Step Verification** is on and that admins allow **App passwords** for your org.
+
+Tail logs:
+
+```bash
+firebase functions:log --project theadarecollection-site --only api -n 30
+```
+
+### Functions emulator locally
+
+Copy `functions/.env.example` to `functions/.env`, set `GMAIL_APP_PASSWORD=...`, then run the Functions emulator. Do not commit `.env`.
+
+### Historical commits
+
+Any secret that appeared in Git in the past is still reachable via history until rewritten ([`git filter-repo`](https://github.com/newren/git-filter-repo)). Rotating the app password invalidates the leaked credential.
+
 ## Prerequisites
 - Firebase project: `theadarecollection-site`
 - GitHub repository: `seanderham1/adarecollectionwebsite`
@@ -78,18 +118,22 @@ jobs:
 
 Go to: https://github.com/seanderham1/adarecollectionwebsite/settings/secrets/actions
 
-Add these secrets:
+Add these secrets **in GitHub only**—never paste real values into this repo, issues, or chat logs:
 
-| Secret Name | Secret Value | Description |
-|-------------|--------------|-------------|
-| `FIREBASE_TOKEN` | [Token from Step 2] | Firebase CI authentication token |
-| `VITE_GA_MEASUREMENT_ID` | `G-GF25J69MLQ` | Google Analytics measurement ID |
-| `VITE_GOOGLE_MAPS_API_KEY` | `AIzaSyCNQfvlQLy7tm9sB57m2mMsUt9CWln41_s` | Google Maps API key |
-| `VITE_GOOGLE_SITE_VERIFICATION` | `JcCXU571lDgwzeNXmi3aPO2_S9zVR-H1NJR64hILP8s` | Google Search Console verification |
+| Secret Name | Secret value (example / where to get it) | Description |
+|-------------|--------------------------------------------|-------------|
+| `FIREBASE_TOKEN` | Output of `firebase login:ci` (Step 2) | Firebase CLI authentication for CI |
+| `VITE_GA_MEASUREMENT_ID` | e.g. `G-XXXXXXXX` from GA4 admin | Google Analytics measurement ID |
+| `VITE_GOOGLE_MAPS_API_KEY` | Maps key from Google Cloud (HTTP referrers restricted) | Bundled at build time into the client |
+| `VITE_GOOGLE_SITE_VERIFICATION` | Meta verification string from Search Console | Injected into the site for ownership proof |
+
+**Committing `firebase.json`:** Safe. It only describes Hosting (public dir, rewrites, headers). It does **not** contain `FIREBASE_TOKEN`, Gmail app passwords, or Maps/GA/Site Verification strings. Run `npm run build` locally before commit when rewrites change so `firebase.json` stays in sync with prerender routes.
 
 ## Step 5: Verify Firebase Configuration
 
 Ensure your `firebase.json` is configured correctly. Use `hosting.ignore` for dotfiles (`**/.*`), `node_modules`, and any bulky local folders (for example **`**/hillview-videos/**`**) so they are never uploaded—even if present on disk:
+
+Use the **`firebase.json` in this repository** as the source of truth (Hosting **rewrites** include `/api/**`, prerendered paths → `/_prerender/*.html`, then `**` → `/index.html`). The snippet below is **illustrative only**—do not paste an outdated copy from this guide into your project.
 
 ```json
 {
@@ -98,10 +142,7 @@ Ensure your `firebase.json` is configured correctly. Use `hosting.ignore` for do
     "site": "theadarecollection-site",
     "public": "dist/public",
     "ignore": ["**/.*", "**/node_modules/**", "**/hillview-videos/**"],
-    "rewrites": [
-      { "source": "/api/**", "function": "api" },
-      { "source": "**", "destination": "/index.html" }
-    ]
+    "rewrites": [ "…see repo…", { "source": "**", "destination": "/index.html" } ]
   }
 }
 ```

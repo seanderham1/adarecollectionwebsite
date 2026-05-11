@@ -3,11 +3,7 @@ import Footer from "@/components/footer";
 import { properties, formatPropertyBedroomsShort, getPropertyCollectionBadge } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import {
-  SEO_META_KEYWORDS_COMPACT,
-  SEO_PROPERTIES_DESCRIPTION,
-  SEO_PROPERTIES_TITLE,
-} from "@/lib/seo-keyword-clusters";
+import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
 import { useSEO } from "@/hooks/use-seo";
 
 // Coming Soon Card Component
@@ -53,13 +49,7 @@ export default function PropertiesPage() {
   // All properties are now in the main properties array
   const all = properties;
 
-  useSEO({
-    title: SEO_PROPERTIES_TITLE,
-    description: SEO_PROPERTIES_DESCRIPTION,
-    keywords: SEO_META_KEYWORDS_COMPACT,
-    ogImage: 'https://theadarecollection.com/images/hero/adaremanor-img1.webp',
-    ogUrl: 'https://theadarecollection.com/properties'
-  });
+  useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/properties")!));
 
   return (
     <div className="min-h-screen bg-neutral-100">
@@ -124,6 +114,27 @@ export default function PropertiesPage() {
           ))}
           <ComingSoonCard />
         </div>
+
+        <nav
+          aria-label="All property listings"
+          className="max-w-[2000px] mx-auto mt-12 pt-10 border-t border-gray-200"
+        >
+          <h2 className="font-serif text-lg font-normal text-primary mb-4 text-center">
+            Browse every property
+          </h2>
+          <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm list-none px-2">
+            {all.map((p) => (
+              <li key={p.id}>
+                <Link
+                  href={`/property/${p.id}`}
+                  className="text-secondary hover:text-gray-900 underline-offset-4 hover:underline"
+                >
+                  {p.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </main>
 
       <Footer />

@@ -8,3 +8,8 @@ typings/
 # Node.js dependency directory
 node_modules/
 *.local
+
+# Local emulator SMTP (never commit secrets)
+.env
+.env.*
+!.env.example

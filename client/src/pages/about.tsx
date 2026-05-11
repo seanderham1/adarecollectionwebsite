@@ -1,18 +1,11 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useSEO } from "@/hooks/use-seo";
-import { SEO_META_KEYWORDS_COMPACT } from "@/lib/seo-keyword-clusters";
+import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
 import { Button } from "@/components/ui/button";
 
 export default function About() {
-  useSEO({
-    title: "About Us | Ryder Cup 2027 Accommodation & Executive Rentals | Adare Manor",
-    description:
-      "Meet the team behind The Adare Collection: exclusive Ryder Cup 2027 luxury accommodation, private estates near Adare Manor, and corporate rentals in County Limerick, Ireland.",
-    keywords: SEO_META_KEYWORDS_COMPACT,
-    ogImage: 'https://theadarecollection.com/images/about/about-photo.jpg',
-    ogUrl: 'https://theadarecollection.com/about'
-  });
+  useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/about")!));
 
   return (
     <div className="min-h-screen bg-white">

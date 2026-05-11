@@ -6,7 +6,7 @@ import VideoModal from "@/components/video-modal";
 import MapModal from "@/components/map-modal";
 import MatterportModal from "@/components/matterport-modal";
 import BrochureModal from "@/components/brochure-modal";
-import { properties, formatPropertyBedroomsShort, getPropertyCollectionBadge } from "@/lib/properties";
+import { properties, getPropertyCollectionBadge } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Bed, Mail, MessageCircle } from "lucide-react";
@@ -14,6 +14,11 @@ import { ChevronLeft, ChevronRight, Play, Scan } from "lucide-react";
 import { useState, useEffect, type CSSProperties } from "react";
 import { useSEO } from "@/hooks/use-seo";
 import { PropertyStructuredData, BreadcrumbListStructuredData } from "@/components/structured-data";
+import {
+  getPropertyRouteSEOPayload,
+  SITE_ORIGIN,
+  toUseSEOArgs,
+} from "@/lib/prerender-route-meta";
 
 /** Parkview: pre-load guess (overridden by intrinsic size on onLoad). Exterior/kitchen/sitting are typically landscape. */
 function parkviewGuessLandscape(src: string): boolean {
@@ -81,14 +86,19 @@ export default function PropertyDetail() {
     Record<string, "portrait" | "landscape">
   >({});
 
-  // SEO optimization
-  useSEO({
-    title: property ? `${property.name} - Ryder Cup 2027 Accommodation | Adare Manor Rental` : 'Property Details - The Adare Collection',
-    description: property ? `${property.name} - Ryder Cup 2027 accommodation at Adare Manor. ${formatPropertyBedroomsShort(property)} bedrooms, premium amenities. Book your Adare rental for the Ryder Cup.` : 'Discover luxury Ryder Cup 2027 accommodation at The Adare Collection.',
-    keywords: property ? `${property.name}, Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, ${formatPropertyBedroomsShort(property)} bedroom, golf accommodation Ireland` : 'Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, golf accommodation',
-    ogImage: property ? `https://theadarecollection.com${property.images[0]}` : 'https://theadarecollection.com/images/hero/adaremanor-img1.webp',
-    ogUrl: `https://theadarecollection.com/property/${id}`
-  });
+  useSEO(
+    property
+      ? toUseSEOArgs(getPropertyRouteSEOPayload(property))
+      : {
+          title: "Property Details | The Adare Collection",
+          description:
+            "Discover luxury Ryder Cup 2027 accommodation at The Adare Collection.",
+          keywords:
+            "Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, golf accommodation",
+          ogImage: `${SITE_ORIGIN}/images/hero/adaremanor-img1.webp`,
+          ogUrl: `${SITE_ORIGIN}/property/${id ?? ""}`,
+        },
+  );
 
   // Auto-play video if URL parameter is present
   useEffect(() => {
@@ -753,6 +763,39 @@ export default function PropertyDetail() {
           </div>
         </div>
       </div>
+
+      <nav
+        aria-label="Other luxury rentals"
+        className="border-t border-gray-200 bg-neutral-50 py-10 px-6"
+      >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-serif text-xl font-normal text-primary mb-4 text-center">
+            More Ryder Cup 2027 properties
+          </h2>
+          <p className="text-sm text-secondary text-center mb-6">
+            Explore our full portfolio of private homes near Adare Manor.
+          </p>
+          <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm list-none">
+            <li>
+              <Link href="/properties" className="text-gray-900 underline underline-offset-4">
+                All properties
+              </Link>
+            </li>
+            {properties
+              .filter((p) => p.id !== property.id)
+              .map((p) => (
+                <li key={p.id}>
+                  <Link
+                    href={`/property/${p.id}`}
+                    className="text-secondary hover:text-gray-900 underline-offset-4 hover:underline"
+                  >
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </nav>
 
       <Footer />
       

@@ -31,8 +31,8 @@ async function registerRoutes(app2) {
 
 // server/vite.ts
 import express from "express";
-import fs from "fs";
-import path2 from "path";
+import fs2 from "fs";
+import path3 from "path";
 import { fileURLToPath as fileURLToPath2 } from "url";
 import { createServer as createViteServer, createLogger } from "vite";
 
@@ -256,7 +256,99 @@ var vite_config_default = defineConfig({
 
 // server/vite.ts
 import { nanoid } from "nanoid";
-var __dirname2 = path2.dirname(fileURLToPath2(import.meta.url));
+
+// server/seo-canonical.ts
+var SITE_ORIGIN = "https://theadarecollection.com";
+function canonicalUrlForRequestPath(rawPathOrUrl) {
+  let pathname = rawPathOrUrl.split("?")[0] ?? "/";
+  if (!pathname.startsWith("/")) {
+    pathname = `/${pathname}`;
+  }
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    pathname = pathname.slice(0, -1);
+  }
+  if (pathname === "/") {
+    return `${SITE_ORIGIN}/`;
+  }
+  return `${SITE_ORIGIN}${pathname}`;
+}
+function injectPrimarySeoUrls(html, rawPathOrUrl) {
+  const canonical = canonicalUrlForRequestPath(rawPathOrUrl);
+  const linkTag = `<link rel="canonical" href="${canonical}" />`;
+  const ogUrlTag = `<meta property="og:url" content="${canonical}" />`;
+  let out = html;
+  if (/<link[^>]+rel=["']canonical["'][^>]*>/i.test(out)) {
+    out = out.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/i, linkTag);
+  } else {
+    out = out.replace(/<head(\s[^>]*)?>/i, (m) => `${m}
+    ${linkTag}`);
+  }
+  if (/<meta\s[^>]*property=["']og:url["'][^>]*>/i.test(out)) {
+    out = out.replace(
+      /<meta\s[^>]*property=["']og:url["'][^>]*>/i,
+      ogUrlTag
+    );
+  } else {
+    const withOg = out.replace(
+      /(<link[^>]+rel=["']canonical["'][^>]*\/?>)/i,
+      `$1
+    ${ogUrlTag}`
+    );
+    out = withOg === out ? out.replace("</head>", `    ${ogUrlTag}
+  </head>`) : withOg;
+  }
+  return out;
+}
+
+// server/page-meta-inject.ts
+import fs from "fs";
+import path2 from "path";
+function escapeAttr(s) {
+  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+}
+function readManifest(baseDir) {
+  const f = path2.join(baseDir, "data", "property-index-meta.json");
+  if (!fs.existsSync(f)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(f, "utf-8"));
+  } catch {
+    return {};
+  }
+}
+function injectPropertyPageHead(html, requestPath, staticBaseDir) {
+  const m = requestPath.replace(/\/$/, "").match(/^\/property\/([^/]+)$/);
+  if (!m) return html;
+  const manifest = readManifest(staticBaseDir);
+  const meta = manifest[m[1]];
+  if (!meta) return html;
+  const t = escapeAttr(meta.title);
+  const d = escapeAttr(meta.description);
+  let out = html.replace(/<title>[^<]*<\/title>/, `<title>${t}</title>`);
+  out = out.replace(
+    /<meta name="description" content="[^"]*"\s*\/?>/,
+    `<meta name="description" content="${d}" />`
+  );
+  out = out.replace(
+    /<meta property="og:title" content="[^"]*"\s*\/?>/,
+    `<meta property="og:title" content="${t}" />`
+  );
+  out = out.replace(
+    /<meta property="og:description" content="[^"]*"\s*\/?>/,
+    `<meta property="og:description" content="${d}" />`
+  );
+  out = out.replace(
+    /<meta name="twitter:title" content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:title" content="${t}" />`
+  );
+  out = out.replace(
+    /<meta name="twitter:description" content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:description" content="${d}" />`
+  );
+  return out;
+}
+
+// server/vite.ts
+var __dirname2 = path3.dirname(fileURLToPath2(import.meta.url));
 var viteLogger = createLogger();
 function log(message, source = "express") {
   const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
@@ -290,19 +382,22 @@ async function setupVite(app2, server) {
   app2.use("*", async (req, res, next) => {
     const url = req.originalUrl;
     try {
-      const clientTemplate = path2.resolve(
+      const clientTemplate = path3.resolve(
         __dirname2,
         "..",
         "client",
         "index.html"
       );
-      let template = await fs.promises.readFile(clientTemplate, "utf-8");
+      let template = await fs2.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
       );
       const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      const clientPublic = path3.resolve(__dirname2, "..", "client", "public");
+      let html = injectPrimarySeoUrls(page, url);
+      html = injectPropertyPageHead(html, new URL(url, "http://dev.invalid").pathname, clientPublic);
+      res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
       vite.ssrFixStacktrace(e);
       next(e);
@@ -310,15 +405,25 @@ async function setupVite(app2, server) {
   });
 }
 function serveStatic(app2) {
-  const distPath = path2.resolve(__dirname2, "public");
-  if (!fs.existsSync(distPath)) {
+  const distPath = path3.resolve(__dirname2, "public");
+  if (!fs2.existsSync(distPath)) {
     throw new Error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
   app2.use(express.static(distPath));
-  app2.use("*", (_req, res) => {
-    res.sendFile(path2.resolve(distPath, "index.html"));
+  app2.use("*", (req, res) => {
+    const indexPath = path3.resolve(distPath, "index.html");
+    fs2.readFile(indexPath, "utf-8", (err, html) => {
+      if (err) {
+        log(`Failed to read index.html: ${err}`, "express");
+        return res.sendFile(indexPath);
+      }
+      const pathname = req.path || "/";
+      let out = injectPrimarySeoUrls(html, pathname);
+      out = injectPropertyPageHead(out, pathname, distPath);
+      res.status(200).type("html").send(out);
+    });
   });
 }
 
@@ -328,7 +433,7 @@ app.use(express2.json());
 app.use(express2.urlencoded({ extended: false }));
 app.use((req, res, next) => {
   const start = Date.now();
-  const path3 = req.path;
+  const path4 = req.path;
   let capturedJsonResponse = void 0;
   const originalResJson = res.json;
   res.json = function(bodyJson, ...args) {
@@ -337,8 +442,8 @@ app.use((req, res, next) => {
   };
   res.on("finish", () => {
     const duration = Date.now() - start;
-    if (path3.startsWith("/api")) {
-      let logLine = `${req.method} ${path3} ${res.statusCode} in ${duration}ms`;
+    if (path4.startsWith("/api")) {
+      let logLine = `${req.method} ${path4} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }

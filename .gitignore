@@ -1,5 +1,7 @@
 node_modules
 .env
+.env.local
+.env.*.local
 .DS_Store
 
 # Hillview / house 13: DJI and other raw property videos (~10GB+ total). Do not commit;

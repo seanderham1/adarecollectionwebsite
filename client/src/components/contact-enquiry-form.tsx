@@ -10,8 +10,18 @@ import { useToast } from "@/hooks/use-toast";
 import { properties } from "@/lib/properties";
 import { cn } from "@/lib/utils";
 
-const CONTACT_API_URL =
+/** Production uses Hosting rewrite `/api/contact` → `api` Cloud Function so the live backend stays in sync with deploys. */
+const CONTACT_API_URL_DEV =
   "https://us-central1-theadarecollection-site.cloudfunctions.net/api/api/contact";
+
+function getContactApiUrl(): string {
+  if (!import.meta.env.PROD) return CONTACT_API_URL_DEV;
+  const base =
+    typeof window !== "undefined" && window.location?.origin?.length > 0
+      ? window.location.origin
+      : "";
+  return `${base}/api/contact`;
+}
 
 export const CONTACT_FORM_SUBTITLE_PARAGRAPHS = [
   "The Adare Collection offers a limited portfolio of private luxury residences in and around Adare Manor for Ryder Cup 2027.",
@@ -202,7 +212,7 @@ export function ContactEnquiryForm({
     };
 
     try {
-      const response = await fetch(CONTACT_API_URL, {
+      const response = await fetch(getContactApiUrl(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

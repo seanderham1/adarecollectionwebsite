@@ -1,9 +1,69 @@
 import { onRequest } from "firebase-functions/v2/https";
+import { defineSecret, defineString } from "firebase-functions/params";
 import * as logger from "firebase-functions/logger";
 import express from "express";
 import cors from "cors";
 
 import nodemailer from "nodemailer";
+
+/** Binds Secret Manager; value is available at runtime as `process.env.GMAIL_APP_PASSWORD`. */
+const gmailAppPassword = defineSecret("GMAIL_APP_PASSWORD");
+
+/**
+ * SMTP login username. Must equal the Google account that owns the App Password,
+ * normally the same as the sending address — set when `info@` is an alias and
+ * login is something like user@yourdomain.com via `functions/.env.<PROJECT_ID>` or deploy params.
+ */
+const gmailSmtpUser = defineString("GMAIL_SMTP_USER", {
+  default: "info@theadarecollection.ie",
+});
+
+/** Shown as From / To on notifications; inbox that should receive enquiries. */
+const GMAIL_FROM_ADDRESS = "info@theadarecollection.ie";
+
+function getSmtpAuthUsername(): string {
+  const explicit = process.env.GMAIL_SMTP_USER?.trim();
+  if (explicit) return explicit;
+  try {
+    return gmailSmtpUser.value().trim();
+  } catch {
+    return GMAIL_FROM_ADDRESS;
+  }
+}
+
+function normalizeGmailAppPassword(raw: string): string {
+  /** Google shows app passwords as four groups; pasted value may include spaces. */
+  return raw.replace(/\s+/g, "").trim();
+}
+
+/** Prefer env (injected from Secret Manager); fall back to `.value()` per Firebase params. */
+function getGmailAppPassword(): string {
+  const fromEnv = process.env.GMAIL_APP_PASSWORD ?? "";
+  let fromSecret = "";
+  try {
+    fromSecret = gmailAppPassword.value() ?? "";
+  } catch {
+    // Emulator / analysis without secret wiring
+  }
+  return normalizeGmailAppPassword(fromEnv || fromSecret);
+}
+
+function createGmailTransport() {
+  const pass = getGmailAppPassword();
+  if (!pass) {
+    throw new Error("GMAIL_APP_PASSWORD is not configured");
+  }
+  const smtpUser = getSmtpAuthUsername();
+  return nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: smtpUser,
+      pass,
+    },
+  });
+}
 
 function escapeHtml(value: unknown): string {
   if (value == null) return "";
@@ -87,17 +147,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// Email transporter will be created inside the function
-
 // Access request submission endpoint
 app.post("/api/access-request", async (req, res) => {
   try {
     const { email, name, reason } = req.body;
-    
-    // Get email configuration
-    const emailUser = 'info@theadarecollection.ie';
-    const emailPass = 'owotdbgnxfyxadho';
-    
+
     // Validate required fields
     if (!email || !email.includes('@')) {
       return res.status(400).json({ 
@@ -105,20 +159,21 @@ app.post("/api/access-request", async (req, res) => {
         message: "Valid email address is required" 
       });
     }
-    
-    // Create transporter
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: emailUser,
-        pass: emailPass
-      }
-    });
-    
-    // Create email content for admin notification
+
+    let transporter: nodemailer.Transporter;
+    try {
+      transporter = createGmailTransport();
+    } catch (err) {
+      logger.error("Gmail credentials missing for access-request", err);
+      return res.status(500).json({
+        success: false,
+        message: "Email configuration error. Please contact support.",
+      });
+    }
+
     const mailOptions = {
-      from: emailUser,
-      to: 'info@theadarecollection.ie',
+      from: GMAIL_FROM_ADDRESS,
+      to: GMAIL_FROM_ADDRESS,
       subject: 'New Access Request - The Adare Collection Website',
       html: `
         <h2>New Website Access Request</h2>
@@ -184,28 +239,6 @@ app.post("/api/contact", async (req, res) => {
     const additionalNotes = String(
       body.additionalNotes ?? body.message ?? ""
     ).trim();
-
-    // Get email configuration (temporarily hardcoded for testing)
-    const emailUser = "info@theadarecollection.ie";
-    const emailPass = "owotdbgnxfyxadho";
-
-    logger.info(`Email config - user: ${emailUser}, pass: ${emailPass ? "***" : "NOT SET"}`);
-
-    if (!emailPass) {
-      logger.error("Email password not configured");
-      return res.status(500).json({
-        success: false,
-        message: "Email configuration error. Please contact support.",
-      });
-    }
-
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: emailUser,
-        pass: emailPass,
-      },
-    });
 
     if (!name || !emailRaw || !phone) {
       return res.status(400).json({
@@ -296,6 +329,17 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
+    let transporter: nodemailer.Transporter;
+    try {
+      transporter = createGmailTransport();
+    } catch (err) {
+      logger.error("Gmail credentials missing for contact", err);
+      return res.status(500).json({
+        success: false,
+        message: "Email configuration error. Please contact support.",
+      });
+    }
+
     const enquiryReadable = ENQUIRY_LABELS[enquiryType] ?? enquiryType;
     const guestsReadable = GUEST_LABELS[estimatedGuests] ?? estimatedGuests;
     const intendedReadable = INTENDED_LABELS[intendedUse] ?? intendedUse;
@@ -328,15 +372,65 @@ app.post("/api/contact", async (req, res) => {
         <p><strong>Role / position:</strong> ${escapeHtml(rolePosition)}</p>`
         : "";
 
+    const extensionReadable =
+      extension === "none" ? "Other / not listed" : extension;
+
+    const propertiesTextLines =
+      preferredPropertiesSummary.length > 0
+        ? preferredPropertiesSummary.map((p) => `  • ${p}`).join("\n")
+        : preferredPropertyIds.length > 0
+          ? preferredPropertyIds.map((id) => `  • ${id}`).join("\n")
+          : "  (none selected)";
+
+    const submittedAt = new Date().toISOString();
+
+    const textBody = [
+      "New contact inquiry — The Adare Collection",
+      "",
+      `Submitted (UTC): ${submittedAt}`,
+      "",
+      `Full name: ${name}`,
+      `Email: ${emailRaw}`,
+      `International dialling code: ${extensionReadable}`,
+      `Phone (national number): ${phone}`,
+      `Phone (combined): ${phoneDisplay}`,
+      `Enquiry type: ${enquiryReadable}`,
+      ...(enquiryType === "corporate" || enquiryType === "agency"
+        ? [
+            `Organisation / company: ${organisationName}`,
+            `Role / position: ${rolePosition}`,
+          ]
+        : []),
+      `Estimated guests: ${guestsReadable}`,
+      `Intended use: ${intendedReadable}`,
+      `Programme status: ${programmeReadable}`,
+      `Previously organised major event accommodation: ${prevReadable}`,
+      `Budget: ${budgetReadable}`,
+      "",
+      "Preferred properties:",
+      propertiesTextLines,
+      "",
+      "Additional notes:",
+      additionalNotes || "(none)",
+      "",
+      "---",
+      "This inquiry was submitted from the Adare Collection website.",
+      "The Adare Collection Limited",
+    ].join("\n");
+
     const mailOptions = {
-      from: emailUser,
-      to: "info@theadarecollection.ie",
+      from: GMAIL_FROM_ADDRESS,
+      to: GMAIL_FROM_ADDRESS,
       subject: "New Contact Inquiry - The Adare Collection",
+      text: textBody,
       html: `
         <h2>New Contact Inquiry</h2>
+        <p><strong>Submitted (UTC):</strong> ${escapeHtml(submittedAt)}</p>
         <p><strong>Full name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(emailRaw)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(phoneDisplay)}</p>
+        <p><strong>International dialling code:</strong> ${escapeHtml(extensionReadable)}</p>
+        <p><strong>Phone (national number):</strong> ${escapeHtml(phone)}</p>
+        <p><strong>Phone (combined):</strong> ${escapeHtml(phoneDisplay)}</p>
         <p><strong>Enquiry type:</strong> ${escapeHtml(enquiryReadable)}</p>
         ${orgBlock}
         <p><strong>Estimated guests:</strong> ${escapeHtml(guestsReadable)}</p>
@@ -363,7 +457,18 @@ app.post("/api/contact", async (req, res) => {
       message: "Thank you for your inquiry. We will contact you within 24 hours.",
     });
   } catch (error) {
-    logger.error("Error sending contact email:", error);
+    const e = error as {
+      message?: string;
+      responseCode?: number;
+      response?: string;
+      code?: string;
+    };
+    logger.error("Error sending contact email", {
+      message: e.message,
+      code: e.code,
+      responseCode: e.responseCode,
+      response: e.response?.substring(0, 500),
+    });
     return res.status(500).json({
       success: false,
       message: "Failed to send inquiry. Please try again or contact us directly.",
@@ -393,13 +498,14 @@ app.get("*", (req, res) => {
   });
 });
 
-// Gen-2 with runtime environment variables
+// Gen-2: `gmailAppPassword` wires Secret Manager so `GMAIL_APP_PASSWORD` is available at runtime.
 export const api = onRequest(
-  { 
-    region: "us-central1", 
-    memory: "256MiB", 
-    timeoutSeconds: 60, 
-    cors: true
+  {
+    region: "us-central1",
+    memory: "256MiB",
+    timeoutSeconds: 60,
+    cors: true,
+    secrets: [gmailAppPassword],
   },
   app
 );

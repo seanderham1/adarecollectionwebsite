@@ -6,6 +6,8 @@ interface SEOProps {
   keywords?: string;
   ogImage?: string;
   ogUrl?: string;
+  /** If omitted, canonical matches `ogUrl` when set (preferred for SPAs). */
+  canonicalUrl?: string;
   noIndex?: boolean;
 }
 
@@ -15,6 +17,7 @@ export function useSEO({
   keywords,
   ogImage,
   ogUrl,
+  canonicalUrl,
   noIndex = false
 }: SEOProps) {
   useEffect(() => {
@@ -47,6 +50,11 @@ export function useSEO({
       updateMetaTag('property', 'og:url', ogUrl);
     }
 
+    const canonical = canonicalUrl ?? ogUrl;
+    if (canonical) {
+      updateCanonicalLink(canonical);
+    }
+
     // Update Twitter Card tags
     if (title) {
       updateMetaTag('name', 'twitter:title', title);
@@ -64,7 +72,7 @@ export function useSEO({
     } else {
       updateMetaTag('name', 'robots', 'index, follow');
     }
-  }, [title, description, keywords, ogImage, ogUrl, noIndex]);
+  }, [title, description, keywords, ogImage, ogUrl, canonicalUrl, noIndex]);
 }
 
 function updateMetaTag(attribute: string, value: string, content: string) {
@@ -77,4 +85,14 @@ function updateMetaTag(attribute: string, value: string, content: string) {
   }
   
   meta.content = content;
+}
+
+function updateCanonicalLink(href: string) {
+  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement("link");
+    link.rel = "canonical";
+    document.head.appendChild(link);
+  }
+  link.href = href;
 }

@@ -6,6 +6,8 @@ import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
+import { injectPrimarySeoUrls } from "./seo-canonical";
+import { injectPropertyPageHead } from "./page-meta-inject";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -62,7 +64,10 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx?v=${nanoid()}"`,
       );
       const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      const clientPublic = path.resolve(__dirname, "..", "client", "public");
+      let html = injectPrimarySeoUrls(page, url);
+      html = injectPropertyPageHead(html, new URL(url, "http://dev.invalid").pathname, clientPublic);
+      res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
       next(e);
@@ -82,7 +87,17 @@ export function serveStatic(app: Express) {
   app.use(express.static(distPath));
 
   // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+  app.use("*", (req, res) => {
+    const indexPath = path.resolve(distPath, "index.html");
+    fs.readFile(indexPath, "utf-8", (err, html) => {
+      if (err) {
+        log(`Failed to read index.html: ${err}`, "express");
+        return res.sendFile(indexPath);
+      }
+      const pathname = req.path || "/";
+      let out = injectPrimarySeoUrls(html, pathname);
+      out = injectPropertyPageHead(out, pathname, distPath);
+      res.status(200).type("html").send(out);
+    });
   });
 }

@@ -5,21 +5,11 @@ import HeroSection from "@/components/hero-section";
 import PropertyGrid from "@/components/property-grid";
 import Footer from "@/components/footer";
 import { ContactEnquiryForm } from "@/components/contact-enquiry-form";
-import {
-  SEO_HOME_DESCRIPTION,
-  SEO_HOME_TITLE,
-  SEO_META_KEYWORDS_COMPACT,
-} from "@/lib/seo-keyword-clusters";
+import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
 import { Link } from "wouter";
 
 export default function Home() {
-  useSEO({
-    title: SEO_HOME_TITLE,
-    description: SEO_HOME_DESCRIPTION,
-    keywords: SEO_META_KEYWORDS_COMPACT,
-    ogImage: "https://theadarecollection.com/images/hero/adaremanor-img2.webp",
-    ogUrl: "https://theadarecollection.com/",
-  });
+  useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/")!));
 
   useEffect(() => {
     // Scroll animations

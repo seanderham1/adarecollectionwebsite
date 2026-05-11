@@ -15,11 +15,14 @@ firebase login --reauth
 - **Live Site**: https://theadarecollection-site.web.app
 - **Account**: `info@theadarecollection.ie`
 
-### 3. Current Environment Variables
+### 3. Environment variables (local + CI)
+Copy from team vault or export from GitHub **Actions → Secrets**; do not commit real values.
+
 ```bash
-VITE_GA_MEASUREMENT_ID=G-GF25J69MLQ
-VITE_GOOGLE_MAPS_API_KEY=AIzaSyCNQfvlQLy7tm9sB57m2mMsUt9CWln41_s
-VITE_GOOGLE_SITE_VERIFICATION=JcCXU571lDgwzeNXmi3aPO2_S9zVR-H1NJR64hILP8s
+# Example only — use your real values in .env or .env.local (gitignored)
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXX
+VITE_GOOGLE_MAPS_API_KEY=your_maps_key
+VITE_GOOGLE_SITE_VERIFICATION=your_verification_meta_content
 ```
 
 ### 4. Deployment Method

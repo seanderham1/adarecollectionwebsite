@@ -1,19 +1,12 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useSEO } from "@/hooks/use-seo";
-import { SEO_META_KEYWORDS_COMPACT } from "@/lib/seo-keyword-clusters";
+import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Link } from "wouter";
 
 export default function FAQ() {
-  useSEO({
-    title: "FAQ | Ryder Cup 2027 Accommodation & Rentals | Adare Manor | The Adare Collection",
-    description:
-      "Answers about luxury Ryder Cup 2027 accommodation near Adare Manor, including corporate rentals, executive homes, houses for rent, proximity to the course and County Limerick private stays.",
-    keywords: SEO_META_KEYWORDS_COMPACT,
-    ogImage: "https://theadarecollection.com/images/hero/adaremanor-img1.webp",
-    ogUrl: "https://theadarecollection.com/faq",
-  });
+  useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/faq")!));
 
   const faqs = [
     {
