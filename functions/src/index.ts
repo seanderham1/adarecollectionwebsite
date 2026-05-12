@@ -1,5 +1,5 @@
 import { onRequest } from "firebase-functions/v2/https";
-import { defineSecret, defineString } from "firebase-functions/params";
+import { defineSecret } from "firebase-functions/params";
 import * as logger from "firebase-functions/logger";
 import express from "express";
 import cors from "cors";
@@ -10,25 +10,16 @@ import nodemailer from "nodemailer";
 const gmailAppPassword = defineSecret("GMAIL_APP_PASSWORD");
 
 /**
- * SMTP login username. Must equal the Google account that owns the App Password,
- * normally the same as the sending address — set when `info@` is an alias and
- * login is something like user@yourdomain.com via `functions/.env.<PROJECT_ID>` or deploy params.
+ * SMTP login username: must be the Google account that owns the App Password.
+ * Defaults to the notification inbox. Override via Cloud Functions env `GMAIL_SMTP_USER`
+ * (Firebase Console) if `info@` is only “Send mail as” and login is a workspace primary user.
  */
-const gmailSmtpUser = defineString("GMAIL_SMTP_USER", {
-  default: "info@theadarecollection.ie",
-});
-
-/** Shown as From / To on notifications; inbox that should receive enquiries. */
 const GMAIL_FROM_ADDRESS = "info@theadarecollection.ie";
 
 function getSmtpAuthUsername(): string {
   const explicit = process.env.GMAIL_SMTP_USER?.trim();
   if (explicit) return explicit;
-  try {
-    return gmailSmtpUser.value().trim();
-  } catch {
-    return GMAIL_FROM_ADDRESS;
-  }
+  return GMAIL_FROM_ADDRESS;
 }
 
 function normalizeGmailAppPassword(raw: string): string {
@@ -36,7 +27,7 @@ function normalizeGmailAppPassword(raw: string): string {
   return raw.replace(/\s+/g, "").trim();
 }
 
-/** Prefer env (injected from Secret Manager); fall back to `.value()` per Firebase params. */
+/** Prefer env (injected from Secret Manager at runtime); `fromSecret` from wired secret param during deploy analysis. */
 function getGmailAppPassword(): string {
   const fromEnv = process.env.GMAIL_APP_PASSWORD ?? "";
   let fromSecret = "";
