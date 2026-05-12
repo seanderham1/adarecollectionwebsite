@@ -4,11 +4,14 @@ import { useSEO } from "@/hooks/use-seo";
 import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Link } from "wouter";
+import type { ReactNode } from "react";
+
+type FaqItem = { question: string; answer: ReactNode };
 
 export default function FAQ() {
   useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/faq")!));
 
-  const faqs = [
+  const faqs: FaqItem[] = [
     {
       question: "What is The Adare Collection?",
       answer:
@@ -67,9 +70,9 @@ export default function FAQ() {
         "Yes, our properties are perfect for corporate groups, sponsors, and business entertainment. We offer residences ranging from intimate 4‑bedroom homes to large estates accommodating multiple guests with meeting spaces and entertainment areas.",
     },
     {
-      question: "What is the minimum stay requirement?",
+      question: "What are the stay lengths for Ryder Cup 2027?",
       answer:
-        "Minimum stay requirements vary by property and dates. For Ryder Cup 2027, we typically require a minimum 3‑7 night stay depending on the property and tournament schedule.",
+        "Homes are let for the Ryder Cup period with a maximum stay of eight nights. There is no minimum stay requirement — shorter bookings may be possible depending on the property and dates. Exact lengths are confirmed when you enquire and subject to availability.",
     },
     {
       question: "Do you provide transportation to the golf course?",
@@ -78,13 +81,46 @@ export default function FAQ() {
     },
     {
       question: "What happens if I need to cancel my booking?",
-      answer:
-        "Cancellation policies vary by property and booking terms. We recommend discussing cancellation policies during the booking process. We understand that plans can change and will work with you to find the best solution.",
+      answer: (
+        <div className="space-y-3">
+          <p>
+            Cancellations must be requested in writing to{" "}
+            <a
+              href="mailto:info@theadarecollection.ie"
+              className="text-primary underline underline-offset-2 hover:no-underline"
+            >
+              info@theadarecollection.ie
+            </a>
+            . Refunds depend on how far in advance you cancel before your arrival date:
+          </p>
+          <ul className="list-disc pl-6 space-y-1.5">
+            <li>More than 180 days before arrival: 100% refund</li>
+            <li>Between 120 and 180 days before arrival: 50% refund</li>
+            <li>Less than 120 days before arrival: no refund</li>
+            <li>Approved refunds are processed within 14 business days of cancellation confirmation</li>
+          </ul>
+          <p>
+            This is a summary only. The binding terms — including how{" "}
+            <Link href="/terms#force-majeure" className="text-primary underline underline-offset-2 hover:no-underline">
+              Section 8 (Force Majeure)
+            </Link>{" "}
+            may apply — are in our{" "}
+            <Link
+              href="/terms#cancellation-refund-policy"
+              className="text-primary underline underline-offset-2 hover:no-underline"
+            >
+              Terms &amp; Conditions
+            </Link>
+            , Section 3.3 (Cancellation and Refund Policy). Please read those sections in full; we confirm the
+            position for your specific booking when you reserve.
+          </p>
+        </div>
+      ),
     },
     {
       question: "Are pets allowed in the properties?",
       answer:
-        "Pet policies vary by property. Some properties welcome pets, while others may have restrictions. Please discuss your pet requirements when making your booking inquiry.",
+        "No. Pets are not permitted in any of our properties. However, if you rely on a registered assistance dog, please mention this when you enquire so we can advise on next steps.",
     },
     {
       question: "Do you offer properties outside of Ryder Cup 2027 dates?",

@@ -5,6 +5,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GoogleAnalytics, GoogleSearchConsole } from "@/components/google-analytics";
+import { CookieConsentLayer } from "@/components/cookie-consent-layer";
+import { CookieConsentProvider } from "@/contexts/cookie-consent-context";
 import { ComingSoon } from "@/components/coming-soon";
 import Home from "@/pages/home";
 import About from "@/pages/about";
@@ -43,15 +45,18 @@ function ScrollToTop() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <GoogleAnalytics />
-        <GoogleSearchConsole />
-        <Toaster />
-        <ScrollToTop />
-        <ComingSoon>
-          <Router />
-        </ComingSoon>
-      </TooltipProvider>
+      <CookieConsentProvider>
+        <TooltipProvider>
+          <GoogleAnalytics />
+          <GoogleSearchConsole />
+          <CookieConsentLayer />
+          <Toaster />
+          <ScrollToTop />
+          <ComingSoon>
+            <Router />
+          </ComingSoon>
+        </TooltipProvider>
+      </CookieConsentProvider>
     </QueryClientProvider>
   );
 }

@@ -215,7 +215,7 @@ export default function PrivacyPolicy() {
               </section>
 
               {/* Cookies */}
-              <section>
+              <section id="cookies">
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   9. Cookies and Tracking Technologies
                 </h2>
@@ -231,6 +231,10 @@ export default function PrivacyPolicy() {
                   </ul>
                   <p>
                     You can control cookie settings through your browser preferences. However, disabling cookies may affect the functionality of our website.
+                  </p>
+                  <p>
+                    When you first visit our website, we ask whether you allow optional analytics cookies. You can change this decision at any time using{" "}
+                    <strong>Cookie settings</strong> in the website footer.
                   </p>
                 </div>
               </section>

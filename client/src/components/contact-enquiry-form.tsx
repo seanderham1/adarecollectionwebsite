@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
+import { useCookieConsent } from "@/contexts/cookie-consent-context";
 import { properties } from "@/lib/properties";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +27,7 @@ function getContactApiUrl(): string {
 
 export const CONTACT_FORM_SUBTITLE_PARAGRAPHS = [
   "The Adare Collection offers a limited portfolio of private luxury residences in and around Adare Manor for Ryder Cup 2027.",
-  "Due to the calibre and scarcity of these properties, all enquiries are reviewed on a selective basis. Suitable enquiries will be contacted to discuss options in more detail.",
+  "Due to the calibre and limited availability of these properties, enquiries are reviewed carefully. We will contact interested parties to discuss suitable options in further detail.",
   "Please provide the details below so we can assist with your enquiry.",
 ];
 
@@ -74,6 +76,20 @@ function formatBudgetThousands(k: number): string {
   return `€${k}k`;
 }
 
+/** Primary property first; remaining IDs follow catalogue order. */
+function orderPreferredIds(ids: Set<string>, primaryId?: string): string[] {
+  const list = Array.from(ids);
+  const indexOrder = new Map(properties.map((p, i) => [p.id, i]));
+  const sortByPortfolio = (a: string, b: string) =>
+    (indexOrder.get(a) ?? 0) - (indexOrder.get(b) ?? 0);
+
+  if (!primaryId) {
+    return [...list].sort(sortByPortfolio);
+  }
+  const rest = list.filter((id) => id !== primaryId).sort(sortByPortfolio);
+  return [primaryId, ...rest];
+}
+
 function getInitialFormState() {
   return {
     fullName: "",
@@ -85,10 +101,10 @@ function getInitialFormState() {
     rolePosition: "",
     estimatedGuests: "",
     intendedUse: "",
-    programmeStatus: "",
     previousMajorEvent: "" as "" | "yes" | "no",
     budgetEurosK: 525,
     additionalNotes: "",
+    privacyConsent: false,
   };
 }
 
@@ -97,6 +113,11 @@ export type ContactEnquiryFormProps = {
   introTestId: string;
   submitButtonTestId: string;
   headingClassName?: string;
+  /** When set (e.g. property detail modal), this property is fixed on the enquiry; guests may add others. */
+  primaryPropertyId?: string;
+  /** Called after a successful submit (e.g. close parent modal). */
+  onSubmitted?: () => void;
+  containerClassName?: string;
 };
 
 export function ContactEnquiryForm({
@@ -104,12 +125,49 @@ export function ContactEnquiryForm({
   introTestId,
   submitButtonTestId,
   headingClassName = "font-serif text-4xl font-normal text-primary mb-4",
+  primaryPropertyId,
+  onSubmitted,
+  containerClassName,
 }: ContactEnquiryFormProps) {
   const [form, setForm] = useState(getInitialFormState);
-  const [selectedPropertyIds, setSelectedPropertyIds] = useState<Set<string>>(() => new Set());
+  const [selectedPropertyIds, setSelectedPropertyIds] = useState<Set<string>>(() => {
+    const s = new Set<string>();
+    if (primaryPropertyId) s.add(primaryPropertyId);
+    return s;
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const { toast } = useToast();
+  const { openPreferences } = useCookieConsent();
+
+  const primaryProperty = useMemo(
+    () => (primaryPropertyId ? properties.find((p) => p.id === primaryPropertyId) : undefined),
+    [primaryPropertyId]
+  );
+
+  const introParagraphs = useMemo(() => {
+    if (primaryPropertyId && primaryProperty) {
+      return [
+        `You're requesting availability for ${primaryProperty.name} — shown below. You can optionally include other properties from our portfolio in the same enquiry.`,
+        CONTACT_FORM_SUBTITLE_PARAGRAPHS[1],
+        "Please complete your details below.",
+      ];
+    }
+    return CONTACT_FORM_SUBTITLE_PARAGRAPHS;
+  }, [primaryPropertyId, primaryProperty]);
+
+  useEffect(() => {
+    if (!primaryPropertyId) return;
+    setSelectedPropertyIds((prev) => {
+      const next = new Set(prev);
+      next.add(primaryPropertyId);
+      return next;
+    });
+  }, [primaryPropertyId]);
+
+  const additionalSelectedCount = primaryPropertyId
+    ? Array.from(selectedPropertyIds).filter((id) => id !== primaryPropertyId).length
+    : selectedPropertyIds.size;
 
   const needsOrgFields =
     form.enquiryType === "corporate" || form.enquiryType === "agency";
@@ -154,8 +212,9 @@ export function ContactEnquiryForm({
     if (!form.intendedUse) {
       errors.intendedUse = "Please select intended use";
     }
-    if (!form.programmeStatus) {
-      errors.programmeStatus = "Please select how you would describe your requirement";
+    if (!form.privacyConsent) {
+      errors.privacyConsent =
+        "Please confirm you consent to us processing your information for this enquiry, as described in our Privacy Policy.";
     }
 
     setValidationErrors(errors);
@@ -163,14 +222,19 @@ export function ContactEnquiryForm({
   };
 
   const toggleProperty = (id: string) => {
+    if (primaryPropertyId && id === primaryPropertyId) return;
     setSelectedPropertyIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
+      if (primaryPropertyId) next.add(primaryPropertyId);
       return next;
     });
   };
 
+  const additionalPropertiesList = primaryPropertyId
+    ? properties.filter((p) => p.id !== primaryPropertyId)
+    : properties;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -185,9 +249,10 @@ export function ContactEnquiryForm({
 
     setIsSubmitting(true);
 
-    const preferredPropertiesSummary = Array.from(selectedPropertyIds).map((id) => {
-      const p = properties.find((x) => x.id === id);
-      return p ? `${p.name} (${p.id})` : id;
+    const orderedIds = orderPreferredIds(selectedPropertyIds, primaryPropertyId);
+    const preferredPropertiesSummary = orderedIds.map((pid) => {
+      const p = properties.find((x) => x.id === pid);
+      return p ? `${p.name} (${p.id})` : pid;
     });
 
     const payload = {
@@ -201,14 +266,14 @@ export function ContactEnquiryForm({
       rolePosition: needsOrgFields ? form.rolePosition.trim() : "",
       estimatedGuests: form.estimatedGuests,
       intendedUse: form.intendedUse,
-      programmeStatus: form.programmeStatus,
       previousMajorEventAccommodation: form.previousMajorEvent || null,
       budgetEurosThousands: form.budgetEurosK,
       budgetLabel: formatBudgetThousands(form.budgetEurosK),
-      preferredPropertyIds: Array.from(selectedPropertyIds),
+      preferredPropertyIds: orderedIds,
       preferredPropertiesSummary,
       additionalNotes: form.additionalNotes.trim(),
       message: form.additionalNotes.trim(),
+      privacyConsentAccepted: true,
     };
 
     try {
@@ -226,8 +291,9 @@ export function ContactEnquiryForm({
           description: result.message,
         });
         setForm(getInitialFormState());
-        setSelectedPropertyIds(new Set());
+        setSelectedPropertyIds(primaryPropertyId ? new Set([primaryPropertyId]) : new Set());
         setValidationErrors({});
+        onSubmitted?.();
       } else {
         toast({
           title: "Error",
@@ -251,8 +317,8 @@ export function ContactEnquiryForm({
     validationErrors[key] ? "border-red-500 focus:border-red-500" : "";
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <div className="text-left mb-12">
+    <div className={cn("w-full max-w-2xl mx-auto", containerClassName)}>
+      <div className={cn("text-left mb-12", primaryPropertyId && "mb-8")}>
         {heading === "h1" ? (
           <h1 className={headingClassName} data-testid="contact-title">
             Contact request
@@ -266,7 +332,7 @@ export function ContactEnquiryForm({
           className="text-sm text-secondary leading-relaxed mb-10 max-w-xl space-y-3"
           data-testid={introTestId}
         >
-          {CONTACT_FORM_SUBTITLE_PARAGRAPHS.map((p) => (
+          {introParagraphs.map((p) => (
             <p key={p}>{p}</p>
           ))}
         </div>
@@ -493,38 +559,6 @@ export function ContactEnquiryForm({
           </div>
         </div>
 
-        {/* Programme status */}
-        <div className="space-y-6">
-          <h3 className="font-serif text-lg font-normal text-primary border-b border-gray-100 pb-2">
-            Programme status
-          </h3>
-
-          <div>
-            <Select
-              value={form.programmeStatus || undefined}
-              onValueChange={(v) => setField("programmeStatus", v)}
-              disabled={isSubmitting}
-            >
-              <SelectTrigger
-                className={cn(selectTriggerClass, triggerErrorClass("programmeStatus"))}
-                data-testid="select-programme-status"
-              >
-                <SelectValue placeholder="How would you best describe your requirement? *" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="exploring">Exploring options</SelectItem>
-                <SelectItem value="actively_planning_ryder_2027">
-                  Actively planning for Ryder Cup 2027
-                </SelectItem>
-                <SelectItem value="ready_to_secure">Ready to secure accommodation</SelectItem>
-              </SelectContent>
-            </Select>
-            {validationErrors.programmeStatus && (
-              <p className="text-red-500 text-sm mt-1">{validationErrors.programmeStatus}</p>
-            )}
-          </div>
-        </div>
-
         {/* Previous events */}
         <div className="space-y-6">
           <h3 className="font-serif text-lg font-normal text-primary border-b border-gray-100 pb-2">
@@ -593,69 +627,160 @@ export function ContactEnquiryForm({
         {/* Properties + notes */}
         <div className="space-y-6">
           <h3 className="font-serif text-lg font-normal text-primary border-b border-gray-100 pb-2">
-            Your preferences
+            {primaryPropertyId && primaryProperty ? "Properties" : "Your preferences"}
           </h3>
 
-          <div>
-            <p className="text-xs text-muted-foreground mb-2">
-              Preferred property or properties (optional)
-            </p>
-            <Popover>
-              <PopoverTrigger asChild>
-                <button
-                  type="button"
-                  disabled={isSubmitting}
-                  data-testid="button-preferred-properties"
-                  className={cn(
-                    "flex w-full items-center justify-between border-0 border-b border-gray-200 bg-transparent py-4 text-left text-sm outline-none focus:border-gray-700 disabled:opacity-50"
-                  )}
-                >
-                  <span
-                    className={
-                      selectedPropertyIds.size === 0
-                        ? "font-normal text-gray-400"
-                        : "font-normal text-primary"
-                    }
+          {primaryPropertyId && primaryProperty ? (
+            <>
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Property you&apos;re enquiring about</p>
+                <div className="flex gap-3 border border-gray-200 bg-muted/20 p-3 rounded-none">
+                  {primaryProperty.thumbnail || primaryProperty.images[0] ? (
+                    <img
+                      src={primaryProperty.thumbnail ?? primaryProperty.images[0]}
+                      alt=""
+                      className="h-14 w-[4.5rem] shrink-0 object-cover rounded-sm"
+                      width={72}
+                      height={56}
+                      loading="lazy"
+                    />
+                  ) : null}
+                  <div className="min-w-0 flex-1">
+                    <p className="font-medium text-primary leading-snug">{primaryProperty.name}</p>
+                    <p className="text-xs text-muted-foreground mt-1 leading-snug line-clamp-2">
+                      {primaryProperty.subtitle}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs text-muted-foreground mb-2">Additional properties (optional)</p>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <button
+                      type="button"
+                      disabled={isSubmitting}
+                      data-testid="button-additional-properties"
+                      className={cn(
+                        "flex w-full items-center justify-between border-0 border-b border-gray-200 bg-transparent py-4 text-left text-sm outline-none focus:border-gray-700 disabled:opacity-50"
+                      )}
+                    >
+                      <span
+                        className={
+                          additionalSelectedCount === 0
+                            ? "font-normal text-gray-400"
+                            : "font-normal text-primary"
+                        }
+                      >
+                        {additionalSelectedCount === 0
+                          ? `Select additional homes — ${additionalPropertiesList.length} other properties`
+                          : `${additionalSelectedCount} additional propert${additionalSelectedCount === 1 ? "y" : "ies"} selected`}
+                      </span>
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-[min(100vw-2rem,28rem)] max-h-72 overflow-y-auto p-2"
+                    align="start"
                   >
-                    {selectedPropertyIds.size === 0
-                      ? `Select one or more — ${properties.length} properties`
-                      : `${selectedPropertyIds.size} propert${selectedPropertyIds.size === 1 ? "y" : "ies"} selected`}
-                  </span>
-                </button>
-              </PopoverTrigger>
-              <PopoverContent className="w-[min(100vw-2rem,28rem)] max-h-72 overflow-y-auto p-2" align="start">
-                <ul className="space-y-1">
-                  {properties.map((property) => {
-                    const thumb = property.thumbnail ?? property.images[0];
-                    const checked = selectedPropertyIds.has(property.id);
-                    return (
-                      <li key={property.id}>
-                        <label className="flex cursor-pointer items-center gap-3 rounded-sm px-2 py-2 hover:bg-muted/60">
-                          <Checkbox
-                            checked={checked}
-                            onCheckedChange={() => toggleProperty(property.id)}
-                            disabled={isSubmitting}
-                            id={`prop-${property.id}`}
-                          />
-                          {thumb ? (
-                            <img
-                              src={thumb}
-                              alt=""
-                              className="h-12 w-16 shrink-0 object-cover rounded-sm"
-                              width={64}
-                              height={48}
-                              loading="lazy"
+                    <ul className="space-y-1">
+                      {additionalPropertiesList.map((prop) => {
+                        const thumb = prop.thumbnail ?? prop.images[0];
+                        const checked = selectedPropertyIds.has(prop.id);
+                        return (
+                          <li key={prop.id}>
+                            <label className="flex cursor-pointer items-center gap-3 rounded-sm px-2 py-2 hover:bg-muted/60">
+                              <Checkbox
+                                checked={checked}
+                                onCheckedChange={() => toggleProperty(prop.id)}
+                                disabled={isSubmitting}
+                                id={`prop-add-${prop.id}`}
+                              />
+                              {thumb ? (
+                                <img
+                                  src={thumb}
+                                  alt=""
+                                  className="h-12 w-16 shrink-0 object-cover rounded-sm"
+                                  width={64}
+                                  height={48}
+                                  loading="lazy"
+                                />
+                              ) : null}
+                              <span className="text-sm leading-snug">{prop.name}</span>
+                            </label>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </>
+          ) : (
+            <div>
+              <p className="text-xs text-muted-foreground mb-2">
+                Preferred property or properties (optional)
+              </p>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <button
+                    type="button"
+                    disabled={isSubmitting}
+                    data-testid="button-preferred-properties"
+                    className={cn(
+                      "flex w-full items-center justify-between border-0 border-b border-gray-200 bg-transparent py-4 text-left text-sm outline-none focus:border-gray-700 disabled:opacity-50"
+                    )}
+                  >
+                    <span
+                      className={
+                        selectedPropertyIds.size === 0
+                          ? "font-normal text-gray-400"
+                          : "font-normal text-primary"
+                      }
+                    >
+                      {selectedPropertyIds.size === 0
+                        ? `Select one or more — ${properties.length} properties`
+                        : `${selectedPropertyIds.size} propert${selectedPropertyIds.size === 1 ? "y" : "ies"} selected`}
+                    </span>
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent
+                  className="w-[min(100vw-2rem,28rem)] max-h-72 overflow-y-auto p-2"
+                  align="start"
+                >
+                  <ul className="space-y-1">
+                    {properties.map((prop) => {
+                      const thumb = prop.thumbnail ?? prop.images[0];
+                      const checked = selectedPropertyIds.has(prop.id);
+                      return (
+                        <li key={prop.id}>
+                          <label className="flex cursor-pointer items-center gap-3 rounded-sm px-2 py-2 hover:bg-muted/60">
+                            <Checkbox
+                              checked={checked}
+                              onCheckedChange={() => toggleProperty(prop.id)}
+                              disabled={isSubmitting}
+                              id={`prop-${prop.id}`}
                             />
-                          ) : null}
-                          <span className="text-sm leading-snug">{property.name}</span>
-                        </label>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </PopoverContent>
-            </Popover>
-          </div>
+                            {thumb ? (
+                              <img
+                                src={thumb}
+                                alt=""
+                                className="h-12 w-16 shrink-0 object-cover rounded-sm"
+                                width={64}
+                                height={48}
+                                loading="lazy"
+                              />
+                            ) : null}
+                            <span className="text-sm leading-snug">{prop.name}</span>
+                          </label>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </PopoverContent>
+              </Popover>
+            </div>
+          )}
 
           <div>
             <Textarea
@@ -668,6 +793,50 @@ export function ContactEnquiryForm({
               data-testid="textarea-notes"
             />
           </div>
+        </div>
+
+        <div className="space-y-2.5 pt-2">
+          <p className="text-xs text-muted-foreground leading-normal">
+            We use what you submit here only to assess and respond to your enquiry about our properties,
+            including any follow-up. How we process personal data is explained in our{" "}
+            <Link href="/privacy" className="text-primary underline underline-offset-2 hover:no-underline">
+              Privacy Policy
+            </Link>
+            . Optional cookies are described there too; you can update those choices anytime using{" "}
+            <button
+              type="button"
+              onClick={openPreferences}
+              className="inline p-0 text-xs font-normal text-primary underline underline-offset-2 hover:no-underline bg-transparent border-0 cursor-pointer align-baseline"
+            >
+              Cookie settings
+            </button>
+            .
+          </p>
+          <div className="flex gap-2 items-start">
+            <Checkbox
+              id="contact-privacy-consent"
+              checked={form.privacyConsent}
+              onCheckedChange={(v) => setField("privacyConsent", v === true)}
+              disabled={isSubmitting}
+              className="mt-0.5"
+              data-testid="checkbox-privacy-consent"
+            />
+            <label htmlFor="contact-privacy-consent" className="text-xs text-primary leading-snug cursor-pointer">
+              I have read the{" "}
+              <Link
+                href="/privacy"
+                className="underline underline-offset-2 hover:no-underline"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Privacy Policy
+              </Link>{" "}
+              and consent to you processing my personal data for this enquiry.
+              <span className="text-red-500">*</span>
+            </label>
+          </div>
+          {validationErrors.privacyConsent && (
+            <p className="text-red-500 text-xs">{validationErrors.privacyConsent}</p>
+          )}
         </div>
 
         <div className="pt-4">

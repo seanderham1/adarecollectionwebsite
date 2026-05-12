@@ -1,6 +1,6 @@
 name: Deploy to Firebase
 
-# Matches DEPLOYMENT_SETUP_GUIDE.md — prod hosting from main. PRs do not deploy.
+# Prod: Hosting + Cloud Function `api` (contact / access-request). PRs do not deploy.
 on:
   push:
     branches: [main]
@@ -36,6 +36,6 @@ jobs:
       - name: Deploy to Firebase
         run: |
           npm install -g firebase-tools
-          firebase deploy --only hosting --project theadarecollection-site --non-interactive --token "${{ secrets.FIREBASE_TOKEN }}"
+          firebase deploy --only hosting,functions:api --project theadarecollection-site --non-interactive --token "${{ secrets.FIREBASE_TOKEN }}"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

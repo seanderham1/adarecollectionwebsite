@@ -96,12 +96,6 @@ const INTENDED_LABELS: Record<string, string> = {
   accommodation_hosting: "Accommodation with executive hosting / hospitality",
 };
 
-const PROGRAMME_LABELS: Record<string, string> = {
-  exploring: "Exploring options",
-  actively_planning_ryder_2027: "Actively planning for Ryder Cup 2027",
-  ready_to_secure: "Ready to secure accommodation",
-};
-
 /** Must stay in sync with contact form PHONE_DIAL_OPTIONS values. */
 const VALID_PHONE_EXTENSIONS = new Set([
   "+1",
@@ -224,7 +218,6 @@ app.post("/api/contact", async (req, res) => {
     const rolePosition = String(body.rolePosition ?? "").trim();
     const estimatedGuests = String(body.estimatedGuests ?? "").trim();
     const intendedUse = String(body.intendedUse ?? "").trim();
-    const programmeStatus = String(body.programmeStatus ?? "").trim();
     const prevEvent = body.previousMajorEventAccommodation;
     const budgetEurosThousands = Number(body.budgetEurosThousands);
     const budgetLabel = String(body.budgetLabel ?? "").trim();
@@ -294,18 +287,6 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
-    const validProgramme = [
-      "exploring",
-      "actively_planning_ryder_2027",
-      "ready_to_secure",
-    ];
-    if (!validProgramme.includes(programmeStatus)) {
-      return res.status(400).json({
-        success: false,
-        message: "Please describe your programme status.",
-      });
-    }
-
     if (
       prevEvent != null &&
       prevEvent !== "" &&
@@ -329,6 +310,14 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
+    if (body.privacyConsentAccepted !== true) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Please confirm your consent for us to process your enquiry as described in our Privacy Policy.",
+      });
+    }
+
     let transporter: nodemailer.Transporter;
     try {
       transporter = createGmailTransport();
@@ -343,7 +332,6 @@ app.post("/api/contact", async (req, res) => {
     const enquiryReadable = ENQUIRY_LABELS[enquiryType] ?? enquiryType;
     const guestsReadable = GUEST_LABELS[estimatedGuests] ?? estimatedGuests;
     const intendedReadable = INTENDED_LABELS[intendedUse] ?? intendedUse;
-    const programmeReadable = PROGRAMME_LABELS[programmeStatus] ?? programmeStatus;
 
     let prevReadable = "Not specified";
     if (prevEvent === "yes") prevReadable = "Yes";
@@ -403,9 +391,9 @@ app.post("/api/contact", async (req, res) => {
         : []),
       `Estimated guests: ${guestsReadable}`,
       `Intended use: ${intendedReadable}`,
-      `Programme status: ${programmeReadable}`,
       `Previously organised major event accommodation: ${prevReadable}`,
       `Budget: ${budgetReadable}`,
+      "Privacy consent (enquiry processing): confirmed at submission",
       "",
       "Preferred properties:",
       propertiesTextLines,
@@ -435,9 +423,9 @@ app.post("/api/contact", async (req, res) => {
         ${orgBlock}
         <p><strong>Estimated guests:</strong> ${escapeHtml(guestsReadable)}</p>
         <p><strong>Intended use:</strong> ${escapeHtml(intendedReadable)}</p>
-        <p><strong>Programme status:</strong> ${escapeHtml(programmeReadable)}</p>
         <p><strong>Previously organised major event accommodation:</strong> ${escapeHtml(prevReadable)}</p>
         <p><strong>Budget:</strong> ${escapeHtml(budgetReadable)}</p>
+        <p><strong>Privacy consent (enquiry):</strong> Confirmed at submission</p>
         <p><strong>Preferred properties:</strong></p>
         <ul>${propertiesBlock}</ul>
         <p><strong>Additional notes:</strong></p>

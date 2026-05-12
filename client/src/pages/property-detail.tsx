@@ -3,6 +3,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import PropertyMap from "@/components/property-map";
 import VideoModal from "@/components/video-modal";
+import { PropertyEnquiryModal } from "@/components/property-enquiry-modal";
 import MapModal from "@/components/map-modal";
 import MatterportModal from "@/components/matterport-modal";
 import BrochureModal from "@/components/brochure-modal";
@@ -60,6 +61,7 @@ export default function PropertyDetail() {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [isMatterportModalOpen, setIsMatterportModalOpen] = useState(false);
+  const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const [videoStartMuted, setVideoStartMuted] = useState(hasVideoParam); // Start muted if video param is present
   
   // Use property-specific video URL only
@@ -156,9 +158,11 @@ export default function PropertyDetail() {
   const selectImage = (index: number) => setCurrentImageIndex(index);
 
   const handleRequestAvailability = () => {
-    const subject = encodeURIComponent(`Availability Request - ${property.name}`);
-    const body = encodeURIComponent(`I am interested in learning more about the availability of ${property.name} for Ryder Cup 2027.\n\nPlease provide more information about:\n- Availability dates\n- Pricing\n- Additional services\n\nThank you.`);
-    window.location.href = `mailto:info@theadarecollection.ie?subject=${subject}&body=${body}`;
+    setIsEnquiryModalOpen(true);
+  };
+
+  const handleCloseEnquiryModal = () => {
+    setIsEnquiryModalOpen(false);
   };
 
   const handleViewVideo = () => {
@@ -808,6 +812,12 @@ export default function PropertyDetail() {
           startMuted={videoStartMuted}
         />
       )}
+
+      <PropertyEnquiryModal
+        isOpen={isEnquiryModalOpen}
+        onClose={handleCloseEnquiryModal}
+        property={property}
+      />
       
       {/* Map Modal */}
       <MapModal 

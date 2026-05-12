@@ -87,7 +87,10 @@ export default function TermsConditions() {
                     <li>Payment processing fees may apply depending on the payment method chosen</li>
                   </ul>
 
-                  <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
+                  <h3
+                    id="cancellation-refund-policy"
+                    className="font-serif text-xl font-normal text-primary mb-3 mt-6 scroll-mt-24"
+                  >
                     3.3 Cancellation and Refund Policy
                   </h3>
                   <p className="mb-4">
@@ -230,7 +233,7 @@ export default function TermsConditions() {
 
               {/* Force Majeure */}
               <section>
-                <h2 className="font-serif text-2xl font-normal text-primary mb-4">
+                <h2 id="force-majeure" className="font-serif text-2xl font-normal text-primary mb-4 scroll-mt-24">
                   8. Force Majeure
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">

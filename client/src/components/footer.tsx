@@ -1,5 +1,6 @@
 import { Linkedin, Instagram } from "lucide-react";
 import { Link } from "wouter";
+import { useCookieConsent } from "@/contexts/cookie-consent-context";
 
 const socialLinks = [
   {
@@ -17,6 +18,8 @@ const socialLinks = [
 ] as const;
 
 export default function Footer() {
+  const { openPreferences } = useCookieConsent();
+
   return (
     <footer className="bg-black text-white py-8 px-20 w-full" data-testid="footer">
       <div className="max-w-7xl mx-auto">
@@ -113,6 +116,17 @@ export default function Footer() {
               <Link href="/privacy" className="hover:text-gray-300 transition-colors" data-testid="footer-link-privacy">
                 Privacy Policy
               </Link>
+              <span className="text-gray-600" aria-hidden>
+                ·
+              </span>
+              <button
+                type="button"
+                onClick={openPreferences}
+                className="hover:text-gray-300 transition-colors text-left"
+                data-testid="footer-link-cookie-settings"
+              >
+                Cookie settings
+              </button>
             </nav>
             <p
               className="text-gray-400 text-left mt-3 max-w-md leading-relaxed text-[8px]"
