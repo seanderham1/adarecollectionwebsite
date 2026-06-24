@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white py-8 px-20 w-full" data-testid="footer">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           
           {/* ABOUT Section */}
           <div>
@@ -42,9 +42,29 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="hover:text-gray-300 transition-colors" data-testid="footer-link-blog">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <a href="/properties" className="hover:text-gray-300 transition-colors" data-testid="footer-link-properties">
                   Ryder Cup 2027 Accommodation
                 </a>
+              </li>
+              <li>
+                <Link href="/ryder-cup-packages" className="hover:text-gray-300 transition-colors">
+                  Ryder Cup Packages
+                </Link>
+              </li>
+              <li>
+                <Link href="/corporate-hospitality" className="hover:text-gray-300 transition-colors">
+                  Corporate Hospitality
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-gray-300 transition-colors">
+                  Travel Management
+                </Link>
               </li>
               <li>
                 <a href="/contact" className="hover:text-gray-300 transition-colors" data-testid="footer-link-contact">
@@ -78,8 +98,25 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* ADDRESS Section */}
+          <div>
+            <h3 className="font-serif text-xl font-normal mb-6 text-white" data-testid="footer-address-title">
+              Address
+            </h3>
+            <address className="not-italic text-sm text-white leading-relaxed" data-testid="footer-address">
+              The Adare Collection Limited<br />
+              Byrne and Company<br />
+              Church Street<br />
+              Gortboy<br />
+              Newcastle West<br />
+              Co Limerick<br />
+              Ireland<br />
+              V42 F982
+            </address>
+          </div>
+
           {/* SOCIAL + legal (disclaimer & copyright below icons, same column) */}
-          <div className="md:col-span-2 lg:col-span-1">
+          <div>
             <h3 className="font-serif text-xl font-normal mb-6 text-white" data-testid="footer-social-title">
               Social
             </h3>

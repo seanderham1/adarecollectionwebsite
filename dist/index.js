@@ -66,9 +66,9 @@ var GLOBAL_SCHEMA_GRAPH = {
       },
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+353-61-605-200",
+        telephone: "+353-86-668-1930",
         contactType: "customer service",
-        email: "info@theadarecollection.com"
+        email: "info@theadarecollection.ie"
       },
       sameAs: [
         "https://www.linkedin.com/company/the-adare-collection",
@@ -102,7 +102,7 @@ var GLOBAL_SCHEMA_GRAPH = {
       "@type": "ItemList",
       "@id": "https://theadarecollection.com/#primary-navigation",
       name: "Main pages",
-      numberOfItems: 5,
+      numberOfItems: 9,
       itemListElement: [
         {
           "@type": "SiteNavigationElement",
@@ -119,18 +119,42 @@ var GLOBAL_SCHEMA_GRAPH = {
         {
           "@type": "SiteNavigationElement",
           position: 3,
+          name: "Ryder Cup packages",
+          url: "https://theadarecollection.com/ryder-cup-packages"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          position: 4,
+          name: "Corporate hospitality",
+          url: "https://theadarecollection.com/corporate-hospitality"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          position: 5,
+          name: "Travel management",
+          url: "https://theadarecollection.com/services"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          position: 6,
           name: "About",
           url: "https://theadarecollection.com/about"
         },
         {
           "@type": "SiteNavigationElement",
-          position: 4,
+          position: 7,
           name: "FAQ",
           url: "https://theadarecollection.com/faq"
         },
         {
           "@type": "SiteNavigationElement",
-          position: 5,
+          position: 8,
+          name: "Blog",
+          url: "https://theadarecollection.com/blog"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          position: 9,
           name: "Contact",
           url: "https://theadarecollection.com/contact"
         }

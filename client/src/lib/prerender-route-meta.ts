@@ -2,8 +2,10 @@
  * Single source for static route title/description (and related useSEO fields)
  * shared by React and build-time prerender HTML.
  */
+import { getBlogPosts, type BlogPost } from "./blog-posts";
 import { properties, type Property, formatPropertyBedroomsShort } from "./properties";
 import { propertyPageDescription, propertyPageTitle } from "./property-seo";
+import { getPropertySeoFocus } from "./seo-property-focus";
 import {
   SEO_HOME_DESCRIPTION,
   SEO_HOME_TITLE,
@@ -11,6 +13,18 @@ import {
   SEO_PROPERTIES_DESCRIPTION,
   SEO_PROPERTIES_TITLE,
 } from "./seo-keyword-clusters";
+import {
+  SEO_CORPORATE_DESCRIPTION,
+  SEO_CORPORATE_PATH,
+  SEO_CORPORATE_TITLE,
+  SEO_LANDING_KEYWORDS,
+  SEO_PACKAGES_DESCRIPTION,
+  SEO_PACKAGES_PATH,
+  SEO_PACKAGES_TITLE,
+  SEO_SERVICES_DESCRIPTION,
+  SEO_SERVICES_PATH,
+  SEO_SERVICES_TITLE,
+} from "./seo-landing-pages";
 
 export const SITE_ORIGIN = "https://theadarecollection.com";
 
@@ -58,6 +72,30 @@ export function getStaticRouteSEOPayloads(): RouteSEOPayload[] {
       ogUrl: canonicalUrlForPath("/properties"),
     },
     {
+      path: SEO_PACKAGES_PATH,
+      title: SEO_PACKAGES_TITLE,
+      description: SEO_PACKAGES_DESCRIPTION,
+      keywords: SEO_LANDING_KEYWORDS,
+      ogImage: HERO_2,
+      ogUrl: canonicalUrlForPath(SEO_PACKAGES_PATH),
+    },
+    {
+      path: SEO_CORPORATE_PATH,
+      title: SEO_CORPORATE_TITLE,
+      description: SEO_CORPORATE_DESCRIPTION,
+      keywords: SEO_LANDING_KEYWORDS,
+      ogImage: HERO_1,
+      ogUrl: canonicalUrlForPath(SEO_CORPORATE_PATH),
+    },
+    {
+      path: SEO_SERVICES_PATH,
+      title: SEO_SERVICES_TITLE,
+      description: SEO_SERVICES_DESCRIPTION,
+      keywords: SEO_LANDING_KEYWORDS,
+      ogImage: HERO_2,
+      ogUrl: canonicalUrlForPath(SEO_SERVICES_PATH),
+    },
+    {
       path: "/about",
       title:
         "About Us | Ryder Cup 2027 Accommodation & Executive Rentals | Adare Manor",
@@ -86,6 +124,15 @@ export function getStaticRouteSEOPayloads(): RouteSEOPayload[] {
       ogUrl: canonicalUrlForPath("/faq"),
     },
     {
+      path: "/blog",
+      title: "Blog | Ryder Cup 2027 News & Travel Guides | The Adare Collection",
+      description:
+        "Ryder Cup 2027 news and travel guides: spectator rail transport, helicopter access, ticket ballot information, and luxury accommodation planning near Adare Manor, County Limerick.",
+      keywords: SEO_META_KEYWORDS_COMPACT,
+      ogImage: HERO_2,
+      ogUrl: canonicalUrlForPath("/blog"),
+    },
+    {
       path: "/privacy",
       title: "Privacy Policy | The Adare Collection Limited",
       description:
@@ -107,7 +154,9 @@ export function getStaticRouteSEOPayloads(): RouteSEOPayload[] {
 }
 
 export function propertyKeywords(property: Property): string {
-  return `${property.name}, Ryder Cup 2027 accommodation, Adare rental Ryder Cup, Adare Manor rental, ${formatPropertyBedroomsShort(property)} bedroom, golf accommodation Ireland`;
+  const focus = getPropertySeoFocus(property.id)?.focusKeyword;
+  const focusPart = focus ? `${focus}, ` : "";
+  return `${property.name}, ${focusPart}Ryder Cup 2027 accommodation, Adare Manor rental, ${formatPropertyBedroomsShort(property)} bedroom, golf accommodation Ireland`;
 }
 
 /** Mirrors property-detail useSEO when a listing exists. */
@@ -131,9 +180,32 @@ export function getPropertyRouteSEOPayloads(): RouteSEOPayload[] {
   return properties.map(getPropertyRouteSEOPayload);
 }
 
+export function getBlogPostRouteSEOPayload(post: BlogPost): RouteSEOPayload {
+  const path = `/blog/${post.slug}`;
+  const ogImage = post.heroImage.startsWith("http")
+    ? post.heroImage
+    : `${SITE_ORIGIN}${post.heroImage}`;
+  return {
+    path,
+    title: `${post.title} | The Adare Collection`,
+    description: post.excerpt,
+    keywords: post.keywords,
+    ogImage,
+    ogUrl: canonicalUrlForPath(path),
+  };
+}
+
+export function getBlogPostRouteSEOPayloads(): RouteSEOPayload[] {
+  return getBlogPosts().map(getBlogPostRouteSEOPayload);
+}
+
 /** All routes that receive prerendered HTML + Firebase rewrites. */
 export function getAllPrerenderRouteSEOPayloads(): RouteSEOPayload[] {
-  return [...getStaticRouteSEOPayloads(), ...getPropertyRouteSEOPayloads()];
+  return [
+    ...getStaticRouteSEOPayloads(),
+    ...getPropertyRouteSEOPayloads(),
+    ...getBlogPostRouteSEOPayloads(),
+  ];
 }
 
 /** useSEO() args derived from a prerender payload (drops `path`). */
@@ -156,6 +228,10 @@ export function prerenderHtmlFilename(path: string): string {
   if (path.startsWith("/property/")) {
     const id = path.slice("/property/".length).replace(/\//g, "_");
     return `property__${id}.html`;
+  }
+  if (path.startsWith("/blog/")) {
+    const slug = path.slice("/blog/".length).replace(/\//g, "_");
+    return `blog__${slug}.html`;
   }
   return `${path.slice(1)}.html`;
 }

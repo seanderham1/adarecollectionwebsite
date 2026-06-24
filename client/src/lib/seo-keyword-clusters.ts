@@ -21,8 +21,8 @@ export const SEO_META_KEYWORDS_COMPACT =
   "Ryder Cup 2027 accommodation, Adare Manor house rental Ryder Cup, corporate accommodation Ryder Cup 2027, executive rentals Adare Manor, luxury homes near Adare Manor, private estate rental Ireland";
 
 /**
- * Themes we weave into FAQs and prose. We do not target “Ryder Cup travel services” as
- * full flight/package agency positioning. Ground transport may be coordinated per property.
+ * Themes we weave into FAQs and prose. /services targets estate-hosted travel management
+ * (chef, chauffeur, concierge, ground transfers), not flights or package-holiday agency sales.
  */
 export const SEO_LONG_TAIL_THEMES = [
   "Ryder Cup 2027 Adare accommodation",

@@ -3,7 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WK9PD9T3");
+    </script>
+    <!-- End Google Tag Manager -->
+
     <!-- SEO Meta Tags -->
     <title>Ryder Cup 2027 Luxury Accommodation | Houses & Estates | The Adare Collection</title>
     <meta name="description" content="Exclusive private houses and estates near Adare Manor for Ryder Cup 2027. Corporate hospitality, executive rentals, and luxury homes in County Limerick, Ireland. Enquire for availability." />
@@ -72,8 +87,7 @@
     <!-- Optimized Font Loading - Reduced from 20+ to 4 essential fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/images/hero/adaremanor-img2.webp" as="image" />
+    <!-- Preload critical resources (logo sitewide; hero only on homepage — see HeroSection + prerender) -->
     <link rel="preload" href="/images/navbar/adarecollectionlogo.png" as="image" />
     
     <!-- DNS prefetch for external resources -->
@@ -86,6 +100,17 @@
     <!--INJECT_GLOBAL_SCHEMA_LD_JSON-->
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) — standard body snippet; avoids loading GTM twice -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WK9PD9T3"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -60,15 +60,42 @@ export default function PropertiesPage() {
         <section className="bg-white py-12 mb-12 -mx-6 px-6 -mt-24 pt-24 border-b border-gray-200">
           <div className="text-center">
             <h1 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-4">
-              Ryder Cup 2027 Accommodation at Adare Manor
+              Ryder Cup 2027 Accommodation
             </h1>
             <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
-              Exclusive Ryder Cup 2027 accommodation: luxury houses for rent across our portfolio, from golf village
-              and demesne settings through to upscale executive retreats minutes from Adare Manor. Ideal for sponsors,
-              corporate hospitality, and groups who want a whole-home private Ireland rental near the Ryder Cup
-              venue.
+              Exclusive Ryder Cup 2027 properties and accommodation: luxury houses for rent across our portfolio,
+              from golf village and demesne settings through to upscale executive retreats minutes from Adare Manor
+              in Ireland. Ideal for sponsors, corporate hospitality, and groups who want a whole-home private
+              rental near the Ryder Cup venue and championship course.
+            </p>
+            <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto mt-4">
+              <Link href="/ryder-cup-packages" className="underline underline-offset-4 hover:text-gray-900">
+                Ryder Cup packages
+              </Link>
+              {" · "}
+              <Link href="/corporate-hospitality" className="underline underline-offset-4 hover:text-gray-900">
+                Corporate hospitality
+              </Link>
+              {" · "}
+              <Link href="/services" className="underline underline-offset-4 hover:text-gray-900">
+                Travel management
+              </Link>
             </p>
           </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto mb-12 px-2 text-secondary text-sm leading-relaxed space-y-4 text-center">
+          <h2 className="font-serif text-xl text-primary text-center">Planning your Ryder Cup 2027 stay</h2>
+          <p>
+            Our rental homes include multiple bedrooms, fully equipped kitchens, private parking, guest wifi, and
+            amenities suited to golf travel and hosted events. Proximity to the course varies by property, from
+            walking distance on the demesne to executive homes near Galway and Limerick with chauffeur access to
+            the tournament venue.
+          </p>
+          <p>
+            Booking is personal: we confirm availability, guest limits, house rules, and payment terms before you
+            reserve.
+          </p>
         </section>
 
         {/* Property Grid Section */}

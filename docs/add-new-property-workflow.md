@@ -47,7 +47,9 @@ flowchart LR
 14. [ ] **Portrait photos** — **Automatic** on the detail carousel for most houses (see [Portrait vs landscape carousel](#portrait-vs-landscape-carousel)). Parkview/Croagh still use legacy path guesses for the first paint; no per-property portrait code needed for Hillview-style listings.
 15. [ ] **Copy hygiene** — [Amenities vs Add-on Services](#amenities-vs-add-on-services); avoid duplicating chauffeur / chef / helicopter / laundry service / entertainment if those are covered by the icon grid.
 16. [ ] **Badge** — Optional: [`getPropertyCollectionBadge`](../client/src/lib/properties.ts) (`DELUXE` vs default `EXECUTIVE`).
-17. [ ] **Verify** — `npm run dev` (or `npm run build && npm run start`). Open `/`, `/properties`, `/property/<id>`, confirm hero marker, detail map, gallery, no 404 images.
+17. [ ] **SEO focus keyword** — Add entry in [`client/src/lib/seo-property-focus.ts`](../client/src/lib/seo-property-focus.ts) (`focusKeyword` + optional `pageSubheading` for the detail page H2).
+18. [ ] **SEO supplement copy** — Add optional paragraphs in [`client/src/lib/property-seo-content.ts`](../client/src/lib/property-seo-content.ts) and include the property `id` in the supplement render list in [`property-detail.tsx`](../client/src/pages/property-detail.tsx).
+19. [ ] **Verify** — `npm run dev` (or `npm run build && npm run start`). Open `/`, `/properties`, `/property/<id>`, confirm hero marker, detail map, gallery, no 404 images. Run `npx tsx scripts/validate-property-structured-data.ts`.
 
 ---
 
@@ -160,6 +162,8 @@ Only one of `dev` / `start` should bind **5000** at a time. If the port is busy 
 | Homepage + detail map points | `client/public/data/properties.geojson` |
 | Detail map zoom / radius | `client/src/components/property-map.tsx`, `client/src/lib/map-utils.ts` |
 | Carousel (incl. portrait handling) | `client/src/pages/property-detail.tsx` |
+| SEO focus keyword & page subheading | `client/src/lib/seo-property-focus.ts` |
+| SEO supplement paragraphs | `client/src/lib/property-seo-content.ts` |
 | Sitemap | `client/public/sitemap.xml` |
 | Image processing template | `scripts/process-house-13-images.mjs` |
 

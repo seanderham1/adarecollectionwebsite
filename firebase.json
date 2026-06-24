@@ -26,6 +26,18 @@
         "destination": "/_prerender/properties.html"
       },
       {
+        "source": "/ryder-cup-packages",
+        "destination": "/_prerender/ryder-cup-packages.html"
+      },
+      {
+        "source": "/corporate-hospitality",
+        "destination": "/_prerender/corporate-hospitality.html"
+      },
+      {
+        "source": "/services",
+        "destination": "/_prerender/services.html"
+      },
+      {
         "source": "/about",
         "destination": "/_prerender/about.html"
       },
@@ -36,6 +48,10 @@
       {
         "source": "/faq",
         "destination": "/_prerender/faq.html"
+      },
+      {
+        "source": "/blog",
+        "destination": "/_prerender/blog.html"
       },
       {
         "source": "/privacy",
@@ -94,6 +110,26 @@
         "destination": "/_prerender/property__portland-house.html"
       },
       {
+        "source": "/property/southview-cullinagh",
+        "destination": "/_prerender/property__southview-cullinagh.html"
+      },
+      {
+        "source": "/property/nead-fainleog",
+        "destination": "/_prerender/property__nead-fainleog.html"
+      },
+      {
+        "source": "/blog/adare-ryder-cup-railway-line",
+        "destination": "/_prerender/blog__adare-ryder-cup-railway-line.html"
+      },
+      {
+        "source": "/blog/helicopter-landing-ryder-cup-2027",
+        "destination": "/_prerender/blog__helicopter-landing-ryder-cup-2027.html"
+      },
+      {
+        "source": "/blog/how-to-apply-ryder-cup-2027-ballot",
+        "destination": "/_prerender/blog__how-to-apply-ryder-cup-2027-ballot.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
@@ -141,6 +177,42 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/faq>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/ryder-cup-packages",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/ryder-cup-packages>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/corporate-hospitality",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/corporate-hospitality>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/services",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/services>; rel=\"canonical\""
           }
         ]
       },
@@ -249,6 +321,51 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/portland-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/southview-cullinagh",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/southview-cullinagh>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/nead-fainleog",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/nead-fainleog>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/adare-ryder-cup-railway-line",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/adare-ryder-cup-railway-line>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/helicopter-landing-ryder-cup-2027",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/helicopter-landing-ryder-cup-2027>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/how-to-apply-ryder-cup-2027-ballot",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/how-to-apply-ryder-cup-2027-ballot>; rel=\"canonical\""
           }
         ]
       },

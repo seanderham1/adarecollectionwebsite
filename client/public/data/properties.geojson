@@ -7,8 +7,8 @@
       "properties":{
         "id":"darrira-house",
         "title":"Darrira House",
-        "desc":"Placeholder description for Darrira House. Replace with final copy.",
-        "beds": 4,
+        "desc":"Just ten minutes from Adare Manor, an elegant private retreat in Croagh, County Limerick.",
+        "beds": 5,
         "baths": 4,
         "price":"POA",
         "thumb":"/images/houses/house 6/house-6-exterior-1.webp"
@@ -20,7 +20,7 @@
       "properties":{
         "id":"rangeview",
         "title":"Range View",
-        "desc":"Located within Adare Manor estate, 'Range View' offers front-row proximity to Ryder Cup 2027.",
+        "desc":"Located within Adare Manor estate, offering front-row proximity to Ryder Cup 2027.",
         "beds": 6,
         "baths": 6,
         "price":"POA",
@@ -33,7 +33,7 @@
       "properties":{
         "id":"the-captains",
         "title":"The Captains",
-        "desc":"Within Adare Manor's secure walls, 'Captains House' places you at the heart of Ryder Cup action in complete privacy.",
+        "desc":"Within Adare Manor grounds, at the heart of Ryder Cup action in complete privacy.",
         "beds": 6,
         "baths": 6,
         "price":"POA",
@@ -46,7 +46,7 @@
       "properties":{
         "id":"putters-way",
         "title":"Putters Way",
-        "desc":"Premium residence within the private Golf Village of Adare Manor, metres from the Carriage House and a short stroll to the 1st tee.",
+        "desc":"At the very centre of Ryder Cup 2027, metres from the range and a one-minute stroll to the 1st tee.",
         "beds": 2,
         "baths": 2,
         "price":"POA",
@@ -59,9 +59,9 @@
       "properties":{
         "id":"the-first-tee",
         "title":"The First Tee",
-        "desc":"Closest residence to the Ryder Cup action, 150 yards from the practice range and 1st tee.",
+        "desc":"Closest Demesne residence to the Ryder Cup course, just 150 yards from the practice range and 1st tee.",
         "beds": 5,
-        "bedsLabel":"5-6",
+        "bedsLabel":"5/6",
         "baths": 5,
         "price":"POA",
         "thumb":"/images/houses/house 7/house-7-exterior-3.webp"
@@ -73,7 +73,7 @@
       "properties":{
         "id":"the-fairways",
         "title":"The Fairways",
-        "desc":"Within Adare Manor's gates, on Ireland's most prestigious estate and steps from Ryder Cup 2027.",
+        "desc":"Within the gates of Adare Manor, just steps from the 2027 Ryder Cup venue.",
         "beds": 6,
         "baths": 6,
         "price":"POA",
@@ -86,9 +86,9 @@
       "properties":{
         "id":"cragleigh-house",
         "title":"Cragleigh House",
-        "desc":"Just 15 minutes from Adare Manor with easy access to Limerick, Shannon Airport, and Ryder Cup 2027.",
+        "desc":"Just 15 minutes from Adare Manor, manor-style estate with space and effortless Ryder Cup access.",
         "beds": 5,
-        "baths": 5,
+        "baths": 4,
         "price":"POA",
         "thumb":"/images/houses/house 5/cragleigh-house-main-optimized.webp"
       }
@@ -99,9 +99,9 @@
       "properties":{
         "id":"croagh-house",
         "title":"Croagh House",
-        "desc":"Privacy and direct Ryder Cup access (10 minutes from Adare Manor, 2 minutes from the official Park & Ride).",
+        "desc":"Privacy and direct Ryder Cup access (12 minutes from Adare Manor, 3 minutes from the official Park & Ride).",
         "beds": 4,
-        "bedsLabel":"4-5",
+        "bedsLabel":"4/5",
         "baths": 4,
         "price":"POA",
         "thumb":"/images/houses/croaghhouse/exterior/croaghhouse-exterior-2.webp"
@@ -113,9 +113,9 @@
       "properties":{
         "id":"parkview-house",
         "title":"Parkview House",
-        "desc":"High-capacity private residence for up to 12 guests (10 minutes from Adare Manor, 2 minutes from the official Park & Ride).",
+        "desc":"High-capacity private residence for up to 12 guests (12 minutes from Adare Manor, 3 minutes from the official Park & Ride).",
         "beds": 6,
-        "bedsLabel":"6-7",
+        "bedsLabel":"6/7",
         "baths": 4,
         "price":"POA",
         "thumb":"/images/houses/parkviewhouse/exterior/parkview-exterior-1.webp"
@@ -140,7 +140,7 @@
       "properties":{
         "id":"hillview-house",
         "title":"Hillview House",
-        "desc":"Five-star modern residence for up to 14 guests — approximately 45 minutes from Adare Manor; about 20 minutes from Limerick Junction with direct trains to Adare.",
+        "desc":"Five-star modern residence for up to 14 guests, 45 minutes from Adare Manor, with train access to Adare via Limerick Junction.",
         "beds": 6,
         "baths": 4,
         "price":"POA",
@@ -153,11 +153,37 @@
       "properties":{
         "id":"portland-house",
         "title":"Portland House",
-        "desc":"Spacious home for Ryder Cup 2027 — about 45 minutes from Adare Manor; about 20 minutes from Limerick Junction with direct trains to Adare; pairs with neighbouring Hillview House.",
+        "desc":"Private residence for up to 14 guests, 45 minutes from Adare Manor, with train access to Adare via Limerick Junction.",
         "beds": 6,
         "baths": 4,
         "price":"POA",
         "thumb":"/images/houses/house 14/house-14-exterior-21.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-9.0652, 52.4478]},
+      "properties":{
+        "id":"southview-cullinagh",
+        "title":"Southview Cullinagh",
+        "desc":"Deluxe three-bedroom cottage in Newcastle West, five minutes from the town centre, with Park & Ride access to Adare Manor.",
+        "beds": 3,
+        "baths": 2,
+        "price":"POA",
+        "thumb":"/images/houses/southviewcullinagh/southview-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.79875286124995, 52.55127116942097]},
+      "properties":{
+        "id":"nead-fainleog",
+        "title":"Nead Fainleog",
+        "desc":"Five-bedroom executive residence two minutes from Adare Manor, with jacuzzi, steam room and countryside privacy for Ryder Cup 2027.",
+        "beds": 5,
+        "baths": 6,
+        "price":"POA",
+        "thumb":"/images/houses/neadfainleog/neadfainleog-exterior-1.webp"
       }
     }
   ]

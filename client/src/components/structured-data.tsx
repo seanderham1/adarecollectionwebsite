@@ -1,107 +1,20 @@
-import { properties, formatPropertyBedroomsShort } from "@/lib/properties";
-import { propertyPageDescription } from "@/lib/property-seo";
+import { properties } from "@/lib/properties";
+import { type BlogPost } from "@/lib/blog-posts";
+import { buildPropertyListingJsonLd } from "@/lib/property-structured-data";
 import { GLOBAL_SCHEMA_GRAPH } from "@/lib/seo-global-graph";
+
+const SITE = "https://theadarecollection.com";
 
 interface PropertyStructuredDataProps {
   propertyId?: string;
 }
 
 export function PropertyStructuredData({ propertyId }: PropertyStructuredDataProps) {
-  const property = propertyId ? properties.find(p => p.id === propertyId) : null;
+  const property = propertyId ? properties.find((p) => p.id === propertyId) : null;
 
   if (!property) return null;
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": property.name,
-    "description": propertyPageDescription(property),
-    "url": `https://theadarecollection.com/property/${property.id}`,
-    "image": `https://theadarecollection.com${property.images[0]}`,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Adare",
-      "addressRegion": "Limerick",
-      "addressCountry": "IE",
-      ...(property.eircode ? { postalCode: property.eircode } : {}),
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": property.location?.lat ?? 52.5644,
-      "longitude": property.location?.lng ?? -8.7892
-    },
-    "amenityFeature": [
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Bedrooms",
-        "value": formatPropertyBedroomsShort(property)
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Golf Course Access",
-        "value": "Adare Manor Golf Course"
-      }
-    ],
-    "starRating": {
-      "@type": "Rating",
-      "ratingValue": "5",
-      "bestRating": "5"
-    },
-    "priceRange": "€€€€",
-    "telephone": "+353-61-605-200",
-    "email": "info@theadarecollection.com",
-    "sameAs": [
-      "https://theadarecollection.com"
-    ],
-    "event": {
-      "@type": "SportsEvent",
-      "name": "Ryder Cup 2027",
-      "description": "The 2027 Ryder Cup golf tournament at Adare Manor, featuring the best golfers from Europe and the United States.",
-      "startDate": "2027-09-29",
-      "endDate": "2027-10-01",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "Place",
-        "name": "Adare Manor Golf Course",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Adare Manor",
-          "addressLocality": "Adare",
-          "addressRegion": "Limerick",
-          "addressCountry": "IE",
-          "postalCode": "V94 W8WR"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 52.5644,
-          "longitude": -8.7892
-        }
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "Ryder Cup Europe",
-        "url": "https://www.rydercup.com"
-      },
-      "performer": [
-        {
-          "@type": "SportsTeam",
-          "name": "European Ryder Cup Team"
-        },
-        {
-          "@type": "SportsTeam",
-          "name": "United States Ryder Cup Team"
-        }
-      ],
-      "image": "https://theadarecollection.com/images/hero/adaremanor-img2.webp",
-      "offers": {
-        "@type": "Offer",
-        "name": "Ryder Cup 2027 Tickets",
-        "description": "Official tickets for the 2027 Ryder Cup at Adare Manor",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.rydercup.com"
-      }
-    }
-  };
+  const structuredData = buildPropertyListingJsonLd(property);
 
   return (
     <script
@@ -121,30 +34,133 @@ export function GlobalSchemaStructuredData() {
   );
 }
 
-export function BreadcrumbListStructuredData({ propertyName, propertyId }: { propertyName: string; propertyId: string }) {
+export function FaqPageStructuredData({
+  items,
+}: {
+  items: { question: string; answer: string }[];
+}) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+/** Local business signals for contact page (NAP aligned with footer). */
+export function ContactLocalBusinessStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "The Adare Collection",
+    legalName: "The Adare Collection Limited",
+    url: SITE,
+    telephone: "+353-86-668-1930",
+    email: "info@theadarecollection.ie",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Adare",
+      addressRegion: "County Limerick",
+      addressCountry: "IE",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 52.5644,
+      longitude: -8.7892,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    areaServed: "Adare Manor, County Limerick, Ireland",
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function BlogPostingStructuredData({ post }: { post: BlogPost }) {
+  const image = post.heroImage.startsWith("http")
+    ? post.heroImage
+    : `${SITE}${post.heroImage}`;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.publishedAt,
+    image,
+    url: `${SITE}/blog/${post.slug}`,
+    author: {
+      "@type": "Organization",
+      name: "The Adare Collection",
+      url: SITE,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "The Adare Collection",
+      url: SITE,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function BreadcrumbListStructuredData({
+  propertyName,
+  propertyId,
+}: {
+  propertyName: string;
+  propertyId: string;
+}) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
+    itemListElement: [
       {
         "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://theadarecollection.com/"
+        position: 1,
+        name: "Home",
+        item: `${SITE}/`,
       },
       {
         "@type": "ListItem",
-        "position": 2,
-        "name": "Properties",
-        "item": "https://theadarecollection.com/properties"
+        position: 2,
+        name: "Properties",
+        item: `${SITE}/properties`,
       },
       {
         "@type": "ListItem",
-        "position": 3,
-        "name": propertyName,
-        "item": `https://theadarecollection.com/property/${propertyId}`
-      }
-    ]
+        position: 3,
+        name: propertyName,
+        item: `${SITE}/property/${propertyId}`,
+      },
+    ],
   };
 
   return (

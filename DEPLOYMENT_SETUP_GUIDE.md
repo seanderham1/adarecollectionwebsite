@@ -42,6 +42,40 @@ Copy `functions/.env.example` to `functions/.env`, set `GMAIL_APP_PASSWORD=...`,
 
 Any secret that appeared in Git in the past is still reachable via history until rewritten ([`git filter-repo`](https://github.com/newren/git-filter-repo)). Rotating the app password invalidates the leaked credential.
 
+## Google Sheets — contact form log (no service account key)
+
+Many Google Workspace orgs block **service account key** creation (`iam.disableServiceAccountKeyCreation`). This project uses **Application Default Credentials (ADC)** instead: the HTTPS function runs as Google’s **runtime service account**, and you **share the spreadsheet** with that identity (Editor). No JSON key and no Sheets-related Firebase secret are required.
+
+Each successful `/api/contact` still sends email via Gmail and **appends one row** when `CONTACT_SHEET_SPREADSHEET_ID` and `CONTACT_SHEET_RANGE` are set. If Sheets fails after mail succeeds, the user still sees success and the error is logged.
+
+### One-time Google Cloud / Sheets setup
+
+1. Create a spreadsheet with a tab (e.g. `ContactLeads`) and **row 1** headers matching the order in `CONTACT_LEADS_HEADER_ROW` in `functions/src/appendContactToSheet.ts` (15 columns; range example: `ContactLeads!A:O`).
+2. In the same GCP project as Firebase (`theadarecollection-site`), enable **Google Sheets API** (APIs & Services → Library).
+3. **Find the runtime service account** used by your `api` function (this is who will call the Sheets API):
+   - **Google Cloud Console** → **Cloud Functions** → open **`api`** → **Edit** (or **Details**) → **Runtime, build, connections and security** → note **Service account** (often `PROJECT_NUMBER-compute@developer.gserviceaccount.com`, or a project-specific default).
+   - Or **Firebase Console** → **Functions** → **`api`** → configuration / “Runtime” section for the service account email.
+4. In the Google Sheet: **Share** → add that **runtime service account email** with **Editor** access. You do **not** need a separate “Sheets writer” service account or a downloadable key.
+
+### Firebase function environment variables
+
+In Firebase Console → Functions → **`api`** → Environment variables, set:
+
+- `CONTACT_SHEET_SPREADSHEET_ID` — from the Sheet URL `…/d/{ID}/edit`
+- `CONTACT_SHEET_RANGE` — e.g. `ContactLeads!A:O` (tab name + column span must match your sheet)
+
+Redeploy after changing env:
+
+```bash
+firebase deploy --only functions:api --project theadarecollection-site
+```
+
+Until both env vars are set, the function **skips** the Sheets append (info log only); email behaviour is unchanged.
+
+### Optional: local emulator with a key
+
+If your org allows keys in a **non-production** account, you can set `GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON` in `functions/.env` for the emulator only. Otherwise use `gcloud auth application-default login` and share the sheet with your **user** Google account for local testing.
+
 ## Prerequisites
 - Firebase project: `theadarecollection-site`
 - GitHub repository: `seanderham1/adarecollectionwebsite`

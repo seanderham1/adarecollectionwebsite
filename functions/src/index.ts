@@ -6,6 +6,8 @@ import cors from "cors";
 
 import nodemailer from "nodemailer";
 
+import { appendContactToSheet } from "./appendContactToSheet.js";
+
 /** Binds Secret Manager; value is available at runtime as `process.env.GMAIL_APP_PASSWORD`. */
 const gmailAppPassword = defineSecret("GMAIL_APP_PASSWORD");
 
@@ -75,12 +77,14 @@ const ENQUIRY_LABELS: Record<string, string> = {
   agency: "Agency / representative",
 };
 
-const GUEST_LABELS: Record<string, string> = {
-  "2-4": "2–4",
-  "5-8": "5–8",
-  "9-12": "9–12",
-  "13-plus": "13+",
-};
+/** Must stay in sync with contact form GUESTS_MIN / GUESTS_MAX. */
+const GUESTS_MIN = 1;
+const GUESTS_MAX = 16;
+
+function formatGuests(n: number): string {
+  if (n >= GUESTS_MAX) return `${GUESTS_MAX}+`;
+  return String(n);
+}
 
 const INTENDED_LABELS: Record<string, string> = {
   accommodation_only: "Accommodation only",
@@ -207,7 +211,7 @@ app.post("/api/contact", async (req, res) => {
     const enquiryType = String(body.enquiryType ?? "").trim();
     const organisationName = String(body.organisationName ?? "").trim();
     const rolePosition = String(body.rolePosition ?? "").trim();
-    const estimatedGuests = String(body.estimatedGuests ?? "").trim();
+    const estimatedGuests = Number(body.estimatedGuests);
     const intendedUse = String(body.intendedUse ?? "").trim();
     const prevEvent = body.previousMajorEventAccommodation;
     const budgetEurosThousands = Number(body.budgetEurosThousands);
@@ -262,11 +266,15 @@ app.post("/api/contact", async (req, res) => {
       }
     }
 
-    const validGuests = ["2-4", "5-8", "9-12", "13-plus"];
-    if (!validGuests.includes(estimatedGuests)) {
+    if (
+      !Number.isFinite(estimatedGuests) ||
+      !Number.isInteger(estimatedGuests) ||
+      estimatedGuests < GUESTS_MIN ||
+      estimatedGuests > GUESTS_MAX
+    ) {
       return res.status(400).json({
         success: false,
-        message: "Please select an estimated guest range.",
+        message: "Please provide a valid estimated number of guests.",
       });
     }
 
@@ -321,7 +329,7 @@ app.post("/api/contact", async (req, res) => {
     }
 
     const enquiryReadable = ENQUIRY_LABELS[enquiryType] ?? enquiryType;
-    const guestsReadable = GUEST_LABELS[estimatedGuests] ?? estimatedGuests;
+    const guestsReadable = formatGuests(estimatedGuests);
     const intendedReadable = INTENDED_LABELS[intendedUse] ?? intendedUse;
 
     let prevReadable = "Not specified";
@@ -364,7 +372,7 @@ app.post("/api/contact", async (req, res) => {
     const submittedAt = new Date().toISOString();
 
     const textBody = [
-      "New contact inquiry — The Adare Collection",
+      "New contact inquiry - The Adare Collection",
       "",
       `Submitted (UTC): ${submittedAt}`,
       "",
@@ -428,6 +436,76 @@ app.post("/api/contact", async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
+
+    const autoReplyText = [
+      `Dear ${name},`,
+      "",
+      "Thank you for contacting us at The Adare Collection. We have received your enquiry and will be in touch shortly.",
+      "",
+      "Kind regards,",
+      "The Adare Collection",
+      GMAIL_FROM_ADDRESS,
+    ].join("\n");
+
+    try {
+      await transporter.sendMail({
+        from: GMAIL_FROM_ADDRESS,
+        to: emailRaw,
+        replyTo: GMAIL_FROM_ADDRESS,
+        subject: "Thank you for contacting The Adare Collection",
+        text: autoReplyText,
+        html: `
+          <p>Dear ${escapeHtml(name)},</p>
+          <p>Thank you for contacting us at The Adare Collection. We have received your enquiry and will be in touch shortly.</p>
+          <p>Kind regards,<br>
+          The Adare Collection<br>
+          <a href="mailto:${escapeHtml(GMAIL_FROM_ADDRESS)}">${escapeHtml(GMAIL_FROM_ADDRESS)}</a></p>
+        `,
+      });
+    } catch (autoReplyErr) {
+      logger.error(
+        "Contact inquiry received but guest auto-reply failed",
+        autoReplyErr
+      );
+    }
+
+    let preferredPropertiesCell = "";
+    if (preferredPropertiesSummary.length > 0) {
+      preferredPropertiesCell = preferredPropertiesSummary.join("; ");
+    } else if (preferredPropertyIds.length > 0) {
+      preferredPropertiesCell = preferredPropertyIds.join("; ");
+    }
+
+    try {
+      await appendContactToSheet({
+        submittedAt,
+        name,
+        email: emailRaw,
+        extensionReadable,
+        phone,
+        phoneDisplay,
+        enquiryReadable,
+        organisationName:
+          enquiryType === "corporate" || enquiryType === "agency"
+            ? organisationName
+            : "",
+        rolePosition:
+          enquiryType === "corporate" || enquiryType === "agency"
+            ? rolePosition
+            : "",
+        guestsReadable,
+        intendedReadable,
+        prevReadable,
+        budgetReadable,
+        preferredPropertiesCell,
+        additionalNotes,
+      });
+    } catch (sheetErr) {
+      logger.error(
+        "Contact inquiry email sent but Google Sheets append failed",
+        sheetErr
+      );
+    }
 
     logger.info(`Contact form submitted by ${emailRaw}`);
 

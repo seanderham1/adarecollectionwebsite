@@ -10,8 +10,31 @@ import BrochureModal from "@/components/brochure-modal";
 import { properties, getPropertyCollectionBadge } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Car, ChefHat, Heading, Shirt, Crown, Bed, Mail, MessageCircle } from "lucide-react";
-import { ChevronLeft, ChevronRight, Play, Scan } from "lucide-react";
+import {
+  Car,
+  ChefHat,
+  Heading,
+  Shirt,
+  Crown,
+  Bed,
+  Mail,
+  MessageCircle,
+  Bath,
+  Users,
+  MapPinned,
+  TrainFront,
+  Tv,
+  Maximize2,
+  UtensilsCrossed,
+  CookingPot,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Scan,
+  Package,
+  Sofa,
+  type LucideIcon,
+} from "lucide-react";
 import { useState, useEffect, type CSSProperties } from "react";
 import { useSEO } from "@/hooks/use-seo";
 import { PropertyStructuredData, BreadcrumbListStructuredData } from "@/components/structured-data";
@@ -20,6 +43,23 @@ import {
   SITE_ORIGIN,
   toUseSEOArgs,
 } from "@/lib/prerender-route-meta";
+import { getPropertySeoSupplementParagraphs } from "@/lib/property-seo-content";
+import { SeoHubLinks } from "@/components/seo-hub-links";
+
+const PROPERTY_SPEC_ICONS: Record<string, LucideIcon> = {
+  Bedrooms: Bed,
+  Bathrooms: Bath,
+  Occupancy: Users,
+  "Reception rooms": Sofa,
+  "Distance from Ryder Cup Course": MapPinned,
+  "Distance to Park and Ride": MapPinned,
+  "Distance from Ryder Cup train": TrainFront,
+  "Number of TVs": Tv,
+  "Square footage": Maximize2,
+  "Dining seating": UtensilsCrossed,
+  "Kitchen seating": CookingPot,
+  "Kitchen/Dining seating": UtensilsCrossed,
+};
 
 /** Parkview: pre-load guess (overridden by intrinsic size on onLoad). Exterior/kitchen/sitting are typically landscape. */
 function parkviewGuessLandscape(src: string): boolean {
@@ -498,7 +538,7 @@ export default function PropertyDetail() {
                       MAP
                     </Button>
 
-{property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && (
+{property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'southview-cullinagh' && (
                         <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
@@ -509,7 +549,7 @@ export default function PropertyDetail() {
                   </div>
 
                   <p className="text-xs text-secondary text-center mt-4 leading-relaxed px-2">
-                    General questions about booking or Ryder week?{" "}
+                    General questions about booking or Ryder Cup 2027?{" "}
                     <Link href="/faq" className="underline underline-offset-4 hover:text-gray-900">
                       Read our FAQ
                     </Link>
@@ -552,15 +592,93 @@ export default function PropertyDetail() {
                   </h2>
                   <div className="text-sm text-primary leading-relaxed" data-testid="property-full-description">
                     {property.fullDescription.split('\n\n').map((paragraph, index) => (
-                      <p key={index} className="mb-4 last:mb-0">
+                      <p key={`base-${index}`} className="mb-4 last:mb-0">
                         {paragraph}
                       </p>
                     ))}
+                    {(property.id === "rangeview" || property.id === "the-captains" || property.id === "putters-way" || property.id === "the-first-tee" || property.id === "the-fairways" || property.id === "cragleigh-house" || property.id === "darrira-house" || property.id === "croagh-house" || property.id === "parkview-house" || property.id === "portland-house" || property.id === "dunes-lodge" || property.id === "hillview-house" || property.id === "southview-cullinagh" || property.id === "nead-fainleog") &&
+                      getPropertySeoSupplementParagraphs(property.id).map((paragraph, index) => (
+                        <p key={`seo-${index}`} className="mb-4 last:mb-0">
+                          {paragraph}
+                        </p>
+                      ))}
+                  </div>
+                </div>
+
+                {property.specs && property.specs.length > 0 && (
+                  <div className="mb-8 lg:pl-4 lg:pr-4" data-testid="property-specs">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {property.specs.map((spec, index) => {
+                        const SpecIcon = PROPERTY_SPEC_ICONS[spec.label];
+                        return (
+                          <div
+                            key={index}
+                            className="flex items-center space-x-4"
+                            data-testid={`property-spec-${index}`}
+                          >
+                            {SpecIcon && (
+                              <div
+                                className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0"
+                                aria-hidden
+                              >
+                                <SpecIcon className="text-white h-6 w-6" />
+                              </div>
+                            )}
+                            <div>
+                              <h4 className="font-semibold text-primary mb-1">{spec.label}</h4>
+                              <p className="text-primary text-sm">{spec.value}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Features */}
+                <div className="mb-8 lg:pl-4 lg:pr-4">
+                  <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-6 mt-4">Features</h3>
+                  <ul className="space-y-3 list-none">
+                    {property.features.map((feature, index) => (
+                      <li key={index} className="flex items-start space-x-3" data-testid={`property-feature-${index}`}>
+                        <span className="w-1.5 h-1.5 border border-gray-700 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Amenities */}
+                <div className="mb-8 lg:pl-4 lg:pr-4">
+                  <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-6 mt-4">Amenities</h3>
+                  <ul className="space-y-3 list-none">
+                    {property.amenities.map((amenity, index) => (
+                      <li key={index} className="flex items-start space-x-3" data-testid={`property-amenity-${index}`}>
+                        <span className="w-1.5 h-1.5 border border-gray-700 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-gray-700 text-sm leading-relaxed">{amenity}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Location Map */}
+                <div className="mb-8 lg:pl-4 lg:pr-4">
+                  <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-2 mt-4" data-testid="location-map-title">Location</h3>
+                  <p className="text-sm text-primary font-serif mb-4" data-testid="property-walking-distance-detail">
+                    {property.walkingDistance}
+                  </p>
+                  {property.eircode && property.id !== "the-first-tee" && property.id !== "southview-cullinagh" && property.id !== "nead-fainleog" && (
+                    <p className="text-sm text-primary font-serif mb-4" data-testid="property-eircode">
+                      Eircode: {property.eircode}
+                    </p>
+                  )}
+                  <div className="aspect-[1.7/1.1] bg-gray-200 relative overflow-hidden">
+                    <PropertyMap propertyId={property.id} />
                   </div>
                 </div>
 
                 {/* Add-on Services */}
-                <div className="mb-8 lg:pl-4 lg:pr-4">
+                <div className="mb-12 lg:pl-4 lg:pr-4">
                   <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-6 mt-4" data-testid="addon-services-title">
                     Add-on Services
                   </h3>
@@ -575,27 +693,27 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {property.id !== 'putters-way' && (
+                      <div className="flex items-start space-x-4">
+                        <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                          <ChefHat className="text-white h-6 w-6" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-primary mb-1" data-testid="service-chef-title">In-residence Private Chef</h4>
+                          <p className="text-primary text-sm" data-testid="service-chef-description">Bespoke dining experiences in your residence</p>
+                        </div>
+                      </div>
+                      
+                      {!["darrira-house", "croagh-house", "parkview-house", "cragleigh-house"].includes(property.id) && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                            <ChefHat className="text-white h-6 w-6" />
+                            <Heading className="text-white h-6 w-6" />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-primary mb-1" data-testid="service-chef-title">In-residence Private Chef</h4>
-                            <p className="text-primary text-sm" data-testid="service-chef-description">Bespoke dining experiences in your residence</p>
+                            <h4 className="font-semibold text-primary mb-1" data-testid="service-helicopter-title">Helicopter Transfers</h4>
+                            <p className="text-primary text-sm" data-testid="service-helicopter-description">Subject to availability</p>
                           </div>
                         </div>
                       )}
-                      
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Heading className="text-white h-6 w-6" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-primary mb-1" data-testid="service-helicopter-title">Helicopter Transfers</h4>
-                          <p className="text-primary text-sm" data-testid="service-helicopter-description">Subject to availability</p>
-                        </div>
-                      </div>
                       
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
@@ -607,7 +725,7 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house') && (
+                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house' || property.id === 'southview-cullinagh' || property.id === 'nead-fainleog') && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Crown className="text-white h-6 w-6" />
@@ -618,52 +736,22 @@ export default function PropertyDetail() {
                           </div>
                         </div>
                       )}
+
+                      {["croagh-house", "parkview-house"].includes(property.id) && (
+                        <div className="flex items-start space-x-4">
+                          <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Package className="text-white h-6 w-6" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-primary mb-1" data-testid="service-provisioning-title">Pre-arrival provisioning and stocking</h4>
+                            <p className="text-primary text-sm" data-testid="service-provisioning-description">Available upon request</p>
+                          </div>
+                        </div>
+                      )}
                     </div>
                 </div>
 
-                {/* Location Map */}
-                <div className="mb-8 lg:pl-4 lg:pr-4">
-                  <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-2 mt-4" data-testid="location-map-title">Location</h3>
-                  <p className="text-sm text-primary font-serif mb-4" data-testid="property-walking-distance-detail">
-                    {property.walkingDistance}
-                  </p>
-                  {property.eircode && property.id !== "the-first-tee" && (
-                    <p className="text-sm text-primary font-serif mb-4" data-testid="property-eircode">
-                      Eircode: {property.eircode}
-                    </p>
-                  )}
-                  <div className="aspect-[1.7/1.1] bg-gray-200 relative overflow-hidden">
-                    <PropertyMap propertyId={property.id} />
-                  </div>
-                </div>
-                {/* Features and Amenities - Combined on one line */}
-                <div className="grid md:grid-cols-2 gap-6 mb-12 lg:pl-4 lg:pr-4">
-                  {/* Features */}
-                  <div>
-                    <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-6 mt-4">Features</h3>
-                    <ul className="space-y-3 list-none">
-                      {property.features.map((feature, index) => (
-                        <li key={index} className="flex items-start space-x-3" data-testid={`property-feature-${index}`}>
-                          <span className="w-1.5 h-1.5 border border-gray-700 rounded-full mt-2 flex-shrink-0"></span>
-                          <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Amenities */}
-                  <div>
-                    <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-6 mt-4">Amenities</h3>
-                    <ul className="space-y-3 list-none">
-                      {property.amenities.map((amenity, index) => (
-                        <li key={index} className="flex items-start space-x-3" data-testid={`property-amenity-${index}`}>
-                          <span className="w-1.5 h-1.5 border border-gray-700 rounded-full mt-2 flex-shrink-0"></span>
-                          <span className="text-gray-700 text-sm leading-relaxed">{amenity}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                <SeoHubLinks className="mb-12 lg:pl-4 lg:pr-4 justify-start" />
               </div>
             </div>
 
@@ -700,24 +788,16 @@ export default function PropertyDetail() {
                     
                   </div>
 
-                  <p className="text-xs text-secondary text-left mt-3 leading-relaxed">
-                    General questions about booking or Ryder week?{" "}
-                    <Link href="/faq" className="underline underline-offset-4 hover:text-gray-900">
-                      Read our FAQ
-                    </Link>
-                    .
-                  </p>
-
                   {/* Map & Brochure Links */}
-                  <div className="space-y-4 mb-7 mt-4">
+                  <div className="space-y-4 mt-4">
                     <div className="flex justify-center space-x-2">
                       <Button 
                         onClick={handleViewMap}
-                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' ? 'w-1/2' : 'w-full'}`}
+                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'southview-cullinagh' ? 'w-1/2' : 'w-full'}`}
                       >
                         MAP
                       </Button>
-                      {property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && (
+                      {property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'southview-cullinagh' && (
                         <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
@@ -727,6 +807,14 @@ export default function PropertyDetail() {
                       )}
                     </div>
                   </div>
+
+                  <p className="text-xs text-secondary text-left mt-3 mb-7 leading-relaxed">
+                    General questions about booking or Ryder Cup 2027?{" "}
+                    <Link href="/faq" className="underline underline-offset-4 hover:text-gray-900">
+                      Read our FAQ
+                    </Link>
+                    .
+                  </p>
 
                   {/* Price and Enquiry Information */}
                   <div className="text-center mb-6">

@@ -8,6 +8,8 @@ import {
   PROPERTIES_URL,
   TEN_MIN_DRIVE_RADIUS_METERS,
   FIFTEEN_MIN_DRIVE_RADIUS_METERS,
+  TWENTY_MIN_WALK_RADIUS_METERS,
+  TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS,
   FORTY_FIVE_MIN_DRIVE_RADIUS_METERS,
   ONE_HOUR_DRIVE_RADIUS_METERS,
   createPropertyMarker,
@@ -66,6 +68,10 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
             center: mapCenter,
             zoom: propertyId === 'dunes-lodge'
               ? 8
+              : propertyId === 'southview-cullinagh'
+                ? 10
+              : propertyId === 'nead-fainleog'
+                ? 13
               : propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house'
                 ? 11
                 : propertyId === 'hillview-house' || propertyId === 'portland-house'
@@ -79,7 +85,13 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
         );
 
         // Add radius circle and label centered on the property
-        if (propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house') {
+        if (propertyId === 'nead-fainleog') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: TWENTY_MIN_WALK_RADIUS_METERS,
+            labelText: '20 minute walk',
+            icon: 'walk',
+          });
+        } else if (propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house') {
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: TEN_MIN_DRIVE_RADIUS_METERS,
             labelText: '10 minute drive',
@@ -95,6 +107,12 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: FORTY_FIVE_MIN_DRIVE_RADIUS_METERS,
             labelText: '45 minute drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'southview-cullinagh') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS,
+            labelText: '25 minute drive',
             icon: 'car',
           });
         } else if (propertyId === 'dunes-lodge') {

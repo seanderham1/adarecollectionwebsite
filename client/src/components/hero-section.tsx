@@ -17,8 +17,9 @@ import {
 } from "@/lib/map-utils";
 
 const enableHeroCarousel = false;
+const HERO_LCP_IMAGE = "/images/hero/adaremanor-img2.webp";
 const propertyImages = [
-  "/images/hero/adaremanor-img2.webp",
+  HERO_LCP_IMAGE,
   // "/images/hero/adaremanor-img3.webp",
   // "/images/hero/adaremanor-img1.webp",
 ];
@@ -70,6 +71,17 @@ export default function HeroSection() {
   const [isMapLoading, setIsMapLoading] = useState(true);
   const originalStateRef = useRef<{center: google.maps.LatLng, zoom: number} | null>(null);
   const radiusElementsRef = useRef<{walkCircle: google.maps.Circle, walkLabel: any, driveCircle: google.maps.Circle, driveLabel: any} | null>(null);
+
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = HERO_LCP_IMAGE;
+    document.head.appendChild(link);
+    return () => {
+      link.remove();
+    };
+  }, []);
 
   const nextImage = () =>
     setCurrentImageIndex((prev) => (prev + 1) % propertyImages.length);

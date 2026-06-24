@@ -47,6 +47,25 @@ function injectCanonicalHead(html: string, canonicalUrl: string): string {
   );
 }
 
+const HERO_PRELOAD =
+  '    <link rel="preload" href="/images/hero/adaremanor-img2.webp" as="image" />\n';
+
+function stripHeroImagePreload(html: string): string {
+  return html.replace(
+    /\s*<link rel="preload" href="\/images\/hero\/adaremanor-img2\.webp" as="image" \/>\n?/g,
+    "\n",
+  );
+}
+
+/** Homepage LCP hero only — avoids unused-preload warnings on FAQ, contact, etc. */
+function injectHeroImagePreload(html: string): string {
+  if (html.includes("/images/hero/adaremanor-img2.webp")) return html;
+  return html.replace(
+    /(<link rel="preload" href="\/images\/navbar\/adarecollectionlogo\.png" as="image" \/>)/,
+    `$1\n${HERO_PRELOAD.trim()}`,
+  );
+}
+
 function patchHead(html: string, payload: {
   title: string;
   description: string;
@@ -164,13 +183,17 @@ function main(): void {
   for (const p of payloads) {
     const file = prerenderHtmlFilename(p.path);
     const canonicalUrl = p.ogUrl;
-    const html = patchHead(template, {
+    let html = patchHead(template, {
       title: p.title,
       description: p.description,
       keywords: p.keywords,
       ogImage: p.ogImage,
       canonicalUrl,
     });
+    html =
+      p.path === "/"
+        ? injectHeroImagePreload(html)
+        : stripHeroImagePreload(html);
 
     writeFileSync(path.join(prerenderDir, file), html, "utf-8");
 

@@ -41,15 +41,23 @@ export default function Home() {
       {/* Introduction Section */}
       <section className="py-16 px-6 bg-white w-full" data-testid="introduction-section">
         <div className="w-full text-center">
-          <h1 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-6" data-testid="introduction-title">
+          <h1 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-4" data-testid="introduction-title">
             Curated luxury for Ryder Cup 2027
           </h1>
+          <p className="font-serif text-lg text-gray-800 mb-6 max-w-3xl mx-auto">
+            Ryder Cup 2027 accommodation near Adare Manor, private estates and executive rentals in
+            Ireland
+          </p>
           <div className="text-base text-gray-900 leading-relaxed max-w-5xl mx-auto" data-testid="introduction-description">
             <p className="font-serif text-base font-normal">
-              The Adare Collection offers a select number of exceptional private houses and estates near Adare Manor for Ryder Cup 2027: exclusive homes on the demesne and upscale executive rentals elsewhere in County Limerick when you require more capacity or privacy.
+              The Adare Collection offers a select number of exceptional private houses and estates near
+              Adare Manor for Ryder Cup accommodations: exclusive homes on the demesne and upscale
+              executive rentals elsewhere in County Limerick when you require more capacity or privacy.
+              Several residences are on the Adare Manor estate itself, among the closest private lodging to
+              the tournament venue and championship course.
             </p>
             <p className="font-serif text-base font-normal">
-              Each property has been handpicked by a local promoter who knows each home, its setting, and its character inside out, with a proven track record in high-profile hospitality and event management behind that work.
+              Each property has been handpicked by a local expert who knows each home, its setting, and its character inside out, with a proven track record in high-profile hospitality and event management behind that work.
             </p>
             <p className="font-serif text-base font-normal">
               Whether you&apos;re hosting corporate guests for the tournament, sponsoring hospitality, or planning a private stay, you&apos;ll receive discreet, personal guidance in selecting accommodation that fits your itinerary and group size.
@@ -59,9 +67,34 @@ export default function Home() {
                 href="/properties"
                 className="underline underline-offset-4 decoration-gray-900/40 hover:text-gray-700"
               >
-                Browse Ryder Cup 2027 properties near Adare Manor
+                Browse Ryder Cup 2027 properties
               </Link>
-              .
+              {" · "}
+              <Link
+                href="/ryder-cup-packages"
+                className="underline underline-offset-4 decoration-gray-900/40 hover:text-gray-700"
+              >
+                Packages
+              </Link>
+              {" · "}
+              <Link
+                href="/corporate-hospitality"
+                className="underline underline-offset-4 decoration-gray-900/40 hover:text-gray-700"
+              >
+                Corporate hospitality
+              </Link>
+              {" · "}
+              <Link
+                href="/services"
+                className="underline underline-offset-4 decoration-gray-900/40 hover:text-gray-700"
+              >
+                Travel management
+              </Link>
+            </p>
+            <p className="font-serif text-base font-normal mt-4 text-gray-800">
+              Galway and Shannon are common gateways for international guests; we help you plan ground
+              transportation, parking, and stays with amenities suited to Ryder Cup week; ticket
+              information is via the official tournament site.
             </p>
           </div>
         </div>

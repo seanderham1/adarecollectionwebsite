@@ -27,6 +27,7 @@ function getContactApiUrl(): string {
 
 export const CONTACT_FORM_SUBTITLE_PARAGRAPHS = [
   "The Adare Collection offers a limited portfolio of private luxury residences in and around Adare Manor for Ryder Cup 2027.",
+  "Stays are arranged for a fixed rental period of up to eight nights. There is no minimum stay; shorter visits within that cap are welcome. Your quoted price and payment schedule apply to the period we confirm with you at booking, not to stays beyond eight nights.",
   "Due to the calibre and limited availability of these properties, enquiries are reviewed carefully. We will contact interested parties to discuss suitable options in further detail.",
   "Please provide the details below so we can assist with your enquiry.",
 ];
@@ -68,12 +69,41 @@ const PHONE_DIAL_OPTIONS: { value: string; label: string }[] = [
   { value: "none", label: "Other" },
 ];
 
-const selectTriggerClass =
-  "w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0";
+/** Matches Full name field: text-base + font-medium when filled; normal placeholder. */
+const contactFieldTypography =
+  "text-base font-medium md:text-base placeholder:text-gray-400 placeholder:font-normal";
+
+const contactInputClass = cn(
+  "w-full border-0 border-b rounded-none bg-transparent px-0 py-4",
+  contactFieldTypography,
+  "focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+);
+
+const contactSelectTriggerClass = cn(
+  "w-full border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4",
+  contactFieldTypography,
+  "data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 [&>span]:line-clamp-1 [&>span]:text-left"
+);
+
+const contactPickerButtonClass = cn(
+  "flex w-full items-center justify-between border-0 border-b border-gray-200 bg-transparent py-4 text-left outline-none focus:border-gray-700 disabled:opacity-50",
+  contactFieldTypography
+);
+
+/** Section helper / sub-questions (e.g. under Experience, Budget); matches intro copy. */
+const contactSectionHelperClass = "text-sm text-secondary leading-relaxed";
 
 function formatBudgetThousands(k: number): string {
   if (k >= 1000) return "€1M+";
   return `€${k}k`;
+}
+
+const GUESTS_MIN = 1;
+const GUESTS_MAX = 16;
+
+function formatGuests(n: number): string {
+  if (n >= GUESTS_MAX) return `${GUESTS_MAX}+`;
+  return String(n);
 }
 
 /** Primary property first; remaining IDs follow catalogue order. */
@@ -99,7 +129,7 @@ function getInitialFormState() {
     enquiryType: "" as EnquiryType,
     organisationName: "",
     rolePosition: "",
-    estimatedGuests: "",
+    estimatedGuests: 8,
     intendedUse: "",
     previousMajorEvent: "" as "" | "yes" | "no",
     budgetEurosK: 525,
@@ -148,8 +178,8 @@ export function ContactEnquiryForm({
   const introParagraphs = useMemo(() => {
     if (primaryPropertyId && primaryProperty) {
       return [
-        `You're requesting availability for ${primaryProperty.name} — shown below. You can optionally include other properties from our portfolio in the same enquiry.`,
-        CONTACT_FORM_SUBTITLE_PARAGRAPHS[1],
+        `You're requesting availability for ${primaryProperty.name}, shown below. You can optionally include other properties from our portfolio in the same enquiry.`,
+        CONTACT_FORM_SUBTITLE_PARAGRAPHS[2],
         "Please complete your details below.",
       ];
     }
@@ -206,9 +236,6 @@ export function ContactEnquiryForm({
       }
     }
 
-    if (!form.estimatedGuests) {
-      errors.estimatedGuests = "Please select an estimated guest range";
-    }
     if (!form.intendedUse) {
       errors.intendedUse = "Please select intended use";
     }
@@ -265,6 +292,7 @@ export function ContactEnquiryForm({
       organisationName: needsOrgFields ? form.organisationName.trim() : "",
       rolePosition: needsOrgFields ? form.rolePosition.trim() : "",
       estimatedGuests: form.estimatedGuests,
+      estimatedGuestsLabel: formatGuests(form.estimatedGuests),
       intendedUse: form.intendedUse,
       previousMajorEventAccommodation: form.previousMajorEvent || null,
       budgetEurosThousands: form.budgetEurosK,
@@ -329,7 +357,7 @@ export function ContactEnquiryForm({
           </h2>
         )}
         <div
-          className="text-sm text-secondary leading-relaxed mb-10 max-w-xl space-y-3"
+          className={cn(contactSectionHelperClass, "mb-10 max-w-xl space-y-3")}
           data-testid={introTestId}
         >
           {introParagraphs.map((p) => (
@@ -353,7 +381,7 @@ export function ContactEnquiryForm({
               onChange={(e) => setField("fullName", e.target.value)}
               placeholder="Full name *"
               className={cn(
-                "w-full border-0 border-b rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                contactInputClass,
                 triggerErrorClass("fullName") || "border-gray-200 focus:border-gray-700"
               )}
               disabled={isSubmitting}
@@ -375,7 +403,7 @@ export function ContactEnquiryForm({
               onChange={(e) => setField("email", e.target.value)}
               placeholder="Email address *"
               className={cn(
-                "w-full border-0 border-b rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                contactInputClass,
                 triggerErrorClass("email") || "border-gray-200 focus:border-gray-700"
               )}
               disabled={isSubmitting}
@@ -399,12 +427,12 @@ export function ContactEnquiryForm({
                 >
                   <SelectTrigger
                     className={cn(
-                      "w-full border-0 border-b rounded-none bg-transparent px-0 py-4 text-xs sm:text-sm font-normal data-[placeholder]:text-gray-400 data-[placeholder]:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 [&>span]:line-clamp-1 [&>span]:text-left",
+                      contactSelectTriggerClass,
                       triggerErrorClass("phoneExtension") || "border-gray-200 focus:border-gray-700"
                     )}
                     data-testid="select-phone-extension"
                   >
-                    <SelectValue placeholder="Code *" />
+                    <SelectValue placeholder="Country Code *" />
                   </SelectTrigger>
                   <SelectContent>
                     {PHONE_DIAL_OPTIONS.map((opt) => (
@@ -423,7 +451,7 @@ export function ContactEnquiryForm({
                   onChange={(e) => setField("phone", e.target.value)}
                   placeholder="Phone number *"
                   className={cn(
-                    "w-full border-0 border-b rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                    contactInputClass,
                     triggerErrorClass("phone") || "border-gray-200 focus:border-gray-700"
                   )}
                   disabled={isSubmitting}
@@ -446,7 +474,7 @@ export function ContactEnquiryForm({
               disabled={isSubmitting}
             >
               <SelectTrigger
-                className={cn(selectTriggerClass, triggerErrorClass("enquiryType"))}
+                className={cn(contactSelectTriggerClass, triggerErrorClass("enquiryType"))}
                 data-testid="select-enquiry-type"
               >
                 <SelectValue placeholder="How are you enquiring? *" />
@@ -472,7 +500,7 @@ export function ContactEnquiryForm({
                   onChange={(e) => setField("organisationName", e.target.value)}
                   placeholder="Organisation / company name *"
                   className={cn(
-                    "w-full border-0 border-b rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                    contactInputClass,
                     triggerErrorClass("organisationName") || "border-gray-200 focus:border-gray-700"
                   )}
                   disabled={isSubmitting}
@@ -490,7 +518,7 @@ export function ContactEnquiryForm({
                   onChange={(e) => setField("rolePosition", e.target.value)}
                   placeholder="Role / position *"
                   className={cn(
-                    "w-full border-0 border-b rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                    contactInputClass,
                     triggerErrorClass("rolePosition") || "border-gray-200 focus:border-gray-700"
                   )}
                   disabled={isSubmitting}
@@ -511,27 +539,34 @@ export function ContactEnquiryForm({
           </h3>
 
           <div>
-            <Select
-              value={form.estimatedGuests || undefined}
-              onValueChange={(v) => setField("estimatedGuests", v)}
-              disabled={isSubmitting}
-            >
-              <SelectTrigger
-                className={cn(selectTriggerClass, triggerErrorClass("estimatedGuests"))}
-                data-testid="select-guests"
-              >
-                <SelectValue placeholder="Estimated number of guests *" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="2-4">2–4</SelectItem>
-                <SelectItem value="5-8">5–8</SelectItem>
-                <SelectItem value="9-12">9–12</SelectItem>
-                <SelectItem value="13-plus">13+</SelectItem>
-              </SelectContent>
-            </Select>
-            {validationErrors.estimatedGuests && (
-              <p className="text-red-500 text-sm mt-1">{validationErrors.estimatedGuests}</p>
-            )}
+            <p className={cn(contactSectionHelperClass, "mb-1")}>
+              Estimated number of guests *
+            </p>
+            <div className="pt-2 space-y-3">
+              <div className="flex justify-between text-sm font-medium text-primary">
+                <span>{GUESTS_MIN}</span>
+                <span data-testid="guests-display" className="tabular-nums">
+                  {formatGuests(form.estimatedGuests)} guests
+                </span>
+                <span>{GUESTS_MAX}+</span>
+              </div>
+              <Slider
+                value={[form.estimatedGuests]}
+                onValueChange={(v) => {
+                  const next = Math.min(
+                    GUESTS_MAX,
+                    Math.max(GUESTS_MIN, v[0] ?? form.estimatedGuests)
+                  );
+                  setForm((prev) => ({ ...prev, estimatedGuests: next }));
+                }}
+                min={GUESTS_MIN}
+                max={GUESTS_MAX}
+                step={1}
+                disabled={isSubmitting}
+                className="w-full"
+                data-testid="slider-guests"
+              />
+            </div>
           </div>
 
           <div>
@@ -541,7 +576,7 @@ export function ContactEnquiryForm({
               disabled={isSubmitting}
             >
               <SelectTrigger
-                className={cn(selectTriggerClass, triggerErrorClass("intendedUse"))}
+                className={cn(contactSelectTriggerClass, triggerErrorClass("intendedUse"))}
                 data-testid="select-intended-use"
               >
                 <SelectValue placeholder="Intended use of property *" />
@@ -564,7 +599,7 @@ export function ContactEnquiryForm({
           <h3 className="font-serif text-lg font-normal text-primary border-b border-gray-100 pb-2">
             Experience
           </h3>
-          <p className="text-xs text-muted-foreground -mt-2">
+          <p className={cn(contactSectionHelperClass, "-mt-2")}>
             Have you previously organised accommodation for a major sporting or corporate event?
           </p>
           <Select
@@ -572,8 +607,8 @@ export function ContactEnquiryForm({
             onValueChange={(v) => setField("previousMajorEvent", v as "yes" | "no")}
             disabled={isSubmitting}
           >
-            <SelectTrigger className={selectTriggerClass} data-testid="select-previous-event">
-              <SelectValue placeholder="Optional — select if you would like to answer" />
+            <SelectTrigger className={contactSelectTriggerClass} data-testid="select-previous-event">
+              <SelectValue placeholder="Optional - select if you would like to answer" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="yes">Yes</SelectItem>
@@ -583,7 +618,10 @@ export function ContactEnquiryForm({
           {form.previousMajorEvent !== "" && (
             <button
               type="button"
-              className="mt-2 text-xs text-muted-foreground underline underline-offset-2 hover:text-primary"
+              className={cn(
+                contactSectionHelperClass,
+                "mt-2 underline underline-offset-2 hover:text-primary"
+              )}
               onClick={() => setField("previousMajorEvent", "")}
               disabled={isSubmitting}
             >
@@ -597,7 +635,7 @@ export function ContactEnquiryForm({
           <h3 className="font-serif text-lg font-normal text-primary border-b border-gray-100 pb-2">
             Budget
           </h3>
-          <p className="text-xs text-muted-foreground -mt-2 max-w-xl">
+          <p className={cn(contactSectionHelperClass, "-mt-2 max-w-xl")}>
             What is your approximate budget?
           </p>
           <div className="pt-2 space-y-3">
@@ -633,7 +671,7 @@ export function ContactEnquiryForm({
           {primaryPropertyId && primaryProperty ? (
             <>
               <div className="space-y-2">
-                <p className="text-xs text-muted-foreground">Property you&apos;re enquiring about</p>
+                <p className={contactSectionHelperClass}>Property you&apos;re enquiring about</p>
                 <div className="flex gap-3 border border-gray-200 bg-muted/20 p-3 rounded-none">
                   {primaryProperty.thumbnail || primaryProperty.images[0] ? (
                     <img
@@ -647,7 +685,7 @@ export function ContactEnquiryForm({
                   ) : null}
                   <div className="min-w-0 flex-1">
                     <p className="font-medium text-primary leading-snug">{primaryProperty.name}</p>
-                    <p className="text-xs text-muted-foreground mt-1 leading-snug line-clamp-2">
+                    <p className={cn(contactSectionHelperClass, "mt-1 leading-snug line-clamp-2")}>
                       {primaryProperty.subtitle}
                     </p>
                   </div>
@@ -655,26 +693,26 @@ export function ContactEnquiryForm({
               </div>
 
               <div>
-                <p className="text-xs text-muted-foreground mb-2">Additional properties (optional)</p>
+                <p className={cn(contactSectionHelperClass, "mb-2")}>
+                  Additional properties (optional)
+                </p>
                 <Popover>
                   <PopoverTrigger asChild>
                     <button
                       type="button"
                       disabled={isSubmitting}
                       data-testid="button-additional-properties"
-                      className={cn(
-                        "flex w-full items-center justify-between border-0 border-b border-gray-200 bg-transparent py-4 text-left text-sm outline-none focus:border-gray-700 disabled:opacity-50"
-                      )}
+                      className={contactPickerButtonClass}
                     >
                       <span
                         className={
                           additionalSelectedCount === 0
                             ? "font-normal text-gray-400"
-                            : "font-normal text-primary"
+                            : "font-medium text-primary"
                         }
                       >
                         {additionalSelectedCount === 0
-                          ? `Select additional homes — ${additionalPropertiesList.length} other properties`
+                          ? `Select additional homes - ${additionalPropertiesList.length} other properties`
                           : `${additionalSelectedCount} additional propert${additionalSelectedCount === 1 ? "y" : "ies"} selected`}
                       </span>
                     </button>
@@ -718,7 +756,7 @@ export function ContactEnquiryForm({
             </>
           ) : (
             <div>
-              <p className="text-xs text-muted-foreground mb-2">
+              <p className={cn(contactSectionHelperClass, "mb-2")}>
                 Preferred property or properties (optional)
               </p>
               <Popover>
@@ -727,19 +765,17 @@ export function ContactEnquiryForm({
                     type="button"
                     disabled={isSubmitting}
                     data-testid="button-preferred-properties"
-                    className={cn(
-                      "flex w-full items-center justify-between border-0 border-b border-gray-200 bg-transparent py-4 text-left text-sm outline-none focus:border-gray-700 disabled:opacity-50"
-                    )}
+                    className={contactPickerButtonClass}
                   >
                     <span
                       className={
                         selectedPropertyIds.size === 0
                           ? "font-normal text-gray-400"
-                          : "font-normal text-primary"
+                          : "font-medium text-primary"
                       }
                     >
                       {selectedPropertyIds.size === 0
-                        ? `Select one or more — ${properties.length} properties`
+                        ? `Select one or more - ${properties.length} properties`
                         : `${selectedPropertyIds.size} propert${selectedPropertyIds.size === 1 ? "y" : "ies"} selected`}
                     </span>
                   </button>
@@ -788,7 +824,10 @@ export function ContactEnquiryForm({
               value={form.additionalNotes}
               onChange={(e) => setField("additionalNotes", e.target.value)}
               placeholder="Additional notes"
-              className="w-full min-h-[120px] border-0 border-b border-gray-200 rounded-none bg-transparent px-0 py-4 text-base font-medium placeholder:text-gray-400 placeholder:font-normal focus:border-gray-700 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 resize-none"
+              className={cn(
+                contactInputClass,
+                "min-h-[120px] border-gray-200 focus:border-gray-700 resize-none"
+              )}
               disabled={isSubmitting}
               data-testid="textarea-notes"
             />
@@ -796,7 +835,7 @@ export function ContactEnquiryForm({
         </div>
 
         <div className="space-y-2.5 pt-2">
-          <p className="text-xs text-muted-foreground leading-normal">
+          <p className={contactSectionHelperClass}>
             We use what you submit here only to assess and respond to your enquiry about our properties,
             including any follow-up. How we process personal data is explained in our{" "}
             <Link href="/privacy" className="text-primary underline underline-offset-2 hover:no-underline">
@@ -806,7 +845,7 @@ export function ContactEnquiryForm({
             <button
               type="button"
               onClick={openPreferences}
-              className="inline p-0 text-xs font-normal text-primary underline underline-offset-2 hover:no-underline bg-transparent border-0 cursor-pointer align-baseline"
+              className="inline p-0 text-sm font-normal text-primary underline underline-offset-2 hover:no-underline bg-transparent border-0 cursor-pointer align-baseline"
             >
               Cookie settings
             </button>
@@ -821,7 +860,10 @@ export function ContactEnquiryForm({
               className="mt-0.5"
               data-testid="checkbox-privacy-consent"
             />
-            <label htmlFor="contact-privacy-consent" className="text-xs text-primary leading-snug cursor-pointer">
+            <label
+              htmlFor="contact-privacy-consent"
+              className={cn(contactSectionHelperClass, "text-primary leading-snug cursor-pointer")}
+            >
               I have read the{" "}
               <Link
                 href="/privacy"
@@ -835,7 +877,7 @@ export function ContactEnquiryForm({
             </label>
           </div>
           {validationErrors.privacyConsent && (
-            <p className="text-red-500 text-xs">{validationErrors.privacyConsent}</p>
+            <p className="text-red-500 text-sm">{validationErrors.privacyConsent}</p>
           )}
         </div>
 

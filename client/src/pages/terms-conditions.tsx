@@ -17,7 +17,7 @@ export default function TermsConditions() {
               Terms and Conditions
             </h1>
             <p className="text-sm text-gray-500">
-              Last updated: January 2025
+              Last updated: May 2026
             </p>
           </div>
 
@@ -70,22 +70,38 @@ export default function TermsConditions() {
                   </h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>All bookings are subject to availability and confirmation by The Adare Collection Limited (trading as The Adare Collection)</li>
-                    <li>Bookings are confirmed only upon receipt of full payment and signed rental agreement</li>
+                    <li>Bookings are confirmed only upon signing the rental agreement and payment of the non-refundable booking deposit as set out in Section 3.2</li>
                     <li>We reserve the right to refuse bookings at our discretion</li>
-                    <li>Minimum stay requirements may apply during Ryder Cup 2027 and other special events</li>
+                    <li>Ryder Cup 2027 rentals are for an agreed fixed period of up to eight nights; there is no minimum stay, and quoted pricing applies to that confirmed period</li>
                     <li>All guests must be 18 years or older to make a booking</li>
                   </ul>
 
-                  <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
+                  <h3
+                    id="payment-terms"
+                    className="font-serif text-xl font-normal text-primary mb-3 mt-6 scroll-mt-24"
+                  >
                     3.2 Payment Terms
                   </h3>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>Full payment is required at the time of booking confirmation</li>
-                    <li>We accept payment by bank transfer, credit card, or other agreed methods</li>
-                    <li>All prices are quoted in Euro (€) and include applicable Irish VAT</li>
-                    <li>Additional charges may apply for extra services, damages, or cleaning fees</li>
-                    <li>Payment processing fees may apply depending on the payment method chosen</li>
-                  </ul>
+                  <div className="space-y-4">
+                    <p>
+                      A non-refundable booking deposit of 50% is required upon signing to secure the Property. The remaining balance is payable no later than 31st January 2027 unless otherwise agreed in writing.
+                    </p>
+                    <p>
+                      All deposits are strictly non-refundable under all circumstances. Cancellation terms in Section 3.3 apply only to payments made in excess of the deposit.
+                    </p>
+                    <p>
+                      A 20% security deposit is also required with final payment. The Guest remains fully liable for any loss or damage whether or not such loss exceeds the security deposit, and The Adare Collection reserves the right to recover any additional sums due.
+                    </p>
+                    <p>
+                      We reserve the right to cancel any booking without refund where payment deadlines are not met.
+                    </p>
+                    <ul className="list-disc pl-6 space-y-2">
+                      <li>We accept payment by bank transfer, credit card, or other agreed methods</li>
+                      <li>All prices are quoted in Euro (€) and are subject to Irish VAT</li>
+                      <li>Additional charges may apply for extra services, damages, or cleaning fees</li>
+                      <li>Payment processing fees may apply depending on the payment method chosen</li>
+                    </ul>
+                  </div>
 
                   <h3
                     id="cancellation-refund-policy"
@@ -94,12 +110,12 @@ export default function TermsConditions() {
                     3.3 Cancellation and Refund Policy
                   </h3>
                   <p className="mb-4">
-                    We understand that plans may change, and we have established a fair cancellation policy to accommodate different circumstances. All cancellation requests must be made in writing to info@theadarecollection.ie.
+                    We understand that plans may change, and we have established a fair cancellation policy to accommodate different circumstances. All cancellation requests must be made in writing to info@theadarecollection.ie. The booking deposit described in Section 3.2 is strictly non-refundable; the percentages below apply only to amounts paid in excess of that deposit (including the remaining balance and security deposit, where paid).
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Cancellations made more than 180 days before arrival: 100% refund</li>
-                    <li>Cancellations made 120-180 days before arrival: 50% refund</li>
-                    <li>Cancellations made less than 120 days before arrival: No refund</li>
+                    <li>Cancellations made more than 180 days before arrival: 100% refund of eligible amounts paid in excess of the deposit</li>
+                    <li>Cancellations made 120-180 days before arrival: 50% refund of eligible amounts paid in excess of the deposit</li>
+                    <li>Cancellations made less than 120 days before arrival: No refund of amounts paid in excess of the deposit</li>
                     <li>Refunds will be processed within 14 business days of cancellation confirmation</li>
                     <li>Force majeure events may be subject to different cancellation terms as outlined in Section 8</li>
                   </ul>

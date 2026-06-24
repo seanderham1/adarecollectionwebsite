@@ -8,6 +8,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { properties } from "../client/src/lib/properties";
+import { getBlogPosts } from "../client/src/lib/blog-posts";
 import {
   propertyPageDescription,
   propertyPageTitle,
@@ -38,6 +39,10 @@ const staticRoutes: { path: string; changefreq: string; priority: string }[] =
     { path: "/about", changefreq: "monthly", priority: "0.7" },
     { path: "/contact", changefreq: "monthly", priority: "0.8" },
     { path: "/faq", changefreq: "monthly", priority: "0.7" },
+    { path: "/blog", changefreq: "weekly", priority: "0.8" },
+    { path: "/ryder-cup-packages", changefreq: "weekly", priority: "0.85" },
+    { path: "/corporate-hospitality", changefreq: "weekly", priority: "0.85" },
+    { path: "/services", changefreq: "weekly", priority: "0.9" },
   ];
 
 const manifest: Record<string, { title: string; description: string }> = {};
@@ -53,6 +58,10 @@ const propertyBlocks = properties.map((p) =>
   urlBlock(`${SITE}/property/${p.id}`, "weekly", "0.8", lastmod),
 );
 
+const blogBlocks = getBlogPosts().map((post) =>
+  urlBlock(`${SITE}/blog/${post.slug}`, "weekly", "0.7", lastmod),
+);
+
 const staticBlocks = staticRoutes.map((r) =>
   urlBlock(`${SITE}${r.path}`, r.changefreq, r.priority, lastmod),
 );
@@ -65,6 +74,7 @@ const footerBlocks = [
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${staticBlocks.join("\n")}
+${blogBlocks.join("\n")}
 ${propertyBlocks.join("\n")}
 ${footerBlocks.join("\n")}
 </urlset>
@@ -128,6 +138,12 @@ function patchFirebaseCanonicalHeaders(): void {
   for (const p of properties) {
     linkRules.push(
       linkHeaderRule(`/property/${p.id}`, `${SITE}/property/${p.id}`),
+    );
+  }
+
+  for (const post of getBlogPosts()) {
+    linkRules.push(
+      linkHeaderRule(`/blog/${post.slug}`, `${SITE}/blog/${post.slug}`),
     );
   }
 

@@ -119,7 +119,7 @@ export function CookieConsentLayer() {
                 className="text-primary underline underline-offset-2"
                 onClick={() => closePreferences()}
               >
-                Privacy Policy — cookies
+                Privacy Policy - cookies
               </Link>
             </DialogDescription>
           </DialogHeader>
@@ -141,7 +141,7 @@ export function CookieConsentLayer() {
                   Analytics cookies
                 </label>
                 <p id="cookie-analytics-hint" className="text-xs text-muted-foreground leading-snug">
-                  Google Analytics — aggregated usage statistics to improve the site.
+                  Google Analytics: aggregated usage statistics to improve the site.
                 </p>
               </div>
               <Switch
