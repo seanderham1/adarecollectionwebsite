@@ -859,6 +859,7 @@ export const properties: Property[] = [
       lng: -8.3473484,
     },
     walkingDistance: "Approximately 45 minutes' drive to Adare Manor",
+    videoUrl: "/videos/portlandhouse.mp4",
   },
   {
     id: "southview-cullinagh",
