@@ -8,6 +8,7 @@ import {
   PROPERTIES_URL,
   TEN_MIN_DRIVE_RADIUS_METERS,
   FIFTEEN_MIN_DRIVE_RADIUS_METERS,
+  WALK_RADIUS_METERS,
   TWENTY_MIN_WALK_RADIUS_METERS,
   TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS,
   FORTY_FIVE_MIN_DRIVE_RADIUS_METERS,
@@ -70,6 +71,8 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
               ? 8
               : propertyId === 'southview-cullinagh'
                 ? 10
+              : propertyId === 'the-manor-lodge'
+                ? 15
               : propertyId === 'nead-fainleog'
                 ? 13
               : propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house'
@@ -85,7 +88,13 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
         );
 
         // Add radius circle and label centered on the property
-        if (propertyId === 'nead-fainleog') {
+        if (propertyId === 'the-manor-lodge') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: WALK_RADIUS_METERS,
+            labelText: '10 minute walk',
+            icon: 'walk',
+          });
+        } else if (propertyId === 'nead-fainleog') {
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: TWENTY_MIN_WALK_RADIUS_METERS,
             labelText: '20 minute walk',

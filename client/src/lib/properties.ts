@@ -36,6 +36,24 @@ export function getPropertyCollectionBadge(propertyId: string): string {
   return "EXECUTIVE";
 }
 
+const COLLECTION_TIER_ORDER: Record<string, number> = {
+  EXECUTIVE: 0,
+  PREMIUM: 1,
+  DELUXE: 2,
+};
+
+/** Homepage / listing order: Executive → Premium → Deluxe, preserving source order within each tier. */
+export function sortPropertiesByCollectionTier(list: readonly Property[]): Property[] {
+  const indexById = new Map(properties.map((p, i) => [p.id, i]));
+  return [...list].sort((a, b) => {
+    const tierDiff =
+      (COLLECTION_TIER_ORDER[getPropertyCollectionBadge(a.id)] ?? 0) -
+      (COLLECTION_TIER_ORDER[getPropertyCollectionBadge(b.id)] ?? 0);
+    if (tierDiff !== 0) return tierDiff;
+    return (indexById.get(a.id) ?? 0) - (indexById.get(b.id) ?? 0);
+  });
+}
+
 export const properties: Property[] = [
   {
     id: "rangeview",
@@ -91,7 +109,6 @@ export const properties: Property[] = [
       "Large outdoor areas including 3230ft²/300m² of landscaped gardens and 2690ft²/250m² of Liscannor paving, perfect for marquee events (up to 100 guests)",
     ],
     amenities: [
-      "Chef cooked breakfast",
       "Private cinema room with retractable projector, stereo system, and automatic blinds",
       "Fitness suite including gym, sauna, and shower facilities",
       "Executive home office",
@@ -165,7 +182,6 @@ export const properties: Property[] = [
       "Separate dining area capable of hosting 50+ guests.",
     ],
     amenities: [
-      "Chef cooked breakfast",
       "Daily serviced fresh towels and linens",
       "Daily housekeeping",
       "High-speed Wi-Fi and satellite TV",
@@ -286,7 +302,6 @@ export const properties: Property[] = [
       "Landscaped grounds",
     ],
     amenities: [
-      "Chef cooked breakfast",
       "Fully equipped kitchen",
       "High-speed Wi-Fi",
       "Multiple living areas",
@@ -356,7 +371,6 @@ export const properties: Property[] = [
       "Elegant dining area adjoining a conservatory that opens to the garden"
     ],
     amenities: [
-      "Chef cooked breakfast",
       "Fitness Suite: a fully equipped private gym above the garage",
       "Firepit Terrace & Gazebo: covered outdoor living area with built-in fireplace, lounge seating for 10 to 12, and Kamado Joe BBQ",
       "Secluded rear garden with patio, dining area, and cushioned seating for al fresco entertaining",
@@ -393,7 +407,7 @@ export const properties: Property[] = [
     ],
     price: "POA",
     images: [
-      "/images/houses/house 5/cragleigh-house-main-optimized.webp",
+      "/images/houses/house 5/cragleighhouse-main.webp",
       "/images/houses/house 5/cragleigh-interior.webp",
       "/images/houses/house 5/cragleigh-dining.webp",
       "/images/houses/house 5/cragleigh-house-living-room-2.webp",
@@ -406,7 +420,7 @@ export const properties: Property[] = [
       "/images/houses/house 5/cragleigh-bedroom-3.webp",
       "/images/houses/house 5/cragleigh-patio.webp"
     ],
-    thumbnail: "/images/houses/house 5/cragleigh-house-main-optimized.webp",
+    thumbnail: "/images/houses/house 5/cragleighhouse-main.webp",
     features: [
       "Two large elegant sitting rooms with ample space for entertaining",
       "Two formal dining rooms suitable for private dining or group hosting",
@@ -414,7 +428,6 @@ export const properties: Property[] = [
       "Extensive garden space suitable for outdoor receptions and large gatherings",
     ],
     amenities: [
-      "Chef cooked breakfast",
       "Private gated and secure manor residence",
       "Beautifully landscaped outdoor areas",
       "Flexible living and dining spaces for formal or relaxed hosting",
@@ -436,6 +449,14 @@ export const properties: Property[] = [
     bedroomsLabel: "5",
     description: "Just ten minutes from Adare Manor, an elegant private retreat in Croagh, County Limerick.",
     fullDescription: "Located just 12 minutes drive from the Ryder Cup 2027 venue at Adare Manor, Darrira House offers an elegant retreat in the peaceful countryside of Croagh, County Limerick. With its beautifully furnished interiors and expansive outdoor spaces, this residence is ideally suited for guests seeking comfort and convenience.\n\nBoasting four double bedrooms and one single bedroom, including two en-suites with one adapted to accommodate guests with specific accessibility needs, the property is perfect for groups or families looking to stay close to the action without compromising on tranquility. The property has ramp access through the front door. Double doors from the hallway open into the sitting room, which flows into a spacious open-plan kitchen and onwards to a bright conservatory.",
+    specs: [
+      { label: "Bedrooms", value: "4 double bedrooms (one ensuite)" },
+      { label: "Accessibility", value: "Downstairs double bedroom, adapted for special needs" },
+      { label: "Guest bedroom", value: "1 single bedroom" },
+      { label: "Kitchen & dining", value: "Stylish kitchen-dining space opening to conservatory" },
+      { label: "Interiors", value: "Elegant interiors and abundant natural light" },
+      { label: "Location", value: "Quiet village location just 10 minutes from Adare Manor" },
+    ],
     price: "POA",
     images: [
       "/images/houses/house 6/house-6-exterior-1.webp",
@@ -457,15 +478,10 @@ export const properties: Property[] = [
     ],
     thumbnail: "/images/houses/house 6/house-6-exterior-1.webp",
     features: [
-      "4 double bedrooms (one ensuite)",
-      "Downstairs double bedroom adapted for special needs",
-      "1 single bedroom",
-      "Stylish kitchen-dining space opening to conservatory",
-      "Elegant interiors and abundant natural light",
-      "Quiet village location just 10 minutes from Adare Manor"
+      "Ramp access through the front door",
+      "Sitting room flows into spacious open-plan kitchen and bright conservatory",
     ],
     amenities: [
-      "Home cooked breakfast",
       "Daily housekeeping",
       "High-speed WiFi",
       "Satellite TV",
@@ -954,7 +970,7 @@ export const properties: Property[] = [
       { label: "Distance from Ryder Cup Course", value: "2-minute drive or 20-minute walk to Adare Manor entrance" },
       { label: "Number of TVs", value: "3" },
       { label: "Square footage", value: "3,900 sq ft" },
-      { label: "Dining seating", value: "7" },
+      { label: "Dining seating", value: "8" },
       { label: "Kitchen seating", value: "6" },
     ],
     price: "POA",
@@ -962,31 +978,26 @@ export const properties: Property[] = [
       "/images/houses/neadfainleog/neadfainleog-exterior-1.webp",
       "/images/houses/neadfainleog/neadfainleog-kitchen-dining-1.webp",
       "/images/houses/neadfainleog/neadfainleog-kitchen-dining-2.webp",
+      "/images/houses/neadfainleog/neadfainleog-diningroom-1.webp",
       "/images/houses/neadfainleog/neadfainleog-livingroom-1.webp",
       "/images/houses/neadfainleog/neadfainleog-sittingroom-1.webp",
-      "/images/houses/neadfainleog/neadfainleog-sittingroom-2.webp",
-      "/images/houses/neadfainleog/neadfainleog-utilityroom-1.webp",
-      "/images/houses/neadfainleog/neadfainleog-downstairsbathroom-1.webp",
+      "/images/houses/neadfainleog/neadfainleog-bathroom-1.webp",
+      "/images/houses/neadfainleog/neadfainleog-stairs-1.webp",
       "/images/houses/neadfainleog/neadfainleog-masterbedroom-1.webp",
-      "/images/houses/neadfainleog/neadfainleog-masterbedroom-2.webp",
-      "/images/houses/neadfainleog/neadfainleog-masterbedroom-3.webp",
       "/images/houses/neadfainleog/neadfainleog-bedroom1-1.webp",
-      "/images/houses/neadfainleog/neadfainleog-bedroom1-2.webp",
-      "/images/houses/neadfainleog/neadfainleog-bedroom1-3.webp",
       "/images/houses/neadfainleog/neadfainleog-bedroom2-1.webp",
-      "/images/houses/neadfainleog/neadfainleog-bedroom2-2.webp",
-      "/images/houses/neadfainleog/neadfainleog-bedroom2-3.webp",
       "/images/houses/neadfainleog/neadfainleog-bedroom3-1.webp",
-      "/images/houses/neadfainleog/neadfainleog-bedroom3-2.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-2.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-3.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-4.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-5.webp",
+      "/images/houses/neadfainleog/neadfainleog-exterior-6.webp",
+      "/images/houses/neadfainleog/neadfainleog-exterior-7.webp",
     ],
     thumbnail: "/images/houses/neadfainleog/neadfainleog-exterior-1.webp",
     features: [
       "Five-bedroom executive country residence finished to an exceptional standard",
-      "Three spacious ensuite bedrooms with luxury furnishings",
+      "Three spacious en suite bedrooms with luxury furnishings, two spacious bedrooms with luxury furnishings and adjoining bathrooms",
       "Jacuzzi bath and private steam room",
       "Two elegant reception rooms for entertaining and relaxation",
       "Contemporary open-plan kitchen with oversized central island",
@@ -1016,5 +1027,114 @@ export const properties: Property[] = [
     walkingDistance:
       "Two-minute drive or approximately twenty-minute walk to the entrance of Adare Manor and the Ryder Cup venue.",
     eircode: "V94 W959",
+  },
+  {
+    id: "the-manor-lodge",
+    name: "The Manor Lodge",
+    subtitle:
+      "Executive contemporary residence in Adare village, approximately 550 yards from the gates of Adare Manor.",
+    bedrooms: 5,
+    description:
+      "Executive contemporary residence in picturesque Adare, just 550 yards from Adare Manor, offering refined private accommodation for Ryder Cup 2027.",
+    fullDescription:
+      "Positioned in the picturesque village of Adare, just 550 yards from the entrance to Adare Manor, The Manor Lodge is an exceptional contemporary executive residence offering one of the finest private accommodation experiences available for Ryder Cup 2027.\n\nExtending to approximately 4,000 square feet, the home combines contemporary architecture with elegant, light-filled interiors and beautifully landscaped gardens. Generous glazing and spacious open-plan living areas create a seamless connection between the home and its outdoor entertaining spaces, delivering understated luxury throughout.\n\nGuests are welcomed through a striking reception hall that also serves as an elegant formal dining space, creating a memorable first impression and an impressive setting for private dining and executive entertaining.\n\nAt the heart of the residence is a magnificent open-plan kitchen with an electric Aga, handcrafted island, walk-in pantry and informal dining area. A formal drawing room, separate TV lounge and exceptional outdoor entertaining pavilion with bespoke bar and Kamado Joe BBQ provide a variety of spaces for relaxation and hosting.\n\nThe residence comfortably accommodates up to ten guests across four luxurious double bedrooms and a flexible fifth bedroom. Two bedrooms are en-suite, while the principal suite features a spacious walk-in dressing room and a luxurious bathroom.\n\nWithin easy walking distance of Adare Manor and the award-winning restaurants, cafés and boutiques of Adare Village, The Manor Lodge is a flagship property within The Adare Collection Executive Portfolio.",
+    specs: [
+      { label: "Bedrooms", value: "5 double rooms, 2 ensuite, 2 with a shared bathroom" },
+      { label: "Bathrooms", value: "3 + 1 half bathroom" },
+      { label: "Occupancy", value: "8-10 max." },
+      { label: "Distance from Ryder Cup Course", value: "550 yards." },
+      { label: "Number of TVs", value: "2 smart TVs" },
+      { label: "Square footage", value: "4,000 sqft" },
+      { label: "Dining seating", value: "8-10" },
+      { label: "Kitchen seating", value: "4" },
+    ],
+    price: "POA",
+    images: [
+      "/images/houses/house 15/house-15-exterior-1.webp",
+      "/images/houses/house 15/house-15-exterior-2.webp",
+      "/images/houses/house 15/house-15-entrance-1.webp",
+      "/images/houses/house 15/house-15-entrance-2.webp",
+      "/images/houses/house 15/house-15-entrance-3.webp",
+      "/images/houses/house 15/house-15-entrance-4.webp",
+      "/images/houses/house 15/house-15-kitchen-1.webp",
+      "/images/houses/house 15/house-15-kitchen-2.webp",
+      "/images/houses/house 15/house-15-kitchen-3.webp",
+      "/images/houses/house 15/house-15-kitchen-4.webp",
+      "/images/houses/house 15/house-15-kitchen-5.webp",
+      "/images/houses/house 15/house-15-kitchen-6.webp",
+      "/images/houses/house 15/house-15-living-1.webp",
+      "/images/houses/house 15/house-15-living-2.webp",
+      "/images/houses/house 15/house-15-living-3.webp",
+      "/images/houses/house 15/house-15-sitting-1.webp",
+      "/images/houses/house 15/house-15-sitting-2.webp",
+      "/images/houses/house 15/house-15-bathroom-downstairs-1.webp",
+      "/images/houses/house 15/house-15-stairs-1.webp",
+      "/images/houses/house 15/house-15-stairs-2.webp",
+      "/images/houses/house 15/house-15-stairs-3.webp",
+      "/images/houses/house 15/house-15-bedroom-1-1.webp",
+      "/images/houses/house 15/house-15-bedroom-1-2.webp",
+      "/images/houses/house 15/house-15-bedroom-1-3.webp",
+      "/images/houses/house 15/house-15-bedroom-1-4.webp",
+      "/images/houses/house 15/house-15-bedroom-1-5.webp",
+      "/images/houses/house 15/house-15-bedroom-1-6.webp",
+      "/images/houses/house 15/house-15-bedroom-1-7.webp",
+      "/images/houses/house 15/house-15-bedroom-2-1.webp",
+      "/images/houses/house 15/house-15-bedroom-2-2.webp",
+      "/images/houses/house 15/house-15-bathroom-upstairs-1.webp",
+      "/images/houses/house 15/house-15-bedroom-3-1.webp",
+      "/images/houses/house 15/house-15-bedroom-3-2.webp",
+      "/images/houses/house 15/house-15-bedroom-4-1.webp",
+      "/images/houses/house 15/house-15-bedroom-4-2.webp",
+      "/images/houses/house 15/house-15-exterior-3.webp",
+      "/images/houses/house 15/house-15-exterior-4.webp",
+      "/images/houses/house 15/house-15-exterior-5.webp",
+      "/images/houses/house 15/house-15-exterior-6.webp",
+      "/images/houses/house 15/house-15-exterior-7.webp",
+      "/images/houses/house 15/house-15-exterior-8.webp",
+      "/images/houses/house 15/house-15-exterior-9.webp",
+      "/images/houses/house 15/house-15-exterior-10.webp",
+      "/images/houses/house 15/house-15-exterior-11.webp",
+      "/images/houses/house 15/house-15-exterior-12.webp",
+      "/images/houses/house 15/house-15-exterior-13.webp",
+      "/images/houses/house 15/house-15-exterior-14.webp",
+      "/images/houses/house 15/house-15-exterior-15.webp",
+      "/images/houses/house 15/house-15-exterior-16.webp",
+      "/images/houses/house 15/house-15-exterior-17.webp",
+      "/images/houses/house 15/house-15-exterior-18.webp",
+      "/images/houses/house 15/house-15-exterior-19.webp",
+      "/images/houses/house 15/house-15-exterior-20.webp",
+      "/images/houses/house 15/house-15-exterior-21.webp",
+      "/images/houses/house 15/house-15-exterior-22.webp",
+      "/images/houses/house 15/house-15-exterior-23.webp",
+      "/images/houses/house 15/house-15-exterior-24.webp",
+    ],
+    thumbnail: "/images/houses/house 15/house-15-exterior-1.webp",
+    features: [
+      "Grand reception hall incorporating a formal dining space",
+      "Beautifully appointed modern kitchen",
+      "Handcrafted island with breakfast bar",
+      "Electric Aga",
+      "Walk-in pantry",
+      "Outdoor bar with Kamado Joe BBQ for al fresco entertaining",
+      "Lounge room, TV room and kitchen all leading out to patio",
+      "Jacuzzi bath",
+      "Wine fridge",
+      "Secure gated private parking",
+    ],
+    amenities: [
+      "High-speed WiFi and satellite TV",
+      "Daily serviced fresh towels and linens",
+      "Daily housekeeping",
+      "BBQ",
+      "Secure gated private parking",
+    ],
+    location: {
+      lat: 52.5654,
+      lng: -8.7845,
+    },
+    walkingDistance:
+      "Approximately 550 yards from the gates of Adare Manor, within easy walking distance of Adare Village.",
+    eircode: "V94 XNN0",
+    videoUrl: "/videos/themanorlodge.mp4",
   },
 ];

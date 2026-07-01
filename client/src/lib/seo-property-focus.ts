@@ -43,6 +43,10 @@ export const PROPERTY_SEO_FOCUS: Record<string, PropertySeoFocus> = {
     focusKeyword: "nead fainleog ryder cup 2027",
     pageSubheading: "Nead Fainleog, executive Ryder Cup 2027 residence near Adare Manor",
   },
+  "the-manor-lodge": {
+    focusKeyword: "the manor lodge ryder cup 2027",
+    pageSubheading: "The Manor Lodge, executive Ryder Cup 2027 residence in Adare village",
+  },
   "the-captains": {
     focusKeyword: "the captains house adare manor ryder cup",
     pageSubheading: "The Captains, on-estate Ryder Cup 2027 corporate hospitality home",

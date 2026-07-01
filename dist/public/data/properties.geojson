@@ -90,7 +90,7 @@
         "beds": 5,
         "baths": 4,
         "price":"POA",
-        "thumb":"/images/houses/house 5/cragleigh-house-main-optimized.webp"
+        "thumb":"/images/houses/house 5/cragleighhouse-main.webp"
       }
     },
     {
@@ -184,6 +184,19 @@
         "baths": 6,
         "price":"POA",
         "thumb":"/images/houses/neadfainleog/neadfainleog-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.7845, 52.5654]},
+      "properties":{
+        "id":"the-manor-lodge",
+        "title":"The Manor Lodge",
+        "desc":"Executive contemporary residence in Adare village, approximately 550 yards from the gates of Adare Manor.",
+        "beds": 5,
+        "baths": 4,
+        "price":"POA",
+        "thumb":"/images/houses/house 15/house-15-exterior-1.webp"
       }
     }
   ]

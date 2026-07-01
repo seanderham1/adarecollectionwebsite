@@ -53,6 +53,9 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
   "nead-fainleog": [
     `This executive residence suits guests who want generous ensuite capacity, wellness amenities and a short walk or drive to the Ryder Cup venue. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
   ],
+  "the-manor-lodge": [
+    `This executive Adare village residence suits guests who want contemporary interiors, outdoor entertaining and a short walk to Adare Manor for Ryder Cup 2027. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
+  ],
   "dunes-lodge": [
     `Dunes Lodge Lahinch Ryder Cup 2027 accommodation combines Wild Atlantic Way scenery with championship golf views, with kitchen, parking, wifi, and amenities for surfers and golf fans. The home suits guests who want a coastal Ireland experience.`,
     `Dunes Lodge offers group capacity availability for Ryder week subject to confirmation. Booking includes guidance on travel time to the Ryder Cup venue and local hospitality options.`,

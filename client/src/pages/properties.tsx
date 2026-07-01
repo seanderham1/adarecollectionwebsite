@@ -1,6 +1,6 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { properties, formatPropertyBedroomsShort, getPropertyCollectionBadge } from "@/lib/properties";
+import { properties, formatPropertyBedroomsShort, getPropertyCollectionBadge, sortPropertiesByCollectionTier } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
@@ -47,7 +47,7 @@ function ComingSoonCard() {
 
 export default function PropertiesPage() {
   // All properties are now in the main properties array
-  const all = properties;
+  const all = sortPropertiesByCollectionTier(properties);
 
   useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/properties")!));
 

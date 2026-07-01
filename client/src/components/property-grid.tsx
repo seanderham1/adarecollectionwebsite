@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { properties, type Property, formatPropertyBedroomsShort, getPropertyCollectionBadge } from "@/lib/properties";
+import { properties, type Property, formatPropertyBedroomsShort, getPropertyCollectionBadge, sortPropertiesByCollectionTier } from "@/lib/properties";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
@@ -104,6 +104,8 @@ function ComingSoonCard() {
 }
 
 export default function PropertyGrid() {
+  const sortedProperties = sortPropertiesByCollectionTier(properties);
+
   return (
     <section id="properties" className="py-12 px-4 bg-neutral-100 w-full" data-testid="property-grid-section">
       <div className="w-full max-w-[2000px] mx-auto">
@@ -120,7 +122,7 @@ export default function PropertyGrid() {
 
         {/* Property Grid */}
         <div className="grid md:grid-cols-3 gap-6" data-testid="properties-grid">
-          {properties.map((property) => (
+          {sortedProperties.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
           <ComingSoonCard />

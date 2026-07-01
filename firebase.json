@@ -118,6 +118,10 @@
         "destination": "/_prerender/property__nead-fainleog.html"
       },
       {
+        "source": "/property/the-manor-lodge",
+        "destination": "/_prerender/property__the-manor-lodge.html"
+      },
+      {
         "source": "/blog/adare-ryder-cup-railway-line",
         "destination": "/_prerender/blog__adare-ryder-cup-railway-line.html"
       },
@@ -339,6 +343,15 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/nead-fainleog>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/the-manor-lodge",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/the-manor-lodge>; rel=\"canonical\""
           }
         ]
       },
