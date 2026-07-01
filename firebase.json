@@ -110,10 +110,6 @@
         "destination": "/_prerender/property__portland-house.html"
       },
       {
-        "source": "/property/southview-cullinagh",
-        "destination": "/_prerender/property__southview-cullinagh.html"
-      },
-      {
         "source": "/property/nead-fainleog",
         "destination": "/_prerender/property__nead-fainleog.html"
       },
@@ -325,15 +321,6 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/portland-house>; rel=\"canonical\""
-          }
-        ]
-      },
-      {
-        "source": "/property/southview-cullinagh",
-        "headers": [
-          {
-            "key": "Link",
-            "value": "<https://theadarecollection.com/property/southview-cullinagh>; rel=\"canonical\""
           }
         ]
       },

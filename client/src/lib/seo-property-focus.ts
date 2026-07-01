@@ -35,10 +35,6 @@ export const PROPERTY_SEO_FOCUS: Record<string, PropertySeoFocus> = {
     focusKeyword: "hillview house ryder cup 2027",
     pageSubheading: "Hillview House, executive Ryder Cup 2027 rental in Adare",
   },
-  "southview-cullinagh": {
-    focusKeyword: "southview cullinagh ryder cup 2027",
-    pageSubheading: "Southview Cullinagh, deluxe Ryder Cup 2027 cottage in Newcastle West",
-  },
   "nead-fainleog": {
     focusKeyword: "nead fainleog ryder cup 2027",
     pageSubheading: "Nead Fainleog, executive Ryder Cup 2027 residence near Adare Manor",

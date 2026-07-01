@@ -32,7 +32,7 @@ export function formatPropertyBedroomsShort(property: Pick<Property, "bedrooms" 
 /** Uppercase label on property cards and gallery (homepage, listing, detail). */
 export function getPropertyCollectionBadge(propertyId: string): string {
   if (propertyId === "croagh-house") return "PREMIUM";
-  if (["darrira-house", "dunes-lodge", "parkview-house", "southview-cullinagh"].includes(propertyId)) return "DELUXE";
+  if (["darrira-house", "dunes-lodge", "parkview-house"].includes(propertyId)) return "DELUXE";
   return "EXECUTIVE";
 }
 
@@ -878,81 +878,6 @@ export const properties: Property[] = [
     videoUrl: "/videos/portlandhouse.mp4",
   },
   {
-    id: "southview-cullinagh",
-    name: "Southview Cullinagh",
-    subtitle:
-      "Deluxe three-bedroom cottage in Newcastle West, an Official Ryder Cup Fan Hub, five minutes from the town centre and fifteen minutes from the Croagh Park & Ride.",
-    bedrooms: 3,
-    description:
-      "Deluxe three-bedroom cottage in Newcastle West, five minutes from the town centre, with Park & Ride access to Adare Manor.",
-    fullDescription:
-      "Southview Cullinagh is a beautifully appointed deluxe three-bedroom cottage offering stylish, spacious accommodation just a five-minute walk from the centre of Newcastle West, one of the Official Ryder Cup Fan Hubs for Ryder Cup 2027.\n\nFinished to an excellent standard throughout, the property combines modern comforts with a warm and welcoming atmosphere, making it an ideal choice for families, friends and golfing groups attending the championship.\n\nAt the heart of the home is a bright open-plan kitchen featuring a large central island, five-ring gas hob and double Belling oven. Two comfortable sitting rooms, each with its own television, provide generous space to relax, while three double bedrooms ensure comfort and privacy.\n\nGuests can reach the Croagh Park & Ride in approximately fifteen minutes by car before taking the official nine-minute shuttle directly to Adare Manor. The Lakes of Killarney and Killarney National Park are less than one hour away.",
-    specs: [
-      { label: "Bedrooms", value: "3 double bedrooms" },
-      { label: "Bathrooms", value: "1 ensuite, 1 family bathroom" },
-      { label: "Occupancy", value: "Up to 6 guests" },
-      { label: "Reception rooms", value: "2 sitting rooms" },
-      { label: "Distance from Ryder Cup Course", value: "25 mins drive" },
-      { label: "Distance to Park and Ride", value: "15 minutes drive to Croagh Park & Ride" },
-      { label: "Number of TVs", value: "2" },
-      { label: "Square footage", value: "1,800 sq ft" },
-      { label: "Dining seating", value: "6" },
-      { label: "Kitchen seating", value: "2" },
-    ],
-    price: "POA",
-    images: [
-      "/images/houses/southviewcullinagh/southview-exterior-1.webp",
-      "/images/houses/southviewcullinagh/southview-hallway-1.webp",
-      "/images/houses/southviewcullinagh/southview-kitchen-dining-1.webp",
-      "/images/houses/southviewcullinagh/southview-kitchen-dining-2.webp",
-      "/images/houses/southviewcullinagh/southview-livingroom-1.webp",
-      "/images/houses/southviewcullinagh/southview-livingroom-2.webp",
-      "/images/houses/southviewcullinagh/southview-sittingroom-1.webp",
-      "/images/houses/southviewcullinagh/southview-sittingroom-2.webp",
-      "/images/houses/southviewcullinagh/southview-mainbathroom-1.webp",
-      "/images/houses/southviewcullinagh/southview-mainbathroom-2.webp",
-      "/images/houses/southviewcullinagh/southview-mainbathroom-3.webp",
-      "/images/houses/southviewcullinagh/southview-masterbedroom-1.webp",
-      "/images/houses/southviewcullinagh/southview-masterbedroom-2.webp",
-      "/images/houses/southviewcullinagh/southview-masterbedroom-3.webp",
-      "/images/houses/southviewcullinagh/southview-bedroom-2.webp",
-      "/images/houses/southviewcullinagh/southview-bedroom-3.webp",
-      "/images/houses/southviewcullinagh/southview-exterior-2.webp",
-    ],
-    thumbnail: "/images/houses/southviewcullinagh/southview-exterior-1.webp",
-    features: [
-      "Beautifully presented detached deluxe cottage",
-      "Three spacious double bedrooms with principal ensuite",
-      "Modern family bathroom with power shower",
-      "Bright open-plan kitchen with large island",
-      "Five-ring gas hob and double Belling oven",
-      "Dining area seating six guests; kitchen island seating for two",
-      "Two comfortable sitting rooms, each with Smart TV",
-      "Landscaped gardens and outdoor seating",
-      "Private parking",
-      "Five-minute walk to Newcastle West town centre",
-      "Fifteen-minute drive to Croagh Park & Ride with nine-minute shuttle to Adare Manor",
-    ],
-    amenities: [
-      "High-speed Wi-Fi",
-      "2 Smart TVs",
-      "Dishwasher",
-      "Fridge freezer",
-      "Microwave",
-      "Kettle and toaster",
-      "Bed linen and towels",
-      "Private parking",
-      "Outdoor seating",
-    ],
-    location: {
-      lat: 52.4478,
-      lng: -9.0652,
-    },
-    walkingDistance:
-      "Five-minute walk to Newcastle West town centre; approximately fifteen minutes' drive to Croagh Park & Ride, then a nine-minute shuttle to Adare Manor.",
-    eircode: "V42 PW40",
-  },
-  {
     id: "nead-fainleog",
     name: "Nead Fainleog",
     subtitle:
@@ -976,8 +901,8 @@ export const properties: Property[] = [
     price: "POA",
     images: [
       "/images/houses/neadfainleog/neadfainleog-exterior-1.webp",
-      "/images/houses/neadfainleog/neadfainleog-kitchen-dining-1.webp",
       "/images/houses/neadfainleog/neadfainleog-kitchen-dining-2.webp",
+      "/images/houses/neadfainleog/neadfainleog-kitchen-dining-1.webp",
       "/images/houses/neadfainleog/neadfainleog-diningroom-1.webp",
       "/images/houses/neadfainleog/neadfainleog-livingroom-1.webp",
       "/images/houses/neadfainleog/neadfainleog-sittingroom-1.webp",
@@ -991,7 +916,6 @@ export const properties: Property[] = [
       "/images/houses/neadfainleog/neadfainleog-exterior-3.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-4.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-5.webp",
-      "/images/houses/neadfainleog/neadfainleog-exterior-6.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-7.webp",
     ],
     thumbnail: "/images/houses/neadfainleog/neadfainleog-exterior-1.webp",

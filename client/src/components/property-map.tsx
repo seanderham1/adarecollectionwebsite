@@ -69,8 +69,6 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
             center: mapCenter,
             zoom: propertyId === 'dunes-lodge'
               ? 8
-              : propertyId === 'southview-cullinagh'
-                ? 10
               : propertyId === 'the-manor-lodge'
                 ? 15
               : propertyId === 'nead-fainleog'
@@ -116,12 +114,6 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: FORTY_FIVE_MIN_DRIVE_RADIUS_METERS,
             labelText: '45 minute drive',
-            icon: 'car',
-          });
-        } else if (propertyId === 'southview-cullinagh') {
-          addWalkRadiusCircle(map, mapCenter, {
-            radiusMeters: TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS,
-            labelText: '25 minute drive',
             icon: 'car',
           });
         } else if (propertyId === 'dunes-lodge') {

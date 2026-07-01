@@ -47,9 +47,6 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
   "hillview-house": [
     `Availability is limited for Ryder week; contact us early to discuss booking, rental terms, and optional chef or chauffeur services. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
   ],
-  "southview-cullinagh": [
-    `This deluxe cottage suits guests who want a town-centre base in an Official Ryder Cup Fan Hub with straightforward Park & Ride access to Adare Manor. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
-  ],
   "nead-fainleog": [
     `This executive residence suits guests who want generous ensuite capacity, wellness amenities and a short walk or drive to the Ryder Cup venue. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
   ],

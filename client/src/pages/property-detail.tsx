@@ -545,7 +545,7 @@ export default function PropertyDetail() {
                       MAP
                     </Button>
 
-{property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'southview-cullinagh' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' && (
+{property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' && (
                         <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
@@ -603,7 +603,7 @@ export default function PropertyDetail() {
                         {paragraph}
                       </p>
                     ))}
-                    {(property.id === "rangeview" || property.id === "the-captains" || property.id === "putters-way" || property.id === "the-first-tee" || property.id === "the-fairways" || property.id === "cragleigh-house" || property.id === "darrira-house" || property.id === "croagh-house" || property.id === "parkview-house" || property.id === "portland-house" || property.id === "dunes-lodge" || property.id === "hillview-house" || property.id === "southview-cullinagh" || property.id === "nead-fainleog" || property.id === "the-manor-lodge") &&
+                    {(property.id === "rangeview" || property.id === "the-captains" || property.id === "putters-way" || property.id === "the-first-tee" || property.id === "the-fairways" || property.id === "cragleigh-house" || property.id === "darrira-house" || property.id === "croagh-house" || property.id === "parkview-house" || property.id === "portland-house" || property.id === "dunes-lodge" || property.id === "hillview-house" || property.id === "nead-fainleog" || property.id === "the-manor-lodge") &&
                       getPropertySeoSupplementParagraphs(property.id).map((paragraph, index) => (
                         <p key={`seo-${index}`} className="mb-4 last:mb-0">
                           {paragraph}
@@ -674,7 +674,7 @@ export default function PropertyDetail() {
                   <p className="text-sm text-primary font-serif mb-4" data-testid="property-walking-distance-detail">
                     {property.walkingDistance}
                   </p>
-                  {property.eircode && property.id !== "the-first-tee" && property.id !== "southview-cullinagh" && property.id !== "nead-fainleog" && property.id !== "the-manor-lodge" && (
+                  {property.eircode && property.id !== "the-first-tee" && property.id !== "nead-fainleog" && property.id !== "the-manor-lodge" && (
                     <p className="text-sm text-primary font-serif mb-4" data-testid="property-eircode">
                       Eircode: {property.eircode}
                     </p>
@@ -700,7 +700,7 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {!["southview-cullinagh", "darrira-house"].includes(property.id) && (
+                      {property.id !== "darrira-house" && (
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                           <ChefHat className="text-white h-6 w-6" />
@@ -712,7 +712,7 @@ export default function PropertyDetail() {
                       </div>
                       )}
                       
-                      {!["darrira-house", "croagh-house", "parkview-house", "cragleigh-house", "southview-cullinagh"].includes(property.id) && (
+                      {!["darrira-house", "croagh-house", "parkview-house", "cragleigh-house"].includes(property.id) && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Heading className="text-white h-6 w-6" />
@@ -724,7 +724,6 @@ export default function PropertyDetail() {
                         </div>
                       )}
                       
-                      {property.id !== "southview-cullinagh" && (
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                           <Shirt className="text-white h-6 w-6" />
@@ -734,7 +733,6 @@ export default function PropertyDetail() {
                           <p className="text-primary text-sm" data-testid="service-housekeeping-description">Professional washing, drying, and pressing service</p>
                         </div>
                       </div>
-                      )}
                       
                       {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house' || property.id === 'nead-fainleog' || property.id === 'the-manor-lodge') && (
                         <div className="flex items-start space-x-4">
@@ -804,11 +802,11 @@ export default function PropertyDetail() {
                     <div className="flex justify-center space-x-2">
                       <Button 
                         onClick={handleViewMap}
-                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'southview-cullinagh' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' ? 'w-1/2' : 'w-full'}`}
+                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' ? 'w-1/2' : 'w-full'}`}
                       >
                         MAP
                       </Button>
-                      {property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'southview-cullinagh' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' && (
+                      {property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' && (
                         <Button 
                           onClick={handleDownloadBrochure}
                           className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"

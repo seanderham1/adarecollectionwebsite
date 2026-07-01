@@ -162,19 +162,6 @@
     },
     {
       "type":"Feature",
-      "geometry":{"type":"Point","coordinates":[-9.0652, 52.4478]},
-      "properties":{
-        "id":"southview-cullinagh",
-        "title":"Southview Cullinagh",
-        "desc":"Deluxe three-bedroom cottage in Newcastle West, five minutes from the town centre, with Park & Ride access to Adare Manor.",
-        "beds": 3,
-        "baths": 2,
-        "price":"POA",
-        "thumb":"/images/houses/southviewcullinagh/southview-exterior-1.webp"
-      }
-    },
-    {
-      "type":"Feature",
       "geometry":{"type":"Point","coordinates":[-8.79875286124995, 52.55127116942097]},
       "properties":{
         "id":"nead-fainleog",

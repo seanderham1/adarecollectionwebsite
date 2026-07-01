@@ -29,7 +29,6 @@ const JOBS = [
   ["neadfainleog-exterior-3.jpg", "neadfainleog-exterior-3.webp"],
   ["neadfainleog-exterior-4.jpg", "neadfainleog-exterior-4.webp"],
   ["neadfainleog-exterior-5.jpg", "neadfainleog-exterior-5.webp"],
-  ["neadfainleog-exterior-6.png", "neadfainleog-exterior-6.webp"],
   ["neadfainleog-exterior-7.png", "neadfainleog-exterior-7.webp"],
 ];
 
