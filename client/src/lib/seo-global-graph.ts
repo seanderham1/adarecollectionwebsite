@@ -173,13 +173,6 @@ export const GLOBAL_SCHEMA_GRAPH = {
           { "@type": "SportsTeam", name: "United States Ryder Cup Team" },
         ],
         image: "https://theadarecollection.com/images/hero/adaremanor-img2.webp",
-        offers: {
-          "@type": "Offer",
-          name: "Ryder Cup 2027 Tickets",
-          description: "Official tickets for the 2027 Ryder Cup at Adare Manor",
-          availability: "https://schema.org/InStock",
-          url: "https://www.rydercup.com",
-        },
       },
     },
   ],

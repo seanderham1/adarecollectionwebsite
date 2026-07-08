@@ -6,7 +6,6 @@ import VideoModal from "@/components/video-modal";
 import { PropertyEnquiryModal } from "@/components/property-enquiry-modal";
 import MapModal from "@/components/map-modal";
 import MatterportModal from "@/components/matterport-modal";
-import BrochureModal from "@/components/brochure-modal";
 import { properties, getPropertyCollectionBadge } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -106,7 +105,6 @@ export default function PropertyDetail() {
   
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
-  const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [isMatterportModalOpen, setIsMatterportModalOpen] = useState(false);
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const [videoStartMuted, setVideoStartMuted] = useState(hasVideoParam); // Start muted if video param is present
@@ -230,30 +228,12 @@ export default function PropertyDetail() {
     setIsMapModalOpen(false);
   };
 
-  const handleViewBrochure = () => {
-    setIsBrochureModalOpen(true);
-  };
-
-  const handleCloseBrochure = () => {
-    setIsBrochureModalOpen(false);
-  };
-
   const handleOpenMatterport = () => {
     setIsMatterportModalOpen(true);
   };
 
   const handleCloseMatterport = () => {
     setIsMatterportModalOpen(false);
-  };
-
-  const getBrochureUrl = () => {
-    // PDF brochures removed - using WebP brochure modal instead
-    return null;
-  };
-
-  const handleDownloadBrochure = () => {
-    // Always open brochure modal for WebP brochure viewing
-    setIsBrochureModalOpen(true);
   };
 
   return (
@@ -544,15 +524,6 @@ export default function PropertyDetail() {
                     >
                       MAP
                     </Button>
-
-{property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' && (
-                        <Button 
-                          onClick={handleDownloadBrochure}
-                          className="border border-gray-700 bg-white text-gray-700 px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
-                        >
-                          BROCHURE
-                        </Button>
-                      )}
                   </div>
 
                   <p className="text-xs text-secondary text-center mt-4 leading-relaxed px-2">
@@ -797,24 +768,14 @@ export default function PropertyDetail() {
                     
                   </div>
 
-                  {/* Map & Brochure Links */}
+                  {/* Map */}
                   <div className="space-y-4 mt-4">
-                    <div className="flex justify-center space-x-2">
-                      <Button 
-                        onClick={handleViewMap}
-                        className={`border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 ${property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' ? 'w-1/2' : 'w-full'}`}
-                      >
-                        MAP
-                      </Button>
-                      {property.id !== 'dunes-lodge' && property.id !== 'the-first-tee' && property.id !== 'croagh-house' && property.id !== 'parkview-house' && property.id !== 'hillview-house' && property.id !== 'portland-house' && property.id !== 'nead-fainleog' && property.id !== 'the-manor-lodge' && (
-                        <Button 
-                          onClick={handleDownloadBrochure}
-                          className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-1/2"
-                        >
-                          BROCHURE
-                        </Button>
-                      )}
-                    </div>
+                    <Button 
+                      onClick={handleViewMap}
+                      className="border border-gray-700 bg-white text-gray-700 px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-gray-700 hover:!text-white transition-all duration-200 w-full"
+                    >
+                      MAP
+                    </Button>
                   </div>
 
                   <p className="text-xs text-secondary text-left mt-3 mb-7 leading-relaxed">
@@ -931,14 +892,6 @@ export default function PropertyDetail() {
           title={`${property.name}: 360 degree virtual tour`}
         />
       )}
-      
-      {/* Brochure Modal */}
-      <BrochureModal 
-        isOpen={isBrochureModalOpen}
-        onClose={handleCloseBrochure}
-        propertyId={property?.id || ''}
-        title={property?.name || ''}
-      />
     </div>
   );
 }

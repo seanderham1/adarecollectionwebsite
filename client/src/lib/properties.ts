@@ -881,10 +881,10 @@ export const properties: Property[] = [
     id: "nead-fainleog",
     name: "Nead Fainleog",
     subtitle:
-      "Five-bedroom executive residence two minutes from Adare Manor, with jacuzzi, steam room and countryside privacy for Ryder Cup 2027.",
+      "Five-bedroom executive residence two minutes from Adare Manor, with jacuzzi bath, steam room and countryside privacy for Ryder Cup 2027.",
     bedrooms: 5,
     description:
-      "Five-bedroom executive country residence two minutes from Adare Manor, with jacuzzi, steam room and refined interiors.",
+      "Five-bedroom executive country residence two minutes from Adare Manor, with jacuzzi bath, steam room and refined interiors.",
     fullDescription:
       "Nead Fainleog, meaning 'Swallow's Nest,' is an exceptional five-bedroom luxury residence that combines the warmth of Irish country living with the comforts of modern executive accommodation. Ideally located just a two-minute drive or a leisurely twenty-minute walk from the entrance to Adare Manor, the property offers the perfect balance of accessibility, privacy and space for Ryder Cup 2027.\n\nDesigned for both relaxation and entertaining, the heart of the home is a magnificent open-plan kitchen and dining space featuring a substantial central island, premium appliances and direct access to the outdoor entertaining area. Two beautifully appointed reception rooms provide elegant spaces for both formal entertaining and relaxed evenings, while five generously proportioned bedrooms, including three luxurious ensuites, ensure exceptional comfort for every guest.\n\nThe home also comes complete with a jacuzzi bath and private steam room, allowing guests to unwind after an unforgettable day at the Ryder Cup. Combining generous living accommodation, refined interiors and an enviable location close to the championship venue, Nead Fainleog provides an outstanding executive residence for families, corporate groups and discerning Ryder Cup guests.",
     specs: [
@@ -914,7 +914,6 @@ export const properties: Property[] = [
       "/images/houses/neadfainleog/neadfainleog-bedroom3-1.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-2.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-3.webp",
-      "/images/houses/neadfainleog/neadfainleog-exterior-4.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-5.webp",
       "/images/houses/neadfainleog/neadfainleog-exterior-7.webp",
     ],
@@ -959,7 +958,7 @@ export const properties: Property[] = [
       "Executive contemporary residence in Adare village, approximately 550 yards from the gates of Adare Manor.",
     bedrooms: 5,
     description:
-      "Executive contemporary residence in picturesque Adare, just 550 yards from Adare Manor, offering refined private accommodation for Ryder Cup 2027.",
+      "Contemporary residence in picturesque Adare, just 550 yards from Adare Manor, offering refined private accommodation for Ryder Cup 2027.",
     fullDescription:
       "Positioned in the picturesque village of Adare, just 550 yards from the entrance to Adare Manor, The Manor Lodge is an exceptional contemporary executive residence offering one of the finest private accommodation experiences available for Ryder Cup 2027.\n\nExtending to approximately 4,000 square feet, the home combines contemporary architecture with elegant, light-filled interiors and beautifully landscaped gardens. Generous glazing and spacious open-plan living areas create a seamless connection between the home and its outdoor entertaining spaces, delivering understated luxury throughout.\n\nGuests are welcomed through a striking reception hall that also serves as an elegant formal dining space, creating a memorable first impression and an impressive setting for private dining and executive entertaining.\n\nAt the heart of the residence is a magnificent open-plan kitchen with an electric Aga, handcrafted island, walk-in pantry and informal dining area. A formal drawing room, separate TV lounge and exceptional outdoor entertaining pavilion with bespoke bar and Kamado Joe BBQ provide a variety of spaces for relaxation and hosting.\n\nThe residence comfortably accommodates up to ten guests across four luxurious double bedrooms and a flexible fifth bedroom. Two bedrooms are en-suite, while the principal suite features a spacious walk-in dressing room and a luxurious bathroom.\n\nWithin easy walking distance of Adare Manor and the award-winning restaurants, cafés and boutiques of Adare Village, The Manor Lodge is a flagship property within The Adare Collection Executive Portfolio.",
     specs: [

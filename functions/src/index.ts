@@ -317,6 +317,13 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
+    if (preferredPropertyIds.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Please select at least one property.",
+      });
+    }
+
     let transporter: nodemailer.Transporter;
     try {
       transporter = createGmailTransport();

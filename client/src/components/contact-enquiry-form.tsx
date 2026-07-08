@@ -244,6 +244,10 @@ export function ContactEnquiryForm({
         "Please confirm you consent to us processing your information for this enquiry, as described in our Privacy Policy.";
     }
 
+    if (!primaryPropertyId && selectedPropertyIds.size === 0) {
+      errors.preferredProperties = "Please select at least one property";
+    }
+
     setValidationErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -257,6 +261,7 @@ export function ContactEnquiryForm({
       if (primaryPropertyId) next.add(primaryPropertyId);
       return next;
     });
+    clearFieldError("preferredProperties");
   };
 
   const additionalPropertiesList = primaryPropertyId
@@ -757,7 +762,7 @@ export function ContactEnquiryForm({
           ) : (
             <div>
               <p className={cn(contactSectionHelperClass, "mb-2")}>
-                Preferred property or properties (optional)
+                Preferred property or properties *
               </p>
               <Popover>
                 <PopoverTrigger asChild>
@@ -765,7 +770,10 @@ export function ContactEnquiryForm({
                     type="button"
                     disabled={isSubmitting}
                     data-testid="button-preferred-properties"
-                    className={contactPickerButtonClass}
+                    className={cn(
+                      contactPickerButtonClass,
+                      triggerErrorClass("preferredProperties") || "border-gray-200 focus:border-gray-700"
+                    )}
                   >
                     <span
                       className={
@@ -815,6 +823,11 @@ export function ContactEnquiryForm({
                   </ul>
                 </PopoverContent>
               </Popover>
+              {validationErrors.preferredProperties && (
+                <p className="text-red-500 text-sm mt-1" data-testid="preferred-properties-error">
+                  {validationErrors.preferredProperties}
+                </p>
+              )}
             </div>
           )}
 

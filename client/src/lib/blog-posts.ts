@@ -29,6 +29,77 @@ export type BlogPost = {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "adare-village-railway-station-returns-ryder-cup",
+    title: "Adare Welcomes Back the Railway for Ryder Cup 2027",
+    excerpt:
+      "After more than six decades without a local passenger stop, Adare is preparing a temporary train station beside the revived Limerick to Foynes line to welcome Ryder Cup spectators to the village and Adare Manor.",
+    publishedAt: "2026-07-08",
+    category: "TRANSPORT",
+    readTimeMinutes: 7,
+    heroImage: "/images/blog/train-station-image.webp",
+    keywords:
+      "Adare railway station, Ryder Cup 2027 train, Adare village transport, Limerick Foynes rail line, temporary Adare station, Irish Rail Ryder Cup shuttle, Adare Manor spectators",
+    sections: [
+      {
+        paragraphs: [
+          "In the picturesque village of Adare, County Limerick, anticipation is building as Adare Manor prepares to host the Ryder Cup in September 2027. For local residents and visitors alike, one of the most symbolic projects underway is not on the golf course but beside the railway: a temporary passenger station being built to bring spectators to the tournament by train for the first time in generations.",
+        ],
+      },
+      {
+        heading: "A station that closed in 1963",
+        paragraphs: [
+          "Adare's original railway station dates to the mid nineteenth century, when the line through the village formed part of the wider rail network serving County Limerick. Passenger services ended on 4 February 1963, one of many station closures across Ireland as car ownership grew and branch lines lost viability.",
+          "For more than sixty years, Adare has had no local stop for passengers. Villagers and guests travelling by rail have relied on Limerick Colbert, Limerick Junction, or road access instead. That long absence makes the return of passenger rail, even on a temporary basis for tournament week, a notable moment in the village's modern history.",
+        ],
+      },
+      {
+        heading: "Why a temporary station is being built",
+        paragraphs: [
+          "The Ryder Cup is expected to draw tens of thousands of spectators to Adare Manor across tournament week. Moving large numbers of people by road alone would place heavy pressure on local routes, even with the Adare bypass and park and ride plans in place.",
+          "Iarnród Éireann has begun construction on a temporary station at Adare consisting of a platform and external concourse. Works are expected to take around six months and are being delivered by Cara Plant Hire Limited, with funding from the Department of Transport through the National Transport Authority (NTA).",
+          "The project sits alongside the reinstatement of the 42km Limerick to Foynes freight line, a major infrastructure programme scheduled for completion in October 2026. Track laying on that corridor was completed in 2025, with signalling, telecommunications, level crossing upgrades, and refurbishment at Foynes station continuing through 2026. Once commissioned, the line will connect to the existing network at Limerick, opening the corridor needed for Ryder Cup shuttle services.",
+        ],
+      },
+      {
+        heading: "How spectators will reach Adare by train",
+        paragraphs: [
+          "Ryder Cup special rail services are expected to operate outside normal timetable hours, using the existing fleet on a shuttle between Limerick Junction and the temporary Adare station on the reinstated Foynes line.",
+          "Limerick Junction will be the main interchange. Direct trains from Dublin Heuston and Cork Kent connect there, allowing spectators from major cities to change onto the Adare shuttle for the final leg. Official Ryder Cup transport guidance estimates the shuttle journey from Limerick Junction to Adare Manor at around 45 minutes, with a short walk from the temporary station to the tournament gates.",
+          "There will not be a direct train service from Limerick Colbert to Adare. The current railway layout links the Foynes line to the Limerick to Limerick Junction route rather than from Colbert station. Visitors based in Limerick city or arriving from Galway via Colbert are expected to use dedicated shuttle buses from Colbert to the venue, a journey of roughly 35 to 40 minutes according to official estimates.",
+        ],
+      },
+      {
+        heading: "A full circle moment for the village",
+        paragraphs: [
+          "For Adare, the temporary station is more than platforms and track. It represents the village reconnecting with a part of its transport heritage at a moment when the world's attention turns to the Manor and the Maigue valley.",
+          "Construction crews are progressing the physical works while local businesses, accommodation providers, and community groups prepare for an influx of international guests. The aim is practical: move spectators efficiently and reduce road congestion. The effect is also cultural, as a settlement that lost its passenger railway in 1963 prepares to greet arriving trains again, if only for Ryder week.",
+          "When the first shuttle services pull in beside the village, they will carry not only ticket holders bound for the Ryder Cup, but a sense of occasion that many in Adare have waited decades to see return.",
+        ],
+      },
+      {
+        heading: "Planning your Ryder Cup stay in Adare",
+        paragraphs: [
+          "If you are travelling to the tournament by train, bus, or car, choosing accommodation in or near Adare village can simplify your daily journey to the venue. Our portfolio of private luxury residences ranges from homes within walking distance of Adare Manor to executive properties a short drive away, suited to groups who want space, privacy, and local access throughout Ryder Cup week.",
+          "Browse our properties, explore Ryder Cup packages, or contact us to discuss availability and guest requirements while transport timetables for September 2027 are finalised.",
+        ],
+      },
+    ],
+    externalLinks: [
+      {
+        label: "Iarnród Éireann: Temporary Adare station works",
+        url: "https://www.irishrail.ie/en-ie/news/works-on-temporary-adare-station-for-ryder-cup-begins",
+      },
+      {
+        label: "Ryder Cup 2027 Transport",
+        url: "https://www.rydercup.com/attend/transport",
+      },
+      {
+        label: "Adare Village: Ryder Cup rail plans",
+        url: "https://www.adarevillage.com/2026/03/07/major-ryder-cup-rail-surprise-revealed-for-limerick-passengers/",
+      },
+    ],
+  },
+  {
     slug: "adare-ryder-cup-railway-line",
     title: "New Railway Line for Ryder Cup 2027 Spectators",
     excerpt:

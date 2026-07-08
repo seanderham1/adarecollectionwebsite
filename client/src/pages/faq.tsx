@@ -139,7 +139,7 @@ export default function FAQ() {
     {
       question: "What is included in the concierge service?",
       answer:
-        "Our concierge service includes assistance with restaurant reservations, transportation arrangements, event tickets, local recommendations, and any special requests you may have during your stay.",
+        "Our concierge service includes assistance with restaurant reservations, transportation arrangements, local recommendations, and any special requests you may have during your stay.",
     },
     {
       question: "Are the properties suitable for corporate groups?",
