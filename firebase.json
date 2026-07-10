@@ -118,6 +118,14 @@
         "destination": "/_prerender/property__the-manor-lodge.html"
       },
       {
+        "source": "/blog/hogan-durkan-estate-agents-partnership",
+        "destination": "/_prerender/blog__hogan-durkan-estate-agents-partnership.html"
+      },
+      {
+        "source": "/blog/adare-village-railway-station-returns-ryder-cup",
+        "destination": "/_prerender/blog__adare-village-railway-station-returns-ryder-cup.html"
+      },
+      {
         "source": "/blog/adare-ryder-cup-railway-line",
         "destination": "/_prerender/blog__adare-ryder-cup-railway-line.html"
       },
@@ -339,6 +347,24 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/the-manor-lodge>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/hogan-durkan-estate-agents-partnership",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/hogan-durkan-estate-agents-partnership>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/adare-village-railway-station-returns-ryder-cup",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/adare-village-railway-station-returns-ryder-cup>; rel=\"canonical\""
           }
         ]
       },

@@ -121,6 +121,22 @@ export default function BlogPost() {
                       {paragraph}
                     </p>
                   ))}
+                  {section.imagePair && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                      <img
+                        src={section.imagePair.left.src}
+                        alt={section.imagePair.left.alt}
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                      />
+                      <img
+                        src={section.imagePair.right.src}
+                        alt={section.imagePair.right.alt}
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                 </section>
               ))}
             </div>

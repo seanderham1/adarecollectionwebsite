@@ -1,6 +1,10 @@
 export type BlogPostSection = {
   heading?: string;
   paragraphs: string[];
+  imagePair?: {
+    left: { src: string; alt: string };
+    right: { src: string; alt: string };
+  };
 };
 
 export type BlogPostExternalLink = {
@@ -28,6 +32,42 @@ export type BlogPost = {
 };
 
 const blogPosts: BlogPost[] = [
+  {
+    slug: "hogan-durkan-estate-agents-partnership",
+    title: "The Adare Collection Partners with Hogan Durkan Estate Agents",
+    excerpt:
+      "A strategic partnership combining luxury accommodation expertise with one of the Mid-West's most respected estate agencies, delivering a trusted and professionally managed booking experience.",
+    publishedAt: "2026-07-08",
+    category: "NEWS",
+    readTimeMinutes: 3,
+    heroImage: "/images/blog/handshake-image.webp",
+    keywords:
+      "Hogan Durkan Estate Agents, The Adare Collection partnership, Adare property management, luxury accommodation Limerick, estate agents Mid-West, Ryder Cup 2027 accommodation",
+    sections: [
+      {
+        paragraphs: [
+          "The Adare Collection is proud to announce its strategic partnership with Hogan Durkan Estate Agents, one of the Mid-West's most respected and established property firms.",
+          "This collaboration combines The Adare Collection's expertise in luxury accommodation and guest services with Hogan Durkan's extensive experience in property management, regulatory compliance, and client account administration.",
+          "Together, we provide homeowners and international clients with a trusted, transparent and professionally managed booking experience, ensuring every reservation is handled with the highest standards of service, integrity and compliance.",
+        ],
+        imagePair: {
+          left: {
+            src: "/images/blog/hogan-image-square.webp",
+            alt: "Hogan Durkan Estate Agents",
+          },
+          right: {
+            src: "/images/blog/joe-about-square.webp",
+            alt: "Joe — Hospitality & Property Expert, The Adare Collection",
+          },
+        },
+      },
+      {
+        paragraphs: [
+          "Led by Partners Eoin Hogan and Patrick Durkan, Hogan Durkan Estate Agents brings together more than 35 years of combined property expertise. With extensive experience across residential and commercial sales, lettings, valuations and property management, and recognised professional accreditations in Ireland and internationally, they are committed to delivering trusted advice, exceptional service and outstanding results for their clients.",
+        ],
+      },
+    ],
+  },
   {
     slug: "adare-village-railway-station-returns-ryder-cup",
     title: "Adare Welcomes Back the Railway for Ryder Cup 2027",

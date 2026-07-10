@@ -950,6 +950,7 @@ export const properties: Property[] = [
     walkingDistance:
       "Two-minute drive or approximately twenty-minute walk to the entrance of Adare Manor and the Ryder Cup venue.",
     eircode: "V94 W959",
+    matterportUrl: "https://my.matterport.com/show/?m=Byumeyi5wmc",
   },
   {
     id: "the-manor-lodge",
