@@ -1,6 +1,6 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { properties, formatPropertyBedroomsShort, getPropertyCollectionBadge, sortPropertiesByCollectionTier } from "@/lib/properties";
+import { properties, formatPropertyBedroomsShort, getPropertyCollectionBadge, getPropertyAvailabilityLabel, sortPropertiesByCollectionTier } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
@@ -123,7 +123,7 @@ export default function PropertiesPage() {
                       {formatPropertyBedroomsShort(p)} BEDROOMS
                     </div>
                     <div className="text-xs text-muted uppercase tracking-wider font-medium">
-                      AVAILABLE
+                      {getPropertyAvailabilityLabel(p)}
                     </div>
                   </div>
                   <h3 className="font-serif text-xl font-normal mb-2 text-primary">{p.name}</h3>

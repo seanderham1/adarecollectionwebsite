@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { properties, type Property, formatPropertyBedroomsShort, getPropertyCollectionBadge, sortPropertiesByCollectionTier } from "@/lib/properties";
+import { properties, type Property, formatPropertyBedroomsShort, getPropertyCollectionBadge, getPropertyAvailabilityLabel, sortPropertiesByCollectionTier } from "@/lib/properties";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
@@ -36,7 +36,7 @@ function PropertyCard({ property }: PropertyCardProps) {
               {formatPropertyBedroomsShort(property)} BEDROOMS
             </div>
             <div className="text-xs text-muted uppercase tracking-wider font-medium">
-              AVAILABLE
+              {getPropertyAvailabilityLabel(property)}
             </div>
           </div>
           

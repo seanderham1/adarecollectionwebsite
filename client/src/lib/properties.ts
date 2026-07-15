@@ -23,6 +23,14 @@ export interface Property {
   bedroomsLabel?: string;
   /** Optional at-a-glance stats shown on property detail (label + value). */
   specs?: { label: string; value: string }[];
+  /** Card badge; defaults to AVAILABLE when omitted. */
+  availabilityStatus?: "AVAILABLE" | "RESERVED";
+}
+
+export function getPropertyAvailabilityLabel(
+  property: Pick<Property, "availabilityStatus">,
+): "AVAILABLE" | "RESERVED" {
+  return property.availabilityStatus ?? "AVAILABLE";
 }
 
 export function formatPropertyBedroomsShort(property: Pick<Property, "bedrooms" | "bedroomsLabel">): string {
@@ -639,7 +647,8 @@ export const properties: Property[] = [
     },
     walkingDistance: "Approximately 12 minutes' drive to Adare Manor; about 3 minutes to the Croagh Park & Ride at Smithfield.",
     eircode: "V94 K3EX",
-    matterportUrl: "https://my.matterport.com/show/?m=BxbEQdSmPXo"
+    matterportUrl: "https://my.matterport.com/show/?m=BxbEQdSmPXo",
+    availabilityStatus: "RESERVED",
   },
   {
     id: "dunes-lodge",
