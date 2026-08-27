@@ -19,14 +19,14 @@ export function propertyPageTitle(property: Property): string {
     const label = titleCaseKeyword(focus.focusKeyword);
     return `${property.name} | ${label} | Adare Manor`;
   }
-  return `${property.name} - Ryder Cup 2027 Accommodation | Adare Manor Rental`;
+  return `${property.name} - Private Rental near Adare Manor`;
 }
 
 /** Unique per listing; keep within ~160 chars for meta descriptions. */
 export function propertyPageDescription(property: Property): string {
   const beds = formatPropertyBedroomsShort(property);
   const focus = getPropertySeoFocus(property.id);
-  const keywordPhrase = focus ? focus.focusKeyword : "Ryder Cup 2027 accommodation";
+  const keywordPhrase = focus ? focus.focusKeyword : "private rental near Adare Manor";
   const line = `${property.name}, ${beds} bedrooms. ${keywordPhrase} at Adare Manor, Ireland. ${property.subtitle}`;
   if (line.length <= 158) return line;
   const shorter = `${property.name}, ${keywordPhrase}. ${beds} bedrooms near Adare Manor, County Limerick. Enquire for availability.`;

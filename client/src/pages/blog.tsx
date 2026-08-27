@@ -30,10 +30,6 @@ export default function Blog() {
                 View properties
               </Link>
               {" · "}
-              <Link href="/ryder-cup-packages" className="underline underline-offset-4 hover:text-gray-900">
-                Ryder Cup packages
-              </Link>
-              {" · "}
               <Link href="/contact" className="underline underline-offset-4 hover:text-gray-900">
                 Contact us
               </Link>

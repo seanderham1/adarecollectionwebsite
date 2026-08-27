@@ -21,11 +21,12 @@ function scanLeakedTextNodes(root: ParentNode): Text[] {
 
 function collectLeakedFromAddedNodes(nodes: NodeList | Node[]): Text[] {
   const found: Text[] = [];
-  for (const added of nodes) {
+  // Convert NodeList to an actual array so TS doesn't require downlevelIteration.
+  for (const added of Array.from(nodes)) {
     if (added.nodeType === Node.TEXT_NODE && isLeakedGtmText(added.textContent ?? "")) {
       found.push(added as Text);
     } else if (added.nodeType === Node.ELEMENT_NODE) {
-      found.push(...scanLeakedTextNodes(added));
+      found.push(...scanLeakedTextNodes(added as ParentNode));
     }
   }
   return found;

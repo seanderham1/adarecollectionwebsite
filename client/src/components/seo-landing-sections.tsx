@@ -1,10 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import {
-  SEO_CORPORATE_PATH,
-  SEO_PACKAGES_PATH,
-  SEO_SERVICES_PATH,
-} from "@/lib/seo-landing-pages";
+import { SEO_SERVICES_PATH } from "@/lib/seo-landing-pages";
 
 type Section = { title: string; paragraphs: string[] };
 
@@ -44,9 +40,7 @@ export function SeoLandingCta() {
 
 export function SeoLandingCrossLinks({ currentPath }: { currentPath: string }) {
   const links = [
-    { href: SEO_PACKAGES_PATH, label: "Ryder Cup packages" },
-    { href: SEO_CORPORATE_PATH, label: "Corporate hospitality" },
-    { href: SEO_SERVICES_PATH, label: "Travel management" },
+    { href: SEO_SERVICES_PATH, label: "Estate services" },
     { href: "/properties", label: "View properties" },
     { href: "/faq", label: "FAQ" },
   ].filter((l) => l.href !== currentPath);

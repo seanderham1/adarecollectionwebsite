@@ -8,6 +8,7 @@ import {
   PROPERTIES_URL,
   TEN_MIN_DRIVE_RADIUS_METERS,
   FIFTEEN_MIN_DRIVE_RADIUS_METERS,
+  TWENTY_MIN_DRIVE_RADIUS_METERS,
   WALK_RADIUS_METERS,
   TWENTY_MIN_WALK_RADIUS_METERS,
   TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS,
@@ -35,6 +36,10 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
 
         // Prefer GeoJSON Point for map center + drive circle so marker and radius stay aligned
         let mapCenter: google.maps.LatLngLiteral = property?.location || MAP_CENTER;
+        const useAdareManorContextOnly = propertyId === "derg-house";
+        if (useAdareManorContextOnly) {
+          mapCenter = MAP_CENTER;
+        }
         let currentPropertyFeature: {
           geometry: { type: string; coordinates: number[] };
           properties?: Record<string, unknown>;
@@ -69,11 +74,19 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
             center: mapCenter,
             zoom: propertyId === 'dunes-lodge'
               ? 8
+              : propertyId === 'derg-house'
+                ? 10
               : propertyId === 'the-manor-lodge'
                 ? 15
               : propertyId === 'nead-fainleog'
                 ? 13
-              : propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house'
+              : propertyId === 'riverston-abbey'
+                ? 9
+              : propertyId === 'coolbawn-quay'
+                ? 9
+              : propertyId === 'oak-leaf-house'
+                ? 12
+              : propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house' || propertyId === 'kildimo-house'
                 ? 11
                 : propertyId === 'hillview-house' || propertyId === 'portland-house'
                   ? 9
@@ -92,16 +105,22 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
             labelText: '10 minute walk',
             icon: 'walk',
           });
+        } else if (propertyId === 'kildimo-house') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: TEN_MIN_DRIVE_RADIUS_METERS,
+            labelText: '12 minute drive',
+            icon: 'car',
+          });
         } else if (propertyId === 'nead-fainleog') {
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: TWENTY_MIN_WALK_RADIUS_METERS,
             labelText: '20 minute walk',
             icon: 'walk',
           });
-        } else if (propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house') {
+        } else if (propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house' || propertyId === 'oak-leaf-house') {
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: TEN_MIN_DRIVE_RADIUS_METERS,
-            labelText: '10 minute drive',
+            labelText: propertyId === 'oak-leaf-house' ? '12 minute drive' : '10 minute drive',
             icon: 'car',
           });
         } else if (propertyId === 'cragleigh-house') {
@@ -116,10 +135,22 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
             labelText: '45 minute drive',
             icon: 'car',
           });
-        } else if (propertyId === 'dunes-lodge') {
+        } else if (propertyId === 'riverston-abbey') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: FORTY_FIVE_MIN_DRIVE_RADIUS_METERS,
+            labelText: '40 minute drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'dunes-lodge' || propertyId === 'coolbawn-quay') {
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: ONE_HOUR_DRIVE_RADIUS_METERS,
             labelText: '1 hour drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'derg-house') {
+          addWalkRadiusCircle(map, MAP_CENTER, {
+            radiusMeters: TWENTY_MIN_DRIVE_RADIUS_METERS,
+            labelText: '20 minute drive',
             icon: 'car',
           });
         } else {
@@ -252,7 +283,7 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
         });
 
         // Marker uses same GeoJSON feature as map center (when available)
-        if (currentPropertyFeature?.geometry?.type === "Point") {
+        if (!useAdareManorContextOnly && currentPropertyFeature?.geometry?.type === "Point") {
           const [lng, lat] = currentPropertyFeature.geometry.coordinates;
           const p = (currentPropertyFeature.properties || {}) as {
             title?: string;
@@ -262,7 +293,7 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           };
           console.log(`Adding marker for current property ${p.title} at [${lat}, ${lng}]`);
           createPropertyMarker(map, { lat, lng }, p);
-        } else {
+        } else if (!useAdareManorContextOnly) {
           console.log(`Property ${propertyId} not in GeoJSON; using fallback marker`);
           const fallbackProps = {
             id: "putters-way",

@@ -32,6 +32,7 @@ import {
   Scan,
   Package,
   Sofa,
+  Armchair,
   Accessibility,
   Sun,
   type LucideIcon,
@@ -53,6 +54,7 @@ const PROPERTY_SPEC_ICONS: Record<string, LucideIcon> = {
   Occupancy: Users,
   "Reception rooms": Sofa,
   "Distance from Ryder Cup Course": MapPinned,
+  "Distance from Adare Manor course": MapPinned,
   "Distance to Park and Ride": MapPinned,
   "Distance from Ryder Cup train": TrainFront,
   "Number of TVs": Tv,
@@ -65,6 +67,7 @@ const PROPERTY_SPEC_ICONS: Record<string, LucideIcon> = {
   "Kitchen & dining": UtensilsCrossed,
   Interiors: Sun,
   Location: MapPinned,
+  "Restaurant amenities": UtensilsCrossed,
 };
 
 /** Parkview: pre-load guess (overridden by intrinsic size on onLoad). Exterior/kitchen/sitting are typically landscape. */
@@ -541,7 +544,7 @@ export default function PropertyDetail() {
                       <button 
                         onClick={() => {
                           const subject = encodeURIComponent("Property at The Adare Collection");
-                          const body = encodeURIComponent(`Look at this home that I found for the 2027 Ryder Cup!\n\n${window.location.href}`);
+                          const body = encodeURIComponent(`Look at this home that I found near Adare Manor!\n\n${window.location.href}`);
                           window.location.href = `mailto:?subject=${subject}&body=${body}`;
                         }}
                         className="text-primary hover:text-gray-900 transition-colors"
@@ -550,7 +553,7 @@ export default function PropertyDetail() {
                       </button>
                       <button 
                         onClick={() => {
-                          const text = encodeURIComponent(`Look at this home that I found for the 2027 Ryder Cup! ${window.location.href}`);
+                          const text = encodeURIComponent(`Look at this home that I found near Adare Manor! ${window.location.href}`);
                           window.open(`https://wa.me/?text=${text}`, '_blank');
                         }}
                         className="text-primary hover:text-gray-900 transition-colors"
@@ -574,7 +577,7 @@ export default function PropertyDetail() {
                         {paragraph}
                       </p>
                     ))}
-                    {(property.id === "rangeview" || property.id === "the-captains" || property.id === "putters-way" || property.id === "the-first-tee" || property.id === "the-fairways" || property.id === "cragleigh-house" || property.id === "darrira-house" || property.id === "croagh-house" || property.id === "parkview-house" || property.id === "portland-house" || property.id === "dunes-lodge" || property.id === "hillview-house" || property.id === "nead-fainleog" || property.id === "the-manor-lodge") &&
+                    {(property.id === "rangeview" || property.id === "the-captains" || property.id === "putters-way" || property.id === "the-first-tee" || property.id === "the-fairways" || property.id === "cragleigh-house" || property.id === "darrira-house" || property.id === "croagh-house" || property.id === "parkview-house" || property.id === "portland-house" || property.id === "dunes-lodge" || property.id === "hillview-house" || property.id === "nead-fainleog" || property.id === "the-manor-lodge" || property.id === "derg-house" || property.id === "riverston-abbey" || property.id === "kildimo-house" || property.id === "coolbawn-quay" || property.id === "oak-leaf-house") &&
                       getPropertySeoSupplementParagraphs(property.id).map((paragraph, index) => (
                         <p key={`seo-${index}`} className="mb-4 last:mb-0">
                           {paragraph}
@@ -587,7 +590,10 @@ export default function PropertyDetail() {
                   <div className="mb-8 lg:pl-4 lg:pr-4" data-testid="property-specs">
                     <div className="grid md:grid-cols-2 gap-6">
                       {property.specs.map((spec, index) => {
-                        const SpecIcon = PROPERTY_SPEC_ICONS[spec.label];
+                        const SpecIcon =
+                          property.id === "coolbawn-quay" && spec.label === "Dining seating"
+                            ? Armchair
+                            : PROPERTY_SPEC_ICONS[spec.label];
                         return (
                           <div
                             key={index}
@@ -705,7 +711,7 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house' || property.id === 'nead-fainleog' || property.id === 'the-manor-lodge') && (
+                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house' || property.id === 'nead-fainleog' || property.id === 'the-manor-lodge' || property.id === 'derg-house' || property.id === 'riverston-abbey' || property.id === 'kildimo-house' || property.id === 'coolbawn-quay' || property.id === 'oak-leaf-house') && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Crown className="text-white h-6 w-6" />
@@ -800,7 +806,7 @@ export default function PropertyDetail() {
                         <button 
                           onClick={() => {
                             const subject = encodeURIComponent("Property at The Adare Collection");
-                            const body = encodeURIComponent(`Look at this home that I found for the 2027 Ryder Cup!\n\n${window.location.href}`);
+                            const body = encodeURIComponent(`Look at this home that I found near Adare Manor!\n\n${window.location.href}`);
                             window.location.href = `mailto:?subject=${subject}&body=${body}`;
                           }}
                           className="text-primary hover:text-gray-900 transition-colors"
@@ -809,7 +815,7 @@ export default function PropertyDetail() {
                         </button>
                         <button 
                           onClick={() => {
-                            const text = encodeURIComponent(`Look at this home that I found for the 2027 Ryder Cup! ${window.location.href}`);
+                            const text = encodeURIComponent(`Look at this home that I found near Adare Manor! ${window.location.href}`);
                             window.open(`https://wa.me/?text=${text}`, '_blank');
                           }}
                           className="text-primary hover:text-gray-900 transition-colors"
@@ -832,7 +838,7 @@ export default function PropertyDetail() {
       >
         <div className="max-w-4xl mx-auto">
           <h2 className="font-serif text-xl font-normal text-primary mb-4 text-center">
-            More Ryder Cup 2027 properties
+            More properties near Adare Manor
           </h2>
           <p className="text-sm text-secondary text-center mb-6">
             Explore our full portfolio of private homes near Adare Manor.

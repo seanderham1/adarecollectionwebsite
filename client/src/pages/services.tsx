@@ -12,16 +12,16 @@ import { Link } from "wouter";
 
 const SECTIONS = [
   {
-    title: "Estate-hosted travel management",
+    title: "Optional services with your rental",
     paragraphs: [
-      "The Adare Collection coordinates Ryder Cup 2027 travel management at luxury private residences in and near Adare Manor grounds. Optional additional travel management includes concierge, chauffeur and licensed ground transfers, which are arranged around your confirmed estate rental.",
+      "The Adare Collection can arrange optional in-residence services at luxury private residences in and near Adare Manor. Concierge, chauffeur, and licensed ground transfers are arranged around your confirmed estate rental.",
     ],
   },
   {
     title: "What we coordinate, and what we do not",
     paragraphs: [
-      "We coordinate ground logistics, chauffeur transfer, optional helicopter transfers (subject to availability). Flights and third-party package holidays remain with you or your travel partner.",
-      "Read our FAQ for full detail on travel management versus accommodation-only enquiries.",
+      "We coordinate ground logistics, chauffeur transfer, and optional helicopter transfers (subject to availability). Flights and third-party package holidays remain with you or your travel partner. We do not sell tickets or official hospitality.",
+      "Read our FAQ for full detail on estate services versus accommodation-only enquiries.",
     ],
   },
 ];
@@ -42,7 +42,7 @@ export default function Services() {
           </p>
           <p className="text-sm text-secondary mt-4">
             <Link href="/faq" className="underline underline-offset-4 hover:text-gray-900">
-              FAQ: travel management vs flights
+              FAQ: estate services vs flights
             </Link>
           </p>
         </div>

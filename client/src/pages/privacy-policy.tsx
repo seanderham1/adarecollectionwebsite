@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
               Privacy Policy
             </h1>
             <p className="text-sm text-gray-500">
-              Last updated: January 2025
+              Last updated: August 2026
             </p>
           </div>
 
@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    The Adare Collection Limited, trading as The Adare Collection (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), is committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in connection with luxury property rentals for Ryder Cup 2027 and related events.
+                    The Adare Collection Limited, trading as The Adare Collection (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), CRO No. 812874, is committed to protecting your privacy and personal information. We act as exclusive representative, marketing agent, and booking facilitator for luxury short-term residential accommodation. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in connection with property rentals for Ryder Cup 2027 and related events.
                   </p>
                   <p>
                     By using our website and services, you consent to the data practices described in this policy. If you do not agree with the terms of this Privacy Policy, please do not access or use our services.
@@ -62,10 +62,11 @@ export default function PrivacyPolicy() {
                     This information may include:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Name and contact details (email address, phone number)</li>
+                    <li>Name and contact details (email address, phone number, postal address)</li>
                     <li>Country of residence and international dialing codes</li>
                     <li>Property preferences and requirements</li>
-                    <li>Event dates and group size information</li>
+                    <li>Event dates, group size, and guest-party details needed to perform a booking</li>
+                    <li>Payment and booking details (including Deposit, Rent, and Security Deposit information processed via our designated client account)</li>
                     <li>Communication preferences</li>
                     <li>Any additional information you choose to provide</li>
                   </ul>
@@ -97,8 +98,9 @@ export default function PrivacyPolicy() {
                     We use the information we collect for the following purposes:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Service Provision:</strong> To provide luxury property rental services, process bookings, and manage your stay</li>
+                    <li><strong>Service Provision:</strong> To market properties, facilitate bookings, collect Deposit, Rent, and Security Deposit payments into our designated client account, and coordinate guest services</li>
                     <li><strong>Communication:</strong> To respond to your inquiries, send booking confirmations, and provide customer support</li>
+                    <li><strong>Contract Performance:</strong> To enable Owners and Occupiers to enter into and perform Residential Letting Agreements</li>
                     <li><strong>Marketing:</strong> To send you newsletters, property updates, and promotional materials (with your consent)</li>
                     <li><strong>Personalization:</strong> To tailor our services and recommendations to your preferences</li>
                     <li><strong>Legal Compliance:</strong> To comply with applicable laws, regulations, and legal processes</li>
@@ -136,12 +138,13 @@ export default function PrivacyPolicy() {
                     We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Service Providers:</strong> With trusted third-party service providers who assist us in operating our business (e.g., property management, payment processing, email services)</li>
-                    <li><strong>Property Owners:</strong> With property owners and their representatives to facilitate bookings and provide services</li>
+                    <li><strong>Service Providers:</strong> With trusted third-party service providers who assist us in operating our business (e.g., property management, payment processing, email services, client-account administration)</li>
+                    <li><strong>Property Owners:</strong> With property Owners and their representatives as necessary to conclude and perform Residential Letting Agreements, coordinate access, housekeeping, inspections, and guest services, and handle Security Deposit matters</li>
+                    <li><strong>Guest Service Partners:</strong> With caterers, transport, concierge, security, or other suppliers you ask us to arrange, where needed to deliver those services</li>
                     <li><strong>Legal Requirements:</strong> When required by law, court order, or government regulation</li>
                     <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
                     <li><strong>Consent:</strong> When you have given explicit consent for us to share your information</li>
-                    <li><strong>Safety and Security:</strong> To protect the rights, property, or safety of The Adare Collection Limited, our users, or others</li>
+                    <li><strong>Safety and Security:</strong> To protect the rights, property, or safety of The Adare Collection Limited, property Owners, our users, or others</li>
                   </ul>
                 </div>
               </section>
@@ -256,10 +259,28 @@ export default function PrivacyPolicy() {
                 </div>
               </section>
 
+              {/* CCTV and Property Monitoring */}
+              <section>
+                <h2 className="font-serif text-2xl font-normal text-primary mb-4">
+                  11. CCTV and Property Monitoring
+                </h2>
+                <div className="text-base text-gray-700 leading-relaxed space-y-4">
+                  <p>
+                    Some Properties may have CCTV cameras or other monitoring devices (for example at entrances, parking areas, or external spaces). Where such devices are present, the Owner is responsible for disclosing their existence, and we will take reasonable steps to ensure that approved disclosure wording and a privacy notice are available before your stay.
+                  </p>
+                  <p>
+                    Monitoring is typically for security and safety of the Property, Occupiers, and neighbours. Footage may be processed by the Owner and/or their service providers as independent or joint controllers, depending on the arrangements for that Property. Guests must not cover, disconnect, disable, or interfere with CCTV or other safety or security equipment.
+                  </p>
+                  <p>
+                    If you have questions about cameras at a specific Property, please contact us before arrival and we will obtain the relevant disclosure from the Owner.
+                  </p>
+                </div>
+              </section>
+
               {/* Children's Privacy */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
-                  11. Children's Privacy
+                  12. Children's Privacy
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
@@ -271,7 +292,7 @@ export default function PrivacyPolicy() {
               {/* Changes to Privacy Policy */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
-                  12. Changes to This Privacy Policy
+                  13. Changes to This Privacy Policy
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
@@ -291,7 +312,7 @@ export default function PrivacyPolicy() {
               {/* Contact Information */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
-                  13. Contact Information
+                  14. Contact Information
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
@@ -299,12 +320,15 @@ export default function PrivacyPolicy() {
                   </p>
                   <div className="bg-gray-50 p-6 rounded-lg">
                     <p><strong>The Adare Collection Limited</strong></p>
+                    <p>CRO No. 812874</p>
                     <p>Email: <a href="mailto:info@theadarecollection.ie" className="text-primary hover:underline">info@theadarecollection.ie</a></p>
                     <p>Phone: <a href="tel:+353866681930" className="text-primary hover:underline">+353 86 668 1930</a></p>
-                    <p>Address: Adare Manor, Co. Limerick, Ireland</p>
+                    <p>
+                      Registered office: Byrne and Co., Gortboy, Church Street, Newcastle West, Co. Limerick, Ireland, V42 F982
+                    </p>
                   </div>
                   <p>
-                    For EU residents, you also have the right to lodge a complaint with your local data protection authority if you believe we have not handled your personal information in accordance with applicable data protection laws.
+                    For EU residents, you also have the right to lodge a complaint with your local data protection authority if you believe we have not handled your personal information in accordance with applicable data protection laws. In Ireland, that authority is the Data Protection Commission.
                   </p>
                 </div>
               </section>

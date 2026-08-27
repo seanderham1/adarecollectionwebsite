@@ -40,8 +40,6 @@ const staticRoutes: { path: string; changefreq: string; priority: string }[] =
     { path: "/contact", changefreq: "monthly", priority: "0.8" },
     { path: "/faq", changefreq: "monthly", priority: "0.7" },
     { path: "/blog", changefreq: "weekly", priority: "0.8" },
-    { path: "/ryder-cup-packages", changefreq: "weekly", priority: "0.85" },
-    { path: "/corporate-hospitality", changefreq: "weekly", priority: "0.85" },
     { path: "/services", changefreq: "weekly", priority: "0.9" },
   ];
 

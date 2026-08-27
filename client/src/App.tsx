@@ -17,8 +17,6 @@ import PropertiesPage from "@/pages/properties";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import TermsConditions from "@/pages/terms-conditions";
 import FAQ from "@/pages/faq";
-import RyderCupPackages from "@/pages/ryder-cup-packages";
-import CorporateHospitality from "@/pages/corporate-hospitality";
 import Services from "@/pages/services";
 import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog-post";
@@ -30,8 +28,6 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/property/:id" component={PropertyDetail} />
       <Route path="/properties" component={PropertiesPage} />
-      <Route path="/ryder-cup-packages" component={RyderCupPackages} />
-      <Route path="/corporate-hospitality" component={CorporateHospitality} />
       <Route path="/services" component={Services} />
       <Route path="/contact" component={Contact} />
       <Route path="/faq" component={FAQ} />

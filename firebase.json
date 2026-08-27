@@ -16,6 +16,18 @@
       "**/Hillview House 1 Video Assets/**",
       "**/Portland House 2 Video Assets/**"
     ],
+    "redirects": [
+      {
+        "source": "/ryder-cup-packages",
+        "destination": "/properties",
+        "type": 301
+      },
+      {
+        "source": "/corporate-hospitality",
+        "destination": "/properties",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "/api/**",
@@ -24,14 +36,6 @@
       {
         "source": "/properties",
         "destination": "/_prerender/properties.html"
-      },
-      {
-        "source": "/ryder-cup-packages",
-        "destination": "/_prerender/ryder-cup-packages.html"
-      },
-      {
-        "source": "/corporate-hospitality",
-        "destination": "/_prerender/corporate-hospitality.html"
       },
       {
         "source": "/services",
@@ -118,6 +122,50 @@
         "destination": "/_prerender/property__the-manor-lodge.html"
       },
       {
+        "source": "/property/derg-house",
+        "destination": "/_prerender/property__derg-house.html"
+      },
+      {
+        "source": "/property/riverston-abbey",
+        "destination": "/_prerender/property__riverston-abbey.html"
+      },
+      {
+        "source": "/property/kildimo-house",
+        "destination": "/_prerender/property__kildimo-house.html"
+      },
+      {
+        "source": "/property/coolbawn-quay",
+        "destination": "/_prerender/property__coolbawn-quay.html"
+      },
+      {
+        "source": "/property/oak-leaf-house",
+        "destination": "/_prerender/property__oak-leaf-house.html"
+      },
+      {
+        "source": "/blog/golf-limerick-brochures-whats-coming",
+        "destination": "/_prerender/blog__golf-limerick-brochures-whats-coming.html"
+      },
+      {
+        "source": "/blog/tickets-are-gone-heres-what-every-ryder-cup-2027-fan-should-be-doing-right-now",
+        "destination": "/_prerender/blog__tickets-are-gone-heres-what-every-ryder-cup-2027-fan-should-be-doing-right-now.html"
+      },
+      {
+        "source": "/blog/ryder-cup-2027-general-admission-tickets-sold-out",
+        "destination": "/_prerender/blog__ryder-cup-2027-general-admission-tickets-sold-out.html"
+      },
+      {
+        "source": "/blog/padraig-harrington-ryder-cup-2027-vice-captain",
+        "destination": "/_prerender/blog__padraig-harrington-ryder-cup-2027-vice-captain.html"
+      },
+      {
+        "source": "/blog/ryder-cup-2027-ballot-results",
+        "destination": "/_prerender/blog__ryder-cup-2027-ballot-results.html"
+      },
+      {
+        "source": "/blog/stripe-ryder-cup-worldwide-partner",
+        "destination": "/_prerender/blog__stripe-ryder-cup-worldwide-partner.html"
+      },
+      {
         "source": "/blog/hogan-durkan-estate-agents-partnership",
         "destination": "/_prerender/blog__hogan-durkan-estate-agents-partnership.html"
       },
@@ -194,24 +242,6 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/blog>; rel=\"canonical\""
-          }
-        ]
-      },
-      {
-        "source": "/ryder-cup-packages",
-        "headers": [
-          {
-            "key": "Link",
-            "value": "<https://theadarecollection.com/ryder-cup-packages>; rel=\"canonical\""
-          }
-        ]
-      },
-      {
-        "source": "/corporate-hospitality",
-        "headers": [
-          {
-            "key": "Link",
-            "value": "<https://theadarecollection.com/corporate-hospitality>; rel=\"canonical\""
           }
         ]
       },
@@ -347,6 +377,105 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/the-manor-lodge>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/derg-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/derg-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/riverston-abbey",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/riverston-abbey>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/kildimo-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/kildimo-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/coolbawn-quay",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/coolbawn-quay>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/oak-leaf-house",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/oak-leaf-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/golf-limerick-brochures-whats-coming",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/golf-limerick-brochures-whats-coming>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/tickets-are-gone-heres-what-every-ryder-cup-2027-fan-should-be-doing-right-now",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/tickets-are-gone-heres-what-every-ryder-cup-2027-fan-should-be-doing-right-now>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/ryder-cup-2027-general-admission-tickets-sold-out",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/ryder-cup-2027-general-admission-tickets-sold-out>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/padraig-harrington-ryder-cup-2027-vice-captain",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/padraig-harrington-ryder-cup-2027-vice-captain>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/ryder-cup-2027-ballot-results",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/ryder-cup-2027-ballot-results>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/stripe-ryder-cup-worldwide-partner",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/stripe-ryder-cup-worldwide-partner>; rel=\"canonical\""
           }
         ]
       },

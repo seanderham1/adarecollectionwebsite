@@ -23,23 +23,20 @@ export default function FAQ() {
       answer: (
         <div className="space-y-3">
           <p>
-            The Adare Collection is an independent luxury accommodation provider. We are not affiliated
-            with Adare Manor or Ryder Cup Europe. Several of our homes sit on the Adare Manor demesne or
-            within the gated resort, among the closest private Ryder Cup 2027 accommodation to the
-            tournament venue.
+            No. The Adare Collection is an independent luxury accommodation provider. We are not
+            affiliated with, endorsed by, or connected to Adare Manor, Ryder Cup Europe, The
+            Professional Golfers&apos; Association of America, or any official Ryder Cup ticket or
+            hospitality seller. Several of our homes sit on the Adare Manor demesne or within the
+            gated resort, among the closest private residences to the tournament venue.
           </p>
           <p>
             Browse{" "}
             <Link href="/properties" className="text-primary underline underline-offset-2 hover:no-underline">
               properties
-            </Link>
-            ,{" "}
-            <Link href="/ryder-cup-packages" className="text-primary underline underline-offset-2 hover:no-underline">
-              packages
-            </Link>
-            , or{" "}
-            <Link href="/corporate-hospitality" className="text-primary underline underline-offset-2 hover:no-underline">
-              corporate hospitality
+            </Link>{" "}
+            or{" "}
+            <Link href="/contact" className="text-primary underline underline-offset-2 hover:no-underline">
+              contact us
             </Link>{" "}
             for options confirmed enquiry-by-enquiry.
           </p>
@@ -47,19 +44,12 @@ export default function FAQ() {
       ),
     },
     {
-      question: "Do you offer Ryder Cup 2027 packages or corporate hospitality?",
+      question: "Do you sell Ryder Cup tickets or official hospitality?",
       answer: (
         <div className="space-y-3">
           <p>
-            Yes. Our{" "}
-            <Link href="/ryder-cup-packages" className="text-primary underline underline-offset-2 hover:no-underline">
-              Ryder Cup 2027 packages
-            </Link>{" "}
-            combine estate rentals with optional chef, chauffeur, and concierge.{" "}
-            <Link href="/corporate-hospitality" className="text-primary underline underline-offset-2 hover:no-underline">
-              Corporate hospitality
-            </Link>{" "}
-            pages describe whole-home hosting for sponsors and executive groups.
+            No. We do not sell Ryder Cup tickets or official hospitality. Tickets and official
+            hospitality are available solely via the official Ryder Cup website.
           </p>
         </div>
       ),
@@ -67,28 +57,28 @@ export default function FAQ() {
     {
       question: "Can our group rent a whole house near Adare Manor for Ryder Cup 2027?",
       answer:
-        "Yes. Our portfolio centres on Ryder Cup 2027 houses for rent as complete private residences, so groups have exclusive use of the home throughout their stay subject to occupancy limits and confirmation.",
+        "Yes. Our portfolio centres on houses for rent as complete private residences, so groups have exclusive use of the home throughout their stay subject to occupancy limits and confirmation.",
     },
     {
       question: "Do you offer corporate accommodation for Ryder Cup 2027?",
       answer:
-        "Yes. Several properties suit corporate Ryder Cup 2027 accommodation and hospitality, including executive rentals on the manor grounds and larger estates elsewhere in County Limerick when you need entertaining space and discrete access to the venues.",
+        "Yes. Several properties suit corporate groups and executive stays, including rentals on the manor grounds and larger estates elsewhere in County Limerick when you need entertaining space and discrete access to the venues.",
     },
     {
       question: "What is executive or high‑end corporate housing on your site?",
       answer:
-        "These are flagship private homes booked for principals, delegates, sponsors, or branded hospitality. Fixtures, scale, and add‑on services vary by property; availability is confirmed enquiry‑by‑enquiry alongside any bespoke arrangements agreed in advance.",
+        "These are flagship private homes booked for principals, delegates, sponsors, or private groups. Fixtures, scale, and add‑on services vary by property; availability is confirmed enquiry‑by‑enquiry alongside any bespoke arrangements agreed in advance.",
     },
     {
       question:
-        "Do you offer full packaged Ryder Cup travel management such as flights and holiday bundles?",
+        "Do you offer full packaged travel management such as flights and holiday bundles?",
       answer: (
         <div className="space-y-3">
           <p>
-            We specialise in premium accommodation and estate-hosted services, not airline or package-holiday
-            sales. See our{" "}
+            We specialise in premium accommodation and optional estate-hosted services, not airline
+            or package-holiday sales. See our{" "}
             <Link href="/services" className="text-primary underline underline-offset-2 hover:no-underline">
-              Ryder Cup 2027 travel management
+              estate services
             </Link>{" "}
             page for concierge, chef, chauffeur, and ground transfers arranged around your rental.
           </p>
@@ -168,28 +158,20 @@ export default function FAQ() {
             >
               info@theadarecollection.ie
             </a>
-            . The 50% booking deposit is strictly non-refundable under all circumstances. Refunds on amounts paid above that deposit depend on how far in advance you cancel before your arrival date:
+            . The 50% booking Deposit is non-refundable. Sums paid towards the Rent are not refundable if you cancel, except only under the Event Cancellation terms that apply if Ryder Cup 2027 itself is cancelled, postponed, or relocated away from Adare Manor before your Commencement Date (80% of the Deposit and other sums received, other than the Security Deposit, refunded within 10 working days; 20% retained; Security Deposit returned in full).
           </p>
-          <ul className="list-disc pl-6 space-y-1.5">
-            <li>More than 180 days before arrival: 100% refund of amounts paid in excess of the deposit</li>
-            <li>Between 120 and 180 days before arrival: 50% refund of amounts paid in excess of the deposit</li>
-            <li>Less than 120 days before arrival: no refund of amounts paid in excess of the deposit</li>
-            <li>Approved refunds are processed within 14 business days of cancellation confirmation</li>
-          </ul>
           <p>
-            This is a summary only. The binding terms, including how{" "}
-            <Link href="/terms#force-majeure" className="text-primary underline underline-offset-2 hover:no-underline">
-              Section 8 (Force Majeure)
-            </Link>{" "}
-            may apply, are in our{" "}
+            If an Owner withdraws a property or cancels a confirmed booking after your Deposit has been received (other than under Event Cancellation), all Guest payments already received are refunded in full.
+          </p>
+          <p>
+            This is a summary only. The binding terms are in our{" "}
             <Link
               href="/terms#cancellation-refund-policy"
               className="text-primary underline underline-offset-2 hover:no-underline"
             >
               Terms &amp; Conditions
             </Link>
-            , Section 3.3 (Cancellation and Refund Policy). Please read those sections in full; we confirm the
-            position for your specific booking when you reserve.
+            , Section 3.3 (Cancellation and Refund Policy), and in your signed Residential Letting Agreement. Please read those in full; we confirm the position for your specific booking when you reserve.
           </p>
         </div>
       ),
@@ -313,10 +295,6 @@ export default function FAQ() {
               <Link href="/properties" className="text-primary underline underline-offset-2 hover:no-underline">
                 properties
               </Link>{" "}
-              and{" "}
-              <Link href="/ryder-cup-packages" className="text-primary underline underline-offset-2 hover:no-underline">
-                Ryder Cup packages
-              </Link>{" "}
               to plan your base for the week.
             </p>
           </div>
@@ -346,7 +324,7 @@ export default function FAQ() {
             <p className="text-secondary text-base mt-4">
               Prefer to browse stays first?{" "}
               <Link href="/properties" className="underline underline-offset-4 hover:text-gray-900">
-                View Ryder Cup 2027 properties
+                View properties
               </Link>
               .
             </p>

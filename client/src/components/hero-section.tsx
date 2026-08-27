@@ -25,7 +25,7 @@ const propertyImages = [
 ];
 
 // Countdown component
-function RyderCupCountdown() {
+function EventWeekCountdown() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -34,7 +34,7 @@ function RyderCupCountdown() {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2027-09-25T00:00:00'); // Ryder Cup 2027 start date
+    const targetDate = new Date('2027-09-25T00:00:00'); // Tournament week 2027
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -57,7 +57,7 @@ function RyderCupCountdown() {
     <div className="absolute top-0 left-0 right-0 z-20">
       <div className="bg-white bg-opacity-50 backdrop-blur-sm px-6 lg:px-8 py-3">
         <div className="text-xs font-medium text-gray-900 uppercase tracking-wider text-center lg:text-left">
-          RYDER CUP 2027 IN: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+          TOURNAMENT WEEK 2027 IN: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
         </div>
       </div>
     </div>
@@ -407,15 +407,15 @@ export default function HeroSection() {
                 <img
                   key={src}
                   src={src}
-                  alt={`Ryder Cup 2027 accommodation - Adare Manor luxury rental`}
+                  alt={`Private accommodation near Adare Manor - luxury rental`}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                     idx === currentImageIndex ? "opacity-100" : "opacity-0"
                   }`}
                 />
               ))}
 
-              {/* Ryder Cup Countdown Overlay */}
-              <RyderCupCountdown />
+              {/* Tournament week countdown overlay */}
+              <EventWeekCountdown />
 
               {/* Bottom Right Navigation with Separate White Squares */}
               {enableHeroCarousel && (
@@ -444,20 +444,20 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-black bg-opacity-15 flex items-center">
                 <div className="text-left text-white px-6 lg:px-8 max-w-2xl">
                   <h1 className="font-serif text-sm sm:text-base md:text-[calc(1.55*0.875rem)] mb-0 md:mb-1 leading-tight font-medium">
-                    Ryder Cup 2027 Accommodation
+                    Private Accommodation near Adare Manor
                   </h1>
                   <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mt-0 mb-2 md:mb-6 leading-tight font-medium">
                     Luxury Rentals at Adare Manor
                   </h2>
                   <p className="text-white mb-2 md:mb-6 font-medium text-xs sm:text-sm md:text-[calc(1.4*0.875rem)]">
-                    Private Residences | Adare Manor Estate & Surrounds | Adare rental for Ryder Cup
+                    Private Residences | Adare Manor Estate & Surrounds | Tournament week stays
                   </p>
                   <Button
                     asChild
                     className="border border-white bg-transparent text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:bg-white hover:text-gray-900 transition-all duration-200"
                   >
                     <Link href="/properties">
-                      VIEW RYDER CUP 2027 ACCOMMODATION
+                      VIEW PROPERTIES
                     </Link>
                   </Button>
                 </div>

@@ -9,7 +9,7 @@
         "title":"Darrira House",
         "desc":"Just ten minutes from Adare Manor, an elegant private retreat in Croagh, County Limerick.",
         "beds": 5,
-        "baths": 4,
+        "baths": 5,
         "price":"POA",
         "thumb":"/images/houses/house 6/house-6-exterior-1.webp"
       }
@@ -184,6 +184,59 @@
         "baths": 4,
         "price":"POA",
         "thumb":"/images/houses/house 15/house-15-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.186406666666667, 52.86609666666666]},
+      "properties":{
+        "id":"riverston-abbey",
+        "title":"Riverston Abbey",
+        "desc":"Fifteen-bedroom executive estate in Nenagh with formal dining for 30 and walled gardens, approximately 40 minutes from Adare Manor.",
+        "beds": 15,
+        "baths": 15,
+        "price":"POA",
+        "thumb":"/images/houses/riverstonabbey/riverstonabbey-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.80685, 52.6117]},
+      "properties":{
+        "id":"kildimo-house",
+        "title":"Kildimo House",
+        "desc":"Five-bedroom Kildimo residence with open-plan kitchen/dining and private grounds; sleeps up to ten guests.",
+        "beds": 5,
+        "baths": 5,
+        "price":"POA",
+        "thumb":"/images/houses/kildimolodge/kildimolodge-mainexterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.272649289736252, 53.010401300587425]},
+      "properties":{
+        "id":"coolbawn-quay",
+        "title":"Coolbawn Quay",
+        "desc":"Boutique lakeside resort on Lough Derg with approximately 60 mostly ensuite rooms, approximately one hour from Adare Manor.",
+        "beds": 60,
+        "baths": 60,
+        "price":"POA",
+        "thumb":"/images/houses/coolbawnquay/coolbawnquay-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.8187712, 52.5245425]},
+      "properties":{
+        "id":"oak-leaf-house",
+        "title":"Oak Leaf House",
+        "desc":"Deluxe child-friendly country residence of approximately 2,500 sq. ft., about 12 minutes from Adare Manor.",
+        "beds": 5,
+        "bedsLabel": "4/5",
+        "baths": 3,
+        "price":"POA",
+        "thumb":"/images/houses/oakleaf/oakleaf-exterior-1.webp"
       }
     }
   ]

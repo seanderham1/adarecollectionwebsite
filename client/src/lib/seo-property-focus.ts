@@ -1,5 +1,5 @@
 /**
- * Per-property focus keywords (GSC / SEO report Part 1.2) and on-page checklist.
+ * Per-property focus keywords and on-page checklist.
  */
 
 export type PropertySeoFocus = {
@@ -10,65 +10,84 @@ export type PropertySeoFocus = {
 
 /** Properties audited in the May 2026 report. */
 export const PROPERTY_SEO_FOCUS: Record<string, PropertySeoFocus> = {
-  "portland-house": { focusKeyword: "ryder cup accommodation" },
+  "portland-house": { focusKeyword: "adare manor accommodation" },
   "parkview-house": {
-    focusKeyword: "ryder cup 2027 accommodation",
-    pageSubheading: "Ryder Cup 2027 accommodation with group capacity near Adare Manor",
+    focusKeyword: "private rental near adare manor",
+    pageSubheading: "Private rental with group capacity near Adare Manor",
   },
   "the-fairways": {
-    focusKeyword: "the fairways adare manor ryder cup",
-    pageSubheading: "The Fairways, Adare Manor demesne Ryder Cup stay",
+    focusKeyword: "the fairways adare manor rental",
+    pageSubheading: "The Fairways, Adare Manor demesne private stay",
   },
   "the-first-tee": {
-    focusKeyword: "the first tee adare manor ryder cup",
-    pageSubheading: "The First Tee, closest demesne residence to Ryder Cup 2027 play",
+    focusKeyword: "the first tee adare manor rental",
+    pageSubheading: "The First Tee, closest demesne residence to the championship course",
   },
   "croagh-house": {
-    focusKeyword: "croagh house ryder cup 2027",
-    pageSubheading: "Croagh House, private Ryder Cup 2027 rental near Adare Manor",
+    focusKeyword: "croagh house adare manor rental",
+    pageSubheading: "Croagh House, private rental near Adare Manor",
   },
   "darrira-house": {
-    focusKeyword: "darrira house ryder cup 2027",
-    pageSubheading: "Darrira House, countryside Ryder Cup 2027 accommodation",
+    focusKeyword: "darrira house adare accommodation",
+    pageSubheading: "Darrira House, countryside accommodation near Adare Manor",
   },
   "hillview-house": {
-    focusKeyword: "hillview house ryder cup 2027",
-    pageSubheading: "Hillview House, executive Ryder Cup 2027 rental in Adare",
+    focusKeyword: "hillview house adare rental",
+    pageSubheading: "Hillview House, executive rental near Adare",
   },
   "nead-fainleog": {
-    focusKeyword: "nead fainleog ryder cup 2027",
-    pageSubheading: "Nead Fainleog, executive Ryder Cup 2027 residence near Adare Manor",
+    focusKeyword: "nead fainleog adare manor rental",
+    pageSubheading: "Nead Fainleog, executive residence near Adare Manor",
   },
   "the-manor-lodge": {
-    focusKeyword: "the manor lodge ryder cup 2027",
-    pageSubheading: "The Manor Lodge, executive Ryder Cup 2027 residence in Adare village",
+    focusKeyword: "the manor lodge adare village rental",
+    pageSubheading: "The Manor Lodge, executive residence in Adare village",
   },
   "the-captains": {
-    focusKeyword: "the captains house adare manor ryder cup",
-    pageSubheading: "The Captains, on-estate Ryder Cup 2027 corporate hospitality home",
+    focusKeyword: "the captains house adare manor rental",
+    pageSubheading: "The Captains, on-estate private home at Adare Manor",
   },
   "dunes-lodge": {
-    focusKeyword: "dunes lodge lahinch ryder cup 2027",
-    pageSubheading: "Dunes Lodge, Lahinch base for Ryder Cup 2027 with coastal golf",
+    focusKeyword: "dunes lodge lahinch golf rental",
+    pageSubheading: "Dunes Lodge, Lahinch base with coastal golf",
   },
   "putters-way": {
-    focusKeyword: "putters way adare manor ryder cup",
-    pageSubheading: "Putters Way, Golf Village Ryder Cup 2027 accommodation",
+    focusKeyword: "putters way adare manor rental",
+    pageSubheading: "Putters Way, Golf Village private accommodation",
   },
   /** Extended audit (not in original report). */
   "cragleigh-house": {
-    focusKeyword: "cragleigh house ryder cup 2027",
-    pageSubheading: "Cragleigh House, manor-style Ryder Cup 2027 estate near Adare",
+    focusKeyword: "cragleigh house adare manor rental",
+    pageSubheading: "Cragleigh House, manor-style estate near Adare",
   },
   rangeview: {
-    focusKeyword: "rangeview adare manor ryder cup 2027",
-    pageSubheading: "Range View, demesne Ryder Cup 2027 accommodation at Adare Manor",
+    focusKeyword: "rangeview adare manor rental",
+    pageSubheading: "Range View, demesne accommodation at Adare Manor",
+  },
+  "derg-house": {
+    focusKeyword: "derg house adare manor rental",
+    pageSubheading: "Derg House, luxury country residence near Adare Manor",
+  },
+  "riverston-abbey": {
+    focusKeyword: "riverston abbey nenagh private estate",
+    pageSubheading: "Riverston Abbey, executive private estate in Nenagh",
+  },
+  "kildimo-house": {
+    focusKeyword: "kildimo house adare manor rental",
+    pageSubheading: "Kildimo House, five-bedroom residence near Adare Manor",
+  },
+  "coolbawn-quay": {
+    focusKeyword: "coolbawn quay lough derg resort",
+    pageSubheading: "Coolbawn Quay, boutique lakeside resort near Adare Manor",
+  },
+  "oak-leaf-house": {
+    focusKeyword: "oak leaf house adare manor rental",
+    pageSubheading: "Oak Leaf House, deluxe family residence near Adare Manor",
   },
 };
 
 /** Shared on-page.ai term checklist for property copy supplements. */
 export const PROPERTY_ON_PAGE_CHECKLIST = [
-  "ryder cup",
   "accommodation",
   "adare manor",
   "ireland",
@@ -77,7 +96,6 @@ export const PROPERTY_ON_PAGE_CHECKLIST = [
   "bedrooms",
   "galway",
   "experience",
-  "tickets",
   "venue",
   "amenities",
   "guests",

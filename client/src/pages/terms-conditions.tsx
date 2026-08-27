@@ -17,7 +17,7 @@ export default function TermsConditions() {
               Terms and Conditions
             </h1>
             <p className="text-sm text-gray-500">
-              Last updated: May 2026
+              Last updated: August 2026
             </p>
           </div>
 
@@ -31,10 +31,13 @@ export default function TermsConditions() {
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    Welcome. These Terms and Conditions (&quot;Terms&quot;) govern your use of the website and services provided by The Adare Collection Limited, trading as The Adare Collection, including luxury property rental accommodations for Ryder Cup 2027 and related events at Adare Manor, County Limerick, Ireland.
+                    Welcome. These Terms and Conditions (&quot;Terms&quot;) govern your use of the website and services provided by The Adare Collection Limited, trading as The Adare Collection (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), including marketing and booking facilitation for luxury short-term residential accommodation for Ryder Cup 2027 and related events at Adare Manor, County Limerick, Ireland.
                   </p>
                   <p>
-                    By accessing our website, making inquiries, or booking our services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must not use our services.
+                    The Adare Collection Limited acts as exclusive representative, marketing agent, and booking facilitator. Where a booking proceeds, the Residential Letting Agreement is between the property Owner and the Occupier (Guest). We are not a party to that Letting Agreement, except to the extent we collect and hold payments in our designated client account and coordinate guest services as described in your booking documents.
+                  </p>
+                  <p>
+                    By accessing our website, making inquiries, or proceeding with a booking, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must not use our services. If there is any conflict between these Terms and a signed Residential Letting Agreement for a specific property, the signed Letting Agreement prevails for that booking.
                   </p>
                   <p>
                     These Terms are governed by Irish law and are subject to the jurisdiction of the Irish courts.
@@ -49,10 +52,14 @@ export default function TermsConditions() {
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>&quot;The Adare Collection Limited&quot;</strong> (trading as <strong>&quot;The Adare Collection&quot;</strong>), and <strong>&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;</strong>, means the luxury property rental business operated under that trading name</li>
-                    <li><strong>&quot;Guest,&quot; &quot;you,&quot; or &quot;your&quot;</strong> refers to any person making inquiries or bookings through our service</li>
-                    <li><strong>&quot;Property&quot;</strong> refers to any accommodation offered by us using The Adare Collection brand</li>
-                    <li><strong>&quot;Booking&quot;</strong> refers to a confirmed reservation for a property</li>
+                    <li><strong>&quot;The Adare Collection Limited&quot;</strong> (trading as <strong>&quot;The Adare Collection&quot;</strong>), and <strong>&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;</strong>, means the company acting as exclusive representative, marketing agent, and booking facilitator (CRO No. 812874)</li>
+                    <li><strong>&quot;Owner&quot;</strong> means the owner of the Property under the Residential Letting Agreement</li>
+                    <li><strong>&quot;Guest,&quot; &quot;Occupier,&quot; &quot;you,&quot; or &quot;your&quot;</strong> refers to any person making inquiries or bookings through our service, and (once a Letting Agreement is signed) the Occupier under that agreement</li>
+                    <li><strong>&quot;Property&quot;</strong> or <strong>&quot;Premises&quot;</strong> refers to any accommodation offered under The Adare Collection brand</li>
+                    <li><strong>&quot;Booking&quot;</strong> refers to a confirmed reservation secured by a signed Residential Letting Agreement and payment of the Deposit</li>
+                    <li><strong>&quot;Deposit&quot;</strong> means the non-refundable booking deposit equating to 50% of the Rent (plus VAT where applicable)</li>
+                    <li><strong>&quot;Rent&quot;</strong> means the rental sum stated in the Residential Letting Agreement (plus VAT where applicable)</li>
+                    <li><strong>&quot;Security Deposit&quot;</strong> means the sum equating to 20% of the Rent, held as security for performance of the Occupier&apos;s obligations</li>
                     <li><strong>&quot;Services&quot;</strong> refers to all services we provide under these Terms</li>
                     <li><strong>&quot;Website&quot;</strong> refers to our online platform and all associated content</li>
                   </ul>
@@ -69,11 +76,13 @@ export default function TermsConditions() {
                     3.1 Booking and Reservations
                   </h3>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>All bookings are subject to availability and confirmation by The Adare Collection Limited (trading as The Adare Collection)</li>
-                    <li>Bookings are confirmed only upon signing the rental agreement and payment of the non-refundable booking deposit as set out in Section 3.2</li>
+                    <li>All bookings are subject to availability and confirmation</li>
+                    <li>Bookings are confirmed only upon signing the Residential Letting Agreement and payment of the non-refundable Deposit as set out in Section 3.2</li>
                     <li>We reserve the right to refuse bookings at our discretion</li>
-                    <li>Ryder Cup 2027 rentals are for an agreed fixed period of up to eight nights; there is no minimum stay, and quoted pricing applies to that confirmed period</li>
+                    <li>Ryder Cup 2027 rentals are for an agreed fixed period (typically up to eight nights); the Letting Period, check-in, and check-out times for your stay are those stated in your Letting Agreement and property schedules</li>
+                    <li>Unless otherwise stated, standard check-in is from 3:00 p.m. and check-out is by 12:00 noon on the departure date</li>
                     <li>All guests must be 18 years or older to make a booking</li>
+                    <li>A Booking is personal to the Occupier and may not be transferred, sublet, or otherwise disposed of without prior written approval</li>
                   </ul>
 
                   <h3
@@ -84,20 +93,20 @@ export default function TermsConditions() {
                   </h3>
                   <div className="space-y-4">
                     <p>
-                      A non-refundable booking deposit of 50% is required upon signing to secure the Property. The remaining balance is payable no later than 31st January 2027 unless otherwise agreed in writing.
+                      A non-refundable Deposit of 50% of the Rent (plus VAT at 13.5%, or such other rate as applies) is required upon signing the Residential Letting Agreement to secure the Property. The balance of the Rent and the Security Deposit are payable no later than 31st January 2027 unless otherwise agreed in writing in your Letting Agreement.
                     </p>
                     <p>
-                      All deposits are strictly non-refundable under all circumstances. Cancellation terms in Section 3.3 apply only to payments made in excess of the deposit.
+                      The Deposit is strictly non-refundable, except only to the limited extent provided under the Event Cancellation terms in Section 3.3.
                     </p>
                     <p>
-                      A 20% security deposit is also required with final payment. The Guest remains fully liable for any loss or damage whether or not such loss exceeds the security deposit, and The Adare Collection reserves the right to recover any additional sums due.
+                      A Security Deposit equal to 20% of the Rent is also required by the final payment date. It is held as security for proper performance of the Occupier&apos;s obligations. After the Letting ends and the Occupier has removed all personal property from the Premises, any balance remaining after deduction of losses, costs, charges, and expenses arising from non-observance or non-performance of those obligations will be repaid. No interest is payable on the Security Deposit. The Occupier remains fully liable for any loss or damage whether or not such loss exceeds the Security Deposit.
                     </p>
                     <p>
-                      We reserve the right to cancel any booking without refund where payment deadlines are not met.
+                      All payments due under a Residential Letting Agreement must be paid into the designated client account of The Adare Collection Limited. We may cancel or the Letting may terminate where payment deadlines are not met (including where sums remain unpaid for seven days after the due date, as provided in the Letting Agreement).
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
-                      <li>We accept payment by bank transfer, credit card, or other agreed methods</li>
-                      <li>All prices are quoted in Euro (€) and are subject to Irish VAT</li>
+                      <li>We accept payment by bank transfer to our designated client account, or by other methods we agree in writing</li>
+                      <li>All prices are quoted in Euro (€). Rent and the Deposit are subject to Irish VAT at 13.5% (or the prevailing rate)</li>
                       <li>Additional charges may apply for extra services, damages, or cleaning fees</li>
                       <li>Payment processing fees may apply depending on the payment method chosen</li>
                     </ul>
@@ -109,16 +118,35 @@ export default function TermsConditions() {
                   >
                     3.3 Cancellation and Refund Policy
                   </h3>
-                  <p className="mb-4">
-                    We understand that plans may change, and we have established a fair cancellation policy to accommodate different circumstances. All cancellation requests must be made in writing to info@theadarecollection.ie. The booking deposit described in Section 3.2 is strictly non-refundable; the percentages below apply only to amounts paid in excess of that deposit (including the remaining balance and security deposit, where paid).
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>Cancellations made more than 180 days before arrival: 100% refund of eligible amounts paid in excess of the deposit</li>
-                    <li>Cancellations made 120-180 days before arrival: 50% refund of eligible amounts paid in excess of the deposit</li>
-                    <li>Cancellations made less than 120 days before arrival: No refund of amounts paid in excess of the deposit</li>
-                    <li>Refunds will be processed within 14 business days of cancellation confirmation</li>
-                    <li>Force majeure events may be subject to different cancellation terms as outlined in Section 8</li>
-                  </ul>
+                  <div className="space-y-4">
+                    <p>
+                      All cancellation requests by a Guest must be made in writing to{" "}
+                      <a href="mailto:info@theadarecollection.ie" className="text-primary hover:underline">
+                        info@theadarecollection.ie
+                      </a>
+                      . Except as expressly set out below or in your signed Residential Letting Agreement, there is no contractual right to a refund of the Deposit or of Rent paid if you cancel or otherwise terminate the booking.
+                    </p>
+                    <p>
+                      <strong>Guest cancellation.</strong> The Deposit is non-refundable. Sums paid towards the Rent (including the Deposit and any balance) are not refundable on Guest cancellation. Where a Security Deposit has been paid and the stay does not proceed solely because of Guest cancellation, the Security Deposit will be returned in full.
+                    </p>
+                    <p id="event-cancellation" className="scroll-mt-24">
+                      <strong>Event Cancellation (Ryder Cup 2027).</strong> If the Ryder Cup 2027 is cancelled, or is postponed or relocated so that it does not take place at Adare Manor during the Letting Period, and that cancellation, postponement, or relocation is publicly confirmed by the Ryder Cup organisers before the Commencement Date, the Letting terminates automatically from the date of that confirmation. Within ten (10) working days of such termination:
+                    </p>
+                    <ul className="list-disc pl-6 space-y-2">
+                      <li>Eighty per cent (80%) of the Deposit and any other sums (other than the Security Deposit) actually received from the Occupier will be refunded from our client account</li>
+                      <li>The remaining twenty per cent (20%) is not refundable</li>
+                      <li>The Security Deposit, if paid, will be refunded in full without deduction within the same period</li>
+                    </ul>
+                    <p>
+                      Save for those refund obligations, neither party has any further claim against the other arising from such cancellation, postponement, or relocation. This Event Cancellation regime applies only to cancellation, postponement, or relocation of the Ryder Cup 2027 itself, and not to cancellation or termination of a booking for any other reason.
+                    </p>
+                    <p>
+                      <strong>Owner withdrawal.</strong> If an Owner withdraws a Property or cancels a confirmed booking after a Guest Deposit has been received (other than under the Event Cancellation clause above), all Guest payments already received will be refunded in full.
+                    </p>
+                    <p>
+                      <strong>Property unavailable.</strong> If the Premises become incapable of use through fire, destruction, or another reason beyond the Owner&apos;s control, the Letting may terminate in accordance with the Residential Letting Agreement.
+                    </p>
+                  </div>
                 </div>
               </section>
 
@@ -132,31 +160,33 @@ export default function TermsConditions() {
                     4.1 Property Use and Care
                   </h3>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Guests must use the property solely for residential purposes</li>
-                    <li>Maximum occupancy limits must be strictly observed</li>
-                    <li>Properties must be left in the same condition as found</li>
-                    <li>No smoking is permitted inside any property</li>
-                    <li>Pets are not permitted unless specifically agreed in writing</li>
-                    <li>No commercial activities or events without prior written consent</li>
+                    <li>Guests must use the Property solely for short-term residential accommodation (and reasonable private social entertaining where permitted by the House Rules)</li>
+                    <li>Maximum overnight occupancy limits stated for the Property must be strictly observed; no additional overnight guests without prior written approval through The Adare Collection</li>
+                    <li>Properties must be left clean, tidy, and in the same condition as found, fair wear and tear excepted</li>
+                    <li>Smoking and vaping are prohibited inside any Property; smoking may take place only in any external area specifically designated for that purpose</li>
+                    <li>Pets and animals are not permitted without the Owner&apos;s prior written consent, except legally recognised assistance animals where applicable</li>
+                    <li>Ticketed or public events, commercial promotions, corporate brand activations, media events, or events requiring external structures, entertainment, security, or other event suppliers require prior written approval through The Adare Collection</li>
+                    <li>Damage, breakage, faults, accidents, safety concerns, or maintenance issues must be reported promptly to The Adare Collection</li>
                   </ul>
 
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
                     4.2 Noise and Neighbor Consideration
                   </h3>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Guests must respect noise levels, especially between 11:00 PM and 7:00 AM</li>
-                    <li>Excessive noise that disturbs neighbors may result in immediate eviction</li>
-                    <li>Outdoor gatherings must comply with local regulations and property rules</li>
-                    <li>Music and entertainment must be kept at reasonable levels</li>
+                    <li>Guests must behave responsibly and avoid excessive noise, disturbance, nuisance, or inconvenience to neighbouring properties</li>
+                    <li>Particular consideration must be given during the hours of 11:00 p.m. to 8:00 a.m.</li>
+                    <li>A serious or repeated breach of House Rules may result in termination of the right to occupy, without prejudice to claims for loss or damage</li>
+                    <li>Outdoor gatherings must comply with local regulations, insurance requirements, and the Property&apos;s House Rules</li>
                   </ul>
 
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
                     4.3 Security and Safety
                   </h3>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Guests are responsible for the security of the property during their stay</li>
-                    <li>All doors and windows must be secured when leaving the property</li>
-                    <li>Emergency contact information must be provided and kept current</li>
+                    <li>Guests are responsible for securing the Property whenever it is unattended</li>
+                    <li>All doors, windows, gates, and access points must be secured when leaving the Property</li>
+                    <li>Keys, access cards, alarm codes, and gate controls must not be copied, shared with unauthorised persons, or left unsecured</li>
+                    <li>Guests must not cover, disconnect, disable, or interfere with smoke alarms, carbon-monoxide alarms, fire equipment, security systems, CCTV equipment, or other safety devices</li>
                     <li>Guests must report any security incidents or property damage immediately</li>
                   </ul>
                 </div>
@@ -172,14 +202,14 @@ export default function TermsConditions() {
                     5.1 Limitation of Liability
                   </h3>
                   <p>
-                    The liability of The Adare Collection Limited (trading as The Adare Collection) is limited to the maximum extent permitted by Irish law. We shall not be liable for:
+                    To the maximum extent permitted by Irish law, and subject always to the Residential Letting Agreement (which is between Owner and Occupier), The Adare Collection Limited shall not be liable for:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Loss or damage to personal belongings</li>
-                    <li>Personal injury or death (except where caused by our negligence)</li>
+                    <li>Personal injury or death (except where caused by our negligence or as otherwise not excludable by law)</li>
                     <li>Indirect, consequential, or punitive damages</li>
                     <li>Loss of profits, business, or opportunity</li>
-                    <li>Events beyond our reasonable control</li>
+                    <li>Events beyond our reasonable control, including Event Cancellation as defined in Section 3.3</li>
                   </ul>
 
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
@@ -189,17 +219,17 @@ export default function TermsConditions() {
                     <li>Guests are strongly advised to obtain comprehensive travel insurance</li>
                     <li>Insurance should cover cancellation, personal belongings, and public liability</li>
                     <li>We are not responsible for any uninsured losses</li>
-                    <li>Guests may be required to provide proof of insurance for certain bookings</li>
+                    <li>Guests must not do anything that may make any policy of insurance on the Premises void or voidable</li>
                   </ul>
 
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
                     5.3 Property Damage
                   </h3>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Guests are liable for any damage caused to the property or its contents</li>
-                    <li>Damage charges will be deducted from the security deposit or charged separately</li>
-                    <li>Minor wear and tear is expected and not chargeable</li>
-                    <li>Significant damage may result in immediate termination of the rental agreement</li>
+                    <li>Guests are liable for any damage caused to the Property or its contents by the Occupier or any employee, servant, agent, or invitee</li>
+                    <li>Damage charges may be deducted from the Security Deposit or charged separately; liability is not limited to the Security Deposit</li>
+                    <li>Minor fair wear and tear is expected and not chargeable</li>
+                    <li>Significant damage or serious breach of House Rules may result in immediate termination of the Letting</li>
                   </ul>
                 </div>
               </section>
@@ -250,11 +280,14 @@ export default function TermsConditions() {
               {/* Force Majeure */}
               <section>
                 <h2 id="force-majeure" className="font-serif text-2xl font-normal text-primary mb-4 scroll-mt-24">
-                  8. Force Majeure
+                  8. Force Majeure and Event Disruption
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to:
+                    Cancellation, postponement, or relocation of the Ryder Cup 2027 itself is dealt with exclusively under the Event Cancellation terms in Section 3.3 (and the corresponding clause in your Residential Letting Agreement). That regime does not apply to cancellation or termination of a booking for any other reason.
+                  </p>
+                  <p>
+                    For website operation and our booking-facilitation services (other than the Event Cancellation regime above), we shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Natural disasters, extreme weather conditions, or acts of God</li>
@@ -264,7 +297,7 @@ export default function TermsConditions() {
                     <li>Utility failures or infrastructure problems</li>
                   </ul>
                   <p>
-                    In such circumstances, we will make reasonable efforts to provide alternative arrangements or refunds as appropriate.
+                    If the Premises become incapable of use through fire, destruction, or another reason beyond the Owner&apos;s control, rights and remedies follow the Residential Letting Agreement.
                   </p>
                 </div>
               </section>
@@ -294,7 +327,7 @@ export default function TermsConditions() {
                     We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting on our website. Your continued use of our services after changes are posted constitutes acceptance of the modified Terms.
                   </p>
                   <p>
-                    For existing bookings, the Terms in effect at the time of booking will continue to apply unless changes are required by law or for safety reasons.
+                    For existing bookings, the Residential Letting Agreement signed for that booking, and the version of these Terms in effect at the time of booking, will continue to apply unless changes are required by law or for safety reasons.
                   </p>
                 </div>
               </section>
@@ -310,9 +343,12 @@ export default function TermsConditions() {
                   </p>
                   <div className="bg-gray-50 p-6 rounded-lg">
                     <p><strong>The Adare Collection Limited</strong></p>
+                    <p>CRO No. 812874</p>
                     <p>Email: <a href="mailto:info@theadarecollection.ie" className="text-primary hover:underline">info@theadarecollection.ie</a></p>
                     <p>Phone: <a href="tel:+353866681930" className="text-primary hover:underline">+353 86 668 1930</a></p>
-                    <p>Address: Adare Manor, Co. Limerick, Ireland</p>
+                    <p>
+                      Registered office: Byrne and Co., Gortboy, Church Street, Newcastle West, Co. Limerick, Ireland, V42 F982
+                    </p>
                   </div>
                   <p>
                     For urgent matters during your stay, emergency contact information will be provided upon booking confirmation.

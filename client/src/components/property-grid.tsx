@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { properties, type Property, formatPropertyBedroomsShort, getPropertyCollectionBadge, getPropertyAvailabilityLabel, sortPropertiesByCollectionTier } from "@/lib/properties";
+import { type Property, formatPropertyBedroomsShort, getPropertyCollectionBadge, getListedProperties, sortPropertiesByCollectionTier } from "@/lib/properties";
+import PropertyAvailabilityBadge from "@/components/property-availability-badge";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
@@ -35,9 +36,7 @@ function PropertyCard({ property }: PropertyCardProps) {
             <div className="text-xs text-muted uppercase tracking-wider font-medium">
               {formatPropertyBedroomsShort(property)} BEDROOMS
             </div>
-            <div className="text-xs text-muted uppercase tracking-wider font-medium">
-              {getPropertyAvailabilityLabel(property)}
-            </div>
+            <PropertyAvailabilityBadge property={property} />
           </div>
           
           <h3 className="font-serif text-xl font-normal mb-2 text-primary" data-testid={`property-name-${property.id}`}>
@@ -104,7 +103,7 @@ function ComingSoonCard() {
 }
 
 export default function PropertyGrid() {
-  const sortedProperties = sortPropertiesByCollectionTier(properties);
+  const sortedProperties = sortPropertiesByCollectionTier(getListedProperties());
 
   return (
     <section id="properties" className="py-12 px-4 bg-neutral-100 w-full" data-testid="property-grid-section">

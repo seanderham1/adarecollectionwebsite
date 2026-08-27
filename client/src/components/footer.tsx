@@ -48,22 +48,12 @@ export default function Footer() {
               </li>
               <li>
                 <a href="/properties" className="hover:text-gray-300 transition-colors" data-testid="footer-link-properties">
-                  Ryder Cup 2027 Accommodation
+                  Properties
                 </a>
               </li>
               <li>
-                <Link href="/ryder-cup-packages" className="hover:text-gray-300 transition-colors">
-                  Ryder Cup Packages
-                </Link>
-              </li>
-              <li>
-                <Link href="/corporate-hospitality" className="hover:text-gray-300 transition-colors">
-                  Corporate Hospitality
-                </Link>
-              </li>
-              <li>
                 <Link href="/services" className="hover:text-gray-300 transition-colors">
-                  Travel Management
+                  Estate Services
                 </Link>
               </li>
               <li>
@@ -92,7 +82,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="/contact" className="hover:text-gray-300 transition-colors" data-testid="footer-link-availability">
-                  Book Ryder Cup 2027 Accommodation
+                  Enquire about accommodation
                 </a>
               </li>
             </ul>
@@ -169,7 +159,16 @@ export default function Footer() {
               className="text-gray-400 text-left mt-3 max-w-md leading-relaxed text-[8px]"
               data-testid="footer-disclaimer"
             >
-              The Adare Collection Limited, trading as The Adare Collection, is an independent luxury accommodation provider and is not affiliated with, endorsed by, or connected to Adare Manor or the Ryder Cup.
+              The Adare Collection Limited, trading as The Adare Collection, is an independent luxury accommodation provider and is not affiliated with, endorsed by, or connected to Adare Manor, Ryder Cup Europe, The Professional Golfers&apos; Association of America, or any official Ryder Cup hospitality or ticket seller. We rent private residences and optional in-residence services only. We do not sell Ryder Cup tickets or official hospitality. Tickets and official hospitality are available solely via{" "}
+              <a
+                href="https://www.rydercup.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gray-300"
+              >
+                rydercup.com
+              </a>
+              .
             </p>
           </div>
 

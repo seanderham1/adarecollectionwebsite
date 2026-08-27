@@ -11,6 +11,7 @@ export const WALK_RADIUS_METERS = 800; // Approximately 10 minutes walk at avera
 export const TWENTY_MIN_WALK_RADIUS_METERS = 1700; // Roughly 20 minute walk at average speed
 export const TEN_MIN_DRIVE_RADIUS_METERS = 8000; // Roughly 10 minute drive at average local speed
 export const FIFTEEN_MIN_DRIVE_RADIUS_METERS = 12000; // Roughly 15 minute drive at average local speed
+export const TWENTY_MIN_DRIVE_RADIUS_METERS = 16000; // Roughly 20 minute drive at average local speed
 export const TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS = 20000; // Roughly 25 minute drive at average local speed
 export const ONE_HOUR_DRIVE_RADIUS_METERS = 55000; // Roughly 1 hour drive at average speeds
 /** ~45 minute drive at typical regional speeds (routing key for map circle only) */
@@ -678,7 +679,7 @@ export function addGolfCourseTextOverlay(map: google.maps.Map) {
       div.appendChild(golfIcon);
 
       const textSpan = document.createElement('div');
-      textSpan.innerHTML = 'Ryder Cup<br>Golf Course';
+      textSpan.innerHTML = 'Adare Manor<br>Championship Course';
       textSpan.style.cssText = `
         font-size: 16px;
         white-space: nowrap;

@@ -53,7 +53,7 @@ var GLOBAL_SCHEMA_GRAPH = {
       name: "The Adare Collection",
       legalName: "The Adare Collection Limited",
       url: "https://theadarecollection.com",
-      description: "Exclusive private houses and estates near Adare Manor for Ryder Cup 2027. Corporate hospitality, executive rentals, and luxury homes in County Limerick.",
+      description: "Exclusive private houses and estates near Adare Manor. Corporate and executive rentals and luxury homes in County Limerick. Independent accommodation provider \u2014 not affiliated with the Ryder Cup.",
       logo: {
         "@type": "ImageObject",
         url: "https://theadarecollection.com/images/navbar/adarecollectionlogo.png"
@@ -119,42 +119,30 @@ var GLOBAL_SCHEMA_GRAPH = {
         {
           "@type": "SiteNavigationElement",
           position: 3,
-          name: "Ryder Cup packages",
-          url: "https://theadarecollection.com/ryder-cup-packages"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          position: 4,
-          name: "Corporate hospitality",
-          url: "https://theadarecollection.com/corporate-hospitality"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          position: 5,
-          name: "Travel management",
+          name: "Estate services",
           url: "https://theadarecollection.com/services"
         },
         {
           "@type": "SiteNavigationElement",
-          position: 6,
+          position: 4,
           name: "About",
           url: "https://theadarecollection.com/about"
         },
         {
           "@type": "SiteNavigationElement",
-          position: 7,
+          position: 5,
           name: "FAQ",
           url: "https://theadarecollection.com/faq"
         },
         {
           "@type": "SiteNavigationElement",
-          position: 8,
+          position: 6,
           name: "Blog",
           url: "https://theadarecollection.com/blog"
         },
         {
           "@type": "SiteNavigationElement",
-          position: 9,
+          position: 7,
           name: "Contact",
           url: "https://theadarecollection.com/contact"
         }
@@ -209,14 +197,7 @@ var GLOBAL_SCHEMA_GRAPH = {
           { "@type": "SportsTeam", name: "European Ryder Cup Team" },
           { "@type": "SportsTeam", name: "United States Ryder Cup Team" }
         ],
-        image: "https://theadarecollection.com/images/hero/adaremanor-img2.webp",
-        offers: {
-          "@type": "Offer",
-          name: "Ryder Cup 2027 Tickets",
-          description: "Official tickets for the 2027 Ryder Cup at Adare Manor",
-          availability: "https://schema.org/InStock",
-          url: "https://www.rydercup.com"
-        }
+        image: "https://theadarecollection.com/images/hero/adaremanor-img2.webp"
       }
     }
   ]

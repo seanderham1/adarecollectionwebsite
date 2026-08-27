@@ -68,7 +68,7 @@ export default function BlogPost() {
         </div>
         {post.imageCredit && (
           <p className="max-w-3xl mx-auto px-6 mt-2 text-xs text-muted text-right">
-            Photo:{" "}
+            Photograph:{" "}
             <a
               href={post.imageCredit.url}
               target="_blank"
@@ -169,15 +169,12 @@ export default function BlogPost() {
               </h2>
               <p className="text-secondary text-sm leading-relaxed mb-4">
                 The Adare Collection offers luxury rental homes minutes from Adare Manor, ideal
-                for groups, corporate hospitality, and extended tournament stays.
+                for groups, corporate guests, and extended tournament stays. We do not sell tickets
+                or official hospitality.
               </p>
               <p className="text-sm text-secondary">
                 <Link href="/properties" className="underline underline-offset-4 hover:text-gray-900">
                   View properties
-                </Link>
-                {" · "}
-                <Link href="/ryder-cup-packages" className="underline underline-offset-4 hover:text-gray-900">
-                  Ryder Cup packages
                 </Link>
                 {" · "}
                 <Link href="/contact" className="underline underline-offset-4 hover:text-gray-900">

@@ -1,9 +1,5 @@
 import { Link } from "wouter";
-import {
-  SEO_CORPORATE_PATH,
-  SEO_PACKAGES_PATH,
-  SEO_SERVICES_PATH,
-} from "@/lib/seo-landing-pages";
+import { SEO_SERVICES_PATH } from "@/lib/seo-landing-pages";
 
 type SeoHubLinksProps = {
   variant?: "inline" | "footer-block";
@@ -11,9 +7,7 @@ type SeoHubLinksProps = {
 };
 
 const HUB_LINKS = [
-  { href: SEO_PACKAGES_PATH, label: "Ryder Cup 2027 packages" },
-  { href: SEO_CORPORATE_PATH, label: "Corporate hospitality" },
-  { href: SEO_SERVICES_PATH, label: "Travel management" },
+  { href: SEO_SERVICES_PATH, label: "Estate services" },
   { href: "/properties", label: "All properties" },
   { href: "/faq", label: "FAQ" },
 ] as const;
@@ -21,8 +15,8 @@ const HUB_LINKS = [
 export function SeoHubLinks({ variant = "inline", className = "" }: SeoHubLinksProps) {
   if (variant === "footer-block") {
     return (
-      <nav aria-label="Ryder Cup 2027 services" className={className}>
-        <h3 className="font-serif text-xl font-normal mb-6 text-white">Ryder Cup 2027</h3>
+      <nav aria-label="Accommodation and services" className={className}>
+        <h3 className="font-serif text-xl font-normal mb-6 text-white">Stay with us</h3>
         <ul className="space-y-4 text-sm">
           {HUB_LINKS.map(({ href, label }) => (
             <li key={href}>
@@ -38,7 +32,7 @@ export function SeoHubLinks({ variant = "inline", className = "" }: SeoHubLinksP
 
   return (
     <nav
-      aria-label="Related Ryder Cup 2027 pages"
+      aria-label="Related pages"
       className={`flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm ${className}`}
     >
       {HUB_LINKS.map(({ href, label }) => (

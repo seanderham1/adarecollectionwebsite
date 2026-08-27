@@ -33,8 +33,11 @@ export default function About() {
           {/* Content - Centered */}
           <div className="text-center space-y-8">
             <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-secondary mb-2">
+                CEO
+              </p>
               <h1 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-4">
-                Meet our local expert for exceptional Adare Manor Properties
+                Joe Mulcahy
               </h1>
               <p className="text-base text-secondary leading-relaxed mb-8 max-w-3xl mx-auto">
                 With unique access to exclusive houses and private estates within the Adare Manor demesne and
@@ -71,26 +74,61 @@ export default function About() {
         <div className="max-w-5xl mx-auto">
           <blockquote className="font-serif text-3xl md:text-4xl font-normal text-primary leading-relaxed text-center">
             "With over three decades of experience in high-end hospitality and luxury guest services, 
-            I bring a deep understanding of what discerning clients value most: discretion, detail, 
-            and distinction. Several of the properties I represent are known to me personally, 
+            I bring a deep understanding of what clients value most: detail. 
+            Several of the properties I represent are known to me personally, 
             allowing me to advise not just on layout and amenities, but on how each home feels in 
             terms of comfort, hosting potential, and proximity to the Ryder Cup course."
           </blockquote>
         </div>
       </section>
 
+      {/* Marketing Director — Lee Hayes */}
+      <section className="py-20 px-6 bg-white w-full">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex justify-center mb-8 md:mb-[30px]">
+            <div className="relative">
+              <div className="aspect-square overflow-hidden w-[325px] md:w-[425px]">
+                <img
+                  src="/images/about/lee-about-photo.webp"
+                  alt="Lee Hayes — Marketing Director, The Adare Collection"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "center calc(40% + 10px)" }}
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary/5 border border-primary/10 rounded-lg -z-10"></div>
+            </div>
+          </div>
 
-
+          <div className="text-center space-y-4">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-secondary mb-2">
+                Marketing Director
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-4">
+                Lee Hayes
+              </h2>
+              <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
+                Lee shapes how The Adare Collection is seen and understood - from the our
+                property stories to the enquiry journey. He leads brand and
+                content strategy so corporate groups and private guests can recognise
+                the right home for tournament week 2027, and feel confident in the experience long before
+                they arrive.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Call to Action */}
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6 bg-neutral-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-3xl md:text-4xl font-normal mb-4 text-primary">
-            Your Ryder Cup Experience Awaits
+            Your Adare Stay Awaits
           </h2>
           <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
-            Secure your exclusive accommodation for Ryder Cup 2027 with the confidence that comes 
-            from working with a true hospitality professional.
+            Secure your exclusive private accommodation near Adare Manor with the confidence that comes
+            from working with a true hospitality professional. We are an independent provider and do not
+            sell tickets or official hospitality.
           </p>
         </div>
       </section>

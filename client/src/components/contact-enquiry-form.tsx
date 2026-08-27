@@ -26,7 +26,7 @@ function getContactApiUrl(): string {
 }
 
 export const CONTACT_FORM_SUBTITLE_PARAGRAPHS = [
-  "The Adare Collection offers a limited portfolio of private luxury residences in and around Adare Manor for Ryder Cup 2027.",
+  "The Adare Collection offers a limited portfolio of private luxury residences in and around Adare Manor for tournament week 2027. We are an independent accommodation provider and do not sell tickets or official hospitality.",
   "Stays are arranged for a fixed rental period of up to eight nights. There is no minimum stay; shorter visits within that cap are welcome. Your quoted price and payment schedule apply to the period we confirm with you at booking, not to stays beyond eight nights.",
   "Due to the calibre and limited availability of these properties, enquiries are reviewed carefully. We will contact interested parties to discuss suitable options in further detail.",
   "Please provide the details below so we can assist with your enquiry.",

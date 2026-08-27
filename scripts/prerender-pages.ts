@@ -2,7 +2,7 @@
  * Post-`vite build`: clone dist/public/index.html per SEO route, patch <head>,
  * write dist/public/_prerender/*.html, and refresh firebase.json hosting.rewrites.
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -212,6 +212,20 @@ function main(): void {
   }
 
   patchFirebasePrerenderRewrites(firebaseRoutes);
+
+  const expectedFiles = new Set(
+    payloads
+      .filter((p) => p.path !== "/")
+      .map((p) => prerenderHtmlFilename(p.path)),
+  );
+  // Always keep home.html if present for local inspection; `/` is served from index.html.
+  expectedFiles.add("home.html");
+  for (const name of readdirSync(prerenderDir)) {
+    if (!name.endsWith(".html")) continue;
+    if (expectedFiles.has(name)) continue;
+    unlinkSync(path.join(prerenderDir, name));
+    console.log("[prerender-pages] removed orphan", name);
+  }
 
   console.log(
     "[prerender-pages]",
