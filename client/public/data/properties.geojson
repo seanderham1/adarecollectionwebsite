@@ -218,9 +218,9 @@
       "properties":{
         "id":"coolbawn-quay",
         "title":"Coolbawn Quay",
-        "desc":"Boutique lakeside resort on Lough Derg with approximately 60 mostly ensuite rooms, approximately one hour from Adare Manor.",
-        "beds": 60,
-        "baths": 60,
+        "desc":"Boutique lakeside resort on Lough Derg with 47 mostly ensuite rooms, approximately one hour from Adare Manor.",
+        "beds": 47,
+        "baths": 47,
         "price":"POA",
         "thumb":"/images/houses/coolbawnquay/coolbawnquay-exterior-1.webp"
       }
@@ -231,12 +231,51 @@
       "properties":{
         "id":"oak-leaf-house",
         "title":"Oak Leaf House",
-        "desc":"Deluxe child-friendly country residence of approximately 2,500 sq. ft., about 12 minutes from Adare Manor.",
+        "desc":"Child-friendly country home of about 2,500 sq. ft. with open-plan kitchen dining and private gated grounds; sleeps up to nine.",
         "beds": 5,
         "bedsLabel": "4/5",
         "baths": 3,
         "price":"POA",
         "thumb":"/images/houses/oakleaf/oakleaf-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.5558093, 52.5901619]},
+      "properties":{
+        "id":"casabel",
+        "title":"Casabel",
+        "desc":"Executive 4,300 sq. ft. residence on Ballyneety Golf Course with four ensuite bedrooms, gym, bar and family play areas.",
+        "beds": 4,
+        "baths": 4,
+        "price":"POA",
+        "thumb":"/images/houses/casabel/casabel-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.62778, 52.59722]},
+      "properties":{
+        "id":"friarstown-residence",
+        "title":"Friarstown Residence",
+        "desc":"Executive residence near Limerick Golf Club for up to 10 guests, approximately 16 minutes from Adare Manor.",
+        "beds": 5,
+        "baths": 5,
+        "price":"POA",
+        "thumb":"/images/houses/friarstown-residence/friarstown-exterior-2.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.791406, 52.561469]},
+      "properties":{
+        "id":"limetree-avenue",
+        "title":"Limetree Avenue",
+        "desc":"Bright five-bedroom Adare residence approximately 500 metres' walk from the entrance of Adare Manor, sleeping up to nine guests.",
+        "beds": 5,
+        "baths": 3,
+        "price":"POA",
+        "thumb":"/images/houses/limetreeavenue/limetree-avenue-exterior-1.webp"
       }
     }
   ]

@@ -70,13 +70,23 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
     SHARED_BOOKING_SHORT,
   ],
   "coolbawn-quay": [
-    `Coolbawn Quay offers exclusive use of a boutique lakeside village with approximately 60 mostly ensuite rooms, wellness facilities and a private marina—an exceptional option for large Ryder Cup 2027 groups seeking atmosphere and capacity outside the demesne.`,
+    `Coolbawn Quay offers exclusive use of a boutique lakeside village with 47 mostly ensuite rooms, wellness facilities and a private marina—an exceptional option for large Ryder Cup 2027 groups seeking atmosphere and capacity outside the demesne.`,
     `Located on Lough Derg in North Tipperary, the resort is approximately one hour by road from Adare Manor, with village cottages, clubhouse dining and on-site wellness within a single private setting.`,
     SHARED_BOOKING_SHORT,
   ],
   "oak-leaf-house": [
-    `Oak Leaf House is a deluxe, child-friendly country residence near Adare Manor with approximately 2,500 sq. ft. of accommodation, secure electric gates, landscaped gardens and parking for families or mixed groups of up to nine guests.`,
-    `A bright open-plan kitchen and dining area seats up to ten at the table, with two living rooms, three bathrooms and countryside views—ideally placed about 12 minutes from the course and seven minutes from Croagh Park & Ride.`,
+    `Oak Leaf House suits families and mixed groups who want a gated countryside base near Adare Manor, with space to cook, dine and unwind after a day at the course or exploring County Limerick.`,
+    SHARED_BOOKING_SHORT,
+  ],
+  "casabel": [
+    SHARED_BOOKING_SHORT,
+  ],
+  "friarstown-residence": [
+    `Friarstown Residence suits families and groups who want a refined executive rental near Limerick Golf Club, with a spacious kitchen, formal dining for six, mature gardens and children’s play space approximately 16 minutes from Adare Manor.`,
+    SHARED_BOOKING_SHORT,
+  ],
+  "limetree-avenue": [
+    `Limetree Avenue suits families and private groups who want a bright five-bedroom Adare rental within walking distance of Adare Manor, with dining for ten, two sitting rooms and private garden parking for Ryder Cup week.`,
     SHARED_BOOKING_SHORT,
   ],
 };

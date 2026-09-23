@@ -79,6 +79,63 @@ export default function About() {
             allowing me to advise not just on layout and amenities, but on how each home feels in 
             terms of comfort, hosting potential, and proximity to the Ryder Cup course."
           </blockquote>
+          <p className="text-xs font-medium uppercase tracking-wider text-secondary text-center mt-8">
+            Joe Mulcahy, CEO
+          </p>
+        </div>
+      </section>
+
+      {/* Executive Operations and Client Coordinator — Dylan Leon */}
+      <section className="py-20 px-6 bg-white w-full">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex justify-center mb-8 md:mb-[30px]">
+            <div className="relative">
+              <div className="aspect-square overflow-hidden w-[325px] md:w-[425px]">
+                <img
+                  src="/images/about/dylan-about-photo.webp"
+                  alt="Dylan Leon — Executive Operations and Client Coordinator, The Adare Collection"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary/5 border border-primary/10 rounded-lg -z-10"></div>
+            </div>
+          </div>
+
+          <div className="text-center space-y-4">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-secondary mb-2">
+                Executive Operations and Client Coordinator
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-4">
+                Dylan Leon
+              </h2>
+              <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
+                Dylan leads client operations, coordinating logistics ahead of each arrival and
+                staying on hand as a single point of contact from booking through to departure. He
+                brings over a decade in luxury hospitality and private client management, most
+                recently as Director of Guest Experience at Adare Manor and as founder of the
+                private lifestyle management company Maison Leon - experience built on complex
+                itineraries, last-minute requests and the personal details that decide how a week
+                with us feels.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dylan's Quote */}
+      <section className="py-24 px-6 bg-neutral-50 w-full">
+        <div className="max-w-5xl mx-auto">
+          <blockquote className="font-serif text-3xl md:text-4xl font-normal text-primary leading-relaxed text-center">
+            "I'm delighted to be joining The Adare Collection and to be involved in building on the
+            experience we provide for our clients. Having spent much of my career working in luxury
+            hospitality and private client environments, I'm looking forward to bringing that
+            experience to the role and ensuring every detail is carefully considered, from the
+            initial planning through to the client's departure."
+          </blockquote>
+          <p className="text-xs font-medium uppercase tracking-wider text-secondary text-center mt-8">
+            Dylan Leon, Executive Operations and Client Coordinator
+          </p>
         </div>
       </section>
 

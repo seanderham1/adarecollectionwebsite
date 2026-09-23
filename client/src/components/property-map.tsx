@@ -36,7 +36,8 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
 
         // Prefer GeoJSON Point for map center + drive circle so marker and radius stay aligned
         let mapCenter: google.maps.LatLngLiteral = property?.location || MAP_CENTER;
-        const useAdareManorContextOnly = propertyId === "derg-house";
+        const useAdareManorContextOnly =
+          propertyId === "derg-house" || propertyId === "executive-city-residence";
         if (useAdareManorContextOnly) {
           mapCenter = MAP_CENTER;
         }
@@ -55,6 +56,7 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
                     feat.properties && feat.properties.id === propertyId
                 ) ?? null;
               if (
+                !useAdareManorContextOnly &&
                 currentPropertyFeature?.geometry?.type === "Point" &&
                 Array.isArray(currentPropertyFeature.geometry.coordinates) &&
                 currentPropertyFeature.geometry.coordinates.length >= 2
@@ -74,7 +76,7 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
             center: mapCenter,
             zoom: propertyId === 'dunes-lodge'
               ? 8
-              : propertyId === 'derg-house'
+              : propertyId === 'derg-house' || propertyId === 'executive-city-residence'
                 ? 10
               : propertyId === 'the-manor-lodge'
                 ? 15
@@ -86,6 +88,12 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
                 ? 9
               : propertyId === 'oak-leaf-house'
                 ? 12
+              : propertyId === 'casabel'
+                ? 10
+              : propertyId === 'friarstown-residence'
+                ? 10
+              : propertyId === 'limetree-avenue'
+                ? 15
               : propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house' || propertyId === 'kildimo-house'
                 ? 11
                 : propertyId === 'hillview-house' || propertyId === 'portland-house'
@@ -103,6 +111,12 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: WALK_RADIUS_METERS,
             labelText: '10 minute walk',
+            icon: 'walk',
+          });
+        } else if (propertyId === 'limetree-avenue') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: 500,
+            labelText: '500 metre walk',
             icon: 'walk',
           });
         } else if (propertyId === 'kildimo-house') {
@@ -129,6 +143,24 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
             labelText: '15 minute drive',
             icon: 'car',
           });
+        } else if (propertyId === 'friarstown-residence') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: FIFTEEN_MIN_DRIVE_RADIUS_METERS,
+            labelText: '16 minute drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'casabel') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS,
+            labelText: '25 minute drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'executive-city-residence' || propertyId === 'derg-house') {
+          addWalkRadiusCircle(map, MAP_CENTER, {
+            radiusMeters: TWENTY_MIN_DRIVE_RADIUS_METERS,
+            labelText: '20 minute drive',
+            icon: 'car',
+          });
         } else if (propertyId === 'hillview-house' || propertyId === 'portland-house') {
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: FORTY_FIVE_MIN_DRIVE_RADIUS_METERS,
@@ -145,12 +177,6 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: ONE_HOUR_DRIVE_RADIUS_METERS,
             labelText: '1 hour drive',
-            icon: 'car',
-          });
-        } else if (propertyId === 'derg-house') {
-          addWalkRadiusCircle(map, MAP_CENTER, {
-            radiusMeters: TWENTY_MIN_DRIVE_RADIUS_METERS,
-            labelText: '20 minute drive',
             icon: 'car',
           });
         } else {
@@ -312,11 +338,11 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
     };
 
     initMap();
-  }, [propertyId]);
+  }, [propertyId, containerId]);
 
   return (
-    <div 
-      id="property-map" 
+    <div
+      id={containerId}
       className="w-full h-full"
       style={{ minHeight: "400px" }}
     />

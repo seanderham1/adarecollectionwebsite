@@ -7,7 +7,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { properties } from "../client/src/lib/properties";
+import { properties, getListedProperties } from "../client/src/lib/properties";
 import { getBlogPosts } from "../client/src/lib/blog-posts";
 import {
   propertyPageDescription,
@@ -45,14 +45,14 @@ const staticRoutes: { path: string; changefreq: string; priority: string }[] =
 
 const manifest: Record<string, { title: string; description: string }> = {};
 
-for (const p of properties) {
+for (const p of getListedProperties()) {
   manifest[p.id] = {
     title: `${propertyPageTitle(p)} | The Adare Collection`,
     description: propertyPageDescription(p),
   };
 }
 
-const propertyBlocks = properties.map((p) =>
+const propertyBlocks = getListedProperties().map((p) =>
   urlBlock(`${SITE}/property/${p.id}`, "weekly", "0.8", lastmod),
 );
 
@@ -133,7 +133,7 @@ function patchFirebaseCanonicalHeaders(): void {
     linkRules.push(linkHeaderRule(r.path, `${SITE}${r.path}`));
   }
 
-  for (const p of properties) {
+  for (const p of getListedProperties()) {
     linkRules.push(
       linkHeaderRule(`/property/${p.id}`, `${SITE}/property/${p.id}`),
     );
@@ -157,5 +157,5 @@ patchFirebaseCanonicalHeaders();
 console.log(
   "[generate-seo-assets]",
   "sitemap.xml + data/property-index-meta.json + firebase Link headers",
-  `(${properties.length} listings)`,
+  `(${getListedProperties().length} listings)`,
 );

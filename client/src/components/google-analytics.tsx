@@ -1,41 +1,11 @@
 import { useEffect } from "react";
 import { env } from "@/lib/env";
 import { useCookieConsent } from "@/contexts/cookie-consent-context";
-
-function stripGaFromWindow(): void {
-  const w = window as Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
-  delete w.gtag;
-  w.dataLayer = [];
-}
+import { expireAnalyticsCookies } from "@/lib/google-consent";
 
 function removeGtagScripts(measurementId: string): void {
   const selector = `script[src*="googletagmanager.com/gtag/js?id=${measurementId}"]`;
   document.querySelectorAll(selector).forEach((el) => el.remove());
-}
-
-function expireGaCookies(): void {
-  try {
-    const hostname = window.location.hostname;
-    const domainVariants: string[] = ["", hostname];
-    if (hostname.includes(".")) {
-      domainVariants.push(`.${hostname}`);
-      const tail = hostname.split(".").slice(-2).join(".");
-      if (tail !== hostname) domainVariants.push(`.${tail}`);
-    }
-
-    const names = document.cookie.split(";").map((c) => c.split("=")[0]?.trim()).filter(Boolean);
-
-    for (const name of names) {
-      if (!name.startsWith("_ga") && name !== "_gid" && !name.startsWith("_gcl")) continue;
-      for (let i = 0; i < domainVariants.length; i++) {
-        const domain = domainVariants[i];
-        const domainPart = domain ? `;domain=${domain}` : "";
-        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/${domainPart}`;
-      }
-    }
-  } catch {
-    /* ignore storage / cookie edge cases */
-  }
 }
 
 export function GoogleAnalytics() {
@@ -52,8 +22,7 @@ export function GoogleAnalytics() {
 
     if (!analyticsEnabled) {
       removeGtagScripts(measurementId);
-      stripGaFromWindow();
-      expireGaCookies();
+      expireAnalyticsCookies();
       return;
     }
 
@@ -73,13 +42,14 @@ export function GoogleAnalytics() {
     const gWin = window as unknown as GtagWindow;
     gWin.dataLayer = gWin.dataLayer || [];
 
-    function gtag(...args: unknown[]) {
-      gWin.dataLayer.push(args);
+    if (typeof gWin.gtag !== "function") {
+      gWin.gtag = function gtag(...args: unknown[]) {
+        gWin.dataLayer.push(args);
+      };
     }
-    gWin.gtag = gtag;
 
-    gtag("js", new Date());
-    gtag("config", measurementId, {
+    gWin.gtag("js", new Date());
+    gWin.gtag("config", measurementId, {
       page_title: document.title,
       page_location: window.location.href,
     });
@@ -87,8 +57,6 @@ export function GoogleAnalytics() {
     return () => {
       script.remove();
       removeGtagScripts(measurementId);
-      stripGaFromWindow();
-      expireGaCookies();
     };
   }, [analyticsEnabled, measurementId]);
 

@@ -84,6 +84,22 @@ export const PROPERTY_SEO_FOCUS: Record<string, PropertySeoFocus> = {
     focusKeyword: "oak leaf house adare manor rental",
     pageSubheading: "Oak Leaf House, deluxe family residence near Adare Manor",
   },
+  casabel: {
+    focusKeyword: "casabel ballyneety golf course rental",
+    pageSubheading: "Casabel, executive residence on Ballyneety Golf Course",
+  },
+  "executive-city-residence": {
+    focusKeyword: "executive city residence ryder cup rental",
+    pageSubheading: "Executive City Residence, approximately 20 minutes from the Ryder Cup",
+  },
+  "friarstown-residence": {
+    focusKeyword: "friarstown residence adare manor rental",
+    pageSubheading: "Friarstown Residence, executive home near Adare Manor",
+  },
+  "limetree-avenue": {
+    focusKeyword: "limetree avenue adare manor rental",
+    pageSubheading: "Limetree Avenue, deluxe residence walking distance to Adare Manor",
+  },
 };
 
 /** Shared on-page.ai term checklist for property copy supplements. */

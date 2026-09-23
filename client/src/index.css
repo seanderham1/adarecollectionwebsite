@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/400-italic.css";
 
 @tailwind base;
 @tailwind components;
@@ -35,6 +44,30 @@ body {
 
 .animate-fade-in {
   animation: fade-in 0.3s ease-in-out;
+}
+
+/* Property detail hero: 2:1.45 frame on mobile/tablet; show full image without side crop */
+@media (max-width: 1023px) {
+  .property-hero-carousel > img {
+    inset: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+  }
+
+  .property-hero-carousel > img.carousel-hero-cover {
+    object-fit: cover !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+  }
 }
 
 :root {

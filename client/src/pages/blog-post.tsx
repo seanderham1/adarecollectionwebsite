@@ -121,6 +121,18 @@ export default function BlogPost() {
                       {paragraph}
                     </p>
                   ))}
+                  {section.quote && (
+                    <blockquote className="mt-6 border-l-2 border-gray-300 pl-6">
+                      <p className="font-serif text-lg md:text-xl text-primary leading-relaxed">
+                        {section.quote.text}
+                      </p>
+                      {section.quote.attribution && (
+                        <footer className="mt-3 text-xs text-muted uppercase tracking-wider font-medium">
+                          {section.quote.attribution}
+                        </footer>
+                      )}
+                    </blockquote>
+                  )}
                   {section.imagePair && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                       <img

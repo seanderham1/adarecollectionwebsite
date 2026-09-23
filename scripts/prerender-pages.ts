@@ -125,9 +125,21 @@ function patchHead(html: string, payload: {
   return out;
 }
 
+type FirebaseFunctionTarget =
+  | string
+  | { functionId: string; region?: string; pinTag?: boolean };
+
 type FirebaseRewrite =
-  | { source: string; function: string; destination?: never }
+  | { source: string; function: FirebaseFunctionTarget; destination?: never }
   | { source: string; destination: string; function?: never };
+
+function isApiFunctionRewrite(
+  r: FirebaseRewrite,
+): r is { source: string; function: FirebaseFunctionTarget } {
+  if (!("function" in r) || r.function == null) return false;
+  if (typeof r.function === "string") return r.function === "api";
+  return r.function.functionId === "api";
+}
 
 type FirebaseConfig = {
   hosting: {
@@ -144,10 +156,7 @@ function patchFirebasePrerenderRewrites(
   const raw = readFileSync(firebasePath, "utf-8");
   const fb = JSON.parse(raw) as FirebaseConfig;
   const rewrites = fb.hosting.rewrites ?? [];
-  const apiRule = rewrites.find(
-    (r): r is { source: string; function: string } =>
-      "function" in r && r.function === "api",
-  );
+  const apiRule = rewrites.find(isApiFunctionRewrite);
   const spaFallback = rewrites.find(
     (r): r is { source: string; destination: string } =>
       "destination" in r &&

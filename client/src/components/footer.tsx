@@ -127,7 +127,7 @@ export default function Footer() {
               ))}
             </ul>
             <p className="text-gray-400 text-xs text-left mt-5" data-testid="footer-copyright">
-              © 2025 The Adare Collection Limited. All rights reserved.
+              © 2026 The Adare Collection Limited. All rights reserved.
             </p>
             <nav
               className="text-gray-400 text-xs text-left mt-3 flex flex-wrap items-center gap-x-3 gap-y-1"

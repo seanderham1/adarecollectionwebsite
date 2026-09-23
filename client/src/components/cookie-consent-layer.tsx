@@ -16,6 +16,7 @@ export function CookieConsentLayer() {
   const {
     hasAnswered,
     storedAnalytics,
+    storedAdvertising,
     preferencesOpen,
     acceptAll,
     rejectNonEssential,
@@ -25,12 +26,14 @@ export function CookieConsentLayer() {
   } = useCookieConsent();
 
   const [draftAnalytics, setDraftAnalytics] = useState(storedAnalytics);
+  const [draftAdvertising, setDraftAdvertising] = useState(storedAdvertising);
 
   useEffect(() => {
     if (preferencesOpen) {
       setDraftAnalytics(storedAnalytics);
+      setDraftAdvertising(storedAdvertising);
     }
-  }, [preferencesOpen, storedAnalytics]);
+  }, [preferencesOpen, storedAnalytics, storedAdvertising]);
 
   useEffect(() => {
     if (!hasAnswered) {
@@ -59,7 +62,8 @@ export function CookieConsentLayer() {
               </p>
               <p id="cookie-banner-desc" className="text-xs leading-relaxed text-muted-foreground">
                 We use essential cookies needed for the site to work. With your permission we also use
-                analytics cookies (Google Analytics) to understand how the site is used.{" "}
+                analytics cookies (Google Analytics) and advertising cookies (Google Ads) to understand
+                how the site is used and to measure campaigns.{" "}
                 <Link
                   href="/privacy#cookies"
                   className="text-primary underline underline-offset-2"
@@ -112,8 +116,7 @@ export function CookieConsentLayer() {
             <DialogTitle className="font-serif font-normal text-primary">Cookie preferences</DialogTitle>
             <DialogDescription className="text-left text-xs leading-relaxed">
               Essential cookies are always on because they are required for basic site operation.
-              Optional analytics cookies help us improve the experience; they are only used if you
-              allow them.{" "}
+              Optional analytics and advertising cookies are only used if you allow them.{" "}
               <Link
                 href="/privacy#cookies"
                 className="text-primary underline underline-offset-2"
@@ -135,7 +138,7 @@ export function CookieConsentLayer() {
               <span className="shrink-0 text-xs font-medium text-muted-foreground">Always on</span>
             </div>
 
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-4 border-b border-gray-100 pb-4">
               <div className="min-w-0 space-y-1 pr-2">
                 <label htmlFor="cookie-analytics-switch" className="text-sm font-medium text-primary">
                   Analytics cookies
@@ -151,6 +154,23 @@ export function CookieConsentLayer() {
                 aria-describedby="cookie-analytics-hint"
               />
             </div>
+
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0 space-y-1 pr-2">
+                <label htmlFor="cookie-advertising-switch" className="text-sm font-medium text-primary">
+                  Advertising cookies
+                </label>
+                <p id="cookie-advertising-hint" className="text-xs text-muted-foreground leading-snug">
+                  Google Ads: conversion measurement and remarketing, only if you allow them.
+                </p>
+              </div>
+              <Switch
+                id="cookie-advertising-switch"
+                checked={draftAdvertising}
+                onCheckedChange={setDraftAdvertising}
+                aria-describedby="cookie-advertising-hint"
+              />
+            </div>
           </div>
 
           <DialogFooter className="gap-2 sm:gap-2">
@@ -161,7 +181,7 @@ export function CookieConsentLayer() {
               type="button"
               size="sm"
               className="rounded-none border-gray-700 bg-gray-700 hover:bg-gray-600"
-              onClick={() => savePreferences(draftAnalytics)}
+              onClick={() => savePreferences(draftAnalytics, draftAdvertising)}
             >
               Save preferences
             </Button>

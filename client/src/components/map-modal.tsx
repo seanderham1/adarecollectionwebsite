@@ -52,7 +52,7 @@ export default function MapModal({ isOpen, onClose, propertyId }: MapModalProps)
         
         {/* Map Container - Responsive aspect ratio */}
         <div className="relative w-full aspect-[4/3] sm:aspect-video">
-          <div id="modal-property-map" className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 w-full h-full">
             <PropertyMap propertyId={propertyId} containerId="modal-property-map" />
           </div>
         </div>

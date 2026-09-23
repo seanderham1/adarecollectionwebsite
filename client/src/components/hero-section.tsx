@@ -57,7 +57,7 @@ function EventWeekCountdown() {
     <div className="absolute top-0 left-0 right-0 z-20">
       <div className="bg-white bg-opacity-50 backdrop-blur-sm px-6 lg:px-8 py-3">
         <div className="text-xs font-medium text-gray-900 uppercase tracking-wider text-center lg:text-left">
-          TOURNAMENT WEEK 2027 IN: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+          RYDER CUP 2027 IN: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
         </div>
       </div>
     </div>
@@ -126,6 +126,7 @@ export default function HeroSection() {
 
     const initMap = async () => {
       try {
+        setIsMapLoading(true);
         // Load Google Maps script
         await loadGoogleMapsScript();
 

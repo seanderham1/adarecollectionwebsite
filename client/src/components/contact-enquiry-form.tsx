@@ -9,12 +9,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
 import { useCookieConsent } from "@/contexts/cookie-consent-context";
-import { properties } from "@/lib/properties";
+import { properties, getListedProperties } from "@/lib/properties";
+import { PRIVACY_POLICY_VERSION } from "@/lib/privacy-policy-meta";
 import { cn } from "@/lib/utils";
 
 /** Production uses Hosting rewrite `/api/contact` → `api` Cloud Function so the live backend stays in sync with deploys. */
 const CONTACT_API_URL_DEV =
-  "https://us-central1-theadarecollection-site.cloudfunctions.net/api/api/contact";
+  "https://europe-west1-theadarecollection-site.cloudfunctions.net/api/api/contact";
 
 function getContactApiUrl(): string {
   if (!import.meta.env.PROD) return CONTACT_API_URL_DEV;
@@ -171,7 +172,7 @@ export function ContactEnquiryForm({
   const { openPreferences } = useCookieConsent();
 
   const primaryProperty = useMemo(
-    () => (primaryPropertyId ? properties.find((p) => p.id === primaryPropertyId) : undefined),
+    () => (primaryPropertyId ? getListedProperties().find((p) => p.id === primaryPropertyId) : undefined),
     [primaryPropertyId]
   );
 
@@ -265,8 +266,8 @@ export function ContactEnquiryForm({
   };
 
   const additionalPropertiesList = primaryPropertyId
-    ? properties.filter((p) => p.id !== primaryPropertyId)
-    : properties;
+    ? getListedProperties().filter((p) => p.id !== primaryPropertyId)
+    : getListedProperties();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -283,7 +284,7 @@ export function ContactEnquiryForm({
 
     const orderedIds = orderPreferredIds(selectedPropertyIds, primaryPropertyId);
     const preferredPropertiesSummary = orderedIds.map((pid) => {
-      const p = properties.find((x) => x.id === pid);
+      const p = getListedProperties().find((x) => x.id === pid);
       return p ? `${p.name} (${p.id})` : pid;
     });
 
@@ -307,6 +308,7 @@ export function ContactEnquiryForm({
       additionalNotes: form.additionalNotes.trim(),
       message: form.additionalNotes.trim(),
       privacyConsentAccepted: true,
+      privacyPolicyVersion: PRIVACY_POLICY_VERSION,
     };
 
     try {
@@ -783,7 +785,7 @@ export function ContactEnquiryForm({
                       }
                     >
                       {selectedPropertyIds.size === 0
-                        ? `Select one or more - ${properties.length} properties`
+                        ? `Select one or more - ${getListedProperties().length} properties`
                         : `${selectedPropertyIds.size} propert${selectedPropertyIds.size === 1 ? "y" : "ies"} selected`}
                     </span>
                   </button>
@@ -793,7 +795,7 @@ export function ContactEnquiryForm({
                   align="start"
                 >
                   <ul className="space-y-1">
-                    {properties.map((prop) => {
+                    {getListedProperties().map((prop) => {
                       const thumb = prop.thumbnail ?? prop.images[0];
                       const checked = selectedPropertyIds.has(prop.id);
                       return (

@@ -1,5 +1,6 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { Link } from "wouter";
 import { useSEO } from "@/hooks/use-seo";
 import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
 
@@ -269,7 +270,11 @@ export default function TermsConditions() {
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which forms part of these Terms. By using our services, you consent to the collection and use of your information as described in our Privacy Policy.
+                    Your privacy is important to us. Our collection and use of personal information is governed by our{" "}
+                    <Link href="/privacy" className="text-primary hover:underline">
+                      Privacy Policy
+                    </Link>
+                    , which forms part of these Terms.
                   </p>
                   <p>
                     We comply with the General Data Protection Regulation (GDPR) and Irish data protection laws.

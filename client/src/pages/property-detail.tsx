@@ -6,7 +6,7 @@ import VideoModal from "@/components/video-modal";
 import { PropertyEnquiryModal } from "@/components/property-enquiry-modal";
 import MapModal from "@/components/map-modal";
 import MatterportModal from "@/components/matterport-modal";
-import { properties, getPropertyCollectionBadge } from "@/lib/properties";
+import { properties, getPropertyCollectionBadge, getListedProperties } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -99,7 +99,7 @@ export default function PropertyDetail() {
   const { id } = useParams();
   const search = useSearch();
   const [location] = useLocation();
-  const property = properties.find(p => p.id === id);
+  const property = getListedProperties().find(p => p.id === id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   // Check for video parameter immediately and set initial state
@@ -257,7 +257,7 @@ export default function PropertyDetail() {
                 <div className="absolute top-0 left-0 right-0 h-16 bg-white z-10"></div>
                 <div className="lg:h-[85vh] lg:min-h-0 relative bg-white flex min-h-0 flex-col">
                   {/* Main Image with fade transition: min-h-0 + basis-0 so flex/grid ancestors don’t clip cover height */}
-                  <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-auto lg:min-h-0 lg:flex-1 lg:basis-0 w-full min-h-0 overflow-hidden bg-white">
+                  <div className="property-hero-carousel relative aspect-[2/1.45] lg:aspect-auto lg:min-h-0 lg:flex-1 lg:basis-0 w-full min-h-0 overflow-hidden bg-white">
                     {property.images.map((image, index) => {
                       const src = property.images[index];
                       const isParkview = property.id === "parkview-house";
@@ -279,8 +279,17 @@ export default function PropertyDetail() {
 
                       let layoutClass: string;
                       let imgStyle: CSSProperties;
+                      let heroCoverWidth = false;
 
-                      if (isParkview) {
+                      if (property.id === "executive-city-residence" && index === 0) {
+                        heroCoverWidth = true;
+                        layoutClass =
+                          "inset-0 w-full h-full min-w-full min-h-full object-cover object-center";
+                        imgStyle = {
+                          objectFit: "cover",
+                          objectPosition: "center center",
+                        };
+                      } else if (isParkview) {
                         const measured = parkviewImageOrient[src];
                         const isPortrait =
                           measured === "portrait"
@@ -409,6 +418,8 @@ export default function PropertyDetail() {
                           src={image}
                           alt={`${property.name} - Ryder Cup 2027 accommodation at Adare Manor - Image ${index + 1}`}
                           className={`absolute transition-opacity duration-700 ${layoutClass} ${
+                            heroCoverWidth ? "carousel-hero-cover " : ""
+                          }${
                             index === currentImageIndex ? "opacity-100 z-[1]" : "opacity-0 z-0"
                           }`}
                           style={imgStyle}
@@ -577,7 +588,7 @@ export default function PropertyDetail() {
                         {paragraph}
                       </p>
                     ))}
-                    {(property.id === "rangeview" || property.id === "the-captains" || property.id === "putters-way" || property.id === "the-first-tee" || property.id === "the-fairways" || property.id === "cragleigh-house" || property.id === "darrira-house" || property.id === "croagh-house" || property.id === "parkview-house" || property.id === "portland-house" || property.id === "dunes-lodge" || property.id === "hillview-house" || property.id === "nead-fainleog" || property.id === "the-manor-lodge" || property.id === "derg-house" || property.id === "riverston-abbey" || property.id === "kildimo-house" || property.id === "coolbawn-quay" || property.id === "oak-leaf-house") &&
+                    {(property.id === "rangeview" || property.id === "the-captains" || property.id === "putters-way" || property.id === "the-first-tee" || property.id === "the-fairways" || property.id === "cragleigh-house" || property.id === "darrira-house" || property.id === "croagh-house" || property.id === "parkview-house" || property.id === "portland-house" || property.id === "dunes-lodge" || property.id === "hillview-house" || property.id === "nead-fainleog" || property.id === "the-manor-lodge" || property.id === "derg-house" || property.id === "riverston-abbey" || property.id === "kildimo-house" || property.id === "coolbawn-quay" || property.id === "oak-leaf-house" || property.id === "casabel" || property.id === "friarstown-residence" || property.id === "limetree-avenue") &&
                       getPropertySeoSupplementParagraphs(property.id).map((paragraph, index) => (
                         <p key={`seo-${index}`} className="mb-4 last:mb-0">
                           {paragraph}
@@ -620,6 +631,7 @@ export default function PropertyDetail() {
                 )}
 
                 {/* Features */}
+                {property.features.length > 0 && (
                 <div className="mb-8 lg:pl-4 lg:pr-4">
                   <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-6 mt-4">Features</h3>
                   <ul className="space-y-3 list-none">
@@ -631,19 +643,22 @@ export default function PropertyDetail() {
                     ))}
                   </ul>
                 </div>
+                )}
 
                 {/* Amenities */}
+                {property.amenities.length > 0 && (
                 <div className="mb-8 lg:pl-4 lg:pr-4">
                   <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-6 mt-4">Amenities</h3>
                   <ul className="space-y-3 list-none">
                     {property.amenities.map((amenity, index) => (
                       <li key={index} className="flex items-start space-x-3" data-testid={`property-amenity-${index}`}>
-                        <span className="w-1.5 h-1.5 border border-gray-700 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="w-1.5 h-1.5 border border-gray-700 rounded-full flex-shrink-0 mt-2"></span>
                         <span className="text-gray-700 text-sm leading-relaxed">{amenity}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
+                )}
 
                 {/* Location Map */}
                 <div className="mb-8 lg:pl-4 lg:pr-4">
@@ -651,7 +666,7 @@ export default function PropertyDetail() {
                   <p className="text-sm text-primary font-serif mb-4" data-testid="property-walking-distance-detail">
                     {property.walkingDistance}
                   </p>
-                  {property.eircode && property.id !== "the-first-tee" && property.id !== "nead-fainleog" && property.id !== "the-manor-lodge" && (
+                  {property.eircode && property.id !== "the-first-tee" && property.id !== "nead-fainleog" && property.id !== "the-manor-lodge" && property.id !== "casabel" && property.id !== "executive-city-residence" && (
                     <p className="text-sm text-primary font-serif mb-4" data-testid="property-eircode">
                       Eircode: {property.eircode}
                     </p>
@@ -677,7 +692,7 @@ export default function PropertyDetail() {
                         </div>
                       </div>
                       
-                      {property.id !== "darrira-house" && (
+                      {!["darrira-house", "oak-leaf-house", "casabel", "friarstown-residence", "limetree-avenue", "executive-city-residence"].includes(property.id) && (
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                           <ChefHat className="text-white h-6 w-6" />
@@ -689,7 +704,7 @@ export default function PropertyDetail() {
                       </div>
                       )}
                       
-                      {!["darrira-house", "croagh-house", "parkview-house", "cragleigh-house"].includes(property.id) && (
+                      {!["darrira-house", "croagh-house", "parkview-house", "cragleigh-house", "friarstown-residence"].includes(property.id) && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Heading className="text-white h-6 w-6" />
@@ -701,6 +716,7 @@ export default function PropertyDetail() {
                         </div>
                       )}
                       
+                      {!["limetree-avenue", "executive-city-residence"].includes(property.id) && (
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                           <Shirt className="text-white h-6 w-6" />
@@ -710,8 +726,9 @@ export default function PropertyDetail() {
                           <p className="text-primary text-sm" data-testid="service-housekeeping-description">Professional washing, drying, and pressing service</p>
                         </div>
                       </div>
+                      )}
                       
-                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house' || property.id === 'nead-fainleog' || property.id === 'the-manor-lodge' || property.id === 'derg-house' || property.id === 'riverston-abbey' || property.id === 'kildimo-house' || property.id === 'coolbawn-quay' || property.id === 'oak-leaf-house') && (
+                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house' || property.id === 'nead-fainleog' || property.id === 'the-manor-lodge' || property.id === 'derg-house' || property.id === 'riverston-abbey' || property.id === 'kildimo-house' || property.id === 'coolbawn-quay' || property.id === 'casabel') && (
                         <div className="flex items-start space-x-4">
                           <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                             <Crown className="text-white h-6 w-6" />
@@ -849,7 +866,7 @@ export default function PropertyDetail() {
                 All properties
               </Link>
             </li>
-            {properties
+            {getListedProperties()
               .filter((p) => p.id !== property.id)
               .map((p) => (
                 <li key={p.id}>

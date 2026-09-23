@@ -1,6 +1,10 @@
 export type BlogPostSection = {
   heading?: string;
   paragraphs: string[];
+  quote?: {
+    text: string;
+    attribution?: string;
+  };
   imagePair?: {
     left: { src: string; alt: string };
     right: { src: string; alt: string };
@@ -25,6 +29,10 @@ export type BlogPost = {
   category: string;
   readTimeMinutes: number;
   heroImage: string;
+  /** Listing card thumbnail; set when the hero crop does not suit the card's box. Defaults to heroImage. */
+  cardImage?: string;
+  /** CSS object-position for the card thumbnail; portrait images need a focal point above centre. */
+  cardImagePosition?: string;
   imageCredit?: BlogPostImageCredit;
   keywords: string;
   sections: BlogPostSection[];
@@ -32,6 +40,270 @@ export type BlogPost = {
 };
 
 const blogPosts: BlogPost[] = [
+  {
+    slug: "jon-rahm-ireland-special-place-irish-open-2026",
+    title:
+      "Jon Rahm on Ireland: ‘Always Been a Very Special Place to Me in My Heart’",
+    excerpt:
+      "Back at the Amgen Irish Open in Doonbeg and chasing a third title on Irish soil, Jon Rahm spoke about his deep connection to Ireland — a reminder of how strongly the country’s golf stages still pull the game’s biggest names toward 2027.",
+    publishedAt: "2026-09-23",
+    category: "NEWS",
+    readTimeMinutes: 4,
+    heroImage: "/images/blog/jon-rahm-article.webp",
+    imageCredit: {
+      label: "Coverage: The Irish Times",
+      url: "https://www.irishtimes.com/sport/golf/2026/09/08/jon-rahm-irelands-always-been-a-very-special-place-to-me-in-my-heart/",
+    },
+    keywords:
+      "Jon Rahm Irish Open 2026, Jon Rahm Doonbeg, Amgen Irish Open, Rahm Ireland golf, Ryder Cup 2027 Adare Manor, DP World Tour Ireland, accommodation near Adare Manor",
+    sections: [
+      {
+        paragraphs: [
+          "Jon Rahm is back on the DP World Tour this week, and Ireland is once again the stage. Speaking ahead of the Amgen Irish Open at Trump International Golf Links in Doonbeg, the Spaniard made clear that this is more than another stop on a crowded calendar — it is a place that still sits close to the centre of how he talks about the game.",
+          "As Philip Reid reported for The Irish Times, Rahm is chasing a third Irish Open title. Only he and Rory McIlroy among this week’s field already have more than one Irish Open win to their name, and Rahm’s pair came on classic links terrain: Portstewart in 2017 and Lahinch in 2019.",
+        ],
+      },
+      {
+        heading: "A return to familiar European Tour weeks",
+        paragraphs: [
+          "Rahm’s appearance in Clare marks a notable return to regular DP World Tour competition outside Majors and LIV events — his first such start since the Genesis Scottish Open in July. He also plans to play next week’s BMW PGA Championship at Wentworth, with any Spanish Open appearance later depending on the arrival of a new baby.",
+          "Asked about the longer-term picture around LIV, he declined to be drawn. For now, the focus is narrower and more personal: winning again in Ireland, and enjoying the stretch of European golf that follows.",
+        ],
+      },
+      {
+        heading: "Why Ireland still matters to Rahm",
+        paragraphs: [
+          "The emotional pull is harder to miss than the schedule notes. Rahm’s first Irish Open win at Portstewart was also his breakthrough on the DP World Tour, arriving before his Major titles at the US Open in 2021 and the Masters in 2023. That history still shapes how he talks about coming here.",
+          "“As a professional golfer, when you come [to Ireland] and you feel that appreciation, it’s really special. It’s unique,” he said. “I don’t know why, but Ireland’s always been a very special place to me in my heart. And as golf destinations go, if anybody ever asks me, I always say, ‘if you can go to Ireland for 10 days, you are not going to get better than that!’”",
+          "Even a washed-out practice day at Doonbeg — abandoned after three holes for sudden downpours — did not dull the week. Instead, Rahm spent time with Tom McKibbin, Liam Nolan and Thomas Higgins, who is making his professional debut: another small snapshot of how Irish Open week tends to feel less transactional than many stops on tour.",
+        ],
+        quote: {
+          text:
+            "I don’t know why, but Ireland’s always been a very special place to me in my heart.",
+          attribution: "Jon Rahm",
+        },
+      },
+      {
+        heading: "What it means looking ahead to Adare Manor",
+        paragraphs: [
+          "For anyone watching the countdown to Ryder Cup 2027 at Adare Manor, weeks like this matter. When players of Rahm’s calibre keep choosing Ireland, and keep talking about it this warmly, it reinforces what the Mid-West already knows: the country’s golf stages are not just venues on a rota. They are destinations people remember.",
+          "Irish Open week on the Clare coast also sits in the same broader September story that is already building toward Limerick — familiarisation trips, Junior Ryder Cup plans at Ballyneety, and a centenary Ryder Cup that will put Adare Manor at the centre of the golf world.",
+        ],
+      },
+      {
+        heading: "Where we fit into the story",
+        paragraphs: [
+          "If Ireland is already on the minds of the game’s leading players, it should be on yours too if you are planning to be here for Ryder Cup week. The best private residences near Adare Manor will not stay open indefinitely as demand continues to tighten.",
+          "The Adare Collection curates luxury homes across Adare and the wider Limerick region for guests who want space, privacy and a proper base for tournament week — whether you are following the Irish Open trail this season or locking in September 2027.",
+          "Browse our properties or contact us to talk through availability while Ireland remains firmly in the spotlight.",
+        ],
+      },
+    ],
+    externalLinks: [
+      {
+        label: "The Irish Times: Jon Rahm on Ireland and the Irish Open",
+        url: "https://www.irishtimes.com/sport/golf/2026/09/08/jon-rahm-irelands-always-been-a-very-special-place-to-me-in-my-heart/",
+      },
+      {
+        label: "Europe’s familiarisation trip to Adare Manor — our coverage",
+        url: "https://theadarecollection.com/blog/european-team-familiarisation-trip-adare-manor",
+      },
+      {
+        label: "Ryder Cup 2027",
+        url: "https://www.rydercup.com/",
+      },
+    ],
+  },
+  {
+    slug: "ballyneety-junior-ryder-cup-2027-one-year-out",
+    title:
+      "One Year Out: Ballyneety Golf Club Prepares to Host the 2027 Junior Ryder Cup",
+    excerpt:
+      "With twelve months to go, Limerick’s Ballyneety Golf Club stands ready to welcome Europe and the United States for the Junior Ryder Cup — a proud curtain-raiser before the decisive singles and the Ryder Cup itself at Adare Manor.",
+    publishedAt: "2026-09-16",
+    category: "NEWS",
+    readTimeMinutes: 4,
+    heroImage: "/images/blog/ballyneety-golf-club.webp",
+    keywords:
+      "Ballyneety Junior Ryder Cup 2027, Junior Ryder Cup Limerick, Ballyneety Golf Club, Adare Manor Junior Ryder Cup singles, Ryder Cup 2027 Ireland, accommodation near Ballyneety, Casabel Ballyneety Golf Course",
+    sections: [
+      {
+        paragraphs: [
+          "In exactly one year, Ballyneety Golf Club will have the incredible honour of hosting the 2027 Junior Ryder Cup here in Limerick. Some of the most exciting young golfing talent from Europe and the United States will walk these fairways, representing the next generation of the game on one of junior golf’s biggest stages.",
+          "For the club, its members and the wider community, it will be an incredibly proud moment. Today marks just twelve months to go. The countdown starts now.",
+        ],
+      },
+      {
+        heading: "How the Junior Ryder Cup week will unfold",
+        paragraphs: [
+          "Ryder Cup Europe confirmed that Ballyneety will stage the first two days of the contest: foursomes and fourballs contested by male and female juniors from Europe and the United States. The decisive singles then move to Adare Manor on the eve of the Ryder Cup itself — an extraordinary curtain-raiser that puts tomorrow’s stars on the same stage the world will watch the following day.",
+          "It is a format that gives County Limerick two venues and one story: parkland excellence at Ballyneety, then the full theatre of Adare Manor before golf’s greatest team contest begins.",
+        ],
+      },
+      {
+        heading: "A champion parkland stage in Limerick",
+        paragraphs: [
+          "Co-designed by 2014 Ryder Cup Vice-Captain Des Smyth, Ballyneety sits on 183 acres of rolling Irish countryside. The parkland layout is widely regarded as one of the finest of its kind in Ireland, with sweeping views across County Limerick and a reputation that already includes being named Great Britain and Ireland’s Golf Course of the Year for 2025.",
+          "Edward Kitson, Junior Ryder Cup Match Director, put it simply: Ballyneety will be a magnificent host, offering a champion-standard layout where the next generation of golfing superstars will relish the chance to compete — before those who reach the final day experience singles in front of Ryder Cup crowds on the Ryder Cup course.",
+        ],
+        quote: {
+          text:
+            "It is a true honour for Ballyneety Golf Club to host the 2027 Junior Ryder Cup. This tournament represents not only a celebration of skill and dedication to the game, but also an opportunity to showcase the spirit of our community and the beauty and quality of our Championship course.",
+          attribution: "John Leamy, General Manager, Ballyneety Golf Club",
+        },
+      },
+      {
+        heading: "Where future stars are made",
+        paragraphs: [
+          "The Junior Ryder Cup has long been a proving ground. Rory McIlroy, Nicolai Højgaard and Nicolas Colsaerts all triumphed in the junior event before going on to win the Ryder Cup. On the women’s side, Suzanne Pettersen, Carlota Ciganda, Leona Maguire and Emily Kristine Pedersen competed as amateurs before lifting the Solheim Cup.",
+          "In 2027, another generation of male and female junior amateurs will go head-to-head in the mixed event — and Limerick will be the place they do it.",
+        ],
+      },
+      {
+        heading: "What it means if you are planning Ryder Cup week",
+        paragraphs: [
+          "Junior Ryder Cup week is not a footnote to the main event. It is part of the same September story: emerging talent at Ballyneety, singles at Adare Manor, then the centenary Ryder Cup itself. For groups already locking in travel and hospitality, that means more days of golf, more reasons to be in the Mid-West early, and even tighter demand for the right place to stay.",
+          "Our collection includes residences across Adare and the wider Limerick region — including Casabel, an executive home set on Ballyneety Golf Course itself, roughly twenty-five minutes from Adare Manor. Whether you want to be beside the Junior Ryder Cup fairways or close to the village for tournament week, we can help you find a private base that fits.",
+          "Browse our properties or contact us to talk through availability while the countdown to September 2027 continues.",
+        ],
+      },
+    ],
+    externalLinks: [
+      {
+        label: "Ryder Cup Europe: Ballyneety to host 2027 Junior Ryder Cup",
+        url: "https://www.rydercup.com/news-media/ballyneety-golf-club-to-host-2027-junior-ryder-cup",
+      },
+      {
+        label: "Ballyneety Golf Club",
+        url: "https://www.ballyneetygolfclub.com/",
+      },
+      {
+        label: "Casabel — on Ballyneety Golf Course",
+        url: "https://theadarecollection.com/property/casabel",
+      },
+    ],
+  },
+  {
+    slug: "dylan-leon-executive-operations-client-coordinator",
+    title:
+      "The Adare Collection Welcomes Dylan Leon as Executive Operations and Client Coordinator",
+    excerpt:
+      "Dylan Leon joins The Adare Collection as Executive Operations and Client Coordinator, bringing more than a decade of luxury hospitality and private client experience from Adare Manor, The Dorchester Collection and his own concierge company, Maison Leon.",
+    publishedAt: "2026-09-09",
+    category: "NEWS",
+    readTimeMinutes: 3,
+    heroImage: "/images/blog/dylan-leon-hero.webp",
+    cardImage: "/images/blog/dylan-leon-card.webp",
+    cardImagePosition: "50% 0%",
+    keywords:
+      "Dylan Leon The Adare Collection, Executive Operations and Client Coordinator, Maison Leon concierge, Adare Manor guest experience, luxury hospitality Limerick, Ryder Cup 2027 accommodation, private client management Ireland",
+    sections: [
+      {
+        paragraphs: [
+          "We're delighted to welcome Dylan Leon to The Adare Collection as our new Executive Operations and Client Coordinator.",
+          "Dylan brings over a decade of experience in luxury hospitality and private client management, most recently as Director of Guest Experience at Adare Manor, alongside his work as founder of his own private lifestyle management company, Maison Leon.",
+        ],
+      },
+      {
+        heading: "A career in five-star service",
+        paragraphs: [
+          "Dylan began his career at the Merrion Hotel in Dublin, before completing an international placement at The Dorchester Collection in London, and returned home to a position in the Michelin-starred Glovers Alley at The Fitzwilliam before moving to Limerick to begin his most recent hospitality career at Adare Manor.",
+          "Across his career, Dylan has developed extensive experience across food and beverage, guest experience and luxury hospitality, progressing into senior client-facing roles and managing complex guest requirements, from last-minute logistics and VIP itineraries to highly personalised stays and experiences.",
+        ],
+      },
+      {
+        heading: "Founder of Maison Leon",
+        paragraphs: [
+          "Alongside his hotel career, Dylan also founded Maison Leon, a private lifestyle management and concierge company supporting individuals, families and businesses across Ireland and worldwide. Maison Leon supports clients with travel, private aviation, events, hospitality and the many details that come with managing a busy lifestyle. Discretion sits at the centre of the business, with every engagement handled personally and in confidence.",
+          "It's this combination of luxury hospitality and private client experience, managing complex travel, events, logistics and the everyday details of clients' lives, that maps most directly onto what he'll be doing with us.",
+        ],
+      },
+      {
+        heading: "What this means for our clients",
+        paragraphs: [
+          "Guests staying with The Adare Collection expect more than a set of keys and a welcome pack. They want someone who can coordinate arrivals and logistics, act as a single point of contact throughout their stay, and ensure everything runs seamlessly from booking through to departure.",
+          "That's exactly the kind of work Dylan has built his career around. He'll be leading on client operations for us, coordinating logistics ahead of each arrival and staying on hand as a single point of contact throughout the stay.",
+        ],
+        quote: {
+          text:
+            "I'm delighted to be joining The Adare Collection and to be involved in building on the experience we provide for our clients. Having spent much of my career working in luxury hospitality and private client environments, I'm looking forward to bringing that experience to the role and ensuring every detail is carefully considered, from the initial planning through to the client's departure.",
+          attribution: "Dylan Leon, Executive Operations and Client Coordinator",
+        },
+      },
+      {
+        heading: "Get in touch",
+        paragraphs: [
+          "If you have a booking with us, including for Ryder Cup 2027, or would like to talk through options for an upcoming stay or event, Dylan will be one of the first people you hear from. Welcome to the team, Dylan.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "european-team-familiarisation-trip-adare-manor",
+    title:
+      "Europe's Ryder Cup Team Is Heading to Adare Manor: What Luke Donald's Familiarisation Trip Tells Us",
+    excerpt:
+      "Sixteen European players are set to visit Adare Manor in the build-up to the 2027 Ryder Cup, a year-ahead familiarisation trip that underlines how seriously Team Europe is preparing for Ireland's centenary edition.",
+    publishedAt: "2026-09-02",
+    category: "NEWS",
+    readTimeMinutes: 5,
+    heroImage: "/images/blog/europe-ryder-cup-team.webp",
+    keywords:
+      "Ryder Cup 2027 Adare Manor, Luke Donald familiarisation trip, European Ryder Cup team Adare Manor, Padraig Harrington vice captain, Amgen Irish Open 2026, accommodation near Adare Manor, Ryder Cup Ireland preparation",
+    sections: [
+      {
+        paragraphs: [
+          "With just over a year until the centenary Ryder Cup at Adare Manor, Luke Donald is taking preparation up a gear. According to reporting in the Limerick Leader, the European captain is set to host a familiarisation trip to Adare Manor for sixteen players, timed deliberately to fall almost exactly twelve months before tournament week.",
+          "It is the kind of detail that might sound procedural from the outside, but tells you a great deal about how this Ryder Cup is being approached: not as a distant appointment on the calendar, but as a venue Europe intends to know intimately before a single pairing sheet is posted.",
+        ],
+      },
+      {
+        heading: "What is being planned and when",
+        paragraphs: [
+          "The gathering is understood to take place in the fortnight after the Amgen Irish Open at Trump International Golf Links in Doonbeg, roughly sixty miles from Adare Manor, before the group moves on to Wentworth for the BMW PGA Championship.",
+          "Donald will be joined by his three vice-captains: Edoardo and Francesco Molinari, and Ireland's Pádraig Harrington. The final places in the sixteen-player group were still being finalised as the week of the Husqvarna British Masters at The Belfry got under way.",
+          "Seven members of Europe's triumphant 2025 side at Bethpage Black are in the Irish Open field, including Rory McIlroy, Jon Rahm, Tyrrell Hatton, Bob MacIntyre, Shane Lowry, Sepp Straka and Rasmus Hojgaard. Nicolai Hojgaard, a winner in Rome in 2023, and Alex Fitzpatrick are also in the line-up, names that make the link between this week's golf on the west coast and next year's gathering in Limerick feel very real.",
+        ],
+      },
+      {
+        heading: "Why Adare Manor matters to Team Europe",
+        paragraphs: [
+          "The trip serves a straightforward but important purpose. It is understood that only about half of the sixteen players involved have played Adare Manor before, either privately or at the JP McManus Pro-Am, last held in 2022. For those who have not, this is a first proper look at the course that will define Ryder Cup week. For those who have, it is a chance to re-familiarise themselves with a layout that will feel very different under tournament conditions.",
+          "Donald has form here. Ahead of both Rome in 2023 and New York in 2025, he brought his squad together at the host venue two or three weeks before the matches. Planning something similar twelve months out is consistent with a captain who is organised, meticulous and chasing history. A third consecutive European victory would be unprecedented on either side of the Atlantic.",
+          "The timing also lands alongside another sobering reminder of demand: general admission for the 2027 Ryder Cup sold out more than twelve times over. Europe's players are getting their first serious look at Adare Manor at the same moment fans are realising just how finite access to this event was always going to be.",
+        ],
+      },
+      {
+        heading: "What it means for Limerick and for anyone planning to be here",
+        paragraphs: [
+          "For County Limerick, the familiarisation trip is another marker in a countdown that is now visibly accelerating. The Irish Open week on the Clare coast, a European squad visit to Adare, Harrington's vice-captaincy and the wider Golf Limerick push are all converging on the same story: this region is no longer waiting for the Ryder Cup to arrive. It is already living inside the buildup.",
+          "That matters if you are planning to be here in September 2027. The players are not treating Adare Manor as a venue to be discovered late in the day, and the smartest spectators and hospitality groups are taking the same approach to where they stay. A familiarisation trip for Europe's team is a useful nudge for everyone else: the course will be studied, the logistics will be tight, and the best bases close to Adare will not stay available indefinitely.",
+        ],
+      },
+      {
+        heading: "Where we fit into the story",
+        paragraphs: [
+          "The Adare Collection curates private houses and estates across Adare and the wider Limerick region for exactly this kind of week: space, privacy and a proper home base when tournament week is about more than a single day at the course.",
+          "Whether you are hosting clients, travelling with family or building a group around Irish Open week and the road toward September 2027, having the right residence locked in early makes the difference between reacting to the Ryder Cup buildup and actually enjoying it.",
+          "Browse our current collection of properties near Adare Manor, or contact us directly. We are happy to help you plan a stay that keeps you close to the action as Europe's team, and the rest of the golf world, turns its attention to Limerick.",
+        ],
+      },
+    ],
+    externalLinks: [
+      {
+        label: "Limerick Leader: Familiarisation trip at Adare Manor in the works for European team",
+        url: "https://www.limerickleader.ie/sport/ryder-cup/familiarisation-trip-at-adare-manor-in-the-works-for-european-team-8950692",
+      },
+      {
+        label: "Ryder Cup 2027",
+        url: "https://www.rydercup.com/",
+      },
+      {
+        label: "Pádraig Harrington named Europe vice-captain: our coverage",
+        url: "https://theadarecollection.com/blog/padraig-harrington-ryder-cup-2027-vice-captain",
+      },
+    ],
+  },
   {
     slug: "golf-limerick-brochures-whats-coming",
     title:
@@ -390,42 +662,6 @@ const blogPosts: BlogPost[] = [
       {
         label: "Ryder Cup 2027",
         url: "https://www.rydercup.com/",
-      },
-    ],
-  },
-  {
-    slug: "hogan-durkan-estate-agents-partnership",
-    title: "The Adare Collection Partners with Hogan Durkan Estate Agents",
-    excerpt:
-      "A strategic partnership combining luxury accommodation expertise with one of the Mid-West's most respected estate agencies, delivering a trusted and professionally managed booking experience.",
-    publishedAt: "2026-07-08",
-    category: "NEWS",
-    readTimeMinutes: 3,
-    heroImage: "/images/blog/handshake-image.webp",
-    keywords:
-      "Hogan Durkan Estate Agents, The Adare Collection partnership, Adare property management, luxury accommodation Limerick, estate agents Mid-West, Ryder Cup 2027 accommodation",
-    sections: [
-      {
-        paragraphs: [
-          "The Adare Collection is proud to announce its strategic partnership with Hogan Durkan Estate Agents, one of the Mid-West's most respected and established property firms.",
-          "This collaboration combines The Adare Collection's expertise in luxury accommodation and guest services with Hogan Durkan's extensive experience in property management, regulatory compliance, and client account administration.",
-          "Together, we provide homeowners and international clients with a trusted, transparent and professionally managed booking experience, ensuring every reservation is handled with the highest standards of service, integrity and compliance.",
-        ],
-        imagePair: {
-          left: {
-            src: "/images/blog/hogan-image-square.webp",
-            alt: "Hogan Durkan Estate Agents",
-          },
-          right: {
-            src: "/images/blog/joe-about-square.webp",
-            alt: "Joe — Hospitality & Property Expert, The Adare Collection",
-          },
-        },
-      },
-      {
-        paragraphs: [
-          "Led by Partners Eoin Hogan and Patrick Durkan, Hogan Durkan Estate Agents brings together more than 35 years of combined property expertise. With extensive experience across residential and commercial sales, lettings, valuations and property management, and recognised professional accreditations in Ireland and internationally, they are committed to delivering trusted advice, exceptional service and outstanding results for their clients.",
-        ],
       },
     ],
   },

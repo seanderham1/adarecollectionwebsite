@@ -2,6 +2,10 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { useSEO } from "@/hooks/use-seo";
 import { getStaticRouteSEOByPath, toUseSEOArgs } from "@/lib/prerender-route-meta";
+import {
+  PRIVACY_POLICY_LAST_UPDATED,
+  PRIVACY_POLICY_VERSION,
+} from "@/lib/privacy-policy-meta";
 
 export default function PrivacyPolicy() {
   useSEO(toUseSEOArgs(getStaticRouteSEOByPath("/privacy")!));
@@ -17,78 +21,65 @@ export default function PrivacyPolicy() {
               Privacy Policy
             </h1>
             <p className="text-sm text-gray-500">
-              Last updated: August 2026
+              Last updated: {PRIVACY_POLICY_LAST_UPDATED} (version {PRIVACY_POLICY_VERSION})
             </p>
           </div>
 
           <div className="prose prose-lg max-w-none">
             <div className="space-y-8">
               
-              {/* Introduction */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   1. Introduction
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    The Adare Collection Limited, trading as The Adare Collection (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), CRO No. 812874, is committed to protecting your privacy and personal information. We act as exclusive representative, marketing agent, and booking facilitator for luxury short-term residential accommodation. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in connection with property rentals for Ryder Cup 2027 and related events.
+                    The Adare Collection Limited, trading as The Adare Collection (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), CRO No. 812874, is the data controller for personal information collected through this website and through related enquiry follow-up. We act as exclusive representative, marketing agent, and booking facilitator for luxury short-term residential accommodation. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, submit an enquiry, or interact with us in connection with property rentals for Ryder Cup 2027 and related events.
                   </p>
                   <p>
-                    By using our website and services, you consent to the data practices described in this policy. If you do not agree with the terms of this Privacy Policy, please do not access or use our services.
+                    Please read this policy before submitting an enquiry. Using the website does not, by itself, constitute consent to optional cookies or to processing of enquiry data. Enquiry data is processed only after you submit the form and tick the consent box. Optional analytics and advertising cookies are used only if you allow them.
                   </p>
                 </div>
               </section>
 
-              {/* Information We Collect */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   2. Information We Collect
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <h3 className="font-serif text-xl font-normal text-primary mb-3">
-                    2.1 Personal Information
+                    2.1 Information you provide through the website
                   </h3>
                   <p>
-                    We collect personal information that you voluntarily provide to us when you:
+                    The website has one enquiry form (on the contact page, the homepage, and as a property enquiry). Fields collected are:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Submit property inquiries or booking requests</li>
-                    <li>Subscribe to our newsletter</li>
-                    <li>Contact us through our website forms</li>
-                    <li>Request availability information</li>
-                    <li>Engage with our customer service</li>
+                    <li>Full name, email address, and telephone number (including international dialling code)</li>
+                    <li>Whether you are enquiring as a private individual, a company, or an agency, and (where relevant) organisation name and role</li>
+                    <li>Estimated number of guests, intended use of the property, optional previous major-event experience, indicative budget, and preferred properties</li>
+                    <li>Any additional notes you choose to write</li>
+                    <li>Confirmation that you have read this policy and consent to processing for the enquiry</li>
                   </ul>
                   <p>
-                    This information may include:
+                    We do not collect postal addresses, payment-card details, or newsletter subscriptions through the website. There is no website booking or payment form.
                   </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>Name and contact details (email address, phone number, postal address)</li>
-                    <li>Country of residence and international dialing codes</li>
-                    <li>Property preferences and requirements</li>
-                    <li>Event dates, group size, and guest-party details needed to perform a booking</li>
-                    <li>Payment and booking details (including Deposit, Rent, and Security Deposit information processed via our designated client account)</li>
-                    <li>Communication preferences</li>
-                    <li>Any additional information you choose to provide</li>
-                  </ul>
 
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
-                    2.2 Automatically Collected Information
+                    2.2 Information collected if a booking proceeds
                   </h3>
                   <p>
-                    When you visit our website, we automatically collect certain information about your device and usage patterns:
+                    If an enquiry becomes a booking, further information needed to perform the Residential Letting Agreement may be collected off-website (for example by email or in booking documents). That can include guest-party details, stay dates, postal address, and payment details for Deposit, Rent, and Security Deposit paid into our designated client account. Those details are not collected by the website form.
                   </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>IP address and location data</li>
-                    <li>Browser type and version</li>
-                    <li>Operating system</li>
-                    <li>Pages visited and time spent on our site</li>
-                    <li>Referring website information</li>
-                    <li>Device identifiers and characteristics</li>
-                  </ul>
+
+                  <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
+                    2.3 Automatically collected information
+                  </h3>
+                  <p>
+                    Our hosting provider (Google Firebase) records technical logs that can include IP address, request URL, and timestamp. If you allow analytics cookies, Google Analytics may collect device and usage information such as pages viewed, approximate location derived from IP address, browser type, and referring site. If you allow advertising cookies, Google Ads may set cookies used for conversion measurement and remarketing. Pages that show an interactive map load Google Maps, which receives your IP address in order to display the map. If you open a Matterport 3D tour, Matterport will receive your IP address in order to deliver that content.
+                  </p>
                 </div>
               </section>
 
-              {/* How We Use Your Information */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   3. How We Use Your Information
@@ -98,168 +89,192 @@ export default function PrivacyPolicy() {
                     We use the information we collect for the following purposes:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Service Provision:</strong> To market properties, facilitate bookings, collect Deposit, Rent, and Security Deposit payments into our designated client account, and coordinate guest services</li>
-                    <li><strong>Communication:</strong> To respond to your inquiries, send booking confirmations, and provide customer support</li>
-                    <li><strong>Contract Performance:</strong> To enable Owners and Occupiers to enter into and perform Residential Letting Agreements</li>
-                    <li><strong>Marketing:</strong> To send you newsletters, property updates, and promotional materials (with your consent)</li>
-                    <li><strong>Personalization:</strong> To tailor our services and recommendations to your preferences</li>
-                    <li><strong>Legal Compliance:</strong> To comply with applicable laws, regulations, and legal processes</li>
-                    <li><strong>Business Operations:</strong> To improve our services, analyze usage patterns, and enhance user experience</li>
-                    <li><strong>Security:</strong> To protect against fraud, unauthorized access, and other security threats</li>
+                    <li><strong>Responding to enquiries:</strong> to assess your request, contact you from info@theadarecollection.ie and dylan@theadarecollection.ie, and discuss suitable properties</li>
+                    <li><strong>Service provision:</strong> where a booking proceeds, to market properties, facilitate the letting, collect Deposit, Rent, and Security Deposit into our designated client account, and coordinate guest services</li>
+                    <li><strong>Contract performance:</strong> to enable Owners and Occupiers to enter into and perform Residential Letting Agreements</li>
+                    <li><strong>Sharing with partners you need:</strong> with property owners and with caterers, transport, concierge, security, or other suppliers where needed to deliver services you have asked us to arrange</li>
+                    <li><strong>Legal compliance:</strong> to comply with applicable laws, regulations, and legal processes</li>
+                    <li><strong>Website operation:</strong> to keep the site working, to measure usage if you allow analytics cookies, and to measure advertising if you allow advertising cookies</li>
+                    <li><strong>Security:</strong> to protect against fraud, abuse of the enquiry form, unauthorised access, and other security threats</li>
                   </ul>
+                  <p>
+                    We do not send newsletters, and we do not use your enquiry to run automated decision-making or profiling that produces legal or similarly significant effects.
+                  </p>
                 </div>
               </section>
 
-              {/* Legal Basis for Processing */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   4. Legal Basis for Processing
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    We process your personal information based on the following legal grounds:
+                    We process your personal information based on the following legal grounds under the GDPR:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Consent:</strong> When you have given clear consent for us to process your personal data for specific purposes</li>
-                    <li><strong>Contract Performance:</strong> To fulfill our contractual obligations to you</li>
-                    <li><strong>Legitimate Interests:</strong> To pursue our legitimate business interests, such as improving our services and preventing fraud</li>
-                    <li><strong>Legal Obligation:</strong> To comply with legal requirements and regulations</li>
+                    <li><strong>Consent (Article 6(1)(a)):</strong> for the website enquiry itself (the tick-box on the form) and for optional analytics and advertising cookies</li>
+                    <li><strong>Contract and pre-contract steps (Article 6(1)(b)):</strong> to follow up your enquiry, prepare a booking, and perform a Residential Letting Agreement</li>
+                    <li><strong>Legitimate interests (Article 6(1)(f)):</strong> to operate and secure the website, prevent form abuse, and keep records needed to run the business, where those interests are not overridden by your rights</li>
+                    <li><strong>Legal obligation (Article 6(1)(c)):</strong> where Irish accounting, tax, or other law requires us to keep booking and payment records</li>
                   </ul>
                 </div>
               </section>
 
-              {/* Information Sharing */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   5. Information Sharing and Disclosure
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:
+                    We do not sell, trade, or rent your personal information. Enquiry data is stored in a Google Sheet used as our lead register, copied to the info@theadarecollection.ie mailbox, and used by our team (including dylan@theadarecollection.ie) to reply to you. We may also share information in the following circumstances:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Service Providers:</strong> With trusted third-party service providers who assist us in operating our business (e.g., property management, payment processing, email services, client-account administration)</li>
-                    <li><strong>Property Owners:</strong> With property Owners and their representatives as necessary to conclude and perform Residential Letting Agreements, coordinate access, housekeeping, inspections, and guest services, and handle Security Deposit matters</li>
-                    <li><strong>Guest Service Partners:</strong> With caterers, transport, concierge, security, or other suppliers you ask us to arrange, where needed to deliver those services</li>
-                    <li><strong>Legal Requirements:</strong> When required by law, court order, or government regulation</li>
-                    <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-                    <li><strong>Consent:</strong> When you have given explicit consent for us to share your information</li>
-                    <li><strong>Safety and Security:</strong> To protect the rights, property, or safety of The Adare Collection Limited, property Owners, our users, or others</li>
+                    <li><strong>Processors:</strong> Google Ireland Limited / Google LLC provide website hosting (Firebase), the Cloud Function that receives the form, Gmail, Google Sheets, Google Analytics, Google Ads, Google Tag Manager, and Google Maps. Matterport, Inc. provides 3D tours when you choose to open one. These providers process data on our instructions or, for Maps, Analytics, Ads, and Matterport, as described in their own notices when you use those features.</li>
+                    <li><strong>Property Owners:</strong> with property Owners and their representatives as necessary to conclude and perform Residential Letting Agreements, coordinate access, housekeeping, inspections, and guest services, and handle Security Deposit matters</li>
+                    <li><strong>Guest Service Partners:</strong> with caterers, transport, concierge, security, or other suppliers you ask us to arrange, where needed to deliver those services</li>
+                    <li><strong>Legal Requirements:</strong> when required by law, court order, or government regulation</li>
+                    <li><strong>Business Transfers:</strong> in connection with a merger, acquisition, or sale of assets</li>
+                    <li><strong>Safety and Security:</strong> to protect the rights, property, or safety of The Adare Collection Limited, property Owners, our users, or others</li>
                   </ul>
                 </div>
               </section>
 
-              {/* Data Security */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   6. Data Security
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:
+                    We implement appropriate technical and organisational measures to protect your personal information, including:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Encryption of data in transit and at rest</li>
-                    <li>Secure servers and databases</li>
-                    <li>Regular security assessments and updates</li>
-                    <li>Access controls and authentication procedures</li>
-                    <li>Staff training on data protection practices</li>
+                    <li>TLS encryption of data in transit between your browser, our website, and our Cloud Function</li>
+                    <li>Processing of website enquiries on Google Cloud in the European Union (Belgium, europe-west1)</li>
+                    <li>Gmail App Password stored in Google Secret Manager rather than in application code</li>
+                    <li>Access to the Google Sheets lead register limited to named individuals</li>
+                    <li>Rate limiting on the enquiry endpoint to reduce abuse</li>
                   </ul>
                   <p>
-                    However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security.
+                    No method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security.
                   </p>
                 </div>
               </section>
 
-              {/* Data Retention */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   7. Data Retention
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. Specifically:
+                    We retain personal information only as long as needed for the purposes in this policy, or longer where the law requires. Specifically:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Booking Information:</strong> Retained for 7 years after your stay for legal and accounting purposes</li>
-                    <li><strong>Marketing Communications:</strong> Retained until you unsubscribe or request deletion</li>
-                    <li><strong>Website Usage Data:</strong> Retained for up to 2 years for analytics and improvement purposes</li>
-                    <li><strong>Customer Service Records:</strong> Retained for 3 years after the last interaction</li>
+                    <li><strong>Website enquiries</strong> (the Google Sheets lead register and related enquiry emails): 24 months from the date of submission, unless a booking proceeds or you ask us to delete sooner where we have no overriding obligation to keep the data. A monthly job deletes sheet rows older than 24 months.</li>
+                    <li><strong>Booking and payment records:</strong> retained for 7 years after the stay for Irish legal and accounting purposes</li>
+                    <li><strong>Analytics data:</strong> retained according to our Google Analytics settings, and in any event not longer than 14 months of identifiable usage data</li>
+                    <li><strong>Cookie choices:</strong> stored in your browser until you clear site data or we change cookie categories and ask again</li>
                   </ul>
                 </div>
               </section>
 
-              {/* Your Rights */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   8. Your Rights
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    Depending on your location, you may have the following rights regarding your personal information:
+                    You have the following rights regarding your personal information, subject to the GDPR:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Access:</strong> Request access to the personal information we hold about you</li>
-                    <li><strong>Rectification:</strong> Request correction of inaccurate or incomplete information</li>
-                    <li><strong>Erasure:</strong> Request deletion of your personal information</li>
-                    <li><strong>Restriction:</strong> Request restriction of processing of your personal information</li>
-                    <li><strong>Portability:</strong> Request transfer of your personal information to another service provider</li>
-                    <li><strong>Objection:</strong> Object to processing of your personal information for certain purposes</li>
-                    <li><strong>Withdraw Consent:</strong> Withdraw consent for processing based on consent</li>
+                    <li><strong>Access:</strong> request a copy of the personal information we hold about you</li>
+                    <li><strong>Rectification:</strong> request correction of inaccurate or incomplete information</li>
+                    <li><strong>Erasure:</strong> request deletion of your personal information</li>
+                    <li><strong>Restriction:</strong> request restriction of processing</li>
+                    <li><strong>Portability:</strong> request transfer of personal information you provided to us, in a structured, commonly used format</li>
+                    <li><strong>Objection:</strong> object to processing based on legitimate interests</li>
+                    <li><strong>Withdraw consent:</strong> withdraw consent for the enquiry or for optional cookies, without affecting processing that already took place</li>
                   </ul>
                   <p>
-                    To exercise these rights, please contact us at{" "}
+                    To exercise these rights, email{" "}
                     <a href="mailto:info@theadarecollection.ie" className="text-primary hover:underline">
                       info@theadarecollection.ie
                     </a>
-                    . We will respond to your request within 30 days.
+                    . Email is the primary contact route for data-protection requests. We will respond within 30 days.
                   </p>
                 </div>
               </section>
 
-              {/* Cookies */}
               <section id="cookies">
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   9. Cookies and Tracking Technologies
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    Our website uses cookies and similar tracking technologies to enhance your browsing experience and analyze website usage. Cookies are small text files stored on your device that help us:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>Remember your preferences and settings</li>
-                    <li>Analyze website traffic and user behavior</li>
-                    <li>Improve website functionality and performance</li>
-                    <li>Provide personalized content and recommendations</li>
-                  </ul>
-                  <p>
-                    You can control cookie settings through your browser preferences. However, disabling cookies may affect the functionality of our website.
+                    We use Google Tag Manager (container GTM-WK9PD9T3). Before any optional tag runs, the site sets Google Consent Mode so that analytics and advertising storage are denied until you choose. You can change your choice at any time using <strong>Cookie settings</strong> in the website footer.
                   </p>
                   <p>
-                    When you first visit our website, we ask whether you allow optional analytics cookies. You can change this decision at any time using{" "}
-                    <strong>Cookie settings</strong> in the website footer.
+                    Google Maps loads automatically on pages that include a map (the homepage and property pages). Matterport tours load only after you open one. We self-host our website fonts so they are not fetched from Google Fonts on page load.
+                  </p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left border border-gray-200">
+                      <thead>
+                        <tr className="bg-gray-50">
+                          <th className="border border-gray-200 p-2 font-medium">Name</th>
+                          <th className="border border-gray-200 p-2 font-medium">Provider</th>
+                          <th className="border border-gray-200 p-2 font-medium">Purpose</th>
+                          <th className="border border-gray-200 p-2 font-medium">Duration</th>
+                          <th className="border border-gray-200 p-2 font-medium">Category</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-200 p-2">adare_cookie_consent</td>
+                          <td className="border border-gray-200 p-2">The Adare Collection (local storage)</td>
+                          <td className="border border-gray-200 p-2">Stores your cookie choice</td>
+                          <td className="border border-gray-200 p-2">Until you clear it or we change categories</td>
+                          <td className="border border-gray-200 p-2">Essential</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-200 p-2">_ga, _ga_*</td>
+                          <td className="border border-gray-200 p-2">Google Analytics</td>
+                          <td className="border border-gray-200 p-2">Distinguish visitors and persist a session</td>
+                          <td className="border border-gray-200 p-2">Up to 2 years / 24 hours</td>
+                          <td className="border border-gray-200 p-2">Analytics (optional)</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-200 p-2">_gid</td>
+                          <td className="border border-gray-200 p-2">Google Analytics</td>
+                          <td className="border border-gray-200 p-2">Distinguish visitors</td>
+                          <td className="border border-gray-200 p-2">24 hours</td>
+                          <td className="border border-gray-200 p-2">Analytics (optional)</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-200 p-2">_gcl_au, _gcl_aw, _gac*</td>
+                          <td className="border border-gray-200 p-2">Google Ads</td>
+                          <td className="border border-gray-200 p-2">Conversion measurement and remarketing</td>
+                          <td className="border border-gray-200 p-2">Typically 90 days</td>
+                          <td className="border border-gray-200 p-2">Advertising (optional)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p>
+                    You can also control cookies through your browser. Blocking all cookies may affect some site features. Essential storage used for your cookie preference is not advertising or analytics.
                   </p>
                 </div>
               </section>
 
-              {/* International Transfers */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   10. International Data Transfers
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    As a luxury property rental service serving international clients, we may transfer your personal information to countries outside your country of residence. When we do so, we ensure appropriate safeguards are in place, including:
+                    Website enquiry processing (the Cloud Function that receives the form) runs in the European Union (Belgium). Google Workspace (Gmail and Google Sheets) is provided by Google to us under Google&apos;s Data Processing Addendum. Some Google services — in particular Google Ads (if you allow advertising cookies) and Google Maps on pages that display a map — may involve transfers to the United States. Where Google transfers personal data outside the EEA, it relies on the EU-US Data Privacy Framework adequacy decision where applicable and/or Standard Contractual Clauses. Matterport tours, if you open one, may also involve processing outside Ireland as described in Matterport&apos;s notices.
                   </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>Standard contractual clauses approved by relevant data protection authorities</li>
-                    <li>Adequacy decisions by relevant data protection authorities</li>
-                    <li>Other appropriate safeguards as required by applicable law</li>
-                  </ul>
                 </div>
               </section>
 
-              {/* CCTV and Property Monitoring */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   11. CCTV and Property Monitoring
@@ -277,10 +292,9 @@ export default function PrivacyPolicy() {
                 </div>
               </section>
 
-              {/* Children's Privacy */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
-                  12. Children's Privacy
+                  12. Children&apos;s Privacy
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
@@ -289,34 +303,24 @@ export default function PrivacyPolicy() {
                 </div>
               </section>
 
-              {/* Changes to Privacy Policy */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   13. Changes to This Privacy Policy
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. We will notify you of any material changes by:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>Posting the updated policy on our website</li>
-                    <li>Sending you an email notification (if you have provided an email address)</li>
-                    <li>Displaying a prominent notice on our website</li>
-                  </ul>
-                  <p>
-                    Your continued use of our services after any changes indicates your acceptance of the updated Privacy Policy.
+                    We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. Material changes will be shown by updating the version number and date at the top of this page. We may also email you if we have your address from an enquiry or booking and the change is material.
                   </p>
                 </div>
               </section>
 
-              {/* Contact Information */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
                   14. Contact Information
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
+                    For questions, concerns, or requests about this Privacy Policy or our data practices, please email us. Email is the primary route for data-protection requests. Our data-protection contact is:
                   </p>
                   <div className="bg-gray-50 p-6 rounded-lg">
                     <p><strong>The Adare Collection Limited</strong></p>
@@ -328,7 +332,7 @@ export default function PrivacyPolicy() {
                     </p>
                   </div>
                   <p>
-                    For EU residents, you also have the right to lodge a complaint with your local data protection authority if you believe we have not handled your personal information in accordance with applicable data protection laws. In Ireland, that authority is the Data Protection Commission.
+                    You also have the right to lodge a complaint with the Data Protection Commission (Ireland) if you believe we have not handled your personal information in accordance with applicable data protection laws.
                   </p>
                 </div>
               </section>

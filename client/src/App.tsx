@@ -7,7 +7,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { GoogleAnalytics, GoogleSearchConsole } from "@/components/google-analytics";
 import { CookieConsentLayer } from "@/components/cookie-consent-layer";
 import { CookieConsentProvider } from "@/contexts/cookie-consent-context";
-import { ComingSoon } from "@/components/coming-soon";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import PropertyDetail from "@/pages/property-detail";
@@ -58,9 +57,7 @@ function App() {
           <CookieConsentLayer />
           <Toaster />
           <ScrollToTop />
-          <ComingSoon>
-            <Router />
-          </ComingSoon>
+          <Router />
         </TooltipProvider>
       </CookieConsentProvider>
     </QueryClientProvider>

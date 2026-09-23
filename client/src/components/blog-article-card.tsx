@@ -15,9 +15,14 @@ export default function BlogArticleCard({ post }: BlogArticleCardProps) {
       <article className="property-card bg-neutral-100 overflow-hidden border-0 shadow-none cursor-pointer group flex flex-col md:flex-row">
         <div className="relative aspect-[16/9] md:aspect-auto md:w-2/5 md:min-h-[200px] shrink-0">
           <img
-            src={post.heroImage}
+            src={post.cardImage ?? post.heroImage}
             alt={post.title}
-            className="w-full h-full object-cover object-center md:absolute md:inset-0"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={
+              post.cardImagePosition
+                ? { objectPosition: post.cardImagePosition }
+                : undefined
+            }
           />
           <div className="absolute top-0 left-0 right-0 z-20">
             <div className="bg-white bg-opacity-50 backdrop-blur-sm px-4 py-2">

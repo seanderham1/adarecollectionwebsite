@@ -31,7 +31,10 @@
     "rewrites": [
       {
         "source": "/api/**",
-        "function": "api"
+        "function": {
+          "functionId": "api",
+          "region": "europe-west1"
+        }
       },
       {
         "source": "/properties",
@@ -142,6 +145,38 @@
         "destination": "/_prerender/property__oak-leaf-house.html"
       },
       {
+        "source": "/property/casabel",
+        "destination": "/_prerender/property__casabel.html"
+      },
+      {
+        "source": "/property/friarstown-residence",
+        "destination": "/_prerender/property__friarstown-residence.html"
+      },
+      {
+        "source": "/property/limetree-avenue",
+        "destination": "/_prerender/property__limetree-avenue.html"
+      },
+      {
+        "source": "/property/executive-city-residence",
+        "destination": "/_prerender/property__executive-city-residence.html"
+      },
+      {
+        "source": "/blog/jon-rahm-ireland-special-place-irish-open-2026",
+        "destination": "/_prerender/blog__jon-rahm-ireland-special-place-irish-open-2026.html"
+      },
+      {
+        "source": "/blog/ballyneety-junior-ryder-cup-2027-one-year-out",
+        "destination": "/_prerender/blog__ballyneety-junior-ryder-cup-2027-one-year-out.html"
+      },
+      {
+        "source": "/blog/dylan-leon-executive-operations-client-coordinator",
+        "destination": "/_prerender/blog__dylan-leon-executive-operations-client-coordinator.html"
+      },
+      {
+        "source": "/blog/european-team-familiarisation-trip-adare-manor",
+        "destination": "/_prerender/blog__european-team-familiarisation-trip-adare-manor.html"
+      },
+      {
         "source": "/blog/golf-limerick-brochures-whats-coming",
         "destination": "/_prerender/blog__golf-limerick-brochures-whats-coming.html"
       },
@@ -164,10 +199,6 @@
       {
         "source": "/blog/stripe-ryder-cup-worldwide-partner",
         "destination": "/_prerender/blog__stripe-ryder-cup-worldwide-partner.html"
-      },
-      {
-        "source": "/blog/hogan-durkan-estate-agents-partnership",
-        "destination": "/_prerender/blog__hogan-durkan-estate-agents-partnership.html"
       },
       {
         "source": "/blog/adare-village-railway-station-returns-ryder-cup",
@@ -426,6 +457,78 @@
         ]
       },
       {
+        "source": "/property/casabel",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/casabel>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/friarstown-residence",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/friarstown-residence>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/limetree-avenue",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/limetree-avenue>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/executive-city-residence",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/executive-city-residence>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/jon-rahm-ireland-special-place-irish-open-2026",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/jon-rahm-ireland-special-place-irish-open-2026>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/ballyneety-junior-ryder-cup-2027-one-year-out",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/ballyneety-junior-ryder-cup-2027-one-year-out>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/dylan-leon-executive-operations-client-coordinator",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/dylan-leon-executive-operations-client-coordinator>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/european-team-familiarisation-trip-adare-manor",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/european-team-familiarisation-trip-adare-manor>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
         "source": "/blog/golf-limerick-brochures-whats-coming",
         "headers": [
           {
@@ -476,15 +579,6 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/blog/stripe-ryder-cup-worldwide-partner>; rel=\"canonical\""
-          }
-        ]
-      },
-      {
-        "source": "/blog/hogan-durkan-estate-agents-partnership",
-        "headers": [
-          {
-            "key": "Link",
-            "value": "<https://theadarecollection.com/blog/hogan-durkan-estate-agents-partnership>; rel=\"canonical\""
           }
         ]
       },

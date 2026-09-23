@@ -1,6 +1,7 @@
 name: Deploy to Firebase
 
-# Prod: Hosting + Cloud Function `api` (contact / access-request). PRs do not deploy.
+# Prod: Hosting + Cloud Functions (enquiry API in europe-west1 + monthly lead purge).
+# PRs do not deploy.
 on:
   push:
     branches: [main]
@@ -42,8 +43,8 @@ jobs:
         run: npm ci
         working-directory: functions
 
-      - name: Deploy Cloud Function (api)
+      - name: Deploy Cloud Functions
         run: |
-          firebase deploy --only functions:api --project theadarecollection-site --non-interactive --token "${{ secrets.FIREBASE_TOKEN }}"
+          firebase deploy --only functions --project theadarecollection-site --non-interactive --token "${{ secrets.FIREBASE_TOKEN }}"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

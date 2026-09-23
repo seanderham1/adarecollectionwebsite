@@ -3,7 +3,7 @@
  * shared by React and build-time prerender HTML.
  */
 import { getBlogPosts, type BlogPost } from "./blog-posts";
-import { properties, type Property, formatPropertyBedroomsShort } from "./properties";
+import { properties, getListedProperties, type Property, formatPropertyBedroomsShort } from "./properties";
 import { propertyPageDescription, propertyPageTitle } from "./property-seo";
 import { getPropertySeoFocus } from "./seo-property-focus";
 import {
@@ -155,7 +155,7 @@ export function getPropertyRouteSEOPayload(property: Property): RouteSEOPayload 
 }
 
 export function getPropertyRouteSEOPayloads(): RouteSEOPayload[] {
-  return properties.map(getPropertyRouteSEOPayload);
+  return getListedProperties().map(getPropertyRouteSEOPayload);
 }
 
 export function getBlogPostRouteSEOPayload(post: BlogPost): RouteSEOPayload {

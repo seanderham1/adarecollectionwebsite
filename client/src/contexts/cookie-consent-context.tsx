@@ -6,14 +6,22 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import {
+  expireAdvertisingCookies,
+  expireAnalyticsCookies,
+  GOOGLE_CONSENT_SCHEMA_VERSION,
+  GOOGLE_CONSENT_STORAGE_KEY,
+  updateGoogleConsentMode,
+} from "@/lib/google-consent";
 
-const STORAGE_KEY = "adare_cookie_consent";
+const STORAGE_KEY = GOOGLE_CONSENT_STORAGE_KEY;
 /** Increment when cookie categories or meanings change so users see the banner again. */
-export const COOKIE_CONSENT_SCHEMA_VERSION = 1;
+export const COOKIE_CONSENT_SCHEMA_VERSION = GOOGLE_CONSENT_SCHEMA_VERSION;
 
 type StoredConsent = {
   v: number;
   analytics: boolean;
+  advertising: boolean;
   decidedAt: string;
 };
 
@@ -23,63 +31,73 @@ function parseStored(raw: string | null): StoredConsent | null {
     const j = JSON.parse(raw) as StoredConsent;
     if (j.v !== COOKIE_CONSENT_SCHEMA_VERSION) return null;
     if (typeof j.analytics !== "boolean") return null;
+    if (typeof j.advertising !== "boolean") return null;
     return j;
   } catch {
     return null;
   }
 }
 
-function loadConsent(): { hasAnswered: boolean; analytics: boolean } {
+function loadConsent(): { hasAnswered: boolean; analytics: boolean; advertising: boolean } {
   const s = parseStored(
     typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null
   );
-  if (!s) return { hasAnswered: false, analytics: false };
-  return { hasAnswered: true, analytics: s.analytics };
+  if (!s) return { hasAnswered: false, analytics: false, advertising: false };
+  return { hasAnswered: true, analytics: s.analytics, advertising: s.advertising };
 }
 
 export type CookieConsentContextValue = {
   hasAnswered: boolean;
-  /** Last saved analytics toggle (false until the visitor chooses). */
   storedAnalytics: boolean;
+  storedAdvertising: boolean;
   /** True only after an explicit choice allowing analytics. */
   analyticsEnabled: boolean;
+  advertisingEnabled: boolean;
   preferencesOpen: boolean;
   acceptAll: () => void;
   rejectNonEssential: () => void;
-  savePreferences: (analytics: boolean) => void;
+  savePreferences: (analytics: boolean, advertising: boolean) => void;
   openPreferences: () => void;
   closePreferences: () => void;
 };
 
 const CookieConsentContext = createContext<CookieConsentContextValue | null>(null);
 
+function applyConsentSideEffects(analytics: boolean, advertising: boolean): void {
+  updateGoogleConsentMode(analytics, advertising);
+  if (!analytics) expireAnalyticsCookies();
+  if (!advertising) expireAdvertisingCookies();
+}
+
 export function CookieConsentProvider({ children }: { children: ReactNode }) {
   const [consent, setConsent] = useState(loadConsent);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
 
-  const persist = useCallback((analytics: boolean) => {
+  const persist = useCallback((analytics: boolean, advertising: boolean) => {
     const payload: StoredConsent = {
       v: COOKIE_CONSENT_SCHEMA_VERSION,
       analytics,
+      advertising,
       decidedAt: new Date().toISOString(),
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-    setConsent({ hasAnswered: true, analytics });
+    setConsent({ hasAnswered: true, analytics, advertising });
+    applyConsentSideEffects(analytics, advertising);
   }, []);
 
   const acceptAll = useCallback(() => {
-    persist(true);
+    persist(true, true);
     setPreferencesOpen(false);
   }, [persist]);
 
   const rejectNonEssential = useCallback(() => {
-    persist(false);
+    persist(false, false);
     setPreferencesOpen(false);
   }, [persist]);
 
   const savePreferences = useCallback(
-    (analytics: boolean) => {
-      persist(analytics);
+    (analytics: boolean, advertising: boolean) => {
+      persist(analytics, advertising);
       setPreferencesOpen(false);
     },
     [persist]
@@ -92,7 +110,9 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
     (): CookieConsentContextValue => ({
       hasAnswered: consent.hasAnswered,
       storedAnalytics: consent.analytics,
+      storedAdvertising: consent.advertising,
       analyticsEnabled: consent.hasAnswered && consent.analytics,
+      advertisingEnabled: consent.hasAnswered && consent.advertising,
       preferencesOpen,
       acceptAll,
       rejectNonEssential,
@@ -103,6 +123,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
     [
       consent.hasAnswered,
       consent.analytics,
+      consent.advertising,
       preferencesOpen,
       acceptAll,
       rejectNonEssential,

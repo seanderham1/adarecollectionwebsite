@@ -107,7 +107,6 @@ export function loadGoogleMapsScript(): Promise<void> {
       reject(new Error('Google Maps API Key is required but not set in environment variables'));
       return;
     }
-    console.log('Google Maps API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initGoogleMaps&libraries=geometry&v=weekly`;
     
     script.onerror = (error) => {
@@ -679,7 +678,7 @@ export function addGolfCourseTextOverlay(map: google.maps.Map) {
       div.appendChild(golfIcon);
 
       const textSpan = document.createElement('div');
-      textSpan.innerHTML = 'Adare Manor<br>Championship Course';
+      textSpan.innerHTML = 'Ryder Cup<br>Course';
       textSpan.style.cssText = `
         font-size: 16px;
         white-space: nowrap;

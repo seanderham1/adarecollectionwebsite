@@ -40,7 +40,7 @@ export function formatPropertyBedroomsShort(property: Pick<Property, "bedrooms" 
 /** Uppercase label on property cards and gallery (homepage, listing, detail). */
 export function getPropertyCollectionBadge(propertyId: string): string {
   if (propertyId === "croagh-house") return "PREMIUM";
-  if (["darrira-house", "dunes-lodge", "parkview-house", "oak-leaf-house"].includes(propertyId)) return "DELUXE";
+  if (["darrira-house", "dunes-lodge", "parkview-house", "oak-leaf-house", "limetree-avenue"].includes(propertyId)) return "DELUXE";
   return "EXECUTIVE";
 }
 
@@ -51,9 +51,9 @@ const COLLECTION_TIER_ORDER: Record<string, number> = {
 };
 
 /**
- * Property IDs temporarily hidden from the homepage and /properties listings.
- * The property detail page (/property/<id>) and direct links still work.
- * To re-list a property, remove its id from this array.
+ * Property IDs temporarily hidden from the public site (listings, map, detail URL,
+ * sitemap, prerender, and enquiry pickers). Data stays in `properties` for easy re-launch.
+ * To publish again, remove the id from this array and restore geojson if needed.
  */
 export const HIDDEN_FROM_LISTINGS: string[] = [];
 
@@ -336,7 +336,8 @@ export const properties: Property[] = [
     },
     walkingDistance: "100 yards to Ryder Cup practice range",
     videoUrl: "/videos/thefirsttee.mp4",
-    eircode: "V94 D40K"
+    eircode: "V94 D40K",
+    availabilityStatus: "RESERVED",
   },
   {
     id: "the-fairways",
@@ -401,7 +402,8 @@ export const properties: Property[] = [
       lng: -8.788021971381418
     },
     walkingDistance: "Just a short stroll to Ryder Cup practice range and golf course",
-    videoUrl: "/videos/thefairways.mp4"
+    videoUrl: "/videos/thefairways.mp4",
+    availabilityStatus: "RESERVED",
   },
   {
     id: "cragleigh-house",
@@ -588,7 +590,8 @@ export const properties: Property[] = [
       lng: -8.880012509768715
     },
     walkingDistance: "Approximately 12 minutes' drive to Adare Manor; about 3 minutes to the Croagh Park & Ride at Smithfield.",
-    matterportUrl: "https://my.matterport.com/show/?m=geo8qL777Pz"
+    matterportUrl: "https://my.matterport.com/show/?m=geo8qL777Pz",
+    availabilityStatus: "RESERVED",
   },
   {
     id: "parkview-house",
@@ -1293,7 +1296,7 @@ export const properties: Property[] = [
     name: "Coolbawn Quay",
     subtitle:
       "Boutique lakeside resort and private Irish village on Lough Derg, approximately one hour from Adare Manor.",
-    bedrooms: 60,
+    bedrooms: 47,
     description:
       "Exclusive-use boutique resort on Lough Derg with 47 mostly ensuite rooms across a private Irish village, wellness facilities and a marina—ideal for large Ryder Cup 2027 groups.",
     fullDescription:
@@ -1323,7 +1326,7 @@ export const properties: Property[] = [
     thumbnail: "/images/houses/coolbawnquay/coolbawnquay-exterior-1.webp",
     features: [
       "Boutique lakeside resort styled as a private Irish village",
-      "Approximately 60 rooms, the majority ensuite, across 14 village houses and 13 separate rooms",
+      "47 rooms, the majority ensuite, across 14 village houses and 13 separate rooms",
       "Charming rustic-chic cottages along leafy lanes leading to the harbour",
       "Panoramic Lough Derg views and lakeshore properties",
       "Private marina with exclusive guest access",
@@ -1356,19 +1359,18 @@ export const properties: Property[] = [
     id: "oak-leaf-house",
     name: "Oak Leaf House",
     subtitle:
-      "Deluxe residence approximately 12 minutes from Adare Manor, with secure gated parking and child-friendly countryside grounds.",
+      "Deluxe family residence approximately 12 minutes’ drive from Adare Manor, set behind secure electric gates.",
     bedrooms: 5,
     bedroomsLabel: "4/5",
     description:
-      "Beautifully presented, child-friendly country residence of approximately 2,500 sq. ft., set behind secure electric gates with landscaped gardens and countryside views.",
+      "Child-friendly country home of about 2,500 sq. ft. with open-plan kitchen dining, two living rooms and private gated grounds, sleeping up to nine guests.",
     fullDescription:
-      "The Oak Leaf is a beautifully presented, child-friendly country residence offering approximately 2,500 sq. ft. of spacious and comfortable accommodation. Set behind secure electric gates, this deluxe home combines contemporary interiors with welcoming living spaces, landscaped gardens and attractive countryside views.\n\nThe heart of the property is the bright open-plan kitchen and dining area. The beautifully appointed modern kitchen features a large granite-topped island, an American-style fridge-freezer and integrated appliances. The breakfast bar seats three guests, while the adjoining dining table can accommodate up to ten. Wide glazed doors fill the room with natural light and provide direct access to the rear patio and garden.\n\nGuests have a choice of two inviting living rooms. The main lounge includes generous seating, a large television and a traditional wood-burning stove, creating a cosy place to relax. A separate TV room features comfortable seating, bespoke fitted cabinetry, a large television and a contemporary electric fire.\n\nThe sleeping accommodation comprises four double bedrooms and one single bedroom. The master bedroom benefits from an en-suite bathroom and a walk-in wardrobe. The additional bedrooms are individually furnished and offer comfortable accommodation for families or groups.\n\nThere are three bathrooms in total. These include the master en suite, a stylish upstairs family bathroom with a freestanding bath and a separate downstairs bathroom with a walk-in rainfall shower.\n\nOutside, guests can enjoy a spacious patio with outdoor dining furniture and a BBQ, together with established gardens and open countryside views. The secure grounds and child-friendly setting make The Oak Leaf particularly well suited to families.\n\nThe property is also conveniently located just a one-minute drive or approximately seven-minute walk from Neville’s Bar & Restaurant, with the Croagh Park & Ride approximately seven minutes away by car.",
+      "Oak Leaf House is a contemporary country residence in a peaceful setting near Adare, offering approximately 2,500 sq. ft. of comfortable accommodation for families and mixed groups. Secure electric gates, private parking and landscaped gardens give the property a calm, self-contained feel within easy reach of Adare Manor.\n\nAt the heart of the home is a bright open-plan kitchen and dining area with a granite-topped island, breakfast-bar seating for three and a dining table for up to ten. Integrated appliances and an American-style fridge-freezer support easy entertaining, while glazed doors open directly onto the rear patio and garden.\n\nTwo living rooms give guests space to gather or retreat: a main lounge with wood-burning stove, and a separate TV room with fitted cabinetry and an electric fire. Sleeping accommodation comprises four double bedrooms and one single, including a master suite with en suite and walk-in wardrobe. In total there are three bathrooms: the master en suite, an upstairs family bathroom with freestanding bath, and a downstairs bathroom with walk-in rainfall shower.\n\nOutside, a furnished patio with BBQ sits among established gardens with countryside views. The house is a one-minute drive or roughly seven-minute walk from Neville’s Bar & Restaurant, about seven minutes from Croagh Park & Ride, and approximately 12 minutes’ drive from Adare Manor.",
     specs: [
       { label: "Bedrooms", value: "Four double bedrooms and one single bedroom" },
       { label: "Bathrooms", value: "Three bathrooms, including one en suite" },
       { label: "Occupancy", value: "Up to 9 guests" },
-      { label: "Distance from Adare Manor course", value: "Approximately 12 minutes’ drive" },
-      { label: "Distance to Park and Ride", value: "Approximately seven minutes’ drive to Croagh Park & Ride" },
+      { label: "Location", value: "Approximately 12 minutes’ drive to Adare Manor; seven minutes’ drive to Croagh Park & Ride" },
       { label: "Number of TVs", value: "3" },
       { label: "Square footage", value: "Approximately 2,500 sq. ft." },
       { label: "Dining seating", value: "Up to 10 guests" },
@@ -1391,35 +1393,23 @@ export const properties: Property[] = [
     ],
     thumbnail: "/images/houses/oakleaf/oakleaf-exterior-1.webp",
     features: [
-      "Beautifully appointed modern kitchen",
-      "Large granite-topped kitchen island",
-      "Breakfast bar seating for three",
-      "Dining table seating for up to ten",
-      "American-style fridge-freezer and integrated appliances",
-      "Four double bedrooms and one single bedroom",
-      "Master bedroom with en-suite bathroom and walk-in wardrobe",
-      "Stylish family bathroom with freestanding bath",
-      "Downstairs bathroom with walk-in rainfall shower",
-      "Two comfortable living rooms",
-      "Wood-burning stove and contemporary electric fire",
-      "Three televisions",
-      "Bright interiors with extensive natural light",
-      "Direct access from the kitchen and dining area to the patio",
-      "Landscaped garden with countryside views",
-      "Child-friendly accommodation",
-      "Secure electric gates and private gated parking",
+      "Four double bedrooms and one single bedroom; master with en suite and walk-in wardrobe",
+      "Three bathrooms, including upstairs freestanding bath and downstairs rainfall shower",
+      "Open-plan kitchen and dining with granite island; seating for up to ten",
+      "Two living rooms with wood-burning stove and electric fire",
+      "Patio with BBQ and landscaped gardens",
+      "Secure electric gates and private parking",
+      "Child-friendly countryside setting",
+      "One minute from Neville’s Bar & Restaurant; seven minutes from Croagh Park & Ride",
+      "Approximately 12 minutes’ drive to Adare Manor",
     ],
     amenities: [
       "High-speed Wi-Fi",
       "Satellite television",
-      "Fresh towels and bed linen",
       "Daily housekeeping",
+      "Fully equipped modern kitchen",
       "BBQ and outdoor dining furniture",
-      "Furnished rear patio",
-      "Landscaped garden",
       "Secure private parking",
-      "Modern cooking and kitchen facilities",
-      "Family-friendly accommodation",
     ],
     location: {
       lat: 52.5245425,
@@ -1427,5 +1417,254 @@ export const properties: Property[] = [
     },
     walkingDistance:
       "Approximately 12 minutes’ drive to Adare Manor; one-minute drive or seven-minute walk to Neville’s Bar & Restaurant; approximately seven minutes to Croagh Park & Ride.",
+  },
+  {
+    id: "casabel",
+    name: "Casabel",
+    subtitle:
+      "Executive residence on Ballyneety Golf Course, approximately 25 minutes from Adare Manor.",
+    bedrooms: 4,
+    description:
+      "Executive residence on Ballyneety Golf Course with four ensuite bedrooms, gym, bar and family play areas.",
+    fullDescription:
+      "Casabel is a 4,300 sq. ft. executive residence on Ballyneety Golf Course, home of the Junior Ryder Cup and approximately 25 minutes from Adare Manor. Contemporary and well equipped, it suits corporate guests, golfing groups and families seeking a refined base for Ryder Cup 2027.\n\nThe heart of the home is an expansive open-plan kitchen, living and dining area with a central island, premium appliances and French doors to the patio and garden. A separate TV room, dedicated bar, private gym and children's playroom give guests space to entertain or unwind without leaving the property.\n\nFour double bedrooms each have an ensuite bathroom, including a spacious principal suite and a twin room for flexible sleeping arrangements. Outside, a full patio and rear garden with a children's play area complete an attractive golf-course setting with convenient access to the official Park & Ride.",
+    specs: [
+      { label: "Bedrooms", value: "4 double ensuite bedrooms; one twin room option" },
+      { label: "Bathrooms", value: "4 ensuite" },
+      { label: "Occupancy", value: "8 max." },
+      { label: "Distance from Adare Manor course", value: "Approximately 25 minutes' drive" },
+      { label: "Distance to Park and Ride", value: "Approximately 18 minutes' drive" },
+      { label: "Square footage", value: "4,300 sq ft" },
+      { label: "Dining seating", value: "12" },
+      { label: "Kitchen seating", value: "3" },
+    ],
+    price: "POA",
+    images: [
+      "/images/houses/casabel/casabel-exterior-1.webp",
+      "/images/houses/casabel/casabel-kitchen-1.webp",
+      "/images/houses/casabel/casabel-livingroom-1.webp",
+      "/images/houses/casabel/casabel-livingroom-2.webp",
+      "/images/houses/casabel/casabel-diningroom-1.webp",
+      "/images/houses/casabel/casabel-bar-1.webp",
+      "/images/houses/casabel/casabel-gym-1.webp",
+      "/images/houses/casabel/casabel-hallway-1.webp",
+      "/images/houses/casabel/casabel-hallway-2.webp",
+      "/images/houses/casabel/casabel-bedroom-1.webp",
+      "/images/houses/casabel/casabel-bedroom-2.webp",
+      "/images/houses/casabel/casabel-bedroom-3.webp",
+      "/images/houses/casabel/casabel-bathroom-1.webp",
+      "/images/houses/casabel/casabel-bathroom-2.webp",
+      "/images/houses/casabel/casabel-exterior-2.webp",
+    ],
+    thumbnail: "/images/houses/casabel/casabel-exterior-1.webp",
+    features: [
+      "Four double ensuite bedrooms, including a twin room option",
+      "Spacious principal suite",
+      "Open-plan kitchen, living and dining with central island",
+      "Formal dining area and separate TV room with feature fireplace",
+      "Private gym, dedicated bar and children's playroom",
+      "Full patio, barbecue area and rear garden with children's play area",
+      "Located beside Ballyneety Golf Course",
+    ],
+    amenities: [
+      "High-speed Wi-Fi",
+      "Satellite television and smart TV",
+      "Daily housekeeping",
+      "Secure private parking",
+    ],
+    location: {
+      lat: 52.5901619,
+      lng: -8.5558093,
+    },
+    walkingDistance:
+      "Approximately 25 minutes' drive to Adare Manor; approximately 18 minutes to the official Park & Ride.",
+    eircode: "V94 638D",
+    matterportUrl: "https://my.matterport.com/show/?m=zU22WX1FYYd",
+  },
+  {
+    id: "executive-city-residence",
+    name: "Executive City Residence",
+    subtitle: "Approximately 20 minutes from the Ryder Cup.",
+    bedrooms: 8,
+    description:
+      "Executive City Residence for 16 guests across six floors, approximately 20 minutes from the Ryder Cup. Further details shared by enquiry only.",
+    fullDescription:
+      "Executive City Residence accommodating 16 guests across six floors, approximately 20 minutes from the Ryder Cup. Further details shared by enquiry only.",
+    specs: [
+      { label: "Bedrooms", value: "8 bedrooms (6 with ensuite, 2 with separate restroom and bathroom)" },
+      { label: "Bathrooms", value: "6 ensuites, 1 family bathroom, 1 restroom" },
+      { label: "Occupancy", value: "16 people" },
+      { label: "Distance from Ryder Cup Course", value: "Approximately 20 minutes' drive" },
+      { label: "Number of TVs", value: "4" },
+      { label: "Square footage", value: "6,000 sq ft" },
+      { label: "Dining seating", value: "12" },
+      { label: "Kitchen seating", value: "4 at breakfast bar, 8 at table" },
+    ],
+    price: "POA",
+    images: [
+      "/images/houses/executive-city-residence/executive-city-residence-hall-1.webp",
+    ],
+    thumbnail: "/images/houses/executive-city-residence/executive-city-residence-hall-1.webp",
+    features: [],
+    amenities: [],
+    location: {
+      // Map uses Adare Manor centre only (no property pin) for privacy
+      lat: 52.562213,
+      lng: -8.781279,
+    },
+    walkingDistance: "Approximately 20 minutes from the Ryder Cup.",
+  },
+  {
+    id: "friarstown-residence",
+    name: "Friarstown Residence",
+    subtitle:
+      "Executive residence near Limerick Golf Club for up to 10 guests, approximately 16 minutes from Adare Manor and 11 minutes from Patrickswell Park & Ride.",
+    bedrooms: 5,
+    description:
+      "Impressive executive residence with five double bedrooms and mature gardens, approximately 16 minutes from Adare Manor and 11 minutes from Patrickswell Park & Ride.",
+    fullDescription:
+      "This impressive executive residence enjoys a peaceful and private setting close to Limerick Golf Club. Ideally positioned for guests visiting the Adare and Limerick area, the property is approximately 16 minutes from Adare Manor and 11 minutes from the Patrickswell Park & Ride.\n\nBeautifully presented throughout, the house combines classical architectural detailing with sophisticated contemporary finishes. Decorative wall panelling, high ceilings, elegant fireplaces, bespoke cabinetry and rich timber flooring create a refined yet welcoming atmosphere.\n\nAt the heart of the home is a bright and exceptionally spacious kitchen, featuring bespoke cabinetry, extensive work surfaces, a large central island and a separate walk-in pantry. The adjoining dining and living spaces are ideally suited to relaxed mornings, family meals and entertaining.\n\nSeveral reception areas give guests the freedom to relax together or enjoy quieter moments. These include an elegant formal sitting room with built-in cabinetry and fireplace, a separate television room and a characterful dining room overlooking the gardens and patio.\n\nThe property offers five beautifully appointed bedrooms, including two with private en-suite bathrooms. There are three full bathrooms in total, together with two additional guest WCs. Stylish shower rooms feature walk-in rainfall showers, marble-effect finishes and brushed-brass fittings. The residence comfortably accommodates a maximum of ten guests.\n\nOutside, the property is surrounded by extensive mature gardens and expansive lawns. A furnished patio provides an excellent setting for outdoor dining, while the dedicated children’s play area, climbing frame, swings, slides and football goals make the property particularly well suited to families. Generous private driveway parking is also available.",
+    specs: [
+      { label: "Bedrooms", value: "5 double bedrooms, including 2 en-suite bedrooms" },
+      { label: "Bathrooms", value: "3 full bathrooms and 2 half bathrooms / guest WCs" },
+      { label: "Occupancy", value: "Maximum 10 guests" },
+      { label: "Distance from Ryder Cup Course", value: "Approximately 16 minutes to Adare Manor" },
+      { label: "Distance to Park and Ride", value: "Approximately 11 minutes to Patrickswell Park & Ride" },
+      { label: "Number of TVs", value: "3 smart TVs" },
+      { label: "Square footage", value: "3,900 sq ft" },
+      { label: "Dining seating", value: "6 guests" },
+      { label: "Kitchen seating", value: "To be confirmed" },
+    ],
+    price: "POA",
+    images: [
+      "/images/houses/friarstown-residence/friarstown-exterior-2.webp",
+      "/images/houses/friarstown-residence/friarstown-kitchen-1.webp",
+      "/images/houses/friarstown-residence/friarstown-kitchen-2.webp",
+      "/images/houses/friarstown-residence/friarstown-pantry-1.webp",
+      "/images/houses/friarstown-residence/friarstown-dining-room-1.webp",
+      "/images/houses/friarstown-residence/friarstown-sitting-room-1.webp",
+      "/images/houses/friarstown-residence/friarstown-sitting-room-2.webp",
+      "/images/houses/friarstown-residence/friarstown-hallway-1.webp",
+      "/images/houses/friarstown-residence/friarstown-master-bathroom-1.webp",
+      "/images/houses/friarstown-residence/friarstown-master-bedroom-1.webp",
+      "/images/houses/friarstown-residence/friarstown-bedroom-1-1.webp",
+      "/images/houses/friarstown-residence/friarstown-bedroom-1-2.webp",
+      "/images/houses/friarstown-residence/friarstown-bedroom-2.webp",
+      "/images/houses/friarstown-residence/friarstown-bedroom-3.webp",
+      "/images/houses/friarstown-residence/friarstown-gym-1.webp",
+      "/images/houses/friarstown-residence/friarstown-utility-1.webp",
+      "/images/houses/friarstown-residence/friarstown-exterior-3.webp",
+      "/images/houses/friarstown-residence/friarstown-exterior-4.webp",
+    ],
+    thumbnail: "/images/houses/friarstown-residence/friarstown-exterior-2.webp",
+    features: [
+      "Five bedrooms, including two en-suite bedrooms",
+      "Three full bathrooms and two additional guest WCs",
+      "Spacious entrance hall with feature staircase",
+      "Bespoke kitchen with large central island",
+      "Separate, fully fitted walk-in pantry",
+      "Formal dining room with seating for six guests",
+      "Multiple reception and relaxation spaces",
+      "Elegant sitting room with fireplace and built-in cabinetry",
+      "Contemporary bathrooms with rainfall showers",
+      "Extensive mature gardens and large furnished patio",
+      "Dedicated children’s play area with climbing frame, swings and slides",
+    ],
+    amenities: [
+      "High-speed Wi-Fi",
+      "Three smart TVs",
+      "Fully equipped kitchen",
+      "Large fridge-freezer, multiple ovens, dishwasher and microwave",
+      "Coffee-making facilities",
+      "Wine fridge",
+      "Separate walk-in pantry",
+      "Outdoor dining furniture and BBQ facilities",
+      "Private patio and extensive gardens",
+      "Private driveway parking",
+      "Daily housekeeping",
+    ],
+    location: {
+      // Friarstown / Ballyclough townland centroid near Limerick Golf Club (Eircode V94 T6YE)
+      lat: 52.59722,
+      lng: -8.62778,
+    },
+    walkingDistance:
+      "Approximately 16 minutes' drive to Adare Manor; approximately 11 minutes to Patrickswell Park & Ride.",
+    eircode: "V94 T6YE",
+    matterportUrl: "https://my.matterport.com/show/?m=ZZYxqfkY7QF",
+  },
+  {
+    id: "limetree-avenue",
+    name: "Limetree Avenue",
+    subtitle:
+      "10 Limetree Avenue, Adare — approximately 500 metres' walk to the entrance of Adare Manor.",
+    bedrooms: 5,
+    description:
+      "Bright five-bedroom Adare residence approximately 500 metres' walk from the entrance of Adare Manor, sleeping up to nine guests.",
+    fullDescription:
+      "10 Limetree Avenue is a bright and spacious five-bedroom residence enjoying an exceptional location in Adare, approximately 500 metres' walk from the entrance to Adare Manor, host venue of the 2027 Ryder Cup.\n\nBeautifully presented throughout, the property offers generous and comfortable accommodation with bright, open living spaces and a relaxed contemporary feel. Its combination of space, privacy and proximity to Adare Manor makes it particularly well suited to families and private groups attending the Ryder Cup.\n\nThe spacious kitchen provides an inviting setting for relaxed breakfasts and informal dining, with seating for six guests. A separate dining room accommodates up to ten guests, providing an excellent space for evening meals and entertaining during the stay.\n\nTwo separate sitting rooms give guests a choice of relaxation spaces, with two televisions available throughout the property. Comfortable furnishings, generous windows and a gas fire create a warm and welcoming atmosphere.\n\nThe residence offers five bedrooms, comprising four double bedrooms and one single bedroom, accommodating a maximum of nine guests. The master bedroom benefits from its own private en-suite bathroom, while the remaining four bedrooms are served by two additional full bathrooms.\n\nOutside, the property benefits from a private rear garden with a patio and outdoor seating area, providing guests with additional space to relax. Private off-street parking is also available.\n\nMost notably, the residence offers guests the convenience of being within walking distance of Adare Manor. At approximately 500 metres from the entrance, 10 Limetree Avenue provides an excellent base from which to experience the atmosphere of Ryder Cup week while retaining the privacy and comfort of a private residence.",
+    specs: [
+      { label: "Bedrooms", value: "5 bedrooms - 4 double bedrooms and 1 single bedroom" },
+      { label: "Bathrooms", value: "3 full bathrooms, including master en-suite" },
+      { label: "Occupancy", value: "Maximum 9 guests" },
+      { label: "Distance from Ryder Cup Course", value: "Approximately 500 metres' walk to the entrance of Adare Manor" },
+      { label: "Number of TVs", value: "2 TVs" },
+      { label: "Square footage", value: "To be confirmed" },
+      { label: "Dining seating", value: "10 guests" },
+      { label: "Kitchen seating", value: "6 guests" },
+    ],
+    price: "POA",
+    images: [
+      "/images/houses/limetreeavenue/limetree-avenue-exterior-1.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-kitchen-1.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-diningroom-1.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-sittingroom-1.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-sittingroom-2.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-master-bedroom-1.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-master-bedroom-2.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-bedroom-2.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-bedroom-3.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-bedroom-4.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-bedroom-5.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-bathroom-1.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-bathroom-2.webp",
+      "/images/houses/limetreeavenue/limetree-avenue-exterior-3.webp",
+    ],
+    thumbnail: "/images/houses/limetreeavenue/limetree-avenue-exterior-1.webp",
+    features: [
+      "Five bedrooms - four double bedrooms and one single bedroom",
+      "Master bedroom with private en-suite bathroom",
+      "Three full bathrooms in total",
+      "Maximum occupancy of nine guests",
+      "Two separate sitting rooms",
+      "Bright and spacious living areas",
+      "Gas fire",
+      "Separate dining room with seating for ten guests",
+      "Kitchen dining area with seating for six guests",
+      "Private rear garden",
+      "Patio and outdoor seating area",
+      "Private off-street parking",
+      "Approximately 500 metres' walk from the entrance to Adare Manor",
+    ],
+    amenities: [
+      "High-speed Wi-Fi",
+      "Two TVs",
+      "Fully equipped kitchen",
+      "Dining facilities for up to ten guests",
+      "Gas fire",
+      "Bed linen and towels",
+      "Private garden and patio",
+      "Outdoor seating",
+      "Private off-street parking",
+      "Daily housekeeping",
+    ],
+    location: {
+      // From property photo EXIF GPS (Eircode V94 E7F7 / Limetree Avenue, Adare)
+      lat: 52.561469,
+      lng: -8.791406,
+    },
+    walkingDistance:
+      "Approximately 500 metres' walk to the entrance of Adare Manor.",
+    eircode: "V94 E7F7",
   },
 ];

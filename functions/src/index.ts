@@ -1,12 +1,18 @@
 import { onRequest } from "firebase-functions/v2/https";
+import { onSchedule } from "firebase-functions/v2/scheduler";
 import { defineSecret } from "firebase-functions/params";
 import * as logger from "firebase-functions/logger";
 import express from "express";
 import cors from "cors";
+import type { Request } from "express";
 
 import nodemailer from "nodemailer";
 
-import { appendContactToSheet } from "./appendContactToSheet.js";
+import {
+  appendContactToSheet,
+  purgeExpiredContactLeads,
+} from "./appendContactToSheet.js";
+import { PRIVACY_POLICY_VERSION } from "./privacyPolicy.js";
 
 /** Binds Secret Manager; value is available at runtime as `process.env.GMAIL_APP_PASSWORD`. */
 const gmailAppPassword = defineSecret("GMAIL_APP_PASSWORD");
@@ -126,82 +132,83 @@ const VALID_PHONE_EXTENSIONS = new Set([
   "none",
 ]);
 
+const FUNCTION_REGION = "europe-west1";
+
+const ALLOWED_ORIGINS = [
+  "https://theadarecollection.com",
+  "https://www.theadarecollection.com",
+  "https://theadarecollection-site.web.app",
+  "https://theadarecollection-site.firebaseapp.com",
+  "http://localhost:5000",
+  "http://localhost:5173",
+  "http://127.0.0.1:5000",
+  "http://127.0.0.1:5173",
+];
+
+function isAllowedOrigin(origin: string | undefined): boolean {
+  if (!origin) return true;
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  return /^https:\/\/theadarecollection-site--[a-z0-9-]+\.web\.app$/.test(origin);
+}
+
+const CONTACT_RATE_WINDOW_MS = 15 * 60 * 1000;
+const CONTACT_RATE_MAX = 8;
+const contactHits = new Map<string, number[]>();
+
+function getClientIp(req: Request): string {
+  const forwarded = req.headers["x-forwarded-for"];
+  if (typeof forwarded === "string" && forwarded.trim()) {
+    return forwarded.split(",")[0].trim();
+  }
+  if (Array.isArray(forwarded) && forwarded[0]) {
+    return forwarded[0].split(",")[0].trim();
+  }
+  return req.ip || req.socket?.remoteAddress || "unknown";
+}
+
+function isContactRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (contactHits.get(ip) ?? []).filter(
+    (t) => now - t < CONTACT_RATE_WINDOW_MS
+  );
+  if (recent.length >= CONTACT_RATE_MAX) {
+    contactHits.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  contactHits.set(ip, recent);
+  return false;
+}
+
 const app = express();
-app.use(cors({ origin: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(null, false);
+    },
+  })
+);
 app.use(express.json());
 
-// Add this middleware to log all requests
 app.use((req, res, next) => {
-  logger.info(`Request path: ${req.path}, URL: ${req.url}, method: ${req.method}`);
+  logger.info(`Request path: ${req.path}, method: ${req.method}`);
   next();
-});
-
-// Access request submission endpoint
-app.post("/api/access-request", async (req, res) => {
-  try {
-    const { email, name, reason } = req.body;
-
-    // Validate required fields
-    if (!email || !email.includes('@')) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "Valid email address is required" 
-      });
-    }
-
-    let transporter: nodemailer.Transporter;
-    try {
-      transporter = createGmailTransport();
-    } catch (err) {
-      logger.error("Gmail credentials missing for access-request", err);
-      return res.status(500).json({
-        success: false,
-        message: "Email configuration error. Please contact support.",
-      });
-    }
-
-    const mailOptions = {
-      from: GMAIL_FROM_ADDRESS,
-      to: GMAIL_FROM_ADDRESS,
-      subject: 'New Access Request - The Adare Collection Website',
-      html: `
-        <h2>New Website Access Request</h2>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Name:</strong> ${name || 'Not provided'}</p>
-        <p><strong>Reason for Access:</strong> ${reason || 'Not provided'}</p>
-        <p><strong>Request Date:</strong> ${new Date().toLocaleString()}</p>
-        <hr>
-        <p><strong>To grant access:</strong></p>
-        <p>Reply to this email with the access code: <code>access345</code></p>
-        <p>Or send a custom message to the requester.</p>
-        <hr>
-        <p><em>This access request was submitted from the Adare Collection website.</em></p>
-        <p>The Adare Collection Limited</p>
-      `
-    };
-
-    // Send email
-    await transporter.sendMail(mailOptions);
-    
-    logger.info(`Access request submitted by ${email}`);
-    
-    return res.json({ 
-      success: true, 
-      message: "Access request submitted successfully. We'll review your request and contact you soon." 
-    });
-    
-  } catch (error) {
-    logger.error('Error processing access request:', error);
-    return res.status(500).json({ 
-      success: false, 
-      message: "Failed to submit access request. Please try again or contact us directly." 
-    });
-  }
 });
 
 // Contact form submission endpoint
 app.post("/api/contact", async (req, res) => {
   try {
+    if (isContactRateLimited(getClientIp(req))) {
+      return res.status(429).json({
+        success: false,
+        message: "Too many enquiries from this network. Please try again later.",
+      });
+    }
+
     const body = req.body ?? {};
 
     const name = String(body.name ?? "").trim();
@@ -400,6 +407,7 @@ app.post("/api/contact", async (req, res) => {
       `Previously organised major event accommodation: ${prevReadable}`,
       `Budget: ${budgetReadable}`,
       "Privacy consent (enquiry processing): confirmed at submission",
+      `Privacy policy version: ${PRIVACY_POLICY_VERSION}`,
       "",
       "Preferred properties:",
       propertiesTextLines,
@@ -432,6 +440,7 @@ app.post("/api/contact", async (req, res) => {
         <p><strong>Previously organised major event accommodation:</strong> ${escapeHtml(prevReadable)}</p>
         <p><strong>Budget:</strong> ${escapeHtml(budgetReadable)}</p>
         <p><strong>Privacy consent (enquiry):</strong> Confirmed at submission</p>
+        <p><strong>Privacy policy version:</strong> ${escapeHtml(PRIVACY_POLICY_VERSION)}</p>
         <p><strong>Preferred properties:</strong></p>
         <ul>${propertiesBlock}</ul>
         <p><strong>Additional notes:</strong></p>
@@ -506,6 +515,9 @@ app.post("/api/contact", async (req, res) => {
         budgetReadable,
         preferredPropertiesCell,
         additionalNotes,
+        privacyConsent: "Yes",
+        consentTimestamp: submittedAt,
+        privacyPolicyVersion: PRIVACY_POLICY_VERSION,
       });
     } catch (sheetErr) {
       logger.error(
@@ -514,7 +526,7 @@ app.post("/api/contact", async (req, res) => {
       );
     }
 
-    logger.info(`Contact form submitted by ${emailRaw}`);
+    logger.info("Contact form submitted");
 
     return res.json({
       success: true,
@@ -551,26 +563,27 @@ app.get("/api/hello", (_req, res) => {
   res.json({ ok: true, message: "Hello from Firebase Functions (Gen 2) via /api/hello!" });
 });
 
-// Add a catch-all to see what paths are being requested
-app.get("*", (req, res) => {
-  logger.info(`Unmatched path: ${req.path}, URL: ${req.url}`);
-  res.json({ 
-    path: req.path, 
-    url: req.url, 
-    message: "Debug info - this path was not matched",
-    availableRoutes: ["/hello", "/api/hello", "/api/contact", "/api/access-request"]
-  });
-});
-
 // Gen-2: `gmailAppPassword` wires Secret Manager so `GMAIL_APP_PASSWORD` is available at runtime.
 export const api = onRequest(
   {
-    region: "us-central1",
+    region: FUNCTION_REGION,
     memory: "256MiB",
     timeoutSeconds: 60,
-    cors: true,
+    cors: ALLOWED_ORIGINS,
     secrets: [gmailAppPassword],
   },
   app
+);
+
+export const purgeExpiredContactLeadsJob = onSchedule(
+  {
+    region: FUNCTION_REGION,
+    schedule: "0 4 1 * *",
+    timeZone: "Europe/Dublin",
+  },
+  async () => {
+    const deleted = await purgeExpiredContactLeads();
+    logger.info(`Scheduled contact-lead purge finished; rows deleted: ${deleted}`);
+  }
 );
 
