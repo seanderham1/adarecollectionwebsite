@@ -217,6 +217,10 @@
         "destination": "/_prerender/blog__how-to-apply-ryder-cup-2027-ballot.html"
       },
       {
+        "source": "/property/hillcrest-house",
+        "destination": "/_prerender/property__hillcrest-house.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
@@ -466,6 +470,15 @@
         ]
       },
       {
+        "source": "/property/executive-city-residence",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/executive-city-residence>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
         "source": "/property/friarstown-residence",
         "headers": [
           {
@@ -484,11 +497,11 @@
         ]
       },
       {
-        "source": "/property/executive-city-residence",
+        "source": "/property/hillcrest-house",
         "headers": [
           {
             "key": "Link",
-            "value": "<https://theadarecollection.com/property/executive-city-residence>; rel=\"canonical\""
+            "value": "<https://theadarecollection.com/property/hillcrest-house>; rel=\"canonical\""
           }
         ]
       },

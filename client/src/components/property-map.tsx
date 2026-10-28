@@ -94,6 +94,8 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
                 ? 10
               : propertyId === 'limetree-avenue'
                 ? 15
+              : propertyId === 'hillcrest-house'
+                ? 10
               : propertyId === 'darrira-house' || propertyId === 'croagh-house' || propertyId === 'parkview-house' || propertyId === 'kildimo-house'
                 ? 11
                 : propertyId === 'hillview-house' || propertyId === 'portland-house'
@@ -153,6 +155,12 @@ export default function PropertyMap({ propertyId, containerId = "property-map" }
           addWalkRadiusCircle(map, mapCenter, {
             radiusMeters: TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS,
             labelText: '25 minute drive',
+            icon: 'car',
+          });
+        } else if (propertyId === 'hillcrest-house') {
+          addWalkRadiusCircle(map, mapCenter, {
+            radiusMeters: TWENTY_FIVE_MIN_DRIVE_RADIUS_METERS,
+            labelText: '21 km drive',
             icon: 'car',
           });
         } else if (propertyId === 'executive-city-residence' || propertyId === 'derg-house') {

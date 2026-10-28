@@ -89,6 +89,10 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
     `Limetree Avenue suits families and private groups who want a bright five-bedroom Adare rental within walking distance of Adare Manor, with dining for ten, two sitting rooms and private garden parking for Ryder Cup week.`,
     SHARED_BOOKING_SHORT,
   ],
+  "hillcrest-house": [
+    `Hillcrest House suits executive groups and families who want a Premium six-bedroom countryside base near Newcastle West, with panoramic views, covered BBQ dining, rooftop terrace, gym, hot tub and sauna approximately 21 km from Adare Manor.`,
+    SHARED_BOOKING_SHORT,
+  ],
 };
 
 export function getPropertySeoSupplementParagraphs(propertyId: string): string[] {

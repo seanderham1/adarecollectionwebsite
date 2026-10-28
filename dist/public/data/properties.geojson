@@ -264,6 +264,32 @@
         "price":"POA",
         "thumb":"/images/houses/friarstown-residence/friarstown-exterior-2.webp"
       }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.791406, 52.561469]},
+      "properties":{
+        "id":"limetree-avenue",
+        "title":"Limetree Avenue",
+        "desc":"Bright five-bedroom Adare residence approximately 500 metres' walk from the entrance of Adare Manor, sleeping up to nine guests.",
+        "beds": 5,
+        "baths": 3,
+        "price":"POA",
+        "thumb":"/images/houses/limetreeavenue/limetree-avenue-exterior-1.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-9.0798048, 52.5235513]},
+      "properties":{
+        "id":"hillcrest-house",
+        "title":"Hillcrest House",
+        "desc":"Six-bedroom Premium countryside residence near Newcastle West with rooftop terrace, gym, hot tub and sauna — 21 km from Adare Manor.",
+        "beds": 6,
+        "baths": 5,
+        "price":"POA",
+        "thumb":"/images/houses/the4counties/the4counties-exterior-1.webp"
+      }
     }
   ]
 }

@@ -39,7 +39,7 @@ export function formatPropertyBedroomsShort(property: Pick<Property, "bedrooms" 
 
 /** Uppercase label on property cards and gallery (homepage, listing, detail). */
 export function getPropertyCollectionBadge(propertyId: string): string {
-  if (propertyId === "croagh-house") return "PREMIUM";
+  if (propertyId === "croagh-house" || propertyId === "hillcrest-house") return "PREMIUM";
   if (["darrira-house", "dunes-lodge", "parkview-house", "oak-leaf-house", "limetree-avenue"].includes(propertyId)) return "DELUXE";
   return "EXECUTIVE";
 }
@@ -1666,5 +1666,91 @@ export const properties: Property[] = [
     walkingDistance:
       "Approximately 500 metres' walk to the entrance of Adare Manor.",
     eircode: "V94 E7F7",
+  },
+  {
+    id: "hillcrest-house",
+    name: "Hillcrest House",
+    subtitle:
+      "Six-bedroom Premium countryside residence near Newcastle West with panoramic views, gym, hot tub and sauna — 21 km from Adare Manor.",
+    bedrooms: 6,
+    description:
+      "Six-bedroom countryside home near Newcastle West with five bathrooms, rooftop terrace, covered BBQ dining, gym, hot tub and sauna on a 7-acre site — 21 km from Adare Manor.",
+    fullDescription:
+      "Hillcrest House is a substantial contemporary residence near Newcastle West, County Limerick, set in an elevated countryside position with panoramic views across rolling hills and generous spaces for entertaining indoors and out.\n\nThe ground floor centres on a bright open-plan kitchen, dining and living area with a large island breakfast bar, formal dining table and a living zone opening to the outdoors. A separate living room with a striking stone fireplace and wood-burning stove provides a second gathering space. Also on the ground floor are a double bedroom, a nursery / children's bedroom, a family bathroom with bath, and a further shower room / WC.\n\nOutside, a covered patio BBQ area with outdoor dining for six, lounge seating, outdoor sink and chimenea makes the most of the views, complemented by a private rooftop terrace with sun loungers. Gym, hot tub and sauna. A generous gravel driveway provides off-street private parking on a 7-acre site.\n\nUpstairs are four further bedrooms — including a master suite with countryside views and a contemporary en-suite bathroom featuring a double vanity and walk-in shower — plus two additional bathrooms and a small office / study. In total the home offers six bedrooms and five bathrooms across approximately 2,780 square feet.",
+    specs: [
+      {
+        label: "Bedrooms",
+        value:
+          "6 bedrooms — master en suite and balcony, ground-floor double, nursery / children's room, and 3 further upstairs double bedrooms with 2nd ensuite.",
+      },
+      {
+        label: "Bathrooms",
+        value:
+          "5 bathrooms — master en-suite, 1 further upstairs ensuite, upstairs family bathroom, and 2 downstairs shower room / WC",
+      },
+      { label: "Occupancy", value: "Up to 12 guests" },
+      { label: "Distance from Ryder Cup Course", value: "21 km" },
+      { label: "Number of TVs", value: "At least 5" },
+      { label: "Square footage", value: "Approximately 2,780 sq ft" },
+      { label: "Dining seating", value: "6 indoors; outdoor dining seats 6" },
+      { label: "Kitchen seating", value: "4 at island breakfast bar" },
+    ],
+    price: "POA",
+    images: [
+      "/images/houses/the4counties/the4counties-exterior-1.webp",
+      "/images/houses/the4counties/the4counties-kitchen-1.webp",
+      "/images/houses/the4counties/the4counties-living-room-1.webp",
+      "/images/houses/the4counties/the4counties-sittingroom-1.webp",
+      "/images/houses/the4counties/the4counties-outdoor-dining-1.webp",
+      "/images/houses/the4counties/the4counties-master-bedroom-1.webp",
+      "/images/houses/the4counties/the4counties-master-bathroom-1.webp",
+      "/images/houses/the4counties/the4counties-bedroom-1.webp",
+      "/images/houses/the4counties/the4counties-bedroom-1-2.webp",
+      "/images/houses/the4counties/the4counties-bedroom-2-alt.webp",
+      "/images/houses/the4counties/the4counties-bedroom-3-alt.webp",
+      "/images/houses/the4counties/the4counties-bedroom-3.webp",
+      "/images/houses/the4counties/the4counties-downstairs-bathroom-1.webp",
+      "/images/houses/the4counties/the4counties-sittingroom-2.webp",
+      "/images/houses/the4counties/the4counties-master-bedroom-2.webp",
+      "/images/houses/the4counties/the4counties-exterior-2.webp",
+      "/images/houses/the4counties/the4counties-exterior-3.webp",
+      "/images/houses/the4counties/the4counties-exterior-4.webp",
+    ],
+    thumbnail: "/images/houses/the4counties/the4counties-exterior-1.webp",
+    features: [
+      "Six bedrooms across two floors, including master suite and nursery / children's room",
+      "Five bathrooms, including master en-suite with double vanity and walk-in shower, 2nd ensuite with steam room shower and main bathroom with Jacuzzi",
+      "Approximately 2,780 sq ft with upstairs office / study",
+      "Open-plan kitchen, dining and living with island breakfast bar",
+      "Separate living room with stone fireplace and wood-burning stove",
+      "Covered outdoor BBQ dining patio with countryside views",
+      "Private rooftop terrace with sun loungers",
+      "Panoramic elevated views across rolling countryside",
+      "Large gravel driveway parking",
+      "Gym with hot tub and sauna",
+      "Man cave with bar area, extra sleeping and ensuite under construction",
+    ],
+    amenities: [
+      "Ducted air conditioning throughout the house",
+      "Smart voice-controlled heating, lights and more",
+      "House alarm and AI camera system",
+      "Fully equipped contemporary kitchen",
+      "5 televisions including Sky, BBC and more",
+      "Wood-burning stove and electric fireplace",
+      "High-speed Wi-Fi with multiple hardwired access points",
+      "Bed linen and towels",
+      "Outdoor dining furniture and rooftop loungers",
+      "Electric gates to private driveway and parking",
+      "Daily housekeeping",
+    ],
+    location: {
+      // Geocoded from Eircode V42 HX70 (Knockbweeheen, Co. Limerick)
+      lat: 52.5235513,
+      lng: -9.0798048,
+    },
+    walkingDistance:
+      "Near Newcastle West, Co. Limerick — 21 km from Adare Manor.",
+    eircode: "V42 HX70",
+    matterportUrl: "https://my.matterport.com/show/?m=nNdoDniv7S6",
   },
 ];

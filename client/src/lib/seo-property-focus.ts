@@ -96,6 +96,11 @@ export const PROPERTY_SEO_FOCUS: Record<string, PropertySeoFocus> = {
     focusKeyword: "friarstown residence adare manor rental",
     pageSubheading: "Friarstown Residence, executive home near Adare Manor",
   },
+  "hillcrest-house": {
+    focusKeyword: "hillcrest house adare manor rental",
+    pageSubheading:
+      "Hillcrest House, Premium countryside residence near Newcastle West",
+  },
   "limetree-avenue": {
     focusKeyword: "limetree avenue adare manor rental",
     pageSubheading: "Limetree Avenue, deluxe residence walking distance to Adare Manor",
