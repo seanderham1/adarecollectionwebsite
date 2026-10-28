@@ -188,19 +188,6 @@
     },
     {
       "type":"Feature",
-      "geometry":{"type":"Point","coordinates":[-8.186406666666667, 52.86609666666666]},
-      "properties":{
-        "id":"riverston-abbey",
-        "title":"Riverston Abbey",
-        "desc":"Fifteen-bedroom executive estate in Nenagh with formal dining for 30 and walled gardens, approximately 40 minutes from Adare Manor.",
-        "beds": 15,
-        "baths": 15,
-        "price":"POA",
-        "thumb":"/images/houses/riverstonabbey/riverstonabbey-exterior-1.webp"
-      }
-    },
-    {
-      "type":"Feature",
       "geometry":{"type":"Point","coordinates":[-8.80685, 52.6117]},
       "properties":{
         "id":"kildimo-house",
