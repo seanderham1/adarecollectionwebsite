@@ -188,19 +188,6 @@
     },
     {
       "type":"Feature",
-      "geometry":{"type":"Point","coordinates":[-8.186406666666667, 52.86609666666666]},
-      "properties":{
-        "id":"riverston-abbey",
-        "title":"Riverston Abbey",
-        "desc":"Fifteen-bedroom executive estate in Nenagh with formal dining for 30 and walled gardens, approximately 40 minutes from Adare Manor.",
-        "beds": 15,
-        "baths": 15,
-        "price":"POA",
-        "thumb":"/images/houses/riverstonabbey/riverstonabbey-exterior-1.webp"
-      }
-    },
-    {
-      "type":"Feature",
       "geometry":{"type":"Point","coordinates":[-8.80685, 52.6117]},
       "properties":{
         "id":"kildimo-house",
@@ -263,6 +250,19 @@
         "baths": 5,
         "price":"POA",
         "thumb":"/images/houses/friarstown-residence/friarstown-exterior-2.webp"
+      }
+    },
+    {
+      "type":"Feature",
+      "geometry":{"type":"Point","coordinates":[-8.791406, 52.561469]},
+      "properties":{
+        "id":"limetree-avenue",
+        "title":"Limetree Avenue",
+        "desc":"Bright five-bedroom Adare residence approximately 500 metres' walk from the entrance of Adare Manor, sleeping up to nine guests.",
+        "beds": 5,
+        "baths": 3,
+        "price":"POA",
+        "thumb":"/images/houses/limetreeavenue/limetree-avenue-exterior-1.webp"
       }
     }
   ]
