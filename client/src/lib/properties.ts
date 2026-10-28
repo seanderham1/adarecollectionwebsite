@@ -905,14 +905,14 @@ export const properties: Property[] = [
     id: "nead-fainleog",
     name: "Nead Fainleog",
     subtitle:
-      "Five-bedroom executive residence two minutes from Adare Manor, with jacuzzi bath, steam room and countryside privacy for Ryder Cup 2027.",
-    bedrooms: 5,
+      "Four-bedroom executive residence two minutes from Adare Manor, with jacuzzi bath, steam room and countryside privacy for Ryder Cup 2027.",
+    bedrooms: 4,
     description:
-      "Five-bedroom executive country residence two minutes from Adare Manor, with jacuzzi bath, steam room and refined interiors.",
+      "Four-bedroom executive country residence two minutes from Adare Manor, with jacuzzi bath, steam room and refined interiors.",
     fullDescription:
-      "Nead Fainleog, meaning 'Swallow's Nest,' is an exceptional five-bedroom luxury residence that combines the warmth of Irish country living with the comforts of modern executive accommodation. Ideally located just a two-minute drive or a leisurely twenty-minute walk from the entrance to Adare Manor, the property offers the perfect balance of accessibility, privacy and space for Ryder Cup 2027.\n\nDesigned for both relaxation and entertaining, the heart of the home is a magnificent open-plan kitchen and dining space featuring a substantial central island, premium appliances and direct access to the outdoor entertaining area. Two beautifully appointed reception rooms provide elegant spaces for both formal entertaining and relaxed evenings, while five generously proportioned bedrooms, including three luxurious ensuites, ensure exceptional comfort for every guest.\n\nThe home also comes complete with a jacuzzi bath and private steam room, allowing guests to unwind after an unforgettable day at the Ryder Cup. Combining generous living accommodation, refined interiors and an enviable location close to the championship venue, Nead Fainleog provides an outstanding executive residence for families, corporate groups and discerning Ryder Cup guests.",
+      "Nead Fainleog, meaning 'Swallow's Nest,' is an exceptional four-bedroom luxury residence that combines the warmth of Irish country living with the comforts of modern executive accommodation. Ideally located just a two-minute drive or a leisurely twenty-minute walk from the entrance to Adare Manor, the property offers the perfect balance of accessibility, privacy and space for Ryder Cup 2027.\n\nDesigned for both relaxation and entertaining, the heart of the home is a magnificent open-plan kitchen and dining space featuring a substantial central island, premium appliances and direct access to the outdoor entertaining area. Two beautifully appointed reception rooms provide elegant spaces for both formal entertaining and relaxed evenings, while four generously proportioned bedrooms, including three luxurious ensuites, ensure exceptional comfort for every guest.\n\nThe home also comes complete with a jacuzzi bath and private steam room, allowing guests to unwind after an unforgettable day at the Ryder Cup. Combining generous living accommodation, refined interiors and an enviable location close to the championship venue, Nead Fainleog provides an outstanding executive residence for families, corporate groups and discerning Ryder Cup guests.",
     specs: [
-      { label: "Bedrooms", value: "5 bedrooms; 3 ensuite, 2 with adjoining bathroom" },
+      { label: "Bedrooms", value: "4 bedrooms; 3 ensuite, 1 with adjoining bathroom" },
       { label: "Bathrooms", value: "6 including jacuzzi bath and steam room" },
       { label: "Occupancy", value: "10 guests maximum" },
       { label: "Reception rooms", value: "2" },
@@ -943,8 +943,8 @@ export const properties: Property[] = [
     ],
     thumbnail: "/images/houses/neadfainleog/neadfainleog-exterior-1.webp",
     features: [
-      "Five-bedroom executive country residence finished to an exceptional standard",
-      "Three spacious en suite bedrooms with luxury furnishings, two spacious bedrooms with luxury furnishings and adjoining bathrooms",
+      "Four-bedroom executive country residence finished to an exceptional standard",
+      "Three spacious en suite bedrooms with luxury furnishings, plus one bedroom with adjoining bathroom",
       "Jacuzzi bath and private steam room",
       "Two elegant reception rooms for entertaining and relaxation",
       "Contemporary open-plan kitchen with oversized central island",
