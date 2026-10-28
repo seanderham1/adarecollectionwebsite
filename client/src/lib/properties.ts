@@ -1680,13 +1680,11 @@ export const properties: Property[] = [
     specs: [
       {
         label: "Bedrooms",
-        value:
-          "6 bedrooms — master en suite and balcony, ground-floor double, nursery / children's room, and 3 further upstairs double bedrooms with 2nd ensuite.",
+        value: "6 bedrooms — 2 ensuite (incl. master with balcony); ground-floor double & nursery",
       },
       {
         label: "Bathrooms",
-        value:
-          "5 bathrooms — master en-suite, 1 further upstairs ensuite, upstairs family bathroom, and 2 downstairs shower room / WC",
+        value: "5 bathrooms — 2 ensuite, family bathroom, 2 downstairs shower rooms / WCs",
       },
       { label: "Occupancy", value: "Up to 12 guests" },
       { label: "Distance from Ryder Cup Course", value: "21 km" },
