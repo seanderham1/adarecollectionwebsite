@@ -251,7 +251,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Located at the centre of the Adare Manor resort",
-      "High-speed internet access",
+      "High-speed Wi-Fi",
       "Premium seating and entertainment areas",
       "Daily housekeeping"
     ],
@@ -450,6 +450,7 @@ export const properties: Property[] = [
       "Private gated and secure manor residence",
       "Beautifully landscaped outdoor areas",
       "Flexible living and dining spaces for formal or relaxed hosting",
+      "High-speed Wi-Fi",
       "Proximity to Limerick City, the M20 motorway, and Shannon Airport",
       "Daily housekeeping"
     ],
@@ -714,6 +715,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "A-rated energy-efficient home",
+      "High-speed Wi-Fi",
       "Short walk to Lahinch village, beach, and surf",
       "Hugo’s Bakery, cafés, restaurants, and traditional Irish pubs nearby",
       "5-minute drive to Cliffs of Moher",
@@ -1506,7 +1508,9 @@ export const properties: Property[] = [
     ],
     thumbnail: "/images/houses/executive-city-residence/executive-city-residence-hall-1.webp",
     features: [],
-    amenities: [],
+    amenities: [
+      "High-speed Wi-Fi",
+    ],
     location: {
       // Map uses Adare Manor centre only (no property pin) for privacy
       lat: 52.562213,
