@@ -132,7 +132,7 @@ export const properties: Property[] = [
       "Private cinema room with retractable projector, stereo system, and automatic blinds",
       "Fitness suite including gym, sauna, and shower facilities",
       "Executive home office",
-      "High-speed WiFi and satellite TV",
+      "Wi-Fi and satellite TV",
       "Daily housekeeping",
       "BBQ and smoker",
       "Secure private parking",
@@ -202,7 +202,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Daily housekeeping",
-      "High-speed Wi-Fi and satellite TV",
+      "Wi-Fi and satellite TV",
       "Games room with pool table, table tennis, and dart board; convertible into a fitness studio with treadmill (if required)",
       "Secure private parking",
     ],
@@ -251,7 +251,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Located at the centre of the Adare Manor resort",
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Premium seating and entertainment areas",
       "Daily housekeeping"
     ],
@@ -321,7 +321,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Fully equipped kitchen",
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Multiple living areas",
       "Luxury bathrooms with jacuzzi bath and walk-in showers",
       "Large outdoor patio for evening BBQs",
@@ -393,7 +393,7 @@ export const properties: Property[] = [
       "Fitness Suite: a fully equipped private gym above the garage",
       "Firepit Terrace & Gazebo: covered outdoor living area with built-in fireplace, lounge seating for 10 to 12, and Kamado Joe BBQ",
       "Secluded rear garden with patio, dining area, and cushioned seating for al fresco entertaining",
-      "High-speed WiFi & Satellite TV",
+      "Wi-Fi and satellite TV",
       "Daily housekeeping",
       "Secure private parking",
     ],
@@ -450,7 +450,7 @@ export const properties: Property[] = [
       "Private gated and secure manor residence",
       "Beautifully landscaped outdoor areas",
       "Flexible living and dining spaces for formal or relaxed hosting",
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Proximity to Limerick City, the M20 motorway, and Shannon Airport",
       "Daily housekeeping"
     ],
@@ -506,7 +506,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Daily housekeeping",
-      "High-speed WiFi",
+      "Wi-Fi",
       "Satellite TV",
       "Secure private parking"
     ],
@@ -575,7 +575,7 @@ export const properties: Property[] = [
       "Separate media / lounge room",
     ],
     amenities: [
-      "High-speed Wi-Fi throughout",
+      "Wi-Fi",
       "Smart TVs and entertainment systems",
       "Fully equipped modern kitchen",
       "Dedicated laundry facilities",
@@ -650,7 +650,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Fully equipped kitchen",
-      "High-speed Wi-Fi throughout",
+      "Wi-Fi",
       "Smart TVs and entertainment systems",
       "Dedicated laundry facilities",
       "Quality bed linen and towels provided",
@@ -708,14 +708,14 @@ export const properties: Property[] = [
       "3 bathrooms with wet room rain showers",
       "Fully equipped utility room",
       "Architect-designed layout, ideal for social gatherings",
-      "High-speed Wi-Fi, streaming services, and dedicated workspace",
+      "Wi-Fi, streaming services, and dedicated workspace",
       "Garage for golf clubs",
       "Outdoor BBQ and entertainment area",
       "Sauna, ice bath, and outdoor shower"
     ],
     amenities: [
       "A-rated energy-efficient home",
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Short walk to Lahinch village, beach, and surf",
       "Hugo’s Bakery, cafés, restaurants, and traditional Irish pubs nearby",
       "5-minute drive to Cliffs of Moher",
@@ -799,7 +799,7 @@ export const properties: Property[] = [
       "Fully equipped modern kitchen with high-end appliances",
       "Stylish dining area suitable for group dining",
       "Comfortable lounge and relaxation spaces",
-      "High-speed WiFi throughout",
+      "Wi-Fi",
       "Smart TVs and modern entertainment setup",
       "Quality bed linen and towels provided",
       "Laundry facilities",
@@ -887,7 +887,7 @@ export const properties: Property[] = [
     amenities: [
       "Fully equipped kitchen",
       "Comfortable lounging and dining areas",
-      "High-speed Wi-Fi throughout",
+      "Wi-Fi",
       "Quality bed linen and towels provided",
       "Laundry facilities",
       "Multiple bathrooms across floors",
@@ -957,7 +957,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Daily housekeeping",
-      "High-speed WiFi throughout",
+      "Wi-Fi",
       "Three Smart TVs",
       "Outdoor gazebo and BBQ area",
       "Secure private parking",
@@ -1069,7 +1069,7 @@ export const properties: Property[] = [
       "Secure gated private parking",
     ],
     amenities: [
-      "High-speed WiFi and satellite TV",
+      "Wi-Fi and satellite TV",
       "Daily housekeeping",
       "BBQ",
       "Secure gated private parking",
@@ -1134,7 +1134,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Daily housekeeping",
-      "High-speed WiFi",
+      "Wi-Fi",
       "Luxury coffee station",
       "Large central kitchen island",
       "Spacious open-plan entertaining areas",
@@ -1209,7 +1209,7 @@ export const properties: Property[] = [
     amenities: [
       "Daily housekeeping",
       "Full breakfast",
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Satellite TV",
       "2 large Smart TVs",
       "Multiple reception rooms",
@@ -1274,7 +1274,7 @@ export const properties: Property[] = [
       "Approximately 12 minutes from the official Adare Park & Ride facility",
     ],
     amenities: [
-      "High-speed Wi-Fi throughout",
+      "Wi-Fi",
       "Three televisions",
       "CCTV security",
       "Fully equipped contemporary kitchen",
@@ -1341,7 +1341,7 @@ export const properties: Property[] = [
       "Approximately one hour's drive from Adare Manor",
     ],
     amenities: [
-      "High-speed Wi-Fi throughout",
+      "Wi-Fi",
       "On-site clubhouse restaurant and bar",
       "Wellness and spa treatment facilities",
       "Private marina access",
@@ -1406,7 +1406,7 @@ export const properties: Property[] = [
       "Approximately 12 minutes’ drive to Adare Manor",
     ],
     amenities: [
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Satellite television",
       "Daily housekeeping",
       "Fully equipped modern kitchen",
@@ -1469,7 +1469,7 @@ export const properties: Property[] = [
       "Located beside Ballyneety Golf Course",
     ],
     amenities: [
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Satellite television and smart TV",
       "Daily housekeeping",
       "Secure private parking",
@@ -1509,7 +1509,7 @@ export const properties: Property[] = [
     thumbnail: "/images/houses/executive-city-residence/executive-city-residence-hall-1.webp",
     features: [],
     amenities: [
-      "High-speed Wi-Fi",
+      "Wi-Fi",
     ],
     location: {
       // Map uses Adare Manor centre only (no property pin) for privacy
@@ -1575,7 +1575,7 @@ export const properties: Property[] = [
       "Dedicated children’s play area with climbing frame, swings and slides",
     ],
     amenities: [
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Three smart TVs",
       "Fully equipped kitchen",
       "Large fridge-freezer, multiple ovens, dishwasher and microwave",
@@ -1651,7 +1651,7 @@ export const properties: Property[] = [
       "Approximately 500 metres' walk from the entrance to Adare Manor",
     ],
     amenities: [
-      "High-speed Wi-Fi",
+      "Wi-Fi",
       "Two TVs",
       "Fully equipped kitchen",
       "Dining facilities for up to ten guests",
@@ -1739,7 +1739,7 @@ export const properties: Property[] = [
       "Fully equipped contemporary kitchen",
       "5 televisions including Sky, BBC and more",
       "Wood-burning stove and electric fireplace",
-      "High-speed Wi-Fi with multiple hardwired access points",
+      "Wi-Fi",
       "Bed linen and towels",
       "Outdoor dining furniture and rooftop loungers",
       "Electric gates to private driveway and parking",
