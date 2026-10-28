@@ -129,10 +129,6 @@
         "destination": "/_prerender/property__derg-house.html"
       },
       {
-        "source": "/property/riverston-abbey",
-        "destination": "/_prerender/property__riverston-abbey.html"
-      },
-      {
         "source": "/property/kildimo-house",
         "destination": "/_prerender/property__kildimo-house.html"
       },
@@ -421,15 +417,6 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/derg-house>; rel=\"canonical\""
-          }
-        ]
-      },
-      {
-        "source": "/property/riverston-abbey",
-        "headers": [
-          {
-            "key": "Link",
-            "value": "<https://theadarecollection.com/property/riverston-abbey>; rel=\"canonical\""
           }
         ]
       },
