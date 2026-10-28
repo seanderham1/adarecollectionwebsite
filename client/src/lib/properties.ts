@@ -914,7 +914,7 @@ export const properties: Property[] = [
     specs: [
       { label: "Bedrooms", value: "4 bedrooms; 3 ensuite, 1 with adjoining bathroom" },
       { label: "Bathrooms", value: "6 including jacuzzi bath and steam room" },
-      { label: "Occupancy", value: "10 guests maximum" },
+      { label: "Occupancy", value: "8 guests" },
       { label: "Reception rooms", value: "2" },
       { label: "Distance from Adare Manor course", value: "2-minute drive or 20-minute walk to Adare Manor entrance" },
       { label: "Number of TVs", value: "3" },
