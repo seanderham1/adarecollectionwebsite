@@ -69,10 +69,6 @@
         "destination": "/_prerender/terms.html"
       },
       {
-        "source": "/property/rangeview",
-        "destination": "/_prerender/property__rangeview.html"
-      },
-      {
         "source": "/property/the-captains",
         "destination": "/_prerender/property__the-captains.html"
       },
@@ -145,6 +141,10 @@
         "destination": "/_prerender/property__casabel.html"
       },
       {
+        "source": "/property/executive-city-residence",
+        "destination": "/_prerender/property__executive-city-residence.html"
+      },
+      {
         "source": "/property/friarstown-residence",
         "destination": "/_prerender/property__friarstown-residence.html"
       },
@@ -153,8 +153,8 @@
         "destination": "/_prerender/property__limetree-avenue.html"
       },
       {
-        "source": "/property/executive-city-residence",
-        "destination": "/_prerender/property__executive-city-residence.html"
+        "source": "/property/hillcrest-house",
+        "destination": "/_prerender/property__hillcrest-house.html"
       },
       {
         "source": "/blog/jon-rahm-ireland-special-place-irish-open-2026",
@@ -211,10 +211,6 @@
       {
         "source": "/blog/how-to-apply-ryder-cup-2027-ballot",
         "destination": "/_prerender/blog__how-to-apply-ryder-cup-2027-ballot.html"
-      },
-      {
-        "source": "/property/hillcrest-house",
-        "destination": "/_prerender/property__hillcrest-house.html"
       },
       {
         "source": "**",
@@ -282,15 +278,6 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/services>; rel=\"canonical\""
-          }
-        ]
-      },
-      {
-        "source": "/property/rangeview",
-        "headers": [
-          {
-            "key": "Link",
-            "value": "<https://theadarecollection.com/property/rangeview>; rel=\"canonical\""
           }
         ]
       },
@@ -390,15 +377,6 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/portland-house>; rel=\"canonical\""
-          }
-        ]
-      },
-      {
-        "source": "/property/nead-fainleog",
-        "headers": [
-          {
-            "key": "Link",
-            "value": "<https://theadarecollection.com/property/nead-fainleog>; rel=\"canonical\""
           }
         ]
       },
