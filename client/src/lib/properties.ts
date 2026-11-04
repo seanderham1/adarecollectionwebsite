@@ -211,7 +211,8 @@ export const properties: Property[] = [
       lng: -8.786145768660083
     },
     walkingDistance: "Just a short stroll to Ryder Cup practice range and golf course",
-    videoUrl: "/videos/thecaptains.mp4"
+    videoUrl: "/videos/thecaptains.mp4",
+    availabilityStatus: "RESERVED",
   },
   {
     id: "putters-way",
