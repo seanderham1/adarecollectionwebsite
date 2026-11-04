@@ -84,7 +84,7 @@ export default function Home() {
               </Link>
             </p>
             <p className="font-serif text-base font-normal mt-4 text-gray-800">
-              Galway and Shannon are common gateways for international guests; we help you plan ground
+              Shannon and Dublin are the main gateways for international guests; we help you plan ground
               transportation, parking, and stays with amenities suited to tournament week. Tickets and
               official hospitality are only available via the official Ryder Cup website.
             </p>
