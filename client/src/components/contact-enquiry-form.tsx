@@ -146,6 +146,11 @@ export type ContactEnquiryFormProps = {
   headingClassName?: string;
   /** When set (e.g. property detail modal), this property is fixed on the enquiry; guests may add others. */
   primaryPropertyId?: string;
+  /** Reserved-home flow: general enquiry for alternatives, not an availability request for that home. */
+  similarHomesContext?: {
+    reservedPropertyName: string;
+    reservedPropertyId?: string;
+  };
   /** Called after a successful submit (e.g. close parent modal). */
   onSubmitted?: () => void;
   containerClassName?: string;
@@ -157,6 +162,7 @@ export function ContactEnquiryForm({
   submitButtonTestId,
   headingClassName = "font-serif text-4xl font-normal text-primary mb-4",
   primaryPropertyId,
+  similarHomesContext,
   onSubmitted,
   containerClassName,
 }: ContactEnquiryFormProps) {
@@ -177,6 +183,13 @@ export function ContactEnquiryForm({
   );
 
   const introParagraphs = useMemo(() => {
+    if (similarHomesContext) {
+      return [
+        `${similarHomesContext.reservedPropertyName} is currently reserved. Share your requirements below and we can suggest similar homes from our portfolio.`,
+        CONTACT_FORM_SUBTITLE_PARAGRAPHS[2],
+        "Please complete your details below.",
+      ];
+    }
     if (primaryPropertyId && primaryProperty) {
       return [
         `You're requesting availability for ${primaryProperty.name}, shown below. You can optionally include other properties from our portfolio in the same enquiry.`,
@@ -185,7 +198,7 @@ export function ContactEnquiryForm({
       ];
     }
     return CONTACT_FORM_SUBTITLE_PARAGRAPHS;
-  }, [primaryPropertyId, primaryProperty]);
+  }, [primaryPropertyId, primaryProperty, similarHomesContext]);
 
   useEffect(() => {
     if (!primaryPropertyId) return;
@@ -267,7 +280,9 @@ export function ContactEnquiryForm({
 
   const additionalPropertiesList = primaryPropertyId
     ? getListedProperties().filter((p) => p.id !== primaryPropertyId)
-    : getListedProperties();
+    : getListedProperties().filter(
+        (p) => p.id !== similarHomesContext?.reservedPropertyId
+      );
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -356,11 +371,11 @@ export function ContactEnquiryForm({
       <div className={cn("text-left mb-12", primaryPropertyId && "mb-8")}>
         {heading === "h1" ? (
           <h1 className={headingClassName} data-testid="contact-title">
-            Contact request
+            {similarHomesContext ? "Enquire about similar homes" : "Contact request"}
           </h1>
         ) : (
           <h2 className={headingClassName} data-testid="contact-title">
-            Contact request
+            {similarHomesContext ? "Enquire about similar homes" : "Contact request"}
           </h2>
         )}
         <div

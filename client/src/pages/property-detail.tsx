@@ -6,7 +6,8 @@ import VideoModal from "@/components/video-modal";
 import { PropertyEnquiryModal } from "@/components/property-enquiry-modal";
 import MapModal from "@/components/map-modal";
 import MatterportModal from "@/components/matterport-modal";
-import { properties, getPropertyCollectionBadge, getListedProperties } from "@/lib/properties";
+import { properties, getPropertyCollectionBadge, getListedProperties, getPropertyAvailabilityLabel } from "@/lib/properties";
+import PropertyAvailabilityBadge from "@/components/property-availability-badge";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -117,6 +118,12 @@ export default function PropertyDetail() {
   const hasVideo = Boolean(videoUrl);
   const matterportUrl = property?.matterportUrl;
   const hasMatterport = Boolean(matterportUrl);
+  const isReserved = property
+    ? getPropertyAvailabilityLabel(property) === "RESERVED"
+    : false;
+  const primaryCtaLabel = isReserved
+    ? "ENQUIRE ABOUT SIMILAR HOMES"
+    : "REQUEST AVAILABILITY";
 
   /** Parkview gallery: intrinsic portrait vs landscape (src key), so vertical shots aren’t full-bleed cover */
   const [parkviewImageOrient, setParkviewImageOrient] = useState<
@@ -514,6 +521,9 @@ export default function PropertyDetail() {
                     <h1 className="font-serif text-2xl font-normal text-primary mb-2">
                       {property.name}
                     </h1>
+                    <div className="mb-2">
+                      <PropertyAvailabilityBadge property={property} />
+                    </div>
                     <p className="text-sm text-primary font-serif mb-1">Available exclusively for Ryder Cup 2027</p>
                     
                     <p className="text-sm text-primary leading-relaxed">
@@ -528,7 +538,7 @@ export default function PropertyDetail() {
                       className="border border-gray-700 bg-gray-700 text-white px-4 py-3 text-sm font-medium uppercase tracking-wider rounded-none hover:!bg-transparent hover:!text-gray-700 transition-all duration-200 w-full"
                       data-testid="button-request-availability-mobile"
                     >
-                      REQUEST AVAILABILITY
+                      {primaryCtaLabel}
                     </Button>
                     
 
@@ -772,6 +782,9 @@ export default function PropertyDetail() {
                     <h1 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-2 text-left">
                       {property.name}
                     </h1>
+                    <div className="mb-2 text-left">
+                      <PropertyAvailabilityBadge property={property} />
+                    </div>
                     <p className="text-sm text-primary font-serif mb-1 text-left">Available exclusively for Ryder Cup 2027</p>
                   
                     <p className="text-sm text-primary leading-relaxed mb-1 text-left">
@@ -786,7 +799,7 @@ export default function PropertyDetail() {
                       className="border border-gray-700 bg-gray-700 text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-none hover:!bg-transparent hover:!text-gray-700 transition-all duration-200 w-full"
                       data-testid="button-request-availability"
                     >
-                      REQUEST AVAILABILITY
+                      {primaryCtaLabel}
                     </Button>
                     
                   </div>
@@ -898,6 +911,7 @@ export default function PropertyDetail() {
         isOpen={isEnquiryModalOpen}
         onClose={handleCloseEnquiryModal}
         property={property}
+        similarHomesOnly={isReserved}
       />
       
       {/* Map Modal */}

@@ -7,9 +7,16 @@ type PropertyEnquiryModalProps = {
   isOpen: boolean;
   onClose: () => void;
   property: Property;
+  /** When true (reserved homes), open a general similar-homes enquiry — do not request this property's availability. */
+  similarHomesOnly?: boolean;
 };
 
-export function PropertyEnquiryModal({ isOpen, onClose, property }: PropertyEnquiryModalProps) {
+export function PropertyEnquiryModal({
+  isOpen,
+  onClose,
+  property,
+  similarHomesOnly = false,
+}: PropertyEnquiryModalProps) {
   useEffect(() => {
     if (!isOpen) return;
 
@@ -40,7 +47,11 @@ export function PropertyEnquiryModal({ isOpen, onClose, property }: PropertyEnqu
         className="relative z-10 w-full max-w-3xl max-h-[min(90vh,calc(100vh-3rem))] overflow-y-auto bg-white shadow-2xl"
         role="dialog"
         aria-modal="true"
-        aria-label={`Request availability for ${property.name}`}
+        aria-label={
+          similarHomesOnly
+            ? `Enquire about similar homes to ${property.name}`
+            : `Request availability for ${property.name}`
+        }
       >
         <div className="sticky top-0 z-20 flex justify-end bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 py-3">
           <button
@@ -60,7 +71,15 @@ export function PropertyEnquiryModal({ isOpen, onClose, property }: PropertyEnqu
             submitButtonTestId="button-send-property-enquiry"
             headingClassName="font-serif text-2xl md:text-3xl font-normal text-primary mb-3"
             containerClassName="w-full max-w-none mx-0"
-            primaryPropertyId={property.id}
+            primaryPropertyId={similarHomesOnly ? undefined : property.id}
+            similarHomesContext={
+              similarHomesOnly
+                ? {
+                    reservedPropertyName: property.name,
+                    reservedPropertyId: property.id,
+                  }
+                : undefined
+            }
             onSubmitted={onClose}
           />
         </div>
