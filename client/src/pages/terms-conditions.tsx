@@ -18,7 +18,7 @@ export default function TermsConditions() {
               Terms and Conditions
             </h1>
             <p className="text-sm text-gray-500">
-              Last updated: August 2026
+              Last updated: November 2026
             </p>
           </div>
 
@@ -35,7 +35,7 @@ export default function TermsConditions() {
                     Welcome. These Terms and Conditions (&quot;Terms&quot;) govern your use of the website and services provided by The Adare Collection Limited, trading as The Adare Collection (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), including marketing and booking facilitation for luxury short-term residential accommodation for Ryder Cup 2027 and related events at Adare Manor, County Limerick, Ireland.
                   </p>
                   <p>
-                    The Adare Collection Limited acts as exclusive representative, marketing agent, and booking facilitator. Where a booking proceeds, the Residential Letting Agreement is between the property Owner and the Occupier (Guest). We are not a party to that Letting Agreement, except to the extent we collect and hold payments in our designated client account and coordinate guest services as described in your booking documents.
+                    The Adare Collection Limited acts as exclusive representative, marketing agent, and booking facilitator. Where a booking proceeds, the Residential Letting Agreement is between the property Owner and the Occupier (Guest). We are not a party to that Letting Agreement. Any guest services we provide, such as catering, transport, concierge or security, are provided under a separate agreement between the Occupier and The Adare Collection.
                   </p>
                   <p>
                     By accessing our website, making inquiries, or proceeding with a booking, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must not use our services. If there is any conflict between these Terms and a signed Residential Letting Agreement for a specific property, the signed Letting Agreement prevails for that booking.
@@ -58,9 +58,11 @@ export default function TermsConditions() {
                     <li><strong>&quot;Guest,&quot; &quot;Occupier,&quot; &quot;you,&quot; or &quot;your&quot;</strong> refers to any person making inquiries or bookings through our service, and (once a Letting Agreement is signed) the Occupier under that agreement</li>
                     <li><strong>&quot;Property&quot;</strong> or <strong>&quot;Premises&quot;</strong> refers to any accommodation offered under The Adare Collection brand</li>
                     <li><strong>&quot;Booking&quot;</strong> refers to a confirmed reservation secured by a signed Residential Letting Agreement and payment of the Deposit</li>
+                    <li><strong>&quot;Commencement Date&quot;</strong> means the first day of the Letting Period stated in the Residential Letting Agreement</li>
+                    <li><strong>&quot;Letting Period&quot;</strong> or <strong>&quot;Term&quot;</strong> means the period of the stay stated in the Residential Letting Agreement (typically up to eight nights)</li>
                     <li><strong>&quot;Deposit&quot;</strong> means the non-refundable booking deposit equating to 50% of the Rent (plus VAT where applicable)</li>
                     <li><strong>&quot;Rent&quot;</strong> means the rental sum stated in the Residential Letting Agreement (plus VAT where applicable)</li>
-                    <li><strong>&quot;Security Deposit&quot;</strong> means the sum equating to 20% of the Rent, held as security for performance of the Occupier&apos;s obligations</li>
+                    <li><strong>&quot;Security Deposit&quot;</strong> means the sum equating to 15% of the Rent (excluding VAT), as security for performance of the Occupier&apos;s obligations</li>
                     <li><strong>&quot;Services&quot;</strong> refers to all services we provide under these Terms</li>
                     <li><strong>&quot;Website&quot;</strong> refers to our online platform and all associated content</li>
                   </ul>
@@ -97,18 +99,21 @@ export default function TermsConditions() {
                       A non-refundable Deposit of 50% of the Rent (plus VAT at 13.5%, or such other rate as applies) is required upon signing the Residential Letting Agreement to secure the Property. The balance of the Rent and the Security Deposit are payable no later than 31st January 2027 unless otherwise agreed in writing in your Letting Agreement.
                     </p>
                     <p>
-                      The Deposit is strictly non-refundable, except only to the limited extent provided under the Event Cancellation terms in Section 3.3.
+                      The Deposit is strictly non-refundable, except only to the limited extent provided under Section 3.3.
                     </p>
                     <p>
-                      A Security Deposit equal to 20% of the Rent is also required by the final payment date. It is held as security for proper performance of the Occupier&apos;s obligations. After the Letting ends and the Occupier has removed all personal property from the Premises, any balance remaining after deduction of losses, costs, charges, and expenses arising from non-observance or non-performance of those obligations will be repaid. No interest is payable on the Security Deposit. The Occupier remains fully liable for any loss or damage whether or not such loss exceeds the Security Deposit.
+                      A Security Deposit equal to 15% of the Rent (excluding VAT) is also required by the final payment date. It is security for proper performance of the Occupier&apos;s obligations. After the Letting ends and the Occupier has removed all personal property from the Premises, any balance remaining after deduction of losses, costs, charges, and expenses arising from non-observance or non-performance of those obligations will be repaid within fourteen (14) working days. Any deductions will be supported by an itemised explanation and supporting evidence. No interest is payable on the Security Deposit. The Occupier remains fully liable for any loss or damage whether or not such loss exceeds the Security Deposit.
                     </p>
                     <p>
-                      All payments due under a Residential Letting Agreement must be paid into the designated client account of The Adare Collection Limited. We may cancel or the Letting may terminate where payment deadlines are not met (including where sums remain unpaid for seven days after the due date, as provided in the Letting Agreement).
+                      If the applicable VAT rate decreases, the difference will be reimbursed to the Occupier. If it increases, the difference will be deducted from the Security Deposit.
+                    </p>
+                    <p>
+                      The Letting may terminate where payment deadlines are not met (including where sums remain unpaid for seven days after the due date, as provided in the Letting Agreement).
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
-                      <li>We accept payment by bank transfer to our designated client account, or by other methods we agree in writing</li>
+                      <li>All payments are made to The Adare Collection by bank transfer, or by other methods we agree in writing</li>
                       <li>All prices are quoted in Euro (€). Rent and the Deposit are subject to Irish VAT at 13.5% (or the prevailing rate)</li>
-                      <li>Additional charges may apply for extra services, damages, or cleaning fees</li>
+                      <li>Additional charges may apply for extra services or damage. Cleaning and housekeeping charges apply only as set out in the service responsibility schedule of your Residential Letting Agreement</li>
                       <li>Payment processing fees may apply depending on the payment method chosen</li>
                     </ul>
                   </div>
@@ -128,26 +133,66 @@ export default function TermsConditions() {
                       . Except as expressly set out below or in your signed Residential Letting Agreement, there is no contractual right to a refund of the Deposit or of Rent paid if you cancel or otherwise terminate the booking.
                     </p>
                     <p>
-                      <strong>Guest cancellation.</strong> The Deposit is non-refundable. Sums paid towards the Rent (including the Deposit and any balance) are not refundable on Guest cancellation. Where a Security Deposit has been paid and the stay does not proceed solely because of Guest cancellation, the Security Deposit will be returned in full.
+                      <strong>Guest cancellation.</strong> The Deposit is non-refundable. If the Guest cancels, Rent paid (excluding the Deposit) will be refunded as follows:
+                    </p>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left border-collapse text-sm md:text-base">
+                        <thead>
+                          <tr className="border-b border-gray-300">
+                            <th className="py-2 pr-4 font-medium text-primary">Cancellation time</th>
+                            <th className="py-2 font-medium text-primary">Refund of Rent paid, excluding the Deposit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b border-gray-200">
+                            <td className="py-2 pr-4 align-top">180 days or more before the Commencement Date</td>
+                            <td className="py-2 align-top">100%</td>
+                          </tr>
+                          <tr className="border-b border-gray-200">
+                            <td className="py-2 pr-4 align-top">120 to 179 days before the Commencement Date</td>
+                            <td className="py-2 align-top">50%</td>
+                          </tr>
+                          <tr className="border-b border-gray-200">
+                            <td className="py-2 pr-4 align-top">0 to 119 days before the Commencement Date</td>
+                            <td className="py-2 align-top">0%</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p>
+                      Where a Security Deposit has been paid and cancellation occurs before the Commencement Date, the Security Deposit will be returned in full. Refunds under this paragraph are paid within fourteen (14) working days of the agreed cancellation.
                     </p>
                     <p id="event-cancellation" className="scroll-mt-24">
-                      <strong>Event Cancellation (Ryder Cup 2027).</strong> If the Ryder Cup 2027 is cancelled, or is postponed or relocated so that it does not take place at Adare Manor during the Letting Period, and that cancellation, postponement, or relocation is publicly confirmed by the Ryder Cup organisers before the Commencement Date, the Letting terminates automatically from the date of that confirmation. Within ten (10) working days of such termination:
+                      <strong>Event Cancellation (Ryder Cup 2027).</strong> If the Ryder Cup 2027 is cancelled, or is postponed or relocated so that it does not take place at Adare Manor during the Letting Period, and that cancellation, postponement, or relocation is publicly confirmed by the Ryder Cup organisers before the Commencement Date, the Letting terminates automatically from the date of that confirmation. Within fourteen (14) working days of such termination:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
-                      <li>Eighty per cent (80%) of the Deposit and any other sums (other than the Security Deposit) actually received from the Occupier will be refunded from our client account</li>
-                      <li>The remaining twenty per cent (20%) is not refundable</li>
+                      <li>Eighty per cent (80%) of the Deposit and any other sums (other than the Security Deposit) actually received from the Occupier will be refunded</li>
+                      <li>Where part of the Deposit is not refunded, that amount will be evidenced by an itemised explanation and supporting evidence, and will go towards the costs incurred by the Owner</li>
                       <li>The Security Deposit, if paid, will be refunded in full without deduction within the same period</li>
                     </ul>
+                    <p>
+                      If the Ryder Cup is postponed or rescheduled, the parties will first make reasonable efforts to transfer the booking to the revised dates and apply the appropriate booking credit. If the Property is unavailable on the revised dates, or suitable dates cannot be agreed, the refund terms above apply.
+                    </p>
+                    <p>
+                      If the Ryder Cup is cancelled, postponed or rescheduled during the Letting Period, the Occupier will be refunded the Rent on a per-night basis.
+                    </p>
                     <p>
                       Save for those refund obligations, neither party has any further claim against the other arising from such cancellation, postponement, or relocation. This Event Cancellation regime applies only to cancellation, postponement, or relocation of the Ryder Cup 2027 itself, and not to cancellation or termination of a booking for any other reason.
                     </p>
                     <p>
-                      <strong>Owner withdrawal.</strong> If an Owner withdraws a Property or cancels a confirmed booking after a Guest Deposit has been received (other than under the Event Cancellation clause above), all Guest payments already received will be refunded in full.
+                      <strong>Owner withdrawal.</strong> If an Owner cannot provide the Property for the agreed Letting Period for any reason (other than as a result of the Occupier&apos;s breach of the Residential Letting Agreement), all Guest payments already received will be refunded in full within fourteen (14) working days of the Owner&apos;s written notice. The Owner will use reasonable endeavours to help the Occupier find suitable alternative accommodation.
                     </p>
                     <p>
-                      <strong>Property unavailable.</strong> If the Premises become incapable of use through fire, destruction, or another reason beyond the Owner&apos;s control, the Letting may terminate in accordance with the Residential Letting Agreement.
+                      <strong>Property unavailable.</strong> If the Premises become incapable of use through fire, destruction, or another reason beyond the Owner&apos;s control, the Letting may terminate in accordance with the Residential Letting Agreement. If the Premises become unavailable or unusable during the Letting Period for reasons not caused by the Occupier or their guests, the Occupier is entitled to an appropriate pro-rata refund of the Rent paid.
                     </p>
                   </div>
+
+                  <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
+                    3.4 Termination for Breach
+                  </h3>
+                  <p>
+                    Where the Occupier is in material breach of the Residential Letting Agreement, the Owner will notify the Occupier in writing, and the Occupier will have seven (7) days to remedy the breach to the Owner&apos;s reasonable satisfaction. If it is not remedied, the Letting may terminate.
+                  </p>
                 </div>
               </section>
 
@@ -163,6 +208,7 @@ export default function TermsConditions() {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Guests must use the Property solely for short-term residential accommodation (and reasonable private social entertaining where permitted by the House Rules)</li>
                     <li>Maximum overnight occupancy limits stated for the Property must be strictly observed; no additional overnight guests without prior written approval through The Adare Collection</li>
+                    <li>Invited non-resident guests are permitted, subject to the House Rules, the safe capacity of the Property and applicable insurance requirements. The Occupier remains responsible for the conduct of all invited guests</li>
                     <li>Properties must be left clean, tidy, and in the same condition as found, fair wear and tear excepted</li>
                     <li>Smoking and vaping are prohibited inside any Property; smoking may take place only in any external area specifically designated for that purpose</li>
                     <li>Pets and animals are not permitted without the Owner&apos;s prior written consent, except legally recognised assistance animals where applicable</li>
@@ -171,7 +217,7 @@ export default function TermsConditions() {
                   </ul>
 
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
-                    4.2 Noise and Neighbor Consideration
+                    4.2 Noise and Neighbour Consideration
                   </h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Guests must behave responsibly and avoid excessive noise, disturbance, nuisance, or inconvenience to neighbouring properties</li>
@@ -230,7 +276,7 @@ export default function TermsConditions() {
                     <li>Guests are liable for any damage caused to the Property or its contents by the Occupier or any employee, servant, agent, or invitee</li>
                     <li>Damage charges may be deducted from the Security Deposit or charged separately; liability is not limited to the Security Deposit</li>
                     <li>Minor fair wear and tear is expected and not chargeable</li>
-                    <li>Significant damage or serious breach of House Rules may result in immediate termination of the Letting</li>
+                    <li>Significant damage or a serious breach of House Rules may constitute a material breach of the Residential Letting Agreement, and the Letting may terminate if the breach is not remedied within seven (7) days of written notice, as set out in Section 3.4</li>
                   </ul>
                 </div>
               </section>
@@ -247,7 +293,7 @@ export default function TermsConditions() {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>You may use our website only for lawful purposes</li>
                     <li>You must not use the website in any way that could damage or impair its functionality</li>
-                    <li>You must not attempt to gain unauthorized access to any part of the website</li>
+                    <li>You must not attempt to gain unauthorised access to any part of the website</li>
                     <li>You must not use automated systems to access the website without permission</li>
                   </ul>
 
@@ -258,7 +304,7 @@ export default function TermsConditions() {
                     <li>All content on this website is protected by Irish and international copyright laws</li>
                     <li>You may not reproduce, distribute, or create derivative works without permission</li>
                     <li>Property images and descriptions are for informational purposes only</li>
-                    <li>Unauthorized use of our content may result in legal action</li>
+                    <li>Unauthorised use of our content may result in legal action</li>
                   </ul>
                 </div>
               </section>
@@ -298,7 +344,7 @@ export default function TermsConditions() {
                     <li>Natural disasters, extreme weather conditions, or acts of God</li>
                     <li>Government actions, travel restrictions, or public health emergencies</li>
                     <li>War, terrorism, civil unrest, or other security threats</li>
-                    <li>Strikes, labor disputes, or transportation disruptions</li>
+                    <li>Strikes, labour disputes, or transportation disruptions</li>
                     <li>Utility failures or infrastructure problems</li>
                   </ul>
                   <p>
@@ -337,26 +383,21 @@ export default function TermsConditions() {
                 </div>
               </section>
 
-              {/* Contact Information */}
+              {/* Notices and Contact Information */}
               <section>
                 <h2 className="font-serif text-2xl font-normal text-primary mb-4">
-                  11. Contact Information
+                  11. Notices and Contact Information
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    If you have any questions about these Terms and Conditions, please contact us:
+                    Notices under a Residential Letting Agreement may be given by email to the addresses stated in that agreement and are deemed served 24 hours after the email is sent.
                   </p>
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <p><strong>The Adare Collection Limited</strong></p>
-                    <p>CRO No. 812874</p>
-                    <p>Email: <a href="mailto:info@theadarecollection.ie" className="text-primary hover:underline">info@theadarecollection.ie</a></p>
-                    <p>Phone: <a href="tel:+353866681930" className="text-primary hover:underline">+353 86 668 1930</a></p>
-                    <p>
-                      Registered office: Byrne and Co., Gortboy, Church Street, Newcastle West, Co. Limerick, Ireland, V42 F982
-                    </p>
-                  </div>
                   <p>
-                    For urgent matters during your stay, emergency contact information will be provided upon booking confirmation.
+                    If you have any questions about these Terms and Conditions, please contact us at{" "}
+                    <a href="mailto:info@theadarecollection.ie" className="text-primary hover:underline">
+                      info@theadarecollection.ie
+                    </a>
+                    .
                   </p>
                 </div>
               </section>

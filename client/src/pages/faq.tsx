@@ -114,7 +114,7 @@ export default function FAQ() {
             . We&apos;ll discuss your requirements, show you available properties, and guide you through the booking process. All bookings are handled personally by our team. Each reservation is for a fixed rental period of up to eight nights, with no minimum length required.
           </p>
           <p>
-            A non-refundable booking deposit of 50% is required upon signing to secure a property. The remaining balance is due no later than 31 January 2027 unless otherwise agreed in writing, and a 20% security deposit is required with final payment. Full payment terms are in our{" "}
+            A non-refundable booking deposit of 50% is required upon signing to secure a property. The remaining balance is due no later than 31 January 2027 unless otherwise agreed in writing, and a 15% security deposit (excluding VAT) is required with final payment. Full payment terms are in our{" "}
             <Link
               href="/terms#payment-terms"
               className="text-primary underline underline-offset-2 hover:no-underline"
