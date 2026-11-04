@@ -41,6 +41,164 @@ export type BlogPost = {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "ryder-cup-2027-year-to-go-live-at-the-castle",
+    title:
+      "Year to Go: Live at the Castle Kicks Off the Ryder Cup Countdown in Limerick",
+    excerpt:
+      "Captains Luke Donald and Jim Furyk took the stage at King John’s Castle as Ireland’s official Year to Go celebrations began — a night of music, fireworks and a clear signal that Ryder Cup 2027 is now one year away.",
+    publishedAt: "2026-10-05",
+    category: "NEWS",
+    readTimeMinutes: 5,
+    heroImage: "/images/blog/live-at-the-castle-year-to-go.webp",
+    imageCredit: {
+      label: "Ryder Cup Europe — Live at the Castle coverage",
+      url: "https://www.rydercup.com/news-media/live-at-the-castle-concert-kicks-off--ryder-cup-year-to-go-celebration",
+    },
+    keywords:
+      "Ryder Cup Year to Go, Live at the Castle Limerick, King John's Castle Ryder Cup, Luke Donald Jim Furyk, Ryder Cup 2027 Adare Manor, Year to Go celebration Ireland, accommodation near Adare Manor",
+    sections: [
+      {
+        paragraphs: [
+          "One year out from the centenary Ryder Cup at Adare Manor, Limerick marked the moment in the most Irish way possible: outdoors, beside the Shannon, with a castle for a backdrop and a crowd that filled the courtyard at King John’s Castle.",
+          "On Sunday night, 4 October 2026, Ryder Cup Captains Luke Donald and Jim Furyk appeared together on stage at Live at the Castle — the concert that officially opened Ireland’s Year to Go celebrations. Around 2,000 people packed the historic venue in the heart of the city for a Q&A hosted by Today FM’s Louise Cantillon, live music from The Coronas and BIIRD, and fireworks over the 13th-century walls.",
+        ],
+      },
+      {
+        heading: "Captains, community and a Limerick night",
+        paragraphs: [
+          "The evening opened with a video message featuring Taoiseach Micheál Martin, Minister Patrick O’Donovan, Mayor of Limerick John Moran and Adare Manor owner JP McManus — a reminder that this countdown is as much a civic story as a golfing one.",
+          "After a set from BIIRD, Donald and Furyk were led onto the stage by Irish drummers for their first joint public appearance since their appointments earlier in the year. Ryder Cup Europe also recognised Limerick’s All-Ireland winning hurling side, with Barry Nash, Dan Morrissey, Cian Lynch and manager John Kiely joining Cantillon to reflect on what that win meant for the city.",
+          "The night closed with The Coronas and a fireworks display over King John’s Castle — the kind of image that travels far beyond Limerick when the golf world is already watching the Mid-West.",
+        ],
+        quote: {
+          text:
+            "We wanted to do something special in the heart of Limerick to celebrate this key milestone in Ireland’s Ryder Cup journey.",
+          attribution: "Richard Atkinson, Chief Ryder Cup Officer, European Tour Group",
+        },
+      },
+      {
+        heading: "From the castle to Adare Manor",
+        paragraphs: [
+          "Year to Go is not a single evening. Over the following days the captains took part in further events designed to put Limerick and Ireland in front of a global audience — including a gala dinner at Adare Manor itself, where Donald and Furyk joined host Patrick Kielty in front of more than 250 guests from government, local authorities, Adare Manor, Ryder Cup Europe, the PGA of America and the commercial family.",
+          "Competition week is set for 13–19 September 2027 at Adare Manor, with match days from Friday 17 to Sunday 19 September. The 2027 contest will also mark one hundred years since the first Ryder Cup was played in 1927 — which is why starting the final-year countdown at a landmark as old as King John’s Castle felt deliberate rather than decorative.",
+        ],
+      },
+      {
+        heading: "What it means if you are planning tournament week",
+        paragraphs: [
+          "A Year to Go concert in the city centre, captains on stage, and a gala inside Adare Manor are not background colour. They are markers that the final stretch has begun: media attention will intensify, logistics will harden, and demand for the right place to stay will keep tightening.",
+          "If you are building a group around September 2027 — corporate hospitality, family travel or a longer Mid-West golf trip — locking in a private base now is the difference between reacting to the countdown and actually enjoying it.",
+        ],
+      },
+      {
+        heading: "Where we fit into the story",
+        paragraphs: [
+          "The Adare Collection curates luxury private houses and estates across Adare and the wider Limerick region for guests who want space, privacy and a proper home during Ryder Cup week — close enough to the action, far enough from the crush.",
+          "Browse our properties or contact us to talk through availability while the Year to Go celebrations put Limerick firmly on the golf world’s map.",
+        ],
+      },
+    ],
+    externalLinks: [
+      {
+        label: "Ryder Cup Europe: Live at the Castle kicks off Year to Go",
+        url: "https://www.rydercup.com/news-media/live-at-the-castle-concert-kicks-off--ryder-cup-year-to-go-celebration",
+      },
+      {
+        label: "iLoveLimerick: Year to Go gala dinner at Adare Manor",
+        url: "https://www.ilovelimerick.ie/ryder-cup-gala-dinner-year-to-go/",
+      },
+      {
+        label: "Ryder Cup 2027",
+        url: "https://www.rydercup.com/",
+      },
+    ],
+  },
+  {
+    slug: "how-adare-is-preparing-for-the-ryder-cup",
+    title: "How Adare Is Preparing for the Ryder Cup",
+    excerpt:
+      "From bunker rebuilds and regrassing to park-and-ride plans and temporary grandstands, Adare Manor and the wider Mid-West are deep into the work of turning a quiet estate into a centenary Ryder Cup stage.",
+    publishedAt: "2026-09-15",
+    category: "NEWS",
+    readTimeMinutes: 6,
+    heroImage: "/images/blog/adare-manor-preparing-ryder-cup.webp",
+    imageCredit: {
+      label: "Adare Manor — The Road to the First Tee",
+      url: "https://www.adaremanor.com/the-road-to-the-first-tee/",
+    },
+    keywords:
+      "How Adare is preparing for the Ryder Cup, Adare Manor Ryder Cup preparation, bunker rebuilds Adare Manor, Ryder Cup 2027 course setup, park and ride Adare, grandstands Adare Manor, accommodation near Adare Manor",
+    sections: [
+      {
+        paragraphs: [
+          "Stand on the first tee at Adare Manor on an ordinary morning and, at first glance, nothing feels unusual. Fairways still carry the early dew. Greenkeepers still move steadily across the property. Guests still walk toward the clubhouse with coffee in hand.",
+          "And yet everyone on the estate knows this is no ordinary year. In twelve months’ time those same fairways will host the 2027 Ryder Cup. Temporary grandstands will rise where visitors now pause for the view. Broadcasting compounds and hospitality villages will remake familiar corners of the grounds. Hundreds of thousands of spectators will walk paths that today feel almost private.",
+        ],
+      },
+      {
+        heading: "A gradual transformation, not a single switch",
+        paragraphs: [
+          "For the team at Adare Manor, preparation is a balance of continuity and change. Day-to-day hospitality continues — the same standards guests expect — while behind the scenes the venue is being shaped for one of sport’s largest travelling productions.",
+          "There is no single moment when the resort “becomes” a Ryder Cup venue. The work is incremental: conversations, design decisions, course upgrades and operational milestones that grow heavier with every month. As Adare Manor has put it, this is the final year before everything shifts — and it only happens once.",
+          "General Manager Brendan O’Connor has been clear that the 2016–17 redevelopment was already framed with global events in mind, and that the JP McManus Pro-Am offered a live stress test for crowds and logistics. Rome raised the bar in 2023; the stated ambition in Limerick is to take it further again for the centenary edition.",
+        ],
+        quote: {
+          text:
+            "The collective ambition is clear: to deliver the best Ryder Cup in its 100-year history. That’s what drives us.",
+          attribution: "Brendan O’Connor, General Manager, Adare Manor",
+        },
+      },
+      {
+        heading: "What is already changing on the course",
+        paragraphs: [
+          "Course conditioning has always been taken seriously at Adare Manor, with a winter closure from late October through May to protect surfaces and allow renovation work. Ahead of 2027, a number of upgrades are already complete or well advanced: bunker rebuilds, path extensions and bridge widening, with more still to come.",
+          "Players who have seen the layout recently have also noted a surface change — European rye replaced with American rye — and talked about a course that can be set up firm and fast when required. That flexibility matters for a match-play stadium event, where rough height, tee boxes and green speeds become part of the competitive story rather than a fixed stroke-play rota.",
+          "Captains Luke Donald and Jim Furyk have both spent time on the property studying contours and match-defining moments. Their visits are a useful public signal: preparation has moved from plans on paper into the reality of walking the holes that will decide September 2027.",
+        ],
+      },
+      {
+        heading: "Building a temporary town around the estate",
+        paragraphs: [
+          "Inside the ropes is only half the challenge. Ryder Cup Europe has described the need to supplement the venue with temporary infrastructure — grandstands, media centres, catering, bars — effectively building a small town for spectators around a golf course that was never designed as a permanent stadium.",
+          "More than 20,000 grandstand seats are planned for Adare, a European Ryder Cup record, including a large horseshoe structure around the first tee. Transport planning is equally central: park-and-ride sites across Limerick, closer working with rail services, and the return of Adare’s railway story for tournament week. One park-and-ride alone, at Collopy’s Cross near Patrickswell, is expected to provide thousands of spaces.",
+          "Community measures are part of the same picture — from complimentary local passes for Adare village households to an official campsite near the venue, described as a first for the event — all aimed at making a global contest feel rooted in an Irish welcome.",
+        ],
+      },
+      {
+        heading: "What it means if you are coming for tournament week",
+        paragraphs: [
+          "When a host venue is already rebuilding bunkers, regrassing fairways and designing spectator overlay a year out, the message for visitors is straightforward: the Mid-West is not waiting until the last minute, and neither should anyone who needs beds for a group.",
+          "Adare Manor itself will be fully committed through September 2027. That pushes demand onto private residences across Adare village and the wider county — the exact market The Adare Collection was built to serve.",
+        ],
+      },
+      {
+        heading: "Where we fit into the story",
+        paragraphs: [
+          "We curate luxury homes and estates near Adare Manor for guests who want privacy, capacity and a calm base while the estate around them turns into a global stage.",
+          "If you are planning corporate hospitality, a family gathering or a longer stay around Ryder Cup week, browse our collection or contact us early. The course is being prepared in plain sight — the smartest travel plans are being prepared the same way.",
+        ],
+      },
+    ],
+    externalLinks: [
+      {
+        label: "Adare Manor: The Road to the First Tee",
+        url: "https://www.adaremanor.com/the-road-to-the-first-tee/",
+      },
+      {
+        label: "PGA: How Adare Manor is preparing to host the 2027 Ryder Cup",
+        url: "https://www.pga.info/discover/latest/news/how-adare-manor-preparing-host-2027-ryder-cup/",
+      },
+      {
+        label: "Irish Examiner: How Adare is preparing to welcome the world",
+        url: "https://www.irishexaminer.com/news/munster/arid-41853486.html",
+      },
+      {
+        label: "Ryder Cup 2027",
+        url: "https://www.rydercup.com/",
+      },
+    ],
+  },
+  {
     slug: "jon-rahm-ireland-special-place-irish-open-2026",
     title:
       "Jon Rahm on Ireland: ‘Always Been a Very Special Place to Me in My Heart’",
