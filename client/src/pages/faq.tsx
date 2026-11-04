@@ -62,7 +62,7 @@ export default function FAQ() {
     {
       question: "Do you offer corporate accommodation for Ryder Cup 2027?",
       answer:
-        "Yes. Several properties suit corporate groups and executive stays, including rentals on the manor grounds and larger estates elsewhere in County Limerick when you need entertaining space and discrete access to the venues.",
+        "Yes. Several properties suit corporate groups and executive stays, including rentals on the manor grounds and larger estates elsewhere in County Limerick when you need entertaining space and discreet access to the venues.",
     },
     {
       question: "What is executive or high‑end corporate housing on your site?",
@@ -95,7 +95,7 @@ export default function FAQ() {
     {
       question: "Are you focused on Ryder Cup 2027 private rental around Adare rather than all of Ireland?",
       answer:
-        "Our Ryder Cup 2027 portfolio concentrates on County Limerick and the Adare Manor area so guests stay purposeful to the host venue. We are not a nationwide tour operator. Outside this core we only list additional homes when they directly support Ryder week itineraries.",
+        "Our Ryder Cup 2027 portfolio concentrates on County Limerick and the Adare Manor area so guests stay close to the host venue. We are not a nationwide tour operator. Outside this core we only list additional homes when they directly support Ryder week itineraries.",
     },
     {
       question: "What amenities are included with each property?",
@@ -114,7 +114,7 @@ export default function FAQ() {
             . We&apos;ll discuss your requirements, show you available properties, and guide you through the booking process. All bookings are handled personally by our team. Ryder Cup stays are a fixed rental for the duration of the event, up to eight nights.
           </p>
           <p>
-            A non-refundable booking deposit of 50% is required upon signing to secure a property. The remaining balance is due no later than 31 January 2027 unless otherwise agreed in writing, and a security deposit of 15% of the Rent (excluding VAT) is required with final payment. Full payment terms are in our{" "}
+            A non-refundable booking deposit of 50% of the Rent (plus VAT) is required upon signing to secure a property. The remaining balance is due no later than 31 January 2027 unless otherwise agreed in writing, and a security deposit of 15% of the Rent (excluding VAT) is required with final payment. Full payment terms are in our{" "}
             <Link
               href="/terms#payment-terms"
               className="text-primary underline underline-offset-2 hover:no-underline"
@@ -134,7 +134,7 @@ export default function FAQ() {
     {
       question: "Are the properties suitable for corporate groups?",
       answer:
-        "Yes, our properties are perfect for corporate groups, sponsors, and business entertainment. We offer residences ranging from intimate 4‑bedroom homes to large estates accommodating multiple guests with meeting spaces and entertainment areas.",
+        "Yes, our properties are perfect for corporate groups, sponsors, and business entertainment. We offer residences ranging from intimate 2‑bedroom homes to large estates accommodating multiple guests with meeting spaces and entertainment areas.",
     },
     {
       question: "What are the stay lengths for Ryder Cup 2027?",
@@ -144,7 +144,7 @@ export default function FAQ() {
     {
       question: "Do you provide transportation to the golf course?",
       answer:
-        "Many properties lie within walking distance of the Ryder Cup 2027 host venue. Properties further away can usually access private chauffeurs, shuttles, or licensed transport partners when arranged in advance as part of your stay planning.",
+        "Several properties lie within walking distance of the Ryder Cup 2027 host venue. Properties further away can usually access private chauffeurs, shuttles, or licensed transport partners when arranged in advance as part of your stay planning.",
     },
     {
       question: "What happens if I need to cancel my booking?",
@@ -220,11 +220,11 @@ export default function FAQ() {
               We do not sell flights, but we can arrange chauffeur and ground transfers around your
               rental through our{" "}
               <Link href="/services" className="text-primary underline underline-offset-2 hover:no-underline">
-                travel management
-              </Link>{" "}
-              service.{" "}
+                estate services
+              </Link>
+              .{" "}
               <Link href="/contact" className="text-primary underline underline-offset-2 hover:no-underline">
-                contact us
+                Contact us
               </Link>{" "}
               to discuss.
             </p>
