@@ -165,7 +165,7 @@ export default function About() {
                 Lee Hayes
               </h2>
               <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
-                Lee shapes how The Adare Collection is seen and understood - from the our
+                Lee shapes how The Adare Collection is seen and understood - from our
                 property stories to the enquiry journey. He leads brand and
                 content strategy so corporate groups and private guests can recognise
                 the right home for tournament week 2027, and feel confident in the experience long before
