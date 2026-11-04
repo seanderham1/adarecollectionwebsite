@@ -133,7 +133,7 @@ export const properties: Property[] = [
       "Fitness suite including gym, sauna, and shower facilities",
       "Executive home office",
       "Wi-Fi and satellite TV",
-      "Daily housekeeping",
+      "Housekeeping",
       "BBQ and smoker",
       "Secure private parking",
     ],
@@ -201,7 +201,7 @@ export const properties: Property[] = [
       "Separate dining area capable of hosting 50+ guests.",
     ],
     amenities: [
-      "Daily housekeeping",
+      "Housekeeping",
       "Wi-Fi and satellite TV",
       "Games room with pool table, table tennis, and dart board; convertible into a fitness studio with treadmill (if required)",
       "Secure private parking",
@@ -254,7 +254,7 @@ export const properties: Property[] = [
       "Located at the centre of the Adare Manor resort",
       "Wi-Fi",
       "Premium seating and entertainment areas",
-      "Daily housekeeping"
+      "Housekeeping"
     ],
     location: {
       lat: 52.56182292270544,
@@ -395,7 +395,7 @@ export const properties: Property[] = [
       "Firepit Terrace & Gazebo: covered outdoor living area with built-in fireplace, lounge seating for 10 to 12, and Kamado Joe BBQ",
       "Secluded rear garden with patio, dining area, and cushioned seating for al fresco entertaining",
       "Wi-Fi and satellite TV",
-      "Daily housekeeping",
+      "Housekeeping",
       "Secure private parking",
     ],
     location: {
@@ -453,7 +453,7 @@ export const properties: Property[] = [
       "Flexible living and dining spaces for formal or relaxed hosting",
       "Wi-Fi",
       "Proximity to Limerick City, the M20 motorway, and Shannon Airport",
-      "Daily housekeeping"
+      "Housekeeping"
     ],
     location: {
       lat: 52.60043120307769,
@@ -506,7 +506,7 @@ export const properties: Property[] = [
       "Sitting room flows into spacious open-plan kitchen and bright conservatory",
     ],
     amenities: [
-      "Daily housekeeping",
+      "Housekeeping",
       "Wi-Fi",
       "Satellite TV",
       "Secure private parking"
@@ -585,7 +585,7 @@ export const properties: Property[] = [
       "Ample private parking within secure grounds",
       "Outdoor dining and seating areas",
       "Climate-controlled interior",
-      "Available on request: private chauffeur and executive transport; in-residence chef and bespoke dining; daily housekeeping and laundry; tailored hospitality and entertainment",
+      "Available on request: private chauffeur and executive transport; in-residence chef and bespoke dining; housekeeping and laundry; tailored hospitality and entertainment",
     ],
     location: {
       lat: 52.54885726209432,
@@ -804,7 +804,7 @@ export const properties: Property[] = [
       "Smart TVs and modern entertainment setup",
       "Quality bed linen and towels provided",
       "Laundry facilities",
-      "Daily housekeeping",
+      "Housekeeping",
       "Private parking within gated grounds",
       "Electric vehicle charging points",
       "Office space",
@@ -957,7 +957,7 @@ export const properties: Property[] = [
       "Mature countryside setting offering privacy and tranquillity",
     ],
     amenities: [
-      "Daily housekeeping",
+      "Housekeeping",
       "Wi-Fi",
       "Three Smart TVs",
       "Outdoor gazebo and BBQ area",
@@ -1071,7 +1071,7 @@ export const properties: Property[] = [
     ],
     amenities: [
       "Wi-Fi and satellite TV",
-      "Daily housekeeping",
+      "Housekeeping",
       "BBQ",
       "Secure gated private parking",
     ],
@@ -1134,7 +1134,7 @@ export const properties: Property[] = [
       "Large gallery landing overlooking the entrance hall",
     ],
     amenities: [
-      "Daily housekeeping",
+      "Housekeeping",
       "Wi-Fi",
       "Luxury coffee station",
       "Large central kitchen island",
@@ -1208,7 +1208,7 @@ export const properties: Property[] = [
       "Ideal for executive groups and private entertaining",
     ],
     amenities: [
-      "Daily housekeeping",
+      "Housekeeping",
       "Full breakfast",
       "Wi-Fi",
       "Satellite TV",
@@ -1347,7 +1347,7 @@ export const properties: Property[] = [
       "Wellness and spa treatment facilities",
       "Private marina access",
       "Quality bed linen and towels provided",
-      "Daily housekeeping",
+      "Housekeeping",
       "Ample private parking",
       "Marked nature trails and outdoor pursuits",
     ],
@@ -1409,7 +1409,7 @@ export const properties: Property[] = [
     amenities: [
       "Wi-Fi",
       "Satellite television",
-      "Daily housekeeping",
+      "Housekeeping",
       "Fully equipped modern kitchen",
       "BBQ and outdoor dining furniture",
       "Secure private parking",
@@ -1472,7 +1472,7 @@ export const properties: Property[] = [
     amenities: [
       "Wi-Fi",
       "Satellite television and smart TV",
-      "Daily housekeeping",
+      "Housekeeping",
       "Secure private parking",
     ],
     location: {
@@ -1586,7 +1586,7 @@ export const properties: Property[] = [
       "Outdoor dining furniture and BBQ facilities",
       "Private patio and extensive gardens",
       "Private driveway parking",
-      "Daily housekeeping",
+      "Housekeeping",
     ],
     location: {
       // Friarstown / Ballyclough townland centroid near Limerick Golf Club (Eircode V94 T6YE)
@@ -1661,7 +1661,7 @@ export const properties: Property[] = [
       "Private garden and patio",
       "Outdoor seating",
       "Private off-street parking",
-      "Daily housekeeping",
+      "Housekeeping",
     ],
     location: {
       // From property photo EXIF GPS (Eircode V94 E7F7 / Limetree Avenue, Adare)
@@ -1744,7 +1744,7 @@ export const properties: Property[] = [
       "Bed linen and towels",
       "Outdoor dining furniture and rooftop loungers",
       "Electric gates to private driveway and parking",
-      "Daily housekeeping",
+      "Housekeeping",
     ],
     location: {
       // Geocoded from Eircode V42 HX70 (Knockbweeheen, Co. Limerick)
