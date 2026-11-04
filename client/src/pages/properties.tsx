@@ -133,7 +133,7 @@ export default function PropertiesPage() {
           <p>
             Our rental homes include multiple bedrooms, fully equipped kitchens, private parking, guest Wi-Fi, and
             amenities suited to golf travel and hosted events. Proximity to the course varies by property, from
-            walking distance on the demesne to executive homes near Galway and Limerick with chauffeur access to
+            walking distance on the demesne to executive homes across Limerick and neighbouring counties with chauffeur access to
             the tournament venue.
           </p>
           <p>
