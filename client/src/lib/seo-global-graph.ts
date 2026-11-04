@@ -12,7 +12,7 @@ export const GLOBAL_SCHEMA_GRAPH = {
       legalName: "The Adare Collection Limited",
       url: "https://theadarecollection.com",
       description:
-        "Exclusive private houses and estates near Adare Manor. Corporate and executive rentals and luxury homes in County Limerick. Independent accommodation provider — not affiliated with the Ryder Cup.",
+        "Exclusive private houses and estates near Adare Manor. Corporate and executive rentals and luxury homes in County Limerick. Independent marketing agent and booking facilitator for private residences — not affiliated with the Ryder Cup.",
       logo: {
         "@type": "ImageObject",
         url: "https://theadarecollection.com/images/navbar/adarecollectionlogo.png",

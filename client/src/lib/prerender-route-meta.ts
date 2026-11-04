@@ -87,7 +87,7 @@ export function getStaticRouteSEOPayloads(): RouteSEOPayload[] {
       path: "/contact",
       title: "Contact | Private Accommodation near Adare Manor | The Adare Collection Limited",
       description:
-        "Enquire about luxury private accommodation near Adare Manor. Contact The Adare Collection Limited (trading as The Adare Collection). Independent provider — we do not sell tickets or official hospitality.",
+        "Enquire about luxury private accommodation near Adare Manor. Contact The Adare Collection Limited (trading as The Adare Collection). Independent marketing agent and booking facilitator for private residences — we do not sell tickets or official hospitality.",
       keywords: SEO_META_KEYWORDS_COMPACT,
       ogImage: HERO_2,
       ogUrl: canonicalUrlForPath("/contact"),

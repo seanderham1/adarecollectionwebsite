@@ -184,7 +184,7 @@ export default function About() {
           </h2>
           <p className="text-base text-secondary leading-relaxed max-w-3xl mx-auto">
             Secure your exclusive private accommodation near Adare Manor with the confidence that comes
-            from working with a true hospitality professional. We are an independent provider and do not
+            from working with a true hospitality professional. We are an independent marketing agent and booking facilitator for private residences and do not
             sell tickets or official hospitality.
           </p>
         </div>

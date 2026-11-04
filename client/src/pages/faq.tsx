@@ -23,7 +23,7 @@ export default function FAQ() {
       answer: (
         <div className="space-y-3">
           <p>
-            No. The Adare Collection is an independent luxury accommodation provider. We are not
+            No. The Adare Collection is an independent marketing agent and booking facilitator for private residences. We are not
             affiliated with, endorsed by, or connected to Adare Manor, Ryder Cup Europe, The
             Professional Golfers&apos; Association of America, or any official Ryder Cup ticket or
             hospitality seller. Several of our homes sit on the Adare Manor demesne or within the

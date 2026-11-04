@@ -8,7 +8,7 @@ export const SEO_HOME_TITLE =
   "Luxury Rentals for The Ryder Cup 2027 | Adare Manor | The Adare Collection";
 
 export const SEO_HOME_DESCRIPTION =
-  "Luxury private house and estate rentals near Adare Manor for Ryder Cup 2027. Exclusive demesne homes and executive residences in County Limerick for corporate groups and private stays. Enquire for availability. Independent provider — not affiliated with the Ryder Cup.";
+  "Luxury private house and estate rentals near Adare Manor for Ryder Cup 2027. Exclusive demesne homes and executive residences in County Limerick for corporate groups and private stays. Enquire for availability. Independent marketing agent and booking facilitator for private residences — not affiliated with the Ryder Cup.";
 
 export const SEO_PROPERTIES_TITLE =
   "Properties | Luxury Houses for Rent near Adare Manor | The Adare Collection";
