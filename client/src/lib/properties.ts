@@ -223,7 +223,7 @@ export const properties: Property[] = [
     bedrooms: 2,
     bedroomsLabel: "2",
     description: "At the very centre of Ryder Cup 2027, metres from the range and a one-minute stroll to the 1st tee.",
-    fullDescription: "Putters Way is a rare and exclusive opportunity to stay close to the championship course 2027. Situated just metres from where the U.S and European team will warm up on the practice range and putting green and a one minute stroll to the 1st tee, it just doesn't get any closer than this!\n\nLocated in the prestigious private Golf Village, this property places guests at the centre of the tournament atmosphere.",
+    fullDescription: "Putters Way is a rare and exclusive opportunity to stay close to the 2027 championship course. Situated just metres from where the U.S and European team will warm up on the practice range and putting green and a one minute stroll to the 1st tee, it just doesn't get any closer than this!\n\nLocated in the prestigious private Golf Village, this property places guests at the centre of the tournament atmosphere.",
     specs: [
       { label: "Bedrooms", value: "2 double rooms ensuite" },
       { label: "Bathrooms", value: "2 bathrooms" },

@@ -20,7 +20,7 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
     SHARED_BOOKING_SHORT,
   ],
   "putters-way": [
-    `Bedrooms, kitchen, parking, and Wi-Fi with premium amenities and optional in-residence chef service. Booking availability is limited, contact us for guest count and rental confirmation.`,
+    `This home has a kitchen, restricted parking, Wi-Fi and premium amenities, with an optional in-residence chef service. Booking availability is limited, contact us for guest count and rental confirmation.`,
     SHARED_BOOKING_SHORT,
   ],
   "the-first-tee": [
