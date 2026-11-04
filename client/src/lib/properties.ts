@@ -198,13 +198,14 @@ export const properties: Property[] = [
       "Grand entrance hall with crystal chandelier and a grand piano, perfect for welcoming guests or evening entertainment.",
       "Three elegant reception areas: a large drawing room and two sitting rooms with ample tranquil seating",
       "Open-plan kitchen and living space with high-end finishes, adjoining a formal dining room for 10 people",
-      "Separate dining area capable of hosting 50+ guests.",
+      "Separate dining area capable of hosting 50+ guests, subject to house rules and prior approval.",
     ],
     amenities: [
       "Housekeeping",
       "Wi-Fi and satellite TV",
       "Games room with pool table, table tennis, and dart board; convertible into a fitness studio with treadmill (if required)",
       "Secure private parking",
+      "Quality bed linen and towels provided",
       "Welcome hamper",
     ],
     location: {

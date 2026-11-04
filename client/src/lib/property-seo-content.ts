@@ -16,7 +16,7 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
     SHARED_BOOKING_SHORT,
   ],
   "the-captains": [
-    `With multiple bedrooms, chef-ready kitchens, parking, and full amenities, it functions as a private whole-home base rather than a standard hotel stay. Wi-Fi and optional estate services help your group focus on the tournament, venue access and guest experience throughout Ireland.`,
+    `With multiple bedrooms, a chef-ready kitchen, parking, and full amenities, it functions as a private whole-home base rather than a standard hotel stay. Wi-Fi and optional estate services help your group focus on the tournament, venue access and guest experience throughout Ireland.`,
     SHARED_BOOKING_SHORT,
   ],
   "putters-way": [
