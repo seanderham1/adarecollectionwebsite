@@ -90,7 +90,7 @@ function ComingSoonCard() {
           </div>
           
           <h3 className="font-serif text-xl font-normal mb-2 text-primary">
-            View Our Additional Properties
+            More properties coming soon
           </h3>
 
           <p className="text-secondary text-sm leading-relaxed mb-6">
