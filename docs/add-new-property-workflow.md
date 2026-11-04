@@ -38,7 +38,7 @@ flowchart LR
 5. [ ] Build the **`images[]` array** in `properties.ts` as an **explicit list** of paths (avoid `Array.from` ranges once files are curated — removed files must not stay in the array).
 6. [ ] Set **`thumbnail`** to the **card / map popup** image (often same as **`images[0]`** / hero lead).
 7. [ ] Add **`Property`** object in `properties.ts` (all fields — see table below).
-8. [ ] Geocode **Eircode** (or use a vetted point). Set **`location.lat` / `location.lng`**.
+8. [ ] Set **`location.lat` / `location.lng`** from a vetted geocode (internal Eircode lookup is fine for your own use). **Never publish an Eircode** on the site, in `properties.ts`, GeoJSON, SEO/structured data, screenshots, or copy — see [Eircode privacy](#eircode-privacy).
 9. [ ] Add **GeoJSON `Feature`** to `properties.geojson`: **`coordinates`: `[lng, lat]`** (GeoJSON order), matching **`properties.id`**, **`thumb`** same path as `thumbnail` where possible.
 10. [ ] Add **sitemap** URL in [`client/public/sitemap.xml`](../client/public/sitemap.xml): `https://theadarecollection.com/property/<id>`.
 11. [ ] **Detail map** — In [`client/src/components/property-map.tsx`](../client/src/components/property-map.tsx), set **initial zoom** and **drive/walk radius** for off–Adare-Manor homes (see existing branches: `cragleigh-house`, `hillview-house`, `dunes-lodge`). Add a constant in [`client/src/lib/map-utils.ts`](../client/src/lib/map-utils.ts) if you need a new radius.
@@ -70,7 +70,6 @@ flowchart LR
 | `amenities` | Bullet list | Right column; **don’t repeat** add-on grid items (see below). |
 | `location` | `{ lat, lng }` | Match map point (WGS84). |
 | `walkingDistance` | Location line | e.g. drive time to Adare Manor. |
-| `eircode` | Optional | Shown on detail; structured data if set. |
 | `videoUrl` | Optional | `/videos/...` |
 | `matterportUrl` | Optional | 360° embed |
 
@@ -177,8 +176,13 @@ Only one of `dev` / `start` should bind **5000** at a time. If the port is busy 
 
 ---
 
-## Eircode & geocoding
+## Eircode privacy
 
-- Display in UI can keep spaces: `V35 HX25`.
-- Geocoders often want **no space**: `V35HX25`.
-- Use the same coordinates in **`Property.location`** and GeoJSON **`geometry.coordinates`**. A **townland / village centroid** is acceptable if the exact rooftop geocode is unknown.
+**Rule: property Eircodes must never be available to the public.**
+
+- Do **not** add an `eircode` field (or any postal code) to `properties.ts`, GeoJSON, detail UI, FAQ/copy, meta descriptions, or JSON-LD.
+- Do **not** put Eircodes in source comments, image filenames, or commit messages that ship with the repo for public listings.
+- You may still use an Eircode **internally** to geocode lat/lng; only publish approximate coordinates + drive/walk wording (e.g. “12 minutes to Adare Manor”).
+- A **townland / village centroid** is acceptable if the exact rooftop geocode is unknown.
+- Use the same coordinates in **`Property.location`** and GeoJSON **`geometry.coordinates`**.
+- Geocoders often want the Eircode with **no space** (e.g. `V35HX25`) when looking it up privately.

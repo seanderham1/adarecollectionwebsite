@@ -52,7 +52,6 @@ export function buildPropertyVacationRentalJsonLd(property: Property) {
       addressLocality: "Adare",
       addressRegion: "County Limerick",
       addressCountry: "IE",
-      ...(property.eircode ? { postalCode: property.eircode } : {}),
     },
     containsPlace: {
       "@type": "Accommodation",
@@ -88,7 +87,6 @@ export function buildPropertyLodgingJsonLd(property: Property) {
       addressLocality: "Adare",
       addressRegion: "County Limerick",
       addressCountry: "IE",
-      ...(property.eircode ? { postalCode: property.eircode } : {}),
     },
     geo: {
       "@type": "GeoCoordinates",

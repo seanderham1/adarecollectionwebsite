@@ -675,11 +675,6 @@ export default function PropertyDetail() {
                   <p className="text-sm text-primary font-serif mb-4" data-testid="property-walking-distance-detail">
                     {property.walkingDistance}
                   </p>
-                  {property.eircode && property.id !== "the-first-tee" && property.id !== "nead-fainleog" && property.id !== "the-manor-lodge" && property.id !== "casabel" && property.id !== "executive-city-residence" && (
-                    <p className="text-sm text-primary font-serif mb-4" data-testid="property-eircode">
-                      Eircode: {property.eircode}
-                    </p>
-                  )}
                   <div className="aspect-[1.7/1.1] bg-gray-200 relative overflow-hidden">
                     <PropertyMap propertyId={property.id} />
                   </div>

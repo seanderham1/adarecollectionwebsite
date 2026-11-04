@@ -16,7 +16,6 @@ export interface Property {
   };
   walkingDistance: string;
   videoUrl?: string;
-  eircode?: string;
   /** Matterport (or compatible) showcase URL for 360° embed */
   matterportUrl?: string;
   /** When set (e.g. "5-6"), used in UI/SEO instead of `${bedrooms}` for bedroom count */
@@ -341,7 +340,6 @@ export const properties: Property[] = [
     },
     walkingDistance: "100 yards to Ryder Cup practice range",
     videoUrl: "/videos/thefirsttee.mp4",
-    eircode: "V94 D40K",
     availabilityStatus: "RESERVED",
   },
   {
@@ -669,7 +667,6 @@ export const properties: Property[] = [
       lng: -8.880395148400085
     },
     walkingDistance: "Approximately 12 minutes' drive to Adare Manor; about 3 minutes to the Croagh Park & Ride at Smithfield.",
-    eircode: "V94 K3EX",
     matterportUrl: "https://my.matterport.com/show/?m=BxbEQdSmPXo",
     availabilityStatus: "RESERVED",
   },
@@ -981,7 +978,6 @@ export const properties: Property[] = [
     },
     walkingDistance:
       "Two-minute drive or approximately twenty-minute walk to the entrance of Adare Manor and the Ryder Cup venue.",
-    eircode: "V94 W959",
     matterportUrl: "https://my.matterport.com/show/?m=Byumeyi5wmc",
   },
   {
@@ -1090,7 +1086,6 @@ export const properties: Property[] = [
     },
     walkingDistance:
       "Approximately 550 yards from the gates of Adare Manor, within easy walking distance of Adare Village.",
-    eircode: "V94 XNN0",
     videoUrl: "/videos/themanorlodge.mp4",
     availabilityStatus: "RESERVED",
   },
@@ -1235,7 +1230,6 @@ export const properties: Property[] = [
     },
     walkingDistance:
       "Approximately 40 minutes by motorway to Adare Manor and the Ryder Cup venue. Nestled in Nenagh, County Tipperary, behind secure gates with beautifully maintained walled gardens.",
-    eircode: "E45 CD92",
     videoUrl: "/videos/riverstonabbey.mp4",
   },
   {
@@ -1304,7 +1298,6 @@ export const properties: Property[] = [
     },
     walkingDistance:
       "Two-minute walk to Kildimo village; approximately 12 minutes to the official Adare Park & Ride facility.",
-    eircode: "V94 VY8W",
   },
   {
     id: "coolbawn-quay",
@@ -1495,7 +1488,6 @@ export const properties: Property[] = [
     },
     walkingDistance:
       "Approximately 25 minutes' drive to Adare Manor; approximately 18 minutes to the official Park & Ride.",
-    eircode: "V94 638D",
     matterportUrl: "https://my.matterport.com/show/?m=zU22WX1FYYd",
   },
   {
@@ -1605,13 +1597,12 @@ export const properties: Property[] = [
       "Welcome hamper",
     ],
     location: {
-      // Friarstown / Ballyclough townland centroid near Limerick Golf Club (Eircode V94 T6YE)
+      // Friarstown / Ballyclough townland centroid near Limerick Golf Club
       lat: 52.59722,
       lng: -8.62778,
     },
     walkingDistance:
       "Approximately 16 minutes' drive to Adare Manor; approximately 11 minutes to Patrickswell Park & Ride.",
-    eircode: "V94 T6YE",
     matterportUrl: "https://my.matterport.com/show/?m=ZZYxqfkY7QF",
   },
   {
@@ -1680,13 +1671,12 @@ export const properties: Property[] = [
       "Housekeeping",
     ],
     location: {
-      // From property photo EXIF GPS (Eircode V94 E7F7 / Limetree Avenue, Adare)
+      // From property photo EXIF GPS (Limetree Avenue, Adare)
       lat: 52.561469,
       lng: -8.791406,
     },
     walkingDistance:
       "Approximately 500 metres' walk to the entrance of Adare Manor.",
-    eircode: "V94 E7F7",
   },
   {
     id: "hillcrest-house",
@@ -1763,7 +1753,7 @@ export const properties: Property[] = [
       "Housekeeping",
     ],
     location: {
-      // Geocoded from Eircode V42 HX70 (Knockbweeheen, Co. Limerick)
+      // Geocoded for Knockbweeheen, Co. Limerick
       lat: 52.5235513,
       lng: -9.0798048,
     },
