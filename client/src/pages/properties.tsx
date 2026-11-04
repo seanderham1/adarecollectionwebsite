@@ -131,7 +131,7 @@ export default function PropertiesPage() {
         <section className="max-w-4xl mx-auto mb-12 px-2 text-secondary text-sm leading-relaxed space-y-4 text-center">
           <h2 className="font-serif text-xl text-primary text-center">Planning your stay near Adare Manor</h2>
           <p>
-            Our rental homes include multiple bedrooms, fully equipped kitchens, private parking, guest wifi, and
+            Our rental homes include multiple bedrooms, fully equipped kitchens, private parking, guest Wi-Fi, and
             amenities suited to golf travel and hosted events. Proximity to the course varies by property, from
             walking distance on the demesne to executive homes near Galway and Limerick with chauffeur access to
             the tournament venue.

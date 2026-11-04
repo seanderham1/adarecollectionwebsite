@@ -123,7 +123,7 @@ export const PROPERTY_ON_PAGE_CHECKLIST = [
   "kitchen",
   "parking",
   "availability",
-  "wifi",
+  "Wi-Fi",
   "booking",
   "rental",
   "transportation",

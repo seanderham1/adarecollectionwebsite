@@ -11,7 +11,7 @@ const SHARED_TRANSPORT = `Transportation to Adare Manor varies by home: demesne 
 /** Extra paragraphs appended after fullDescription on property detail. */
 const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
   rangeview: [
-    `This large demesne rental offers bedrooms, chef-ready kitchen, parking, wifi, and amenities at the heart of the venue.`,
+    `This large demesne rental offers bedrooms, chef-ready kitchen, parking, Wi-Fi, and amenities at the heart of the venue.`,
     `Experience Ireland from inside the estate with concierge support for ground transportation and entertaining. Availability is exclusive for tournament week; booking is by private enquiry.`,
     SHARED_BOOKING_SHORT,
   ],
@@ -20,7 +20,7 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
     SHARED_BOOKING_SHORT,
   ],
   "putters-way": [
-    `Bedrooms, kitchen, parking, and wifi with premium amenities and optional in-residence chef service. Booking availability is limited, contact us for guest count and rental confirmation.`,
+    `Bedrooms, kitchen, parking, and Wi-Fi with premium amenities and optional in-residence chef service. Booking availability is limited, contact us for guest count and rental confirmation.`,
     SHARED_BOOKING_SHORT,
   ],
   "the-first-tee": [
@@ -33,7 +33,7 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
     `This rental suits guests who want prestige and privacy off the demesne while staying close to the course. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
   ],
   "darrira-house": [
-    `Amenities include accessibility features, wifi, and room for hosted meals. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
+    `Amenities include accessibility features, Wi-Fi, and room for hosted meals. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
   ],
   "croagh-house": [
     SHARED_BOOKING_SHORT,
@@ -54,12 +54,12 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
     `This executive Adare village residence suits guests who want contemporary interiors, outdoor entertaining and a short walk to Adare Manor for Ryder Cup 2027. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
   ],
   "dunes-lodge": [
-    `Dunes Lodge in Lahinch combines Wild Atlantic Way scenery with championship golf views, with kitchen, parking, wifi, and amenities for surfers and golf fans. The home suits guests who want a coastal Ireland experience.`,
+    `Dunes Lodge in Lahinch combines Wild Atlantic Way scenery with championship golf views, with kitchen, parking, Wi-Fi, and amenities for surfers and golf fans. The home suits guests who want a coastal Ireland experience.`,
     `Dunes Lodge offers group capacity availability for tournament week subject to confirmation. Booking includes guidance on travel time to Adare Manor and local dining options.`,
     `Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve. Helicopter transfers to Adare Manor may be arranged subject to availability; ground transportation and parking are included for self-drive guests.`,
   ],
   "derg-house": [
-    `This luxury country rental offers ensuite bedrooms, chef-ready kitchen, parking, wifi, and amenities for up to ten guests within easy reach of Adare Manor. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
+    `This luxury country rental offers ensuite bedrooms, chef-ready kitchen, parking, Wi-Fi, and amenities for up to ten guests within easy reach of Adare Manor. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,
   ],
   "riverston-abbey": [
     `This executive estate suits sponsors, corporate groups and multi-generational families who need extensive ensuite capacity, formal dining for up to thirty guests and a private gated base approximately 40 minutes from Adare Manor. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,

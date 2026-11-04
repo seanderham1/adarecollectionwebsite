@@ -111,7 +111,7 @@ You don’t need to list portrait filenames anywhere—only use correctly propor
 
 The detail page has a fixed **Add-on Services** grid (chauffeur, chef, helicopter, laundry, hospitality, etc.) for most homes.
 
-- Put **what’s included in the stay** in **`amenities`** (WiFi, linens, **in-home** laundry machines, daily housekeeping, parking, EV, office, etc.).
+- Put **what’s included in the stay** in **`amenities`** (Wi-Fi, linens, **in-home** laundry machines, daily housekeeping, parking, EV, office, etc.).
 - Put **booked / on-request services** that **duplicate** that grid **only** in the grid — not again as long amenity bullets (Hillview was trimmed for this reason).
 - **Exception:** one-line “available on request” summaries are used on some older entries; prefer **not** duplicating the same services listed as icon cards.
 
