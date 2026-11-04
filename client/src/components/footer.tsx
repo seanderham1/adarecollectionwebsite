@@ -159,7 +159,7 @@ export default function Footer() {
               className="text-gray-400 text-left mt-3 max-w-md leading-relaxed text-[8px]"
               data-testid="footer-disclaimer"
             >
-              The Adare Collection Limited, trading as The Adare Collection, is an independent luxury accommodation provider and is not affiliated with, endorsed by, or connected to Adare Manor, Ryder Cup Europe, The Professional Golfers&apos; Association of America, or any official Ryder Cup hospitality or ticket seller. We rent private residences and optional in-residence services only. We do not sell Ryder Cup tickets or official hospitality. Tickets and official hospitality are available solely via{" "}
+              The Adare Collection Limited, trading as The Adare Collection, is an independent luxury accommodation provider and is not affiliated with, endorsed by, or connected to Adare Manor, Ryder Cup Europe, The Professional Golfers&apos; Association of America, or any official Ryder Cup hospitality or ticket seller. We represent private residences and arrange optional in-residence services. We do not sell Ryder Cup tickets or official hospitality. Tickets and official hospitality are available solely via{" "}
               <a
                 href="https://www.rydercup.com/"
                 target="_blank"
