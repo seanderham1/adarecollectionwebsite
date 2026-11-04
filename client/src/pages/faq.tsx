@@ -144,7 +144,7 @@ export default function FAQ() {
     {
       question: "Do you provide transportation to the golf course?",
       answer:
-        "Several properties lie within walking distance of the Ryder Cup 2027 host venue. Properties further away can usually access private chauffeurs, shuttles, or licensed transport partners when arranged in advance as part of your stay planning.",
+        "Several properties lie within walking distance of the Ryder Cup 2027 host venue. Properties further away can usually access private chauffeurs, shuttles, or licensed transport partners when arranged in advance, at additional cost, as part of your stay planning.",
     },
     {
       question: "What happens if I need to cancel my booking?",
