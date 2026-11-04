@@ -1545,7 +1545,6 @@ export const properties: Property[] = [
       { label: "Number of TVs", value: "3 smart TVs" },
       { label: "Square footage", value: "3,900 sq ft" },
       { label: "Dining seating", value: "6 guests" },
-      { label: "Kitchen seating", value: "To be confirmed" },
     ],
     price: "POA",
     images: [
