@@ -1500,8 +1500,8 @@ export const properties: Property[] = [
     fullDescription:
       "Executive City Residence accommodating 16 guests across six floors, approximately 20 minutes from the Ryder Cup. Further details shared by enquiry only.",
     specs: [
-      { label: "Bedrooms", value: "8 bedrooms (6 with ensuite, 2 with separate WC and bathroom)" },
-      { label: "Bathrooms", value: "6 ensuites, 1 family bathroom, 1 WC" },
+      { label: "Bedrooms", value: "8 bedrooms (6 with ensuite, 2 with separate restroom and bathroom)" },
+      { label: "Bathrooms", value: "6 ensuites, 1 family bathroom, 1 restroom" },
       { label: "Occupancy", value: "16 people" },
       { label: "Distance from Adare Manor", value: "Approximately 20 minutes' drive" },
       { label: "Number of TVs", value: "4" },
