@@ -136,6 +136,7 @@ export const properties: Property[] = [
       "Housekeeping",
       "BBQ and smoker",
       "Secure private parking",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.55891014565409,
@@ -205,6 +206,7 @@ export const properties: Property[] = [
       "Wi-Fi and satellite TV",
       "Games room with pool table, table tennis, and dart board; convertible into a fitness studio with treadmill (if required)",
       "Secure private parking",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.55909971573407,
@@ -254,7 +256,8 @@ export const properties: Property[] = [
       "Located at the centre of the Adare Manor resort",
       "Wi-Fi",
       "Premium seating and entertainment areas",
-      "Housekeeping"
+      "Housekeeping",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.56182292270544,
@@ -329,7 +332,8 @@ export const properties: Property[] = [
       "Home office space",
       "Laundry facilities",
       "Quality bed linen and towels provided",
-      "Secure private setting"
+      "Secure private setting",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.56157892845145,
@@ -397,6 +401,7 @@ export const properties: Property[] = [
       "Wi-Fi and satellite TV",
       "Housekeeping",
       "Secure private parking",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.561116990572174,
@@ -453,7 +458,8 @@ export const properties: Property[] = [
       "Flexible living and dining spaces for formal or relaxed hosting",
       "Wi-Fi",
       "Proximity to Limerick City, the M20 motorway, and Shannon Airport",
-      "Housekeeping"
+      "Housekeeping",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.60043120307769,
@@ -809,6 +815,7 @@ export const properties: Property[] = [
       "Electric vehicle charging points",
       "Office space",
       "20 minutes from Limerick Junction, with direct trains to Adare",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.3714932,
@@ -894,6 +901,7 @@ export const properties: Property[] = [
       "Multiple bathrooms across floors",
       "Private parking",
       "20 minutes from Limerick Junction, with direct trains to Adare",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.3714932,
@@ -966,6 +974,7 @@ export const properties: Property[] = [
       "Open fireplace and kitchen stove",
       "Solar PV and EV charging",
       "Monitored security alarm",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.55127116942097,
@@ -1074,6 +1083,7 @@ export const properties: Property[] = [
       "Housekeeping",
       "BBQ",
       "Secure gated private parking",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.5654,
@@ -1144,6 +1154,7 @@ export const properties: Property[] = [
       "Secure private parking",
       "Panoramic countryside views",
       "Peaceful and private setting",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.562213,
@@ -1217,6 +1228,7 @@ export const properties: Property[] = [
       "Formal dining room for up to 30 guests",
       "Electric Aga",
       "BBQ",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.86609666666666,
@@ -1285,6 +1297,7 @@ export const properties: Property[] = [
       "Induction hob and steam oven",
       "Separate utility area",
       "Private on-site parking",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.6117,
@@ -1350,6 +1363,7 @@ export const properties: Property[] = [
       "Housekeeping",
       "Ample private parking",
       "Marked nature trails and outdoor pursuits",
+      "Welcome hamper",
     ],
     location: {
       lat: 53.010401300587425,
@@ -1474,6 +1488,7 @@ export const properties: Property[] = [
       "Satellite television and smart TV",
       "Housekeeping",
       "Secure private parking",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.5901619,
@@ -1511,6 +1526,7 @@ export const properties: Property[] = [
     features: [],
     amenities: [
       "Wi-Fi",
+      "Welcome hamper",
     ],
     location: {
       // Map uses Adare Manor centre only (no property pin) for privacy
@@ -1587,6 +1603,7 @@ export const properties: Property[] = [
       "Private patio and extensive gardens",
       "Private driveway parking",
       "Housekeeping",
+      "Welcome hamper",
     ],
     location: {
       // Friarstown / Ballyclough townland centroid near Limerick Golf Club (Eircode V94 T6YE)
