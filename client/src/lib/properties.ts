@@ -147,7 +147,7 @@ export const properties: Property[] = [
   {
     id: "the-captains",
     name: "The Captains",
-    subtitle: "Within Adare Manor's secure walls, 'Captains House' places you close to the championship course in complete privacy.",
+    subtitle: "Within Adare Manor's secure walls, 'The Captains' places you close to the championship course in complete privacy.",
     bedrooms: 6,
     bedroomsLabel: "6",
     description: "Within Adare Manor grounds, close to the championship course in complete privacy.",
