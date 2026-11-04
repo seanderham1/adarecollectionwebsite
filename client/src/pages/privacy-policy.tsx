@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
                     2.2 Information collected if a booking proceeds
                   </h3>
                   <p>
-                    If an enquiry becomes a booking, further information needed to perform the Residential Letting Agreement may be collected off-website (for example by email or in booking documents). That can include guest-party details, stay dates, postal address, and payment details for Deposit, Rent, and Security Deposit paid into our designated client account. Those details are not collected by the website form.
+                    If an enquiry becomes a booking, further information needed to perform the Residential Letting Agreement may be collected off-website (for example by email or in booking documents). That can include guest-party details, stay dates, postal address, and payment details for Deposit, Rent, and Security Deposit paid to The Adare Collection. Those details are not collected by the website form.
                   </p>
 
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
@@ -90,7 +90,7 @@ export default function PrivacyPolicy() {
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li><strong>Responding to enquiries:</strong> to assess your request, contact you from info@theadarecollection.ie and dylan@theadarecollection.ie, and discuss suitable properties</li>
-                    <li><strong>Service provision:</strong> where a booking proceeds, to market properties, facilitate the letting, collect Deposit, Rent, and Security Deposit into our designated client account, and coordinate guest services</li>
+                    <li><strong>Service provision:</strong> where a booking proceeds, to market properties, facilitate the letting, collect Deposit, Rent, and Security Deposit paid to The Adare Collection, and coordinate guest services</li>
                     <li><strong>Contract performance:</strong> to enable Owners and Occupiers to enter into and perform Residential Letting Agreements</li>
                     <li><strong>Sharing with partners you need:</strong> with property owners and with caterers, transport, concierge, security, or other suppliers where needed to deliver services you have asked us to arrange</li>
                     <li><strong>Legal compliance:</strong> to comply with applicable laws, regulations, and legal processes</li>
@@ -150,9 +150,8 @@ export default function PrivacyPolicy() {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>TLS encryption of data in transit between your browser, our website, and our Cloud Function</li>
                     <li>Processing of website enquiries on Google Cloud in the European Union (Belgium, europe-west1)</li>
-                    <li>Gmail App Password stored in Google Secret Manager rather than in application code</li>
+                    <li>Access to enquiry data is restricted and protected by technical safeguards.</li>
                     <li>Access to the Google Sheets lead register limited to named individuals</li>
-                    <li>Rate limiting on the enquiry endpoint to reduce abuse</li>
                   </ul>
                   <p>
                     No method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security.
