@@ -15,6 +15,7 @@ const SECTIONS = [
     title: "Optional services with your rental",
     paragraphs: [
       "Estate services are not included in the rental and are booked under a separate agreement.",
+      "Concierge, private chef and catering, chauffeur and licensed ground transfers, full laundry and security.",
     ],
   },
   {
