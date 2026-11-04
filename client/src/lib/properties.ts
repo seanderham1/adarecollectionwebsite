@@ -412,17 +412,17 @@ export const properties: Property[] = [
   {
     id: "cragleigh-house",
     name: "Cragleigh House",
-    subtitle: "Located just 15 drive minutes from Adare Manor with convenient access to Limerick, the M20 motorway, and Shannon Airport. Cragleigh House offers privacy, space, and effortless access to Ryder Cup 2027",
+    subtitle: "Located just 15 minutes' drive from Adare Manor with convenient access to Limerick, the M20 motorway, and Shannon Airport. Cragleigh House offers privacy, space, and effortless access to Ryder Cup 2027",
     bedrooms: 5,
     bedroomsLabel: "5",
     description: "Just 15 minutes from Adare Manor, manor-style estate with space and effortless Ryder Cup access.",
-    fullDescription: "Cragleigh House is a magnificent manor-style residence located just under 15 minutes drive from the Ryder Cup 2027 venue at Adare Manor. Positioned within easy reach of the action, this elegant estate combines traditional charm with modern luxury across extensive gardens and refined interiors.\n\nOffering five spacious double bedrooms, multiple reception rooms, and formal dining areas, Cragleigh House is ideal for groups or families.",
+    fullDescription: "Cragleigh House is a magnificent manor-style residence located just under 15 minutes' drive from the Ryder Cup 2027 venue at Adare Manor. Positioned within easy reach of the action, this elegant estate combines traditional charm with modern luxury across extensive gardens and refined interiors.\n\nOffering five spacious double bedrooms, multiple reception rooms, and formal dining areas, Cragleigh House is ideal for groups or families.",
     specs: [
       { label: "Bedrooms", value: "5 double rooms; 1 master ensuite, 2 x 2 Jack and Jill." },
       { label: "Bathrooms", value: "4" },
       { label: "Occupancy", value: "12" },
-      { label: "Distance from Adare Manor", value: "11 miles (15 mins drive)" },
-      { label: "Distance to Park and Ride", value: "4.7mls (10 minutes drive)" },
+      { label: "Distance from Adare Manor", value: "11 miles (15 minutes' drive)" },
+      { label: "Distance to Park and Ride", value: "4.7 miles (10 minutes' drive)" },
       { label: "Number of TVs", value: "4" },
       { label: "Square footage", value: "5,500 sq ft" },
       { label: "Dining seating", value: "8" },
@@ -463,7 +463,7 @@ export const properties: Property[] = [
       lat: 52.60043120307769,
       lng: -8.633705271352245
     },
-    walkingDistance: "15 minutes drive",
+    walkingDistance: "15 minutes' drive",
     videoUrl: "/videos/cragleighhouse.mp4",
     availabilityStatus: "RESERVED",
   },
@@ -474,7 +474,7 @@ export const properties: Property[] = [
     bedrooms: 5,
     bedroomsLabel: "5",
     description: "Just ten minutes from Adare Manor, an elegant private retreat in Croagh, County Limerick.",
-    fullDescription: "Located just 12 minutes drive from Adare Manor, Darrira House offers an elegant retreat in the peaceful countryside of Croagh, County Limerick. With its beautifully furnished interiors and expansive outdoor spaces, this residence is ideally suited for guests seeking comfort and convenience.\n\nThe property has five bedrooms: a master ensuite; one double with shower and separate half bathroom; two doubles sharing the main bathroom; and a single guest bedroom, with one adapted to accommodate guests with specific accessibility needs. In total, the home offers two bathrooms, a wetroom and two half bathrooms.\n\nRamp access through the front door. Double doors from the hallway open into the sitting room, which flows into a spacious open-plan kitchen and onwards to a bright conservatory.",
+    fullDescription: "Located just 12 minutes' drive from Adare Manor, Darrira House offers an elegant retreat in the peaceful countryside of Croagh, County Limerick. With its beautifully furnished interiors and expansive outdoor spaces, this residence is ideally suited for guests seeking comfort and convenience.\n\nThe property has five bedrooms: a master ensuite; one double with shower and separate half bathroom; two doubles sharing the main bathroom; and a single guest bedroom, with one adapted to accommodate guests with specific accessibility needs. In total, the home offers two bathrooms, a wetroom and two half bathrooms.\n\nRamp access through the front door. Double doors from the hallway open into the sitting room, which flows into a spacious open-plan kitchen and onwards to a bright conservatory.",
     specs: [
       { label: "Bedrooms", value: "4 double bedrooms and 1 single bedroom" },
       { label: "Bathrooms", value: "2 bathrooms, wetroom and 2 half bathrooms" },
@@ -519,7 +519,7 @@ export const properties: Property[] = [
       lat: 52.551248755996916,
       lng: -8.874792660717345
     },
-    walkingDistance: "10 minutes drive",
+    walkingDistance: "10 minutes' drive",
     videoUrl: "/videos/darrirahouse.mp4"
   },
   {
@@ -531,13 +531,13 @@ export const properties: Property[] = [
     description:
       "Privacy and direct Ryder Cup access (12 minutes from Adare Manor, 3 minutes from the official Park & Ride).",
     fullDescription:
-      "Croagh House offers a perfect base just 12 minutes drive from Adare Manor and 3 minutes drive from the official park & ride at Smithfield, ensuring direct access to the Ryder Cup. It is a private, modern residence curated for hosting and seamless access to the Ryder Cup.\n\nIts proximity to Parkview House also creates an opportunity for larger groups to secure adjacent accommodation, combining capacity with convenience.\n\nThe residence comprises 4-5 bedrooms (two ensuite), with the flexibility to accommodate an additional guest room on the ground floor if required. The master suite features a walk-in wardrobe and a spa-quality bathroom with a freestanding jacuzzi bath, walk-in shower, and double vanity.\n\nA grand entrance hallway with statement chandelier leads into multiple reception spaces, including a main living area with reclining seating and a separate media lounge, allowing for both formal hosting and relaxed downtime. The open-plan kitchen and dining area is designed for entertaining, featuring a bespoke in-frame kitchen finished with premium appliances including a Rangemaster cooker, smart American-style fridge/freezer, quartz worktops, and a wine fridge, with access to a private patio and garden.",
+      "Croagh House offers a perfect base just 12 minutes' drive from Adare Manor and 3 minutes' drive from the official park & ride at Smithfield, ensuring direct access to the Ryder Cup. It is a private, modern residence curated for hosting and seamless access to the Ryder Cup.\n\nIts proximity to Parkview House also creates an opportunity for larger groups to secure adjacent accommodation, combining capacity with convenience.\n\nThe residence comprises 4-5 bedrooms (two ensuite), with the flexibility to accommodate an additional guest room on the ground floor if required. The master suite features a walk-in wardrobe and a spa-quality bathroom with a freestanding jacuzzi bath, walk-in shower, and double vanity.\n\nA grand entrance hallway with statement chandelier leads into multiple reception spaces, including a main living area with reclining seating and a separate media lounge, allowing for both formal hosting and relaxed downtime. The open-plan kitchen and dining area is designed for entertaining, featuring a bespoke in-frame kitchen finished with premium appliances including a Rangemaster cooker, smart American-style fridge/freezer, quartz worktops, and a wine fridge, with access to a private patio and garden.",
     specs: [
       { label: "Bedrooms", value: "4/5 double rooms; 2 ensuite, 2 with shared bathroom." },
       { label: "Bathrooms", value: "4" },
       { label: "Occupancy", value: "10" },
-      { label: "Distance from Adare Manor", value: "6 miles (12 mins drive)" },
-      { label: "Distance to Park and Ride", value: "1.8mls (3 minutes drive)" },
+      { label: "Distance from Adare Manor", value: "6 miles (12 minutes' drive)" },
+      { label: "Distance to Park and Ride", value: "1.8 miles (3 minutes' drive)" },
       { label: "Number of TVs", value: "3" },
       { label: "Square footage", value: "2,500 sq ft" },
       { label: "Dining seating", value: "6-8" },
@@ -609,13 +609,13 @@ export const properties: Property[] = [
     description:
       "High-capacity private residence for up to 12 guests (12 minutes from Adare Manor, 3 minutes from the official Park & Ride).",
     fullDescription:
-      "Parkview House is a private residence positioned just 12 minutes drive from Adare Manor and only 3 minutes drive from the official Park & Ride at Smithfield, offering one of the most practical and accessible bases available for Ryder Cup 2027.\n\nLocated within a quiet, residential setting, the property is ideally configured for group hosting at scale, accommodating up to 12 guests across a flexible 6-7 bedroom layout. Its proximity to Croagh House also creates a rare opportunity for larger groups to secure adjacent accommodation, combining capacity with convenience.\n\nInside, the home is designed around comfort and flow, with multiple living spaces that allow guests to host, or unwind with ease. A bright, open-plan kitchen and dining area, complemented by a sunroom and two separate reception rooms, each with its own open fireplace.\n\nThe bedroom configuration is well suited to group stays, offering a mix of ensuite and shared arrangements that maximise both privacy and capacity. The master bedroom includes an ensuite bathroom, while a second ensuite bedroom and additional shared bathrooms support the remaining rooms. A Jacuzzi bath in the main bathroom provides a welcome space to relax after a day on the course.",
+      "Parkview House is a private residence positioned just 12 minutes' drive from Adare Manor and only 3 minutes' drive from the official Park & Ride at Smithfield, offering one of the most practical and accessible bases available for Ryder Cup 2027.\n\nLocated within a quiet, residential setting, the property is ideally configured for group hosting at scale, accommodating up to 12 guests across a flexible 6-7 bedroom layout. Its proximity to Croagh House also creates a rare opportunity for larger groups to secure adjacent accommodation, combining capacity with convenience.\n\nInside, the home is designed around comfort and flow, with multiple living spaces that allow guests to host, or unwind with ease. A bright, open-plan kitchen and dining area, complemented by a sunroom and two separate reception rooms, each with its own open fireplace.\n\nThe bedroom configuration is well suited to group stays, offering a mix of ensuite and shared arrangements that maximise both privacy and capacity. The master bedroom includes an ensuite bathroom, while a second ensuite bedroom and additional shared bathrooms support the remaining rooms. A Jacuzzi bath in the main bathroom provides a welcome space to relax after a day on the course.",
     specs: [
       { label: "Bedrooms", value: "6/7 bedrooms; 2 doubles ensuite, 1 double and one twin with shared bathroom. One triple and a single room with shared bathroom." },
       { label: "Bathrooms", value: "4" },
       { label: "Occupancy", value: "12" },
-      { label: "Distance from Adare Manor", value: "6 miles (12 mins drive)" },
-      { label: "Distance to Park and Ride", value: "1.8mls (3 minutes drive)" },
+      { label: "Distance from Adare Manor", value: "6 miles (12 minutes' drive)" },
+      { label: "Distance to Park and Ride", value: "1.8 miles (3 minutes' drive)" },
       { label: "Number of TVs", value: "3" },
       { label: "Square footage", value: "2,500 sq ft" },
       { label: "Dining seating", value: "8-10" },
@@ -681,8 +681,8 @@ export const properties: Property[] = [
       { label: "Bedrooms", value: "4 bedrooms; 3 King, One quadruple." },
       { label: "Bathrooms", value: "3 bathrooms" },
       { label: "Occupancy", value: "10" },
-      { label: "Distance from Adare Manor", value: "53 miles (1hr 10 mins drive)" },
-      { label: "Distance to Park and Ride", value: "48 miles (1 hr 4 mins drive)" },
+      { label: "Distance from Adare Manor", value: "53 miles (1hr 10 minutes' drive)" },
+      { label: "Distance to Park and Ride", value: "48 miles (1 hr 4 minutes' drive)" },
       { label: "Number of TVs", value: "2" },
       { label: "Square footage", value: "1,800 sq ft" },
       { label: "Dining seating", value: "8" },
@@ -751,9 +751,9 @@ export const properties: Property[] = [
       { label: "Bedrooms", value: "6 bedrooms; 2 doubles ensuite, 2 x 2 doubles with shared bathrooms." },
       { label: "Bathrooms", value: "4" },
       { label: "Occupancy", value: "14" },
-      { label: "Distance from Adare Manor", value: "26 miles (45 mins drive)" },
-      { label: "Distance to Park and Ride", value: "23 miles (40 mins drive)" },
-      { label: "Distance to Limerick Junction", value: "12 miles (20 minutes drive + approx. 45 min shuttle)" },
+      { label: "Distance from Adare Manor", value: "26 miles (45 minutes' drive)" },
+      { label: "Distance to Park and Ride", value: "23 miles (40 minutes' drive)" },
+      { label: "Distance to Limerick Junction", value: "12 miles (20 minutes' drive + approx. 45 min shuttle)" },
       { label: "Number of TVs", value: "3" },
       { label: "Square footage", value: "4,300 sq ft" },
       { label: "Dining seating", value: "8-10" },
@@ -828,14 +828,14 @@ export const properties: Property[] = [
     description:
       "Private residence for up to 14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     fullDescription:
-      "Portland House is a large private residence suited to extended families or groups for the Ryder Cup 2027. It sits just 45 minutes drive from Adare Manor and 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare. It can be booked alongside neighbouring Hillview House for larger parties who want two houses side by side.\n\nDownstairs revolves around a large reception space: a welcoming kitchen area, formal and informal sitting rooms, a study, and a sun room. Sleeping quarters are arranged across ground, first, and second floors, including a ground-floor master suite, a first-floor master, and two further first-floor bedrooms. Flexible attic accommodation with its own bathroom gives privacy and flexibility for mixed groups.\n\nAdditional touches include multiple bathrooms, an outdoor bar for relaxed evenings, and parking on site. The layout is designed for comfortable stays, with space to gather, work, and unwind between tournament days.",
+      "Portland House is a large private residence suited to extended families or groups for the Ryder Cup 2027. It sits just 45 minutes' drive from Adare Manor and 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare. It can be booked alongside neighbouring Hillview House for larger parties who want two houses side by side.\n\nDownstairs revolves around a large reception space: a welcoming kitchen area, formal and informal sitting rooms, a study, and a sun room. Sleeping quarters are arranged across ground, first, and second floors, including a ground-floor master suite, a first-floor master, and two further first-floor bedrooms. Flexible attic accommodation with its own bathroom gives privacy and flexibility for mixed groups.\n\nAdditional touches include multiple bathrooms, an outdoor bar for relaxed evenings, and parking on site. The layout is designed for comfortable stays, with space to gather, work, and unwind between tournament days.",
     specs: [
       { label: "Bedrooms", value: "6 bedrooms; 3 doubles ensuite, 2 x 2 doubles with shared bathrooms, 1 double own bathroom" },
       { label: "Bathrooms", value: "7 and 1 half bathroom" },
       { label: "Occupancy", value: "14" },
-      { label: "Distance from Adare Manor", value: "26 miles (45 mins drive)" },
-      { label: "Distance to Park and Ride", value: "23 miles (40 mins drive)" },
-      { label: "Distance to Limerick Junction", value: "12 miles (20 minutes drive + approx. 45 min shuttle)" },
+      { label: "Distance from Adare Manor", value: "26 miles (45 minutes' drive)" },
+      { label: "Distance to Park and Ride", value: "23 miles (40 minutes' drive)" },
+      { label: "Distance to Limerick Junction", value: "12 miles (20 minutes' drive + approx. 45 min shuttle)" },
       { label: "Number of TVs", value: "5" },
       { label: "Square footage", value: "6,000 sq ft" },
       { label: "Dining seating", value: "8-10" },
