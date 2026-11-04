@@ -111,7 +111,7 @@ export default function FAQ() {
             <Link href="/contact" className="text-primary underline underline-offset-2 hover:no-underline">
               contact form
             </Link>
-            . We&apos;ll discuss your requirements, show you available properties, and guide you through the booking process. All bookings are handled personally by our team. Each reservation is for a fixed rental period of up to eight nights, with no minimum length required.
+            . We&apos;ll discuss your requirements, show you available properties, and guide you through the booking process. All bookings are handled personally by our team. Ryder Cup stays are a fixed rental for the duration of the event, up to eight nights.
           </p>
           <p>
             A non-refundable booking deposit of 50% is required upon signing to secure a property. The remaining balance is due no later than 31 January 2027 unless otherwise agreed in writing, and a security deposit of 15% of the Rent (excluding VAT) is required with final payment. Full payment terms are in our{" "}
@@ -139,7 +139,7 @@ export default function FAQ() {
     {
       question: "What are the stay lengths for Ryder Cup 2027?",
       answer:
-        "Stays are offered for a fixed rental period of up to eight nights during the Ryder Cup window. There is no minimum stay; you may book for fewer nights within that cap. Your quoted price and payment schedule cover the agreed period confirmed at booking (up to eight nights), not open-ended nightly extensions. Exact check-in and check-out dates are finalised when you enquire, subject to availability.",
+        "Ryder Cup stays are a fixed rental for the duration of the event, up to eight nights. Your quoted price and payment schedule cover the agreed period confirmed at booking, not open-ended nightly extensions. Exact check-in and check-out dates are finalised when you enquire, subject to availability.",
     },
     {
       question: "Do you provide transportation to the golf course?",
