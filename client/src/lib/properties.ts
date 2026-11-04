@@ -995,7 +995,7 @@ export const properties: Property[] = [
       { label: "Bedrooms", value: "5 double rooms, 2 ensuite, 2 with a shared bathroom" },
       { label: "Bathrooms", value: "3 + 1 half bathroom" },
       { label: "Occupancy", value: "10" },
-      { label: "Distance from Adare Manor", value: "550 yards." },
+      { label: "Distance from Adare Manor", value: "550 yards from the gates of Adare Manor" },
       { label: "Number of TVs", value: "2 smart TVs" },
       { label: "Square footage", value: "4,000 sq ft" },
       { label: "Dining seating", value: "8-10" },
