@@ -421,7 +421,7 @@ export const properties: Property[] = [
     specs: [
       { label: "Bedrooms", value: "5 double rooms; 1 master ensuite, 2 x 2 Jack and Jill." },
       { label: "Bathrooms", value: "4" },
-      { label: "Occupancy", value: "12" },
+      { label: "Occupancy", value: "10" },
       { label: "Distance from Adare Manor", value: "11 miles (15 minutes' drive)" },
       { label: "Distance to Park and Ride", value: "4.7 miles (10 minutes' drive)" },
       { label: "Number of TVs", value: "4" },
@@ -536,7 +536,7 @@ export const properties: Property[] = [
     specs: [
       { label: "Bedrooms", value: "4/5 double rooms; 2 ensuite, 2 with shared bathroom." },
       { label: "Bathrooms", value: "4" },
-      { label: "Occupancy", value: "10" },
+      { label: "Occupancy", value: "8" },
       { label: "Distance from Adare Manor", value: "6 miles (12 minutes' drive)" },
       { label: "Distance to Park and Ride", value: "1.8 miles (3 minutes' drive)" },
       { label: "Number of TVs", value: "3" },
@@ -730,7 +730,8 @@ export const properties: Property[] = [
       "Optional transport services (airport pick-up, transfers to Adare Manor)",
       "Laundry and catering available on request",
       "One-week rental only (week before, during, and after Ryder Cup available separately)",
-      "Price on application"
+      "Price on application",
+      "Welcome hamper",
     ],
     location: {
       lat: 52.9346,
@@ -742,16 +743,16 @@ export const properties: Property[] = [
     id: "hillview-house",
     name: "Hillview House",
     subtitle:
-      "Luxury modern residence for Ryder Cup 2027, up to 14 guests, approximately 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
+      "Luxury modern residence for Ryder Cup 2027, up to 12-14 guests, approximately 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     bedrooms: 6,
     description:
-      "Luxury modern residence for up to 14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
+      "Luxury modern residence for up to 12-14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     fullDescription:
-      "Hillview House is a beautifully finished, modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor and a 20-minute drive from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare. This property combines contemporary design and generous living space.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 14 guests sharing across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility.\n\nSet behind secure gates and positioned alongside a second residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.\n\nThe property includes a modern kitchen, guest Wi-Fi, and private parking.",
+      "Hillview House is a beautifully finished, modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor and a 20-minute drive from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare. This property combines contemporary design and generous living space.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 12-14 guests sharing across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility.\n\nSet behind secure gates and positioned alongside a second residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.\n\nThe property includes a modern kitchen, guest Wi-Fi, and private parking.",
     specs: [
       { label: "Bedrooms", value: "6 bedrooms; 2 doubles ensuite, 2 x 2 doubles with shared bathrooms." },
       { label: "Bathrooms", value: "4" },
-      { label: "Occupancy", value: "14" },
+      { label: "Occupancy", value: "12-14" },
       { label: "Distance from Adare Manor", value: "26 miles (45 minutes' drive)" },
       { label: "Distance to Park and Ride", value: "23 miles (40 minutes' drive)" },
       { label: "Distance to Limerick Junction", value: "12 miles (20 minutes' drive + approx. 45 min shuttle)" },
@@ -827,13 +828,13 @@ export const properties: Property[] = [
       "Generous private residence for Ryder Cup 2027, just 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare; pairs naturally with neighbouring Hillview House.",
     bedrooms: 6,
     description:
-      "Private residence for up to 14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
+      "Private residence for up to 12-14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     fullDescription:
       "Portland House is a large private residence suited to extended families or groups for the Ryder Cup 2027. It sits just 45 minutes' drive from Adare Manor and 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare. It can be booked alongside neighbouring Hillview House for larger parties who want two houses side by side.\n\nDownstairs revolves around a large reception space: a welcoming kitchen area, formal and informal sitting rooms, a study, and a sun room. Sleeping quarters are arranged across ground, first, and second floors, including a ground-floor master suite, a first-floor master, and two further first-floor bedrooms. Flexible attic accommodation with its own bathroom gives privacy and flexibility for mixed groups.\n\nAdditional touches include multiple bathrooms, an outdoor bar for relaxed evenings, and parking on site. The layout is designed for comfortable stays, with space to gather, work, and unwind between tournament days.",
     specs: [
       { label: "Bedrooms", value: "6 bedrooms; 3 doubles ensuite, 2 x 2 doubles with shared bathrooms, 1 double own bathroom" },
       { label: "Bathrooms", value: "7 and 1 half bathroom" },
-      { label: "Occupancy", value: "14" },
+      { label: "Occupancy", value: "12-14" },
       { label: "Distance from Adare Manor", value: "26 miles (45 minutes' drive)" },
       { label: "Distance to Park and Ride", value: "23 miles (40 minutes' drive)" },
       { label: "Distance to Limerick Junction", value: "12 miles (20 minutes' drive + approx. 45 min shuttle)" },
@@ -994,7 +995,7 @@ export const properties: Property[] = [
     specs: [
       { label: "Bedrooms", value: "5 double rooms, 2 ensuite, 2 with a shared bathroom" },
       { label: "Bathrooms", value: "3 + 1 half bathroom" },
-      { label: "Occupancy", value: "10" },
+      { label: "Occupancy", value: "8-10" },
       { label: "Distance from Adare Manor", value: "550 yards from the gates of Adare Manor" },
       { label: "Number of TVs", value: "2 smart TVs" },
       { label: "Square footage", value: "4,000 sq ft" },
@@ -1355,7 +1356,6 @@ export const properties: Property[] = [
       "Housekeeping",
       "Ample private parking",
       "Marked nature trails and outdoor pursuits",
-      "Welcome hamper",
     ],
     location: {
       lat: 53.010401300587425,
