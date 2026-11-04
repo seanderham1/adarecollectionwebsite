@@ -118,7 +118,7 @@ const blogPosts: BlogPost[] = [
     title: "How Adare Is Preparing for the Ryder Cup",
     excerpt:
       "From bunker rebuilds and regrassing to park-and-ride plans and temporary grandstands, Adare Manor and the wider Mid-West are deep into the work of turning a quiet estate into a centenary Ryder Cup stage.",
-    publishedAt: "2026-09-15",
+    publishedAt: "2026-11-04",
     category: "NEWS",
     readTimeMinutes: 6,
     heroImage: "/images/blog/adare-manor-preparing-ryder-cup.webp",
