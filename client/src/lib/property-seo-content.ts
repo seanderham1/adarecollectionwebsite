@@ -86,7 +86,7 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
     SHARED_BOOKING_SHORT,
   ],
   "limetree-avenue": [
-    `Limetree Avenue suits families and private groups who want a bright five-bedroom Adare rental within walking distance of Adare Manor, with dining for ten, two sitting rooms and private garden parking for Ryder Cup week.`,
+    `Limetree Avenue suits families and private groups who want a bright five-bedroom Adare rental within walking distance of Adare Manor, with dining for ten, two sitting rooms and a private garden and off-street parking for Ryder Cup week.`,
     SHARED_BOOKING_SHORT,
   ],
   "hillcrest-house": [
