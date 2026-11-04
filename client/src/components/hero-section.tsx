@@ -444,12 +444,12 @@ export default function HeroSection() {
               {/* Overlay Content */}
               <div className="absolute inset-0 bg-black bg-opacity-15 flex items-center">
                 <div className="text-left text-white px-6 lg:px-8 max-w-2xl">
-                  <h1 className="font-serif text-sm sm:text-base md:text-[calc(1.55*0.875rem)] mb-0 md:mb-1 leading-tight font-medium">
+                  <p className="font-serif text-sm sm:text-base md:text-[calc(1.55*0.875rem)] mb-0 md:mb-1 leading-tight font-medium">
                     Private Accommodation near Adare Manor
-                  </h1>
-                  <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mt-0 mb-2 md:mb-6 leading-tight font-medium">
+                  </p>
+                  <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mt-0 mb-2 md:mb-6 leading-tight font-medium">
                     Luxury Rentals for The Ryder Cup 2027
-                  </h2>
+                  </h1>
                   <p className="text-white mb-2 md:mb-6 font-medium text-xs sm:text-sm md:text-[calc(1.4*0.875rem)]">
                     Private Residences | Adare Manor Estate & Surrounds | Tournament week stays
                   </p>

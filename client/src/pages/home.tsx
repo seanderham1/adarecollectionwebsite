@@ -41,9 +41,9 @@ export default function Home() {
       {/* Introduction Section */}
       <section className="py-16 px-6 bg-white w-full" data-testid="introduction-section">
         <div className="w-full text-center">
-          <h1 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-4" data-testid="introduction-title">
+          <h2 className="font-serif text-3xl md:text-4xl font-normal text-gray-900 mb-4" data-testid="introduction-title">
             Curated luxury near Adare Manor
-          </h1>
+          </h2>
           <p className="font-serif text-lg text-gray-800 mb-6 max-w-3xl mx-auto">
             Private estates and executive rentals near Adare Manor for tournament week 2027
           </p>
