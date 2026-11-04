@@ -1752,7 +1752,6 @@ export const properties: Property[] = [
     },
     walkingDistance:
       "Near Newcastle West, Co. Limerick — 21 km from Adare Manor.",
-    eircode: "V42 HX70",
     // play=1 opens Showcase in the modal; qs=1 quick-starts; ts=2 starts the Guided Tour
     // ~2s after the initial fly-in (Matterport URL params — uses the tour saved on the model).
     matterportUrl:
