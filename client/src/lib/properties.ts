@@ -475,11 +475,11 @@ export const properties: Property[] = [
     bedrooms: 5,
     bedroomsLabel: "5",
     description: "Just ten minutes from Adare Manor, an elegant private retreat in Croagh, County Limerick.",
-    fullDescription: "Located just 12 minutes' drive from Adare Manor, Darrira House offers an elegant retreat in the peaceful countryside of Croagh, County Limerick. With its beautifully furnished interiors and expansive outdoor spaces, this residence is ideally suited for guests seeking comfort and convenience.\n\nThe property has five bedrooms: a master ensuite; one double with shower and separate half bathroom; two doubles sharing the main bathroom; and a single guest bedroom, with one adapted to accommodate guests with specific accessibility needs. In total, the home offers two bathrooms, a wetroom and two half bathrooms.\n\nRamp access through the front door. Double doors from the hallway open into the sitting room, which flows into a spacious open-plan kitchen and onwards to a bright conservatory.",
+    fullDescription: "Located just 10 minutes' drive from Adare Manor, Darrira House offers an elegant retreat in the peaceful countryside of Croagh, County Limerick. With its beautifully furnished interiors and expansive outdoor spaces, this residence is ideally suited for guests seeking comfort and convenience.\n\nThe property has five bedrooms: a master ensuite; one double with shower and separate half bathroom; two doubles sharing the main bathroom; and a single guest bedroom, with one adapted to accommodate guests with specific accessibility needs. In total, the home offers two bathrooms, a wetroom and two half bathrooms.\n\nRamp access through the front door. Double doors from the hallway open into the sitting room, which flows into a spacious open-plan kitchen and onwards to a bright conservatory.",
     specs: [
       { label: "Bedrooms", value: "4 double bedrooms and 1 single bedroom" },
       { label: "Bathrooms", value: "2 bathrooms, wetroom and 2 half bathrooms" },
-      { label: "Accessibility", value: "Downstairs double bedroom, adapted for special needs" },
+      { label: "Accessibility", value: "Downstairs double bedroom, adapted for accessibility needs" },
       { label: "Kitchen & dining", value: "Stylish kitchen-dining space opening to conservatory" },
       { label: "Interiors", value: "Elegant interiors and abundant natural light" },
       { label: "Location", value: "Quiet village location just 10 minutes from Adare Manor" },
