@@ -448,7 +448,7 @@ export default function HeroSection() {
                     Private Accommodation near Adare Manor
                   </h1>
                   <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mt-0 mb-2 md:mb-6 leading-tight font-medium">
-                    Luxury Rentals at Adare Manor
+                    Luxury Rentals for The Ryder Cup 2027
                   </h2>
                   <p className="text-white mb-2 md:mb-6 font-medium text-xs sm:text-sm md:text-[calc(1.4*0.875rem)]">
                     Private Residences | Adare Manor Estate & Surrounds | Tournament week stays
