@@ -117,10 +117,6 @@
         "destination": "/_prerender/property__portland-house.html"
       },
       {
-        "source": "/property/nead-fainleog",
-        "destination": "/_prerender/property__nead-fainleog.html"
-      },
-      {
         "source": "/property/the-manor-lodge",
         "destination": "/_prerender/property__the-manor-lodge.html"
       },
@@ -145,6 +141,10 @@
         "destination": "/_prerender/property__casabel.html"
       },
       {
+        "source": "/property/executive-city-residence",
+        "destination": "/_prerender/property__executive-city-residence.html"
+      },
+      {
         "source": "/property/friarstown-residence",
         "destination": "/_prerender/property__friarstown-residence.html"
       },
@@ -153,8 +153,8 @@
         "destination": "/_prerender/property__limetree-avenue.html"
       },
       {
-        "source": "/property/executive-city-residence",
-        "destination": "/_prerender/property__executive-city-residence.html"
+        "source": "/property/hillcrest-house",
+        "destination": "/_prerender/property__hillcrest-house.html"
       },
       {
         "source": "/blog/jon-rahm-ireland-special-place-irish-open-2026",
@@ -211,10 +211,6 @@
       {
         "source": "/blog/how-to-apply-ryder-cup-2027-ballot",
         "destination": "/_prerender/blog__how-to-apply-ryder-cup-2027-ballot.html"
-      },
-      {
-        "source": "/property/hillcrest-house",
-        "destination": "/_prerender/property__hillcrest-house.html"
       },
       {
         "source": "**",
@@ -390,15 +386,6 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/portland-house>; rel=\"canonical\""
-          }
-        ]
-      },
-      {
-        "source": "/property/nead-fainleog",
-        "headers": [
-          {
-            "key": "Link",
-            "value": "<https://theadarecollection.com/property/nead-fainleog>; rel=\"canonical\""
           }
         ]
       },
