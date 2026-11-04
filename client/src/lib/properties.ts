@@ -741,19 +741,19 @@ export const properties: Property[] = [
     id: "hillview-house",
     name: "Hillview House",
     subtitle:
-      "Five-star modern residence for Ryder Cup 2027, up to 14 guests, approximately 45 minutes from Adare Manor; 20 minutes from Limerick Junction with direct trains to Adare.",
+      "Five-star modern residence for Ryder Cup 2027, up to 14 guests, approximately 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     bedrooms: 6,
     description:
-      "Five-star modern residence for up to 14 guests, 45 minutes from Adare Manor, with train access to Adare via Limerick Junction.",
+      "Five-star modern residence for up to 14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     fullDescription:
-      "Hillview House is a beautifully finished, modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor and a 20-minute drive from Limerick Junction (with direct trains to Adare). This property combines contemporary design and generous living space.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 14 guests sharing across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility.\n\nSet behind secure gates and positioned alongside a second residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.\n\nThe property includes a modern kitchen, guest wifi, and private parking.",
+      "Hillview House is a beautifully finished, modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor and a 20-minute drive from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare. This property combines contemporary design and generous living space.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 14 guests sharing across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility.\n\nSet behind secure gates and positioned alongside a second residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.\n\nThe property includes a modern kitchen, guest wifi, and private parking.",
     specs: [
       { label: "Bedrooms", value: "6 bedrooms; 2 doubles ensuite, 2 x 2 doubles with shared bathrooms." },
       { label: "Bathrooms", value: "4" },
       { label: "Occupancy", value: "14" },
       { label: "Distance from Adare Manor course", value: "26 miles (45 mins drive)" },
       { label: "Distance to Park and Ride", value: "23 miles (40 mins drive)" },
-      { label: "Distance from Adare rail link", value: "12 miles (20 minutes drive + 30 min train approx)" },
+      { label: "Distance from Adare rail link", value: "12 miles (20 minutes drive + approx. 45 min shuttle)" },
       { label: "Number of TVs", value: "3" },
       { label: "Square footage", value: "4,300 sq ft" },
       { label: "Dining seating", value: "8-10" },
@@ -810,7 +810,7 @@ export const properties: Property[] = [
       "Private parking within gated grounds",
       "Electric vehicle charging points",
       "Office space",
-      "20 minutes from Limerick Junction, with direct trains to Adare",
+      "20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare",
       "Welcome hamper",
     ],
     location: {
@@ -823,19 +823,19 @@ export const properties: Property[] = [
     id: "portland-house",
     name: "Portland House",
     subtitle:
-      "Generous private residence for Ryder Cup 2027, just 20 minutes from Limerick Junction with direct trains to Adare; pairs naturally with neighbouring Hillview House.",
+      "Generous private residence for Ryder Cup 2027, just 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare; pairs naturally with neighbouring Hillview House.",
     bedrooms: 6,
     description:
-      "Private residence for up to 14 guests, 45 minutes from Adare Manor, with train access to Adare via Limerick Junction.",
+      "Private residence for up to 14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     fullDescription:
-      "Portland House is a large private residence suited to extended families or groups for the Ryder Cup 2027. It sits just 45 minutes drive from Adare Manor and 20 minutes from Limerick Junction, where direct trains run to Adare. It can be booked alongside neighbouring Hillview House for larger parties who want two houses side by side.\n\nDownstairs revolves around a large reception space: a welcoming kitchen area, formal and informal sitting rooms, a study, and a sun room. Sleeping quarters are arranged across ground, first, and second floors, including a ground-floor master suite, a first-floor master, and two further first-floor bedrooms. Flexible attic accommodation with its own bathroom gives privacy and flexibility for mixed groups.\n\nAdditional touches include multiple bathrooms, an outdoor bar for relaxed evenings, and parking on site. The layout is designed for comfortable stays, with space to gather, work, and unwind between tournament days.",
+      "Portland House is a large private residence suited to extended families or groups for the Ryder Cup 2027. It sits just 45 minutes drive from Adare Manor and 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare. It can be booked alongside neighbouring Hillview House for larger parties who want two houses side by side.\n\nDownstairs revolves around a large reception space: a welcoming kitchen area, formal and informal sitting rooms, a study, and a sun room. Sleeping quarters are arranged across ground, first, and second floors, including a ground-floor master suite, a first-floor master, and two further first-floor bedrooms. Flexible attic accommodation with its own bathroom gives privacy and flexibility for mixed groups.\n\nAdditional touches include multiple bathrooms, an outdoor bar for relaxed evenings, and parking on site. The layout is designed for comfortable stays, with space to gather, work, and unwind between tournament days.",
     specs: [
       { label: "Bedrooms", value: "6 bedrooms; 3 doubles ensuite, 2 x 2 doubles with shared bathrooms, 1 double own bathroom" },
       { label: "Bathrooms", value: "7 and 1 half bathroom" },
       { label: "Occupancy", value: "14" },
       { label: "Distance from Adare Manor course", value: "26 miles (45 mins drive)" },
       { label: "Distance to Park and Ride", value: "23 miles (40 mins drive)" },
-      { label: "Distance from Adare rail link", value: "12 miles (20 minutes drive + 30 min train approx)" },
+      { label: "Distance from Adare rail link", value: "12 miles (20 minutes drive + approx. 45 min shuttle)" },
       { label: "Number of TVs", value: "5" },
       { label: "Square footage", value: "6,000 sq ft" },
       { label: "Dining seating", value: "8-10" },
@@ -896,7 +896,7 @@ export const properties: Property[] = [
       "Guest laundry room",
       "Multiple bathrooms across floors",
       "Private parking",
-      "20 minutes from Limerick Junction, with direct trains to Adare",
+      "20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare",
       "Welcome hamper",
     ],
     location: {
