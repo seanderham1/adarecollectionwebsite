@@ -66,7 +66,7 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
   ],
   "kildimo-house": [
     `Kildimo House combines space and privacy with contemporary comfort: a bright open-plan kitchen and dining area for up to eight guests, a central island for gathering, and multiple relaxing rooms for entertaining or downtime.`,
-    `A family-friendly countryside base near Kildimo village, with five ensuite double bedrooms (including a ground-floor option) and a children’s play area in the rear garden—approximately 12 minutes from the official Adare Park & Ride facility.`,
+    `A family-friendly countryside base near Kildimo village, with five ensuite double bedrooms (including a ground-floor option) and a children’s play area in the rear garden, approximately 12 minutes from the official Adare Park & Ride facility.`,
     SHARED_BOOKING_SHORT,
   ],
   "coolbawn-quay": [
