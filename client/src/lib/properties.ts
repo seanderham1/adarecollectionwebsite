@@ -352,7 +352,7 @@ export const properties: Property[] = [
     description: "Within the gates of Adare Manor, just steps from the 2027 Ryder Cup venue.",
     fullDescription: "The Fairways is a contemporary luxury residence located within the Demesne, a luxury neighbourhood on the grounds of Adare Manor, offering unrivalled proximity to Ryder Cup 2027. This expansive 6-bedroom home spans over 3 floors of immaculately designed interiors, combining privacy, grandeur, and modern elegance.\n\nPositioned just a short walk from the 1st tee, this is one of the closest private properties at the heart of the tournament.",
     specs: [
-      { label: "Bedrooms", value: "4 bed ensuite, 2 beds with shared bathroom" },
+      { label: "Bedrooms", value: "6 double bedrooms: 4 ensuite, 2 sharing a bathroom" },
       { label: "Bathrooms", value: "6 + 1 half bathroom" },
       { label: "Occupancy", value: "12 max." },
       { label: "Distance from Adare Manor", value: "200 yards." },
