@@ -100,7 +100,7 @@ export default function FAQ() {
     {
       question: "What amenities are included with each property?",
       answer:
-        "Each property includes premium amenities such as luxury furnishings, fully equipped kitchens, multiple bedrooms and bathrooms, private parking, and concierge services. Specific amenities vary by property and are detailed in each listing.",
+        "Each property includes premium amenities such as luxury furnishings, fully equipped kitchens, multiple bedrooms and bathrooms, and private parking. Specific amenities vary by property and are detailed in each listing. Concierge and other estate services are available at an additional charge.",
     },
     {
       question: "How do I book a property for Ryder Cup 2027?",
@@ -114,7 +114,7 @@ export default function FAQ() {
             . We&apos;ll discuss your requirements, show you available properties, and guide you through the booking process. All bookings are handled personally by our team. Each reservation is for a fixed rental period of up to eight nights, with no minimum length required.
           </p>
           <p>
-            A non-refundable booking deposit of 50% is required upon signing to secure a property. The remaining balance is due no later than 31 January 2027 unless otherwise agreed in writing, and a 15% security deposit (excluding VAT) is required with final payment. Full payment terms are in our{" "}
+            A non-refundable booking deposit of 50% is required upon signing to secure a property. The remaining balance is due no later than 31 January 2027 unless otherwise agreed in writing, and a security deposit of 15% of the Rent (excluding VAT) is required with final payment. Full payment terms are in our{" "}
             <Link
               href="/terms#payment-terms"
               className="text-primary underline underline-offset-2 hover:no-underline"
@@ -129,7 +129,7 @@ export default function FAQ() {
     {
       question: "What is included in the concierge service?",
       answer:
-        "Our concierge service includes assistance with restaurant reservations, transportation arrangements, local recommendations, and any special requests you may have during your stay.",
+        "Our optional concierge service can include restaurant reservations, transport arrangements, local recommendations and special requests during your stay. It is booked separately, and pricing is on application.",
     },
     {
       question: "Are the properties suitable for corporate groups?",
@@ -158,7 +158,7 @@ export default function FAQ() {
             >
               info@theadarecollection.ie
             </a>
-            . The 50% booking Deposit is non-refundable. If you cancel, Rent paid (excluding the Deposit) is refunded on a sliding scale by timing before the Commencement Date (100% at 180+ days, 50% at 120–179 days, and 0% within 119 days). Where a Security Deposit has been paid and cancellation is before the Commencement Date, it is returned in full. If Ryder Cup 2027 itself is cancelled, postponed, or relocated away from Adare Manor before your Commencement Date, Event Cancellation terms apply (80% of the Deposit and other sums received, other than the Security Deposit, refunded within 14 working days; any non-refunded Deposit portion evidenced and applied to Owner costs; Security Deposit returned in full).
+            . The Deposit is non-refundable. Other Rent paid is refunded at 100% if you cancel 180 days or more before arrival, 50% at 120 to 179 days, and 0% within 119 days. The Security Deposit is returned in full if you cancel before arrival. If Ryder Cup 2027 itself is cancelled, postponed, or relocated away from Adare Manor before your Commencement Date, Event Cancellation terms apply (80% of the Deposit and other sums received, other than the Security Deposit, refunded within 14 working days; any part of the Deposit not refunded will be supported by an itemised explanation and evidence, and goes towards the Owner&apos;s costs; Security Deposit returned in full).
           </p>
           <p>
             If an Owner cannot provide the Property for the agreed Letting Period (other than as a result of Occupier breach), all Guest payments already received are refunded in full within 14 working days, and the Owner will use reasonable endeavours to help find suitable alternative accommodation.
@@ -179,7 +179,7 @@ export default function FAQ() {
     {
       question: "Are pets allowed in the properties?",
       answer:
-        "No. Pets are not permitted in any of our properties. However, if you rely on a registered assistance dog, please mention this when you enquire so we can advise on next steps.",
+        "Pets are not permitted without the Owner\u2019s prior written consent. Legally recognised assistance animals are welcome where applicable, so please mention this when you enquire.",
     },
     {
       question: "Do you offer properties outside of Ryder Cup 2027 dates?",
