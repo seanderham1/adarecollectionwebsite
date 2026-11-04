@@ -14,7 +14,7 @@ const SECTIONS = [
   {
     title: "Optional services with your rental",
     paragraphs: [
-      "The Adare Collection can arrange optional in-residence services at luxury private residences in and near Adare Manor. Concierge, chauffeur, and licensed ground transfers are arranged around your confirmed estate rental.",
+      "Estate services are not included in the rental and are booked under a separate agreement.",
     ],
   },
   {
