@@ -422,7 +422,7 @@ export const properties: Property[] = [
     specs: [
       { label: "Bedrooms", value: "5 double rooms; 1 master ensuite, 2 x 2 Jack and Jill." },
       { label: "Bathrooms", value: "4" },
-      { label: "Occupancy", value: "10-12 max." },
+      { label: "Occupancy", value: "12" },
       { label: "Distance from Adare Manor course", value: "11 miles (15 mins drive)" },
       { label: "Distance to Park and Ride", value: "4.7mls (10 minutes drive)" },
       { label: "Number of TVs", value: "4" },
@@ -537,7 +537,7 @@ export const properties: Property[] = [
     specs: [
       { label: "Bedrooms", value: "4/5 double rooms; 2 ensuite, 2 with shared bathroom." },
       { label: "Bathrooms", value: "4" },
-      { label: "Occupancy", value: "8-10 max." },
+      { label: "Occupancy", value: "10" },
       { label: "Distance from Adare Manor course", value: "6 miles (12 mins drive)" },
       { label: "Distance to Park and Ride", value: "1.8mls (3 minutes drive)" },
       { label: "Number of TVs", value: "3" },
@@ -749,11 +749,11 @@ export const properties: Property[] = [
     description:
       "Five-star modern residence for up to 14 guests, 45 minutes from Adare Manor, with train access to Adare via Limerick Junction.",
     fullDescription:
-      "Hillview House is a beautifully finished, modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor and a 20-minute drive from Limerick Junction (with direct trains to Adare). This property combines contemporary design and generous living space.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 12-14 guests sharing across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility.\n\nSet behind secure gates and positioned alongside a second residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.\n\nThe property includes a modern kitchen, guest wifi, and private parking.",
+      "Hillview House is a beautifully finished, modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor and a 20-minute drive from Limerick Junction (with direct trains to Adare). This property combines contemporary design and generous living space.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 14 guests sharing across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility.\n\nSet behind secure gates and positioned alongside a second residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.\n\nThe property includes a modern kitchen, guest wifi, and private parking.",
     specs: [
       { label: "Bedrooms", value: "6 bedrooms; 2 doubles ensuite, 2 x 2 doubles with shared bathrooms." },
       { label: "Bathrooms", value: "4" },
-      { label: "Occupancy", value: "12-14" },
+      { label: "Occupancy", value: "14" },
       { label: "Distance from Adare Manor course", value: "26 miles (45 mins drive)" },
       { label: "Distance to Park and Ride", value: "23 miles (40 mins drive)" },
       { label: "Distance from Adare rail link", value: "12 miles (20 minutes drive + 30 min train approx)" },
@@ -835,7 +835,7 @@ export const properties: Property[] = [
     specs: [
       { label: "Bedrooms", value: "6 bedrooms; 3 doubles ensuite, 2 x 2 doubles with shared bathrooms, 1 double own bathroom" },
       { label: "Bathrooms", value: "7 and 1 half bathroom" },
-      { label: "Occupancy", value: "12-14" },
+      { label: "Occupancy", value: "14" },
       { label: "Distance from Adare Manor course", value: "26 miles (45 mins drive)" },
       { label: "Distance to Park and Ride", value: "23 miles (40 mins drive)" },
       { label: "Distance from Adare rail link", value: "12 miles (20 minutes drive + 30 min train approx)" },
@@ -997,7 +997,7 @@ export const properties: Property[] = [
     specs: [
       { label: "Bedrooms", value: "5 double rooms, 2 ensuite, 2 with a shared bathroom" },
       { label: "Bathrooms", value: "3 + 1 half bathroom" },
-      { label: "Occupancy", value: "8-10 max." },
+      { label: "Occupancy", value: "10" },
       { label: "Distance from Adare Manor course", value: "550 yards." },
       { label: "Number of TVs", value: "2 smart TVs" },
       { label: "Square footage", value: "4,000 sqft" },
