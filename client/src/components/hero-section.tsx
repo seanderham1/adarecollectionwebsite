@@ -34,7 +34,7 @@ function EventWeekCountdown() {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2027-09-25T00:00:00'); // Tournament week 2027
+    const targetDate = new Date('2027-09-17T00:00:00'); // 17 September 2027
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
