@@ -113,10 +113,6 @@
         "destination": "/_prerender/property__portland-house.html"
       },
       {
-        "source": "/property/nead-fainleog",
-        "destination": "/_prerender/property__nead-fainleog.html"
-      },
-      {
         "source": "/property/the-manor-lodge",
         "destination": "/_prerender/property__the-manor-lodge.html"
       },
@@ -155,6 +151,14 @@
       {
         "source": "/property/hillcrest-house",
         "destination": "/_prerender/property__hillcrest-house.html"
+      },
+      {
+        "source": "/blog/how-adare-is-preparing-for-the-ryder-cup",
+        "destination": "/_prerender/blog__how-adare-is-preparing-for-the-ryder-cup.html"
+      },
+      {
+        "source": "/blog/ryder-cup-2027-year-to-go-live-at-the-castle",
+        "destination": "/_prerender/blog__ryder-cup-2027-year-to-go-live-at-the-castle.html"
       },
       {
         "source": "/blog/jon-rahm-ireland-special-place-irish-open-2026",
@@ -467,6 +471,24 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/property/hillcrest-house>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/how-adare-is-preparing-for-the-ryder-cup",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/how-adare-is-preparing-for-the-ryder-cup>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/blog/ryder-cup-2027-year-to-go-live-at-the-castle",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/blog/ryder-cup-2027-year-to-go-live-at-the-castle>; rel=\"canonical\""
           }
         ]
       },
