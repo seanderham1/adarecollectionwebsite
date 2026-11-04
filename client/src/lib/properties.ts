@@ -742,10 +742,10 @@ export const properties: Property[] = [
     id: "hillview-house",
     name: "Hillview House",
     subtitle:
-      "Five-star modern residence for Ryder Cup 2027, up to 14 guests, approximately 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
+      "Luxury modern residence for Ryder Cup 2027, up to 14 guests, approximately 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     bedrooms: 6,
     description:
-      "Five-star modern residence for up to 14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
+      "Luxury modern residence for up to 14 guests, 45 minutes from Adare Manor; 20 minutes from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare.",
     fullDescription:
       "Hillview House is a beautifully finished, modern residence, offering an exceptional private retreat for groups attending the Ryder Cup 2027. Located just a 45-minute drive from Adare Manor and a 20-minute drive from Limerick Junction, for the Ryder Cup spectator rail shuttle to Adare. This property combines contemporary design and generous living space.\n\nDesigned with both comfort and entertaining in mind, the home centres around a stunning open-plan kitchen, dining, and living area that flows seamlessly onto a private patio, ideal for relaxed evenings or hosting guests.\n\nThe property accommodates up to 14 guests sharing across six well-appointed double bedrooms, including a luxurious master suite complete with walk-in wardrobe. With four bathrooms and multiple spacious living areas, Hillview House delivers both privacy and flexibility.\n\nSet behind secure gates and positioned alongside a second residence, Hillview House also offers a unique opportunity for larger groups to secure both homes, creating an exclusive multi-residence solution in a private setting.\n\nThe property includes a modern kitchen, guest Wi-Fi, and private parking.",
     specs: [
@@ -796,7 +796,7 @@ export const properties: Property[] = [
       "Open-plan kitchen, dining, and living space",
       "Direct access to private patio and outdoor area",
       "Secure electric gated entrance",
-      "Contemporary five-star finish throughout",
+      "Contemporary luxury finish throughout",
       "Large, bright living areas designed for comfort and entertaining",
     ],
     amenities: [
