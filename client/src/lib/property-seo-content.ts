@@ -56,7 +56,7 @@ const PROPERTY_SEO_SUPPLEMENTS: Record<string, string[]> = {
   "dunes-lodge": [
     `Dunes Lodge in Lahinch combines Wild Atlantic Way scenery with championship golf views, with kitchen, parking, Wi-Fi, and amenities for surfers and golf fans. The home suits guests who want a coastal Ireland experience.`,
     `Dunes Lodge offers group capacity availability for tournament week subject to confirmation. Booking includes guidance on travel time to Adare Manor and local dining options.`,
-    `Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve. Helicopter transfers to Adare Manor may be arranged subject to availability; ground transportation and parking are included for self-drive guests.`,
+    `Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve. Helicopter transfers to Adare Manor may be arranged subject to availability. Parking is included. Ground transport is available as an optional service.`,
   ],
   "derg-house": [
     `This luxury country rental offers ensuite bedrooms, chef-ready kitchen, parking, Wi-Fi, and amenities for up to ten guests within easy reach of Adare Manor. Booking is handled personally by our team: we confirm availability, guest count, and house rules before you reserve.`,

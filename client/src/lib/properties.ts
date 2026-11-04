@@ -726,7 +726,7 @@ export const properties: Property[] = [
       "5-minute drive to Cliffs of Moher",
       "Close to ferry for Aran Islands, The Burren, Loop Head, Doolin",
       "Lahinch Leisure Centre nearby",
-      "Helicopter landing possible on Lahinch Golf Course (100m away)",
+      "Helicopter landing possible on Lahinch Golf Course (100m away), subject to permission",
       "Optional transport services (airport pick-up, transfers to Adare Manor)",
       "Laundry and catering available on request",
       "One-week rental only (week before, during, and after Ryder Cup available separately)",
