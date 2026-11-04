@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
                     2.2 Information collected if a booking proceeds
                   </h3>
                   <p>
-                    If an enquiry becomes a booking, further information needed to perform the Residential Letting Agreement may be collected off-website (for example by email or in booking documents). That can include guest-party details, stay dates, postal address, and payment details for Deposit, Rent, and Security Deposit paid to The Adare Collection. Those details are not collected by the website form.
+                    If an enquiry becomes a booking, further information needed to perform the Residential Letting Agreement may be collected off-website (for example by email or in booking documents). That can include guest-party details, stay dates, postal address, and payment details for Deposit, Rent, and Security Deposit paid into our designated client account. Those details are not collected by the website form.
                   </p>
 
                   <h3 className="font-serif text-xl font-normal text-primary mb-3 mt-6">
