@@ -686,7 +686,7 @@ export default function PropertyDetail() {
                   </div>
                 </div>
 
-                {/* Add-on Services */}
+                {/* Add-on Services — same five on every property */}
                 <div className="mb-12 lg:pl-4 lg:pr-4">
                   <h3 className="font-serif text-3xl md:text-4xl font-normal text-primary mb-6 mt-4" data-testid="addon-services-title">
                     Add-on Services
@@ -701,8 +701,7 @@ export default function PropertyDetail() {
                           <p className="text-primary text-sm" data-testid="service-chauffeur-description">Professional transportation throughout your stay</p>
                         </div>
                       </div>
-                      
-                      {!["darrira-house", "oak-leaf-house", "casabel", "friarstown-residence", "limetree-avenue", "executive-city-residence"].includes(property.id) && (
+
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                           <ChefHat className="text-white h-6 w-6" />
@@ -712,21 +711,17 @@ export default function PropertyDetail() {
                           <p className="text-primary text-sm" data-testid="service-chef-description">Bespoke dining experiences in your residence</p>
                         </div>
                       </div>
-                      )}
-                      
-                      {!["darrira-house", "croagh-house", "parkview-house", "cragleigh-house", "friarstown-residence"].includes(property.id) && (
-                        <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Heading className="text-white h-6 w-6" />
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-primary mb-1" data-testid="service-helicopter-title">Helicopter Transfers</h4>
-                            <p className="text-primary text-sm" data-testid="service-helicopter-description">Subject to availability</p>
-                          </div>
+
+                      <div className="flex items-start space-x-4">
+                        <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Heading className="text-white h-6 w-6" />
                         </div>
-                      )}
-                      
-                      {!["limetree-avenue", "executive-city-residence"].includes(property.id) && (
+                        <div>
+                          <h4 className="font-semibold text-primary mb-1" data-testid="service-helicopter-title">Helicopter Transfers</h4>
+                          <p className="text-primary text-sm" data-testid="service-helicopter-description">Subject to availability</p>
+                        </div>
+                      </div>
+
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                           <Shirt className="text-white h-6 w-6" />
@@ -736,31 +731,16 @@ export default function PropertyDetail() {
                           <p className="text-primary text-sm" data-testid="service-housekeeping-description">Professional washing, drying, and pressing service</p>
                         </div>
                       </div>
-                      )}
-                      
-                      {(property.id === 'rangeview' || property.id === 'the-captains' || property.id === 'the-fairways' || property.id === 'cragleigh-house' || property.id === 'the-first-tee' || property.id === 'croagh-house' || property.id === 'parkview-house' || property.id === 'hillview-house' || property.id === 'portland-house' || property.id === 'nead-fainleog' || property.id === 'the-manor-lodge' || property.id === 'derg-house' || property.id === 'riverston-abbey' || property.id === 'kildimo-house' || property.id === 'coolbawn-quay' || property.id === 'casabel') && (
-                        <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Crown className="text-white h-6 w-6" />
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-primary mb-1" data-testid="service-hospitality-title">Bespoke Hospitality & Entertainment</h4>
-                            <p className="text-primary text-sm" data-testid="service-hospitality-description">Available upon request</p>
-                          </div>
-                        </div>
-                      )}
 
-                      {["croagh-house", "parkview-house"].includes(property.id) && (
-                        <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Package className="text-white h-6 w-6" />
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-primary mb-1" data-testid="service-provisioning-title">Pre-arrival provisioning and stocking</h4>
-                            <p className="text-primary text-sm" data-testid="service-provisioning-description">Available upon request</p>
-                          </div>
+                      <div className="flex items-start space-x-4">
+                        <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Crown className="text-white h-6 w-6" />
                         </div>
-                      )}
+                        <div>
+                          <h4 className="font-semibold text-primary mb-1" data-testid="service-hospitality-title">Bespoke Hospitality & Entertainment</h4>
+                          <p className="text-primary text-sm" data-testid="service-hospitality-description">Available upon request</p>
+                        </div>
+                      </div>
                     </div>
                 </div>
 
