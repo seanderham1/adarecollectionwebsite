@@ -1698,7 +1698,7 @@ export const properties: Property[] = [
       },
       { label: "Occupancy", value: "Up to 12 guests" },
       { label: "Distance from Adare Manor", value: "21 km" },
-      { label: "Number of TVs", value: "At least 5" },
+      { label: "Number of TVs", value: "5" },
       { label: "Square footage", value: "Approximately 2,780 sq ft" },
       { label: "Dining seating", value: "6 indoors; outdoor dining seats 6" },
       { label: "Kitchen seating", value: "4 at island breakfast bar" },
@@ -1736,7 +1736,6 @@ export const properties: Property[] = [
       "Panoramic elevated views across rolling countryside",
       "Large gravel driveway parking",
       "Gym with hot tub and sauna",
-      "Man cave with bar area, extra sleeping and ensuite under construction",
     ],
     amenities: [
       "Ducted air conditioning throughout the house",
