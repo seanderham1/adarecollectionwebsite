@@ -2,15 +2,13 @@ import type { Property } from "./properties";
 import { formatPropertyBedroomsShort } from "./properties";
 import { getPropertySeoFocus } from "./seo-property-focus";
 
+/** Title-case focus keywords for browser titles (The, Tee, Way, Cup, Oak, etc.). */
 function titleCaseKeyword(keyword: string): string {
   return keyword
-    .split(" ")
-    .map((w) => (w.length <= 3 && w !== "ryder" ? w : w.charAt(0).toUpperCase() + w.slice(1)))
-    .join(" ")
-    .replace(/Ryder/g, "Ryder")
-    .replace(/Cup/g, "Cup")
-    .replace(/Adare/g, "Adare")
-    .replace(/Manor/g, "Manor");
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
 }
 
 export function propertyPageTitle(property: Property): string {

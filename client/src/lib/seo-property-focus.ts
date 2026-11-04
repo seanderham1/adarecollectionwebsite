@@ -44,7 +44,7 @@ export const PROPERTY_SEO_FOCUS: Record<string, PropertySeoFocus> = {
     pageSubheading: "The Manor Lodge, executive residence in Adare village",
   },
   "the-captains": {
-    focusKeyword: "the captains house adare manor rental",
+    focusKeyword: "the captains adare manor rental",
     pageSubheading: "The Captains, on-estate private home at Adare Manor",
   },
   "dunes-lodge": {
