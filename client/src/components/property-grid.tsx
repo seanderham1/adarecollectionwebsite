@@ -114,7 +114,7 @@ export default function PropertyGrid() {
           </h2>
           <div className="text-base text-gray-900 leading-relaxed max-w-5xl mx-auto">
             <p className="font-serif text-base font-normal">
-              Executive type homes within the grounds of Adare Manor, just steps from the 1st tee box of Ryder Cup 2027. Deluxe properties within driving distance from Adare, some located near some of Ireland's finest championship lynx golf courses on the Atlantic way. All properties feature elegant interiors, multiple ensuite bedrooms, and generous entertainment areas.
+              Private homes within the grounds of Adare Manor, just steps from the 1st tee, plus Executive, Premium and Deluxe residences within driving distance, some located near some of Ireland's finest championship links golf courses on the Wild Atlantic Way. All properties feature elegant interiors, multiple ensuite bedrooms, and generous entertainment areas.
             </p>
           </div>
         </div>
