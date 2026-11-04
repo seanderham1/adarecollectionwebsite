@@ -339,7 +339,7 @@ export const properties: Property[] = [
       lat: 52.56157892845145,
       lng: -8.787714781150669
     },
-    walkingDistance: "100 yards to Ryder Cup practice range",
+    walkingDistance: "150 yards to Ryder Cup practice range",
     videoUrl: "/videos/thefirsttee.mp4",
     availabilityStatus: "RESERVED",
   },
