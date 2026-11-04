@@ -90,7 +90,7 @@ export default function PrivacyPolicy() {
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li><strong>Responding to enquiries:</strong> to assess your request, contact you from info@theadarecollection.ie and dylan@theadarecollection.ie, and discuss suitable properties</li>
-                    <li><strong>Service provision:</strong> where a booking proceeds, to market properties, facilitate the letting, collect Deposit, Rent, and Security Deposit paid to The Adare Collection, and coordinate guest services</li>
+                    <li><strong>Service provision:</strong> where a booking proceeds, to market properties, facilitate the letting, collect Deposit, Rent, and Security Deposit into our designated client account, and coordinate guest services</li>
                     <li><strong>Contract performance:</strong> to enable Owners and Occupiers to enter into and perform Residential Letting Agreements</li>
                     <li><strong>Sharing with partners you need:</strong> with property owners and with caterers, transport, concierge, security, or other suppliers where needed to deliver services you have asked us to arrange</li>
                     <li><strong>Legal compliance:</strong> to comply with applicable laws, regulations, and legal processes</li>
