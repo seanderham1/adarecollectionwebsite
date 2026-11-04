@@ -162,19 +162,6 @@
     },
     {
       "type":"Feature",
-      "geometry":{"type":"Point","coordinates":[-8.79875286124995, 52.55127116942097]},
-      "properties":{
-        "id":"nead-fainleog",
-        "title":"Nead Fainleog",
-        "desc":"Four-bedroom executive residence two minutes from Adare Manor, with jacuzzi bath, steam room and countryside privacy for Ryder Cup 2027.",
-        "beds": 4,
-        "baths": 6,
-        "price":"POA",
-        "thumb":"/images/houses/neadfainleog/neadfainleog-exterior-1.webp"
-      }
-    },
-    {
-      "type":"Feature",
       "geometry":{"type":"Point","coordinates":[-8.7845, 52.5654]},
       "properties":{
         "id":"the-manor-lodge",
