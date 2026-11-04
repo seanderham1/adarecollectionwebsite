@@ -31,7 +31,6 @@ import {
   ChevronRight,
   Play,
   Scan,
-  Package,
   Sofa,
   Armchair,
   Accessibility,
