@@ -57,6 +57,7 @@ const PROPERTY_SPEC_ICONS: Record<string, LucideIcon> = {
   "Distance from Adare Manor course": MapPinned,
   "Distance to Park and Ride": MapPinned,
   "Distance from Ryder Cup train": TrainFront,
+  "Distance to Limerick Junction": TrainFront,
   "Number of TVs": Tv,
   "Square footage": Maximize2,
   "Dining seating": UtensilsCrossed,
