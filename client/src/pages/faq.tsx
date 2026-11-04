@@ -158,10 +158,10 @@ export default function FAQ() {
             >
               info@theadarecollection.ie
             </a>
-            . The 50% booking Deposit is non-refundable. Sums paid towards the Rent are not refundable if you cancel, except only under the Event Cancellation terms that apply if Ryder Cup 2027 itself is cancelled, postponed, or relocated away from Adare Manor before your Commencement Date (80% of the Deposit and other sums received, other than the Security Deposit, refunded within 10 working days; 20% retained; Security Deposit returned in full).
+            . The 50% booking Deposit is non-refundable. If you cancel, Rent paid (excluding the Deposit) is refunded on a sliding scale by timing before the Commencement Date (100% at 180+ days, 50% at 120–179 days, and 0% within 119 days). Where a Security Deposit has been paid and cancellation is before the Commencement Date, it is returned in full. If Ryder Cup 2027 itself is cancelled, postponed, or relocated away from Adare Manor before your Commencement Date, Event Cancellation terms apply (80% of the Deposit and other sums received, other than the Security Deposit, refunded within 14 working days; any non-refunded Deposit portion evidenced and applied to Owner costs; Security Deposit returned in full).
           </p>
           <p>
-            If an Owner withdraws a property or cancels a confirmed booking after your Deposit has been received (other than under Event Cancellation), all Guest payments already received are refunded in full.
+            If an Owner cannot provide the Property for the agreed Letting Period (other than as a result of Occupier breach), all Guest payments already received are refunded in full within 14 working days, and the Owner will use reasonable endeavours to help find suitable alternative accommodation.
           </p>
           <p>
             This is a summary only. The binding terms are in our{" "}
