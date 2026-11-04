@@ -523,7 +523,7 @@ export default function PropertyDetail() {
                     <div className="mb-2">
                       <PropertyAvailabilityBadge property={property} />
                     </div>
-                    <p className="text-sm text-primary font-serif mb-1">Available exclusively for Ryder Cup 2027</p>
+                    <p className="text-sm text-primary font-serif mb-1">Available for Ryder Cup 2027 and other dates on request</p>
                     
                     <p className="text-sm text-primary leading-relaxed">
                       {property.subtitle}
@@ -764,7 +764,7 @@ export default function PropertyDetail() {
                     <div className="mb-2 text-left">
                       <PropertyAvailabilityBadge property={property} />
                     </div>
-                    <p className="text-sm text-primary font-serif mb-1 text-left">Available exclusively for Ryder Cup 2027</p>
+                    <p className="text-sm text-primary font-serif mb-1 text-left">Available for Ryder Cup 2027 and other dates on request</p>
                   
                     <p className="text-sm text-primary leading-relaxed mb-1 text-left">
                       {property.subtitle}
