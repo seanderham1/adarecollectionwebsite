@@ -28,10 +28,10 @@ jobs:
       
       - name: Deploy Preview to Firebase
         run: |
-          firebase deploy --only hosting,functions \
+          CHANNEL="pr-${{ github.event.pull_request.number }}"
+          firebase hosting:channel:deploy "$CHANNEL" \
             --project theadarecollection-site \
-            --non-interactive \
-            --force \
-            --expires 30d
+            --expires 30d \
+            --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
