@@ -69,6 +69,10 @@
         "destination": "/_prerender/terms.html"
       },
       {
+        "source": "/property/rangeview",
+        "destination": "/_prerender/property__rangeview.html"
+      },
+      {
         "source": "/property/the-captains",
         "destination": "/_prerender/property__the-captains.html"
       },
@@ -282,6 +286,15 @@
           {
             "key": "Link",
             "value": "<https://theadarecollection.com/services>; rel=\"canonical\""
+          }
+        ]
+      },
+      {
+        "source": "/property/rangeview",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://theadarecollection.com/property/rangeview>; rel=\"canonical\""
           }
         ]
       },

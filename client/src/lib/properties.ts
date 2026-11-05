@@ -54,7 +54,7 @@ const COLLECTION_TIER_ORDER: Record<string, number> = {
  * sitemap, prerender, and enquiry pickers). Data stays in `properties` for easy re-launch.
  * To publish again, remove the id from this array and restore geojson if needed.
  */
-export const HIDDEN_FROM_LISTINGS: string[] = ["riverston-abbey", "rangeview", "nead-fainleog"];
+export const HIDDEN_FROM_LISTINGS: string[] = ["riverston-abbey", "nead-fainleog"];
 
 /** Listing feed for homepage + /properties, excluding temporarily hidden properties. */
 export function getListedProperties(): Property[] {
